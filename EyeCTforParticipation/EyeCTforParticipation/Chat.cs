@@ -10,7 +10,7 @@ namespace EyeCTforParticipation
     {
         //fields
         private string title;
-        private List<Message> message;
+        private List<Message> messages;
 
         //property accessors
         public string Title
@@ -39,26 +39,12 @@ namespace EyeCTforParticipation
             }
         }
 
-        internal User Author
-        {
-            get
-            {
-                return author;
-            }
-
-            set
-            {
-                author = value;
-            }
-        }
-
 
 
         //constructor
-        public Chat(string title, User author)
+        public Chat(string title)
         {
             Title = title;
-            Author = author;
         }
     }
 }
