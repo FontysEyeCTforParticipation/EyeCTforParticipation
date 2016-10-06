@@ -171,7 +171,7 @@
             this.Controls.Add(this.tbEmailWrapper);
             this.Controls.Add(this.lbEmail);
             this.Controls.Add(this.lbTitle);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "LoginForm";
             this.Text = "Login";
             this.tbPasswordWrapper.ResumeLayout(false);
