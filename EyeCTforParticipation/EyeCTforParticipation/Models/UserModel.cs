@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EyeCTforParticipation
 {
-    abstract class User
+    abstract class UserModel
     {
         //fields
         private string name;
@@ -77,7 +77,7 @@ namespace EyeCTforParticipation
         }
 
         //constructor
-        public User(string name, string email, string password, int rfid, DateTime dateOfBirth)
+        public UserModel(string name, string email, string password, int rfid, DateTime dateOfBirth)
         {
             Name = name;
             Email = email;

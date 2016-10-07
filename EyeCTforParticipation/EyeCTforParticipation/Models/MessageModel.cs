@@ -6,45 +6,43 @@ using System.Threading.Tasks;
 
 namespace EyeCTforParticipation
 {
-    class Chat
+    class MessageModel
     {
         //fields
-        private string title;
-        private List<Message> messages;
+        private string content;
+        DateTime date;
 
         //property accessors
-        public string Title
+        public string Content
         {
             get
             {
-                return title;
+                return content;
             }
 
             set
             {
-                title = value;
+                content = value;
             }
         }
-
-        public List<Message> Messages
+        public DateTime Date
         {
             get
             {
-                return messages;
+                return date;
             }
 
             set
             {
-                messages = value;
+                date = value;
             }
         }
-
-
 
         //constructor
-        public Chat(string title)
+        public MessageModel(string content, DateTime date)
         {
-            Title = title;
+            Content = content;
+            Date = date;
         }
     }
 }

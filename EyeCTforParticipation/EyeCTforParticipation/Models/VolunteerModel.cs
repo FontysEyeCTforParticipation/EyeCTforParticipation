@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EyeCTforParticipation
 {
-    class Volunteer : User
+    class VolunteerModel : UserModel
     {
         //fields
         private string location;
@@ -63,7 +63,7 @@ namespace EyeCTforParticipation
         }
 
         //constructor
-        public Volunteer(string name, string email, string password, int rfid, DateTime dateOfBirth, string location, bool driversLicense, bool car, bool availability) : base(name, email, password, rfid, dateOfBirth)
+        public VolunteerModel(string name, string email, string password, int rfid, DateTime dateOfBirth, string location, bool driversLicense, bool car, bool availability) : base(name, email, password, rfid, dateOfBirth)
         {
             Location = location;
             DriversLicense = driversLicense;

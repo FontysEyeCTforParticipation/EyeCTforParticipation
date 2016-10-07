@@ -7,11 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CustomControls
+namespace EyeCTforParticipation
 {
-    class Views : TabControl
+    class ViewControl : TabControl
     {
-        public Views() : base()
+        public ViewControl() : base()
         {
             InitializeComponent();
         }
@@ -36,7 +36,7 @@ namespace CustomControls
             }
         }
 
-        protected override void WndProc(ref Message m)
+        protected override void WndProc(ref System.Windows.Forms.Message m)
         {
             if (m.Msg == 0x1300 + 40)
             {

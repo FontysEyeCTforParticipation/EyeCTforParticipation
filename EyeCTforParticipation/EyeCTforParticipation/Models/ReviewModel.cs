@@ -6,13 +6,25 @@ using System.Threading.Tasks;
 
 namespace EyeCTforParticipation
 {
-    class Message
+    class ReviewModel
     {
         //fields
+        private string title;
         private string content;
-        DateTime date;
 
-        //property accessors
+        //property accessor
+        public string Title
+        {
+            get
+            {
+                return title;
+            }
+
+            set
+            {
+                title = value;
+            }
+        }
         public string Content
         {
             get
@@ -25,24 +37,12 @@ namespace EyeCTforParticipation
                 content = value;
             }
         }
-        public DateTime Date
-        {
-            get
-            {
-                return date;
-            }
-
-            set
-            {
-                date = value;
-            }
-        }
 
         //constructor
-        public Message(string content, DateTime date)
+        public ReviewModel(string title, string content)
         {
+            Title = title;
             Content = content;
-            Date = date;
         }
     }
 }

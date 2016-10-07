@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace EyeCTforParticipation
 {
-    class Review
+    class ChatModel
     {
         //fields
         private string title;
-        private string content;
+        private List<MessageModel> messages;
 
-        //property accessor
+        //property accessors
         public string Title
         {
             get
@@ -25,24 +25,26 @@ namespace EyeCTforParticipation
                 title = value;
             }
         }
-        public string Content
+
+        public List<MessageModel> Messages
         {
             get
             {
-                return content;
+                return messages;
             }
 
             set
             {
-                content = value;
+                messages = value;
             }
         }
 
+
+
         //constructor
-        public Review(string title, string content)
+        public ChatModel(string title)
         {
             Title = title;
-            Content = content;
         }
     }
 }

@@ -19,12 +19,24 @@ namespace EyeCTforParticipation
 
         private void btPasswordLogin_Click(object sender, EventArgs e)
         {
-            views.CurrentView = LoginView;
+            views.CurrentView = PasswordLoginView;
         }
 
         private void btRFIDLogin_Click(object sender, EventArgs e)
         {
             views.CurrentView = RFIDLoginView;
+        }
+
+        private void btForgotPassword_Click(object sender, EventArgs e)
+        {
+            views.CurrentView = ForgotPasswordView;
+            btTitle.Show();
+        }
+
+        private void btTitle_Click(object sender, EventArgs e)
+        {
+            views.CurrentView = PasswordLoginView;
+            btTitle.Hide();
         }
     }
 }

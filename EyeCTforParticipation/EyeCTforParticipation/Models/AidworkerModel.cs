@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace EyeCTforParticipation
 {
-    class Helpseeker : User
+    class AidworkerModel : UserModel
     {
         //constructor
-        public Helpseeker(string name, string email, string password, int rfid, DateTime dateOfBirth) : base(name, email, password, rfid, dateOfBirth)
+        public AidworkerModel(string name, string email, string password, int rfid, DateTime dateOfBirth) : base(name, email, password, rfid, dateOfBirth)
         {
 
         }
