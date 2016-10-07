@@ -131,7 +131,7 @@
             this.RFIDLoginView.Location = new System.Drawing.Point(0, 0);
             this.RFIDLoginView.Margin = new System.Windows.Forms.Padding(0);
             this.RFIDLoginView.Name = "RFIDLoginView";
-            this.RFIDLoginView.Size = new System.Drawing.Size(725, 728);
+            this.RFIDLoginView.Size = new System.Drawing.Size(715, 685);
             this.RFIDLoginView.TabIndex = 0;
             this.RFIDLoginView.Text = "tabPage1";
             // 
@@ -140,11 +140,11 @@
             this.btPasswordLoginWrapper.AutoSize = true;
             this.btPasswordLoginWrapper.Controls.Add(this.btPasswordLogin);
             this.btPasswordLoginWrapper.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btPasswordLoginWrapper.Location = new System.Drawing.Point(0, 586);
+            this.btPasswordLoginWrapper.Location = new System.Drawing.Point(0, 543);
             this.btPasswordLoginWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btPasswordLoginWrapper.Name = "btPasswordLoginWrapper";
             this.btPasswordLoginWrapper.Padding = new System.Windows.Forms.Padding(40);
-            this.btPasswordLoginWrapper.Size = new System.Drawing.Size(725, 142);
+            this.btPasswordLoginWrapper.Size = new System.Drawing.Size(715, 142);
             this.btPasswordLoginWrapper.TabIndex = 10;
             // 
             // btPasswordLogin
@@ -176,7 +176,7 @@
             this.lbInstructions.Margin = new System.Windows.Forms.Padding(0);
             this.lbInstructions.Name = "lbInstructions";
             this.lbInstructions.Padding = new System.Windows.Forms.Padding(40, 20, 40, 20);
-            this.lbInstructions.Size = new System.Drawing.Size(725, 85);
+            this.lbInstructions.Size = new System.Drawing.Size(715, 85);
             this.lbInstructions.TabIndex = 2;
             this.lbInstructions.Text = "Hou de pas bij de scanner om in te loggen";
             this.lbInstructions.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -188,7 +188,7 @@
             this.pbInstructions.Location = new System.Drawing.Point(0, 0);
             this.pbInstructions.Margin = new System.Windows.Forms.Padding(0);
             this.pbInstructions.Name = "pbInstructions";
-            this.pbInstructions.Size = new System.Drawing.Size(725, 378);
+            this.pbInstructions.Size = new System.Drawing.Size(715, 378);
             this.pbInstructions.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbInstructions.TabIndex = 0;
             this.pbInstructions.TabStop = false;

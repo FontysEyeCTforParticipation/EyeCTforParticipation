@@ -36,7 +36,7 @@ namespace CustomControls
             }
         }
 
-        protected override void WndProc(ref System.Windows.Forms.Message m)
+        protected override void WndProc(ref Message m)
         {
             if (m.Msg == 0x1300 + 40)
             {
