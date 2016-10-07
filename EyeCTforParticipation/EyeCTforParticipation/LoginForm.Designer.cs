@@ -109,9 +109,9 @@
             // views
             // 
             this.views.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
-            this.views.Controls.Add(this.LoginView);
             this.views.Controls.Add(this.RFIDLoginView);
-            this.views.CurrentView = this.LoginView;
+            this.views.Controls.Add(this.LoginView);
+            this.views.CurrentView = this.RFIDLoginView;
             this.views.Dock = System.Windows.Forms.DockStyle.Fill;
             this.views.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.views.ItemSize = new System.Drawing.Size(0, 1);
