@@ -77,13 +77,13 @@ namespace EyeCTforParticipation
         }
 
         //constructor
-        public User(string Name, string Email, string Password, int RFID, DateTime DateOfBirth)
+        public User(string name, string email, string password, int rfid, DateTime dateOfBirth)
         {
-            Name = this.Name;
-            Email = this.Email;
-            Password = this.Password;
-            RFID = this.RFID;
-            DateOfBirth = this.DateOfBirth;
+            Name = name;
+            Email = email;
+            Password = password;
+            RFID = rfid;
+            DateOfBirth = dateOfBirth;
         }
     }
 }

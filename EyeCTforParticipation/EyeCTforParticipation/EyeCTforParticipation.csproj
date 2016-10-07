@@ -61,25 +61,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.cs" />
+    <Compile Include="Aidworker.cs" />
+    <Compile Include="Chat.cs" />
     <Compile Include="DatabaseTest.cs" />
-    <Compile Include="LoginRFIDForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="LoginRFIDForm.cs" />
     <Compile Include="LoginRFIDForm.Designer.cs">
       <DependentUpon>LoginRFIDForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helprequest.cs" />
+    <Compile Include="Helpseeker.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Message.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Review.cs" />
     <Compile Include="User.cs" />
     <EmbeddedResource Include="LoginRFIDForm.resx">
       <DependentUpon>LoginRFIDForm.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="Views.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Volunteer.cs" />
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
