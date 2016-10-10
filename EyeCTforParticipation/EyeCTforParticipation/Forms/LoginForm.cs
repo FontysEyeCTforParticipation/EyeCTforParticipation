@@ -8,13 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EyeCTforParticipation
+namespace EyeCTforParticipation.Forms
 {
     public partial class LoginForm : Form
     {
         public LoginForm()
         {
             InitializeComponent();
+            passwordLoginControl.Login += new EventHandler(onLogin);
+            rfidLoginControl.Login += new EventHandler(onLogin);
+        }
+
+        private void onLogin(object sender, EventArgs e)
+        {
+            MessageBox.Show("Logged in");
+            Close();
         }
 
         private void btPasswordLogin_Click(object sender, EventArgs e)
@@ -30,13 +38,13 @@ namespace EyeCTforParticipation
         private void btForgotPassword_Click(object sender, EventArgs e)
         {
             views.CurrentView = ForgotPasswordView;
-            btTitle.Show();
+            btBack.Show();
         }
 
-        private void btTitle_Click(object sender, EventArgs e)
+        private void btBack_Click(object sender, EventArgs e)
         {
             views.CurrentView = PasswordLoginView;
-            btTitle.Hide();
+            btBack.Hide();
         }
     }
 }

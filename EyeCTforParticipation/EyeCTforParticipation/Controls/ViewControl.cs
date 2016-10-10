@@ -7,20 +7,22 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EyeCTforParticipation
+namespace EyeCTforParticipation.Controls
 {
     class ViewControl : TabControl
     {
-        public ViewControl() : base()
+        public ViewControl()
         {
             InitializeComponent();
         }
         private void InitializeComponent()
         {
-            DrawMode = TabDrawMode.OwnerDrawFixed;
-            Appearance = TabAppearance.FlatButtons;
-            ItemSize = new Size(0, 1);
-            SizeMode = TabSizeMode.Fixed;
+            this.DrawMode = TabDrawMode.OwnerDrawFixed;
+            this.Appearance = TabAppearance.FlatButtons;
+            this.ItemSize = new Size(0, 1);
+            this.SizeMode = TabSizeMode.Fixed;
+            this.Padding = new Point(0, 0);
+            this.Margin = new Padding(0);
         }
 
         public TabPage CurrentView
