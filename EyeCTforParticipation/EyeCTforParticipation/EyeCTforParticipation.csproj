@@ -86,12 +86,12 @@
     <Compile Include="Controls\RFIDLoginControl.Designer.cs">
       <DependentUpon>RFIDLoginControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SearchControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Controls\SearchControl.cs" />
     <Compile Include="Controls\SearchControl.Designer.cs">
       <DependentUpon>SearchControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Data\HelprequestSQLContext.cs" />
+    <Compile Include="Data\IHelprequestContext.cs" />
     <Compile Include="Data\IUserContext.cs" />
     <Compile Include="Data\UserSQLContext.cs" />
     <Compile Include="Forms\RegisterForm.cs">
@@ -106,6 +106,7 @@
     <Compile Include="Forms\SearchForm.Designer.cs">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logic\HelprequestRepository.cs" />
     <Compile Include="Logic\UserRepository.cs" />
     <Compile Include="Models\AidworkerModel.cs" />
     <Compile Include="Models\ChatModel.cs" />

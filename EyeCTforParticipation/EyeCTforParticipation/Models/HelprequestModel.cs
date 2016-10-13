@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EyeCTforParticipation
 {
-    class HelprequestModel
+    public class HelprequestModel
     {
         //fields
         private string title;
@@ -78,13 +78,13 @@ namespace EyeCTforParticipation
         }
 
         //constructor
-        public HelprequestModel(string title, string content, DateTime date, string location, int urgency)
-        {
-            Title = title;
-            Content = content;
-            Date = date;
-            Location = location;
-            Urgency = urgency;
+     //   public HelprequestModel(string title, string content, DateTime date, string location, int urgency)
+      //  {
+      //      Title = title;
+     //       Content = content;
+     //       Date = date;
+     //       Location = location;
+     //       Urgency = urgency;
         }
     }
 }
