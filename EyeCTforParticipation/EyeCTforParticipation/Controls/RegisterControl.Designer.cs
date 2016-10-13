@@ -86,7 +86,7 @@
             this.tbEmailWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.tbEmailWrapper.Name = "tbEmailWrapper";
             this.tbEmailWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 20);
-            this.tbEmailWrapper.Size = new System.Drawing.Size(740, 63);
+            this.tbEmailWrapper.Size = new System.Drawing.Size(720, 63);
             this.tbEmailWrapper.TabIndex = 6;
             // 
             // tbEmail
@@ -96,7 +96,7 @@
             this.tbEmail.Location = new System.Drawing.Point(40, 0);
             this.tbEmail.Margin = new System.Windows.Forms.Padding(0);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(660, 43);
+            this.tbEmail.Size = new System.Drawing.Size(640, 43);
             this.tbEmail.TabIndex = 1;
             this.tbEmail.TextChanged += new System.EventHandler(this.tbEmail_TextChanged);
             // 
@@ -123,7 +123,7 @@
             this.tbPasswordWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.tbPasswordWrapper.Name = "tbPasswordWrapper";
             this.tbPasswordWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 20);
-            this.tbPasswordWrapper.Size = new System.Drawing.Size(740, 63);
+            this.tbPasswordWrapper.Size = new System.Drawing.Size(720, 63);
             this.tbPasswordWrapper.TabIndex = 8;
             // 
             // tbPassword
@@ -134,7 +134,7 @@
             this.tbPassword.Margin = new System.Windows.Forms.Padding(0);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
-            this.tbPassword.Size = new System.Drawing.Size(660, 43);
+            this.tbPassword.Size = new System.Drawing.Size(640, 43);
             this.tbPassword.TabIndex = 2;
             this.tbPassword.TextChanged += new System.EventHandler(this.tbPassword_TextChanged);
             // 
@@ -147,7 +147,7 @@
             this.btRegisterWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btRegisterWrapper.Name = "btRegisterWrapper";
             this.btRegisterWrapper.Padding = new System.Windows.Forms.Padding(40, 30, 40, 40);
-            this.btRegisterWrapper.Size = new System.Drawing.Size(740, 137);
+            this.btRegisterWrapper.Size = new System.Drawing.Size(720, 137);
             this.btRegisterWrapper.TabIndex = 9;
             // 
             // btRegister
@@ -192,7 +192,7 @@
             this.tbEmailRepeatWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.tbEmailRepeatWrapper.Name = "tbEmailRepeatWrapper";
             this.tbEmailRepeatWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 20);
-            this.tbEmailRepeatWrapper.Size = new System.Drawing.Size(740, 63);
+            this.tbEmailRepeatWrapper.Size = new System.Drawing.Size(720, 63);
             this.tbEmailRepeatWrapper.TabIndex = 11;
             // 
             // tbEmailRepeat
@@ -202,7 +202,7 @@
             this.tbEmailRepeat.Location = new System.Drawing.Point(40, 0);
             this.tbEmailRepeat.Margin = new System.Windows.Forms.Padding(0);
             this.tbEmailRepeat.Name = "tbEmailRepeat";
-            this.tbEmailRepeat.Size = new System.Drawing.Size(660, 43);
+            this.tbEmailRepeat.Size = new System.Drawing.Size(640, 43);
             this.tbEmailRepeat.TabIndex = 1;
             this.tbEmailRepeat.TextChanged += new System.EventHandler(this.tbEmailRepeat_TextChanged);
             // 
@@ -215,7 +215,7 @@
             this.tbPasswordRepeatWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.tbPasswordRepeatWrapper.Name = "tbPasswordRepeatWrapper";
             this.tbPasswordRepeatWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 20);
-            this.tbPasswordRepeatWrapper.Size = new System.Drawing.Size(740, 63);
+            this.tbPasswordRepeatWrapper.Size = new System.Drawing.Size(720, 63);
             this.tbPasswordRepeatWrapper.TabIndex = 12;
             // 
             // tbPasswordRepeat
@@ -226,7 +226,7 @@
             this.tbPasswordRepeat.Margin = new System.Windows.Forms.Padding(0);
             this.tbPasswordRepeat.Name = "tbPasswordRepeat";
             this.tbPasswordRepeat.PasswordChar = '*';
-            this.tbPasswordRepeat.Size = new System.Drawing.Size(660, 43);
+            this.tbPasswordRepeat.Size = new System.Drawing.Size(640, 43);
             this.tbPasswordRepeat.TabIndex = 2;
             this.tbPasswordRepeat.TextChanged += new System.EventHandler(this.tbPasswordRepeat_TextChanged);
             // 
@@ -267,7 +267,7 @@
             this.tbNameWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.tbNameWrapper.Name = "tbNameWrapper";
             this.tbNameWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 20);
-            this.tbNameWrapper.Size = new System.Drawing.Size(740, 63);
+            this.tbNameWrapper.Size = new System.Drawing.Size(720, 63);
             this.tbNameWrapper.TabIndex = 15;
             // 
             // tbName
@@ -277,7 +277,7 @@
             this.tbName.Location = new System.Drawing.Point(40, 0);
             this.tbName.Margin = new System.Windows.Forms.Padding(0);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(660, 43);
+            this.tbName.Size = new System.Drawing.Size(640, 43);
             this.tbName.TabIndex = 1;
             // 
             // cbRoleWrapper
@@ -289,7 +289,7 @@
             this.cbRoleWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.cbRoleWrapper.Name = "cbRoleWrapper";
             this.cbRoleWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 20);
-            this.cbRoleWrapper.Size = new System.Drawing.Size(740, 65);
+            this.cbRoleWrapper.Size = new System.Drawing.Size(720, 65);
             this.cbRoleWrapper.TabIndex = 9;
             // 
             // cbRole
@@ -299,8 +299,9 @@
             this.cbRole.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbRole.FormattingEnabled = true;
             this.cbRole.Location = new System.Drawing.Point(40, 0);
+            this.cbRole.Margin = new System.Windows.Forms.Padding(0);
             this.cbRole.Name = "cbRole";
-            this.cbRole.Size = new System.Drawing.Size(660, 45);
+            this.cbRole.Size = new System.Drawing.Size(640, 45);
             this.cbRole.TabIndex = 16;
             // 
             // lbRole
@@ -370,7 +371,7 @@
             this.dtBirthdateWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.dtBirthdateWrapper.Name = "dtBirthdateWrapper";
             this.dtBirthdateWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 20);
-            this.dtBirthdateWrapper.Size = new System.Drawing.Size(740, 63);
+            this.dtBirthdateWrapper.Size = new System.Drawing.Size(720, 63);
             this.dtBirthdateWrapper.TabIndex = 20;
             // 
             // dtBirthdate
@@ -380,14 +381,18 @@
             this.dtBirthdate.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtBirthdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtBirthdate.Location = new System.Drawing.Point(40, 0);
+            this.dtBirthdate.Margin = new System.Windows.Forms.Padding(0);
             this.dtBirthdate.Name = "dtBirthdate";
-            this.dtBirthdate.Size = new System.Drawing.Size(660, 43);
+            this.dtBirthdate.Size = new System.Drawing.Size(640, 43);
             this.dtBirthdate.TabIndex = 3;
+            this.dtBirthdate.ValueChanged += new System.EventHandler(this.dtBirthdate_ValueChanged);
             // 
             // RegisterControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.btRegisterWrapper);
             this.Controls.Add(this.cbRoleWrapper);
@@ -407,8 +412,9 @@
             this.Controls.Add(this.tbNameWrapper);
             this.Controls.Add(this.lbName);
             this.Margin = new System.Windows.Forms.Padding(0);
+            this.MinimumSize = new System.Drawing.Size(720, 0);
             this.Name = "RegisterControl";
-            this.Size = new System.Drawing.Size(740, 1360);
+            this.Size = new System.Drawing.Size(720, 1345);
             this.tbEmailWrapper.ResumeLayout(false);
             this.tbEmailWrapper.PerformLayout();
             this.tbPasswordWrapper.ResumeLayout(false);

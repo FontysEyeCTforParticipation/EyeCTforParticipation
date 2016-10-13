@@ -8,10 +8,5 @@ namespace EyeCTforParticipation
 {
     class AidworkerModel : UserModel
     {
-        //constructor
-        public AidworkerModel(string name, string email, string password, int rfid, DateTime dateOfBirth) : base(name, email, password, rfid, dateOfBirth)
-        {
-
-        }
     }
 }

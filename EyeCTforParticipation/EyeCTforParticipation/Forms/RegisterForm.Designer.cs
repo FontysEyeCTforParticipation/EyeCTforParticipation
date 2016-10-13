@@ -62,12 +62,15 @@
             // registerControl
             // 
             this.registerControl.AutoScroll = true;
+            this.registerControl.AutoSize = true;
+            this.registerControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.registerControl.BackColor = System.Drawing.Color.White;
             this.registerControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.registerControl.Location = new System.Drawing.Point(0, 180);
             this.registerControl.Margin = new System.Windows.Forms.Padding(0);
+            this.registerControl.MinimumSize = new System.Drawing.Size(720, 0);
             this.registerControl.Name = "registerControl";
-            this.registerControl.Size = new System.Drawing.Size(714, 669);
+            this.registerControl.Size = new System.Drawing.Size(720, 749);
             this.registerControl.TabIndex = 13;
             // 
             // RegisterForm
@@ -75,12 +78,13 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(714, 849);
+            this.ClientSize = new System.Drawing.Size(714, 929);
             this.Controls.Add(this.registerControl);
             this.Controls.Add(this.titleWrapper);
+            this.HelpButton = true;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(740, 920);
-            this.MinimumSize = new System.Drawing.Size(740, 920);
+            this.MaximumSize = new System.Drawing.Size(740, 1000);
+            this.MinimumSize = new System.Drawing.Size(740, 1000);
             this.Name = "RegisterForm";
             this.Text = "RegisterForm";
             this.titleWrapper.ResumeLayout(false);

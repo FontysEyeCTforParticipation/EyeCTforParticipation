@@ -21,7 +21,6 @@ namespace EyeCTforParticipation.Forms
 
         private void onLogin(object sender, EventArgs e)
         {
-            MessageBox.Show("Logged in");
             Close();
         }
 

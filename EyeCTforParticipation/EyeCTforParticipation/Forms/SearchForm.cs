@@ -1,22 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EyeCTforParticipation.Controls
+namespace EyeCTforParticipation.Forms
 {
-    public partial class RFIDLoginControl : UserControl
+    public partial class SearchForm : Form
     {
-        public RFIDLoginControl()
+        public SearchForm()
         {
             InitializeComponent();
         }
-
-        public event EventHandler Login;
     }
 }

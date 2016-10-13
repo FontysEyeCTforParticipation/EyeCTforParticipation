@@ -27,6 +27,8 @@ namespace EyeCTforParticipation.Controls
             DateTime maxBirthdate = DateTime.Now.AddYears(-18);
             dtBirthdate.Value = maxBirthdate;
             dtBirthdate.MaxDate = maxBirthdate;
+
+            dtBirthdate.CustomFormat = " ";
         }
 
         public event EventHandler Register;
@@ -59,6 +61,11 @@ namespace EyeCTforParticipation.Controls
         private void checkpasswordMatch()
         {
             lbPasswordMismatch.Visible = tbPassword.Text != tbPasswordRepeat.Text;
+        }
+
+        private void dtBirthdate_ValueChanged(object sender, EventArgs e)
+        {
+            dtBirthdate.CustomFormat = "d MMM yyyy";
         }
     }
 }
