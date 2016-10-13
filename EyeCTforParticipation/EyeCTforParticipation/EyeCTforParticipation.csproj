@@ -68,6 +68,18 @@
     <Compile Include="Controls\ForgotPasswordControl.Designer.cs">
       <DependentUpon>ForgotPasswordControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\HelpRequestDetailControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\HelpRequestDetailControl.Designer.cs">
+      <DependentUpon>HelpRequestDetailControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\HorizontalSeperatorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\HorizontalSeperatorControl.Designer.cs">
+      <DependentUpon>HorizontalSeperatorControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PasswordLoginControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -131,6 +143,12 @@
     <Compile Include="Models\VolunteerModel.cs" />
     <EmbeddedResource Include="Controls\ForgotPasswordControl.resx">
       <DependentUpon>ForgotPasswordControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\HelpRequestDetailControl.resx">
+      <DependentUpon>HelpRequestDetailControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\HorizontalSeperatorControl.resx">
+      <DependentUpon>HorizontalSeperatorControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\PasswordLoginControl.resx">
       <DependentUpon>PasswordLoginControl.cs</DependentUpon>

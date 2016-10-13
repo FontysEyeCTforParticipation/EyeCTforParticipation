@@ -186,6 +186,7 @@
             this.btSearch.TabIndex = 3;
             this.btSearch.Text = "ZOEKEN";
             this.btSearch.UseVisualStyleBackColor = false;
+            this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
             // 
             // SearchControl
             // 
@@ -201,6 +202,7 @@
             this.MinimumSize = new System.Drawing.Size(920, 190);
             this.Name = "SearchControl";
             this.Size = new System.Drawing.Size(920, 190);
+            this.Load += new System.EventHandler(this.SearchControl_Load);
             this.tbSearchWrapper.ResumeLayout(false);
             this.tbSearchWrapper.PerformLayout();
             this.searchWrapper.ResumeLayout(false);

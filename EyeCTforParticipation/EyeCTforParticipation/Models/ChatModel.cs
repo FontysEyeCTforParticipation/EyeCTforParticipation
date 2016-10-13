@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EyeCTforParticipation
+namespace EyeCTforParticipation.Models
 {
     class ChatModel
     {
@@ -37,14 +37,6 @@ namespace EyeCTforParticipation
             {
                 messages = value;
             }
-        }
-
-
-
-        //constructor
-        public ChatModel(string title)
-        {
-            Title = title;
         }
     }
 }

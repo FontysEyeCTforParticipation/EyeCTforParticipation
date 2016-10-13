@@ -28,27 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.titleWrapper = new System.Windows.Forms.Panel();
             this.btBack = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.btBackWrapper = new System.Windows.Forms.Panel();
+            this.titleWrapper = new System.Windows.Forms.Panel();
+            this.resultsWrapper = new System.Windows.Forms.Panel();
+            this.seperator = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
             this.searchControl = new EyeCTforParticipation.Controls.SearchControl();
+            this.btBackWrapper.SuspendLayout();
             this.titleWrapper.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // titleWrapper
-            // 
-            this.titleWrapper.AutoSize = true;
-            this.titleWrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.titleWrapper.BackColor = System.Drawing.Color.White;
-            this.titleWrapper.Controls.Add(this.searchControl);
-            this.titleWrapper.Controls.Add(this.panel1);
-            this.titleWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.titleWrapper.Location = new System.Drawing.Point(0, 0);
-            this.titleWrapper.Margin = new System.Windows.Forms.Padding(0);
-            this.titleWrapper.Name = "titleWrapper";
-            this.titleWrapper.Size = new System.Drawing.Size(1174, 190);
-            this.titleWrapper.TabIndex = 14;
             // 
             // btBack
             // 
@@ -68,19 +56,55 @@
             this.btBack.Text = "❮";
             this.btBack.UseVisualStyleBackColor = false;
             // 
-            // panel1
+            // btBackWrapper
             // 
-            this.panel1.AutoSize = true;
-            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.btBack);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(40, 40, 0, 40);
-            this.panel1.Size = new System.Drawing.Size(120, 190);
-            this.panel1.TabIndex = 15;
+            this.btBackWrapper.AutoSize = true;
+            this.btBackWrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btBackWrapper.BackColor = System.Drawing.Color.White;
+            this.btBackWrapper.Controls.Add(this.btBack);
+            this.btBackWrapper.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btBackWrapper.Location = new System.Drawing.Point(0, 0);
+            this.btBackWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.btBackWrapper.Name = "btBackWrapper";
+            this.btBackWrapper.Padding = new System.Windows.Forms.Padding(40, 40, 0, 40);
+            this.btBackWrapper.Size = new System.Drawing.Size(120, 190);
+            this.btBackWrapper.TabIndex = 15;
+            // 
+            // titleWrapper
+            // 
+            this.titleWrapper.AutoSize = true;
+            this.titleWrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.titleWrapper.BackColor = System.Drawing.Color.White;
+            this.titleWrapper.Controls.Add(this.searchControl);
+            this.titleWrapper.Controls.Add(this.btBackWrapper);
+            this.titleWrapper.Dock = System.Windows.Forms.DockStyle.Top;
+            this.titleWrapper.Location = new System.Drawing.Point(0, 0);
+            this.titleWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.titleWrapper.Name = "titleWrapper";
+            this.titleWrapper.Size = new System.Drawing.Size(1574, 190);
+            this.titleWrapper.TabIndex = 14;
+            // 
+            // resultsWrapper
+            // 
+            this.resultsWrapper.AutoScroll = true;
+            this.resultsWrapper.BackColor = System.Drawing.Color.White;
+            this.resultsWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.resultsWrapper.Location = new System.Drawing.Point(0, 191);
+            this.resultsWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.resultsWrapper.Name = "resultsWrapper";
+            this.resultsWrapper.Size = new System.Drawing.Size(1574, 738);
+            this.resultsWrapper.TabIndex = 15;
+            // 
+            // seperator
+            // 
+            this.seperator.AutoSize = true;
+            this.seperator.BackColor = System.Drawing.Color.Silver;
+            this.seperator.Dock = System.Windows.Forms.DockStyle.Top;
+            this.seperator.Location = new System.Drawing.Point(0, 190);
+            this.seperator.Margin = new System.Windows.Forms.Padding(0);
+            this.seperator.Name = "seperator";
+            this.seperator.Size = new System.Drawing.Size(1574, 1);
+            this.seperator.TabIndex = 0;
             // 
             // searchControl
             // 
@@ -92,30 +116,37 @@
             this.searchControl.Margin = new System.Windows.Forms.Padding(0);
             this.searchControl.MinimumSize = new System.Drawing.Size(920, 190);
             this.searchControl.Name = "searchControl";
-            this.searchControl.Size = new System.Drawing.Size(1054, 190);
-            this.searchControl.TabIndex = 13;
+            this.searchControl.Results = null;
+            this.searchControl.Size = new System.Drawing.Size(1454, 190);
+            this.searchControl.TabIndex = 15;
+            this.searchControl.Search += new System.EventHandler(this.searchControl_Search);
             // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1174, 629);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1574, 929);
+            this.Controls.Add(this.resultsWrapper);
+            this.Controls.Add(this.seperator);
             this.Controls.Add(this.titleWrapper);
-            this.MinimumSize = new System.Drawing.Size(1200, 71);
+            this.MinimumSize = new System.Drawing.Size(1600, 360);
             this.Name = "SearchForm";
             this.Text = "SearchForm";
+            this.btBackWrapper.ResumeLayout(false);
             this.titleWrapper.ResumeLayout(false);
             this.titleWrapper.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private Controls.SearchControl searchControl;
-        private System.Windows.Forms.Panel titleWrapper;
         private System.Windows.Forms.Button btBack;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel btBackWrapper;
+        private System.Windows.Forms.Panel titleWrapper;
+        private Controls.SearchControl searchControl;
+        private System.Windows.Forms.Panel resultsWrapper;
+        private Controls.HorizontalSeperatorControl seperator;
     }
 }

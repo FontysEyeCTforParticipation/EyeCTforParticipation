@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using EyeCTforParticipation.Logic;
 using EyeCTforParticipation.Data;
+using EyeCTforParticipation.Models;
 
 namespace EyeCTforParticipation.Controls
 {
@@ -31,7 +32,7 @@ namespace EyeCTforParticipation.Controls
                 //Trigger login event
                 if (Login != null)
                 {
-                    Login(this, e);
+                    Login(this, EventArgs.Empty);
                 }
             }
         }

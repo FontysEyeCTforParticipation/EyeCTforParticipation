@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EyeCTforParticipation
+namespace EyeCTforParticipation.Models
 {
     class VolunteerModel : UserModel
     {

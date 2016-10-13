@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EyeCTforParticipation
+namespace EyeCTforParticipation.Models
 {
     class ReviewModel
     {
@@ -36,13 +36,6 @@ namespace EyeCTforParticipation
             {
                 content = value;
             }
-        }
-
-        //constructor
-        public ReviewModel(string title, string content)
-        {
-            Title = title;
-            Content = content;
         }
     }
 }

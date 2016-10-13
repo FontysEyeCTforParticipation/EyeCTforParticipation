@@ -4,18 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EyeCTforParticipation
+namespace EyeCTforParticipation.Models
 {
     public class HelprequestModel
     {
-        //fields
-        private string title;
-        private string content;
-        private DateTime date;
-        private string location;
-        private int urgency;
+        string title;
+        UserModel user;
+        DateTime date;
+        string location;
+        int distance;
+        int urgency;
 
-        //property accessors
         public string Title
         {
             get
@@ -28,18 +27,20 @@ namespace EyeCTforParticipation
                 title = value;
             }
         }
-        public string Content
+
+        public UserModel User
         {
             get
             {
-                return content;
+                return user;
             }
 
             set
             {
-                content = value;
+                user = value;
             }
         }
+
         public DateTime Date
         {
             get
@@ -52,6 +53,7 @@ namespace EyeCTforParticipation
                 date = value;
             }
         }
+
         public string Location
         {
             get
@@ -64,6 +66,20 @@ namespace EyeCTforParticipation
                 location = value;
             }
         }
+
+        public int Distance
+        {
+            get
+            {
+                return distance;
+            }
+
+            set
+            {
+                distance = value;
+            }
+        }
+
         public int Urgency
         {
             get
@@ -76,14 +92,5 @@ namespace EyeCTforParticipation
                 urgency = value;
             }
         }
-
-        //constructor
-     //   public HelprequestModel(string title, string content, DateTime date, string location, int urgency)
-      //  {
-      //      Title = title;
-     //       Content = content;
-     //       Date = date;
-     //       Location = location;
-     //       Urgency = urgency;
-        }
+    }
 }

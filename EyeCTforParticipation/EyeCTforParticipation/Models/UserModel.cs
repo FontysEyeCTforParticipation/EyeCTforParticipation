@@ -4,18 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EyeCTforParticipation
+namespace EyeCTforParticipation.Models
 {
     public abstract class UserModel
     {
-        //fields
-        private string name;
-        private string email;
-        private string password;
-        private int rfid;
-        private DateTime dateofbirth;
+        string name;
+        string email;
+        string password;
+        int rfid;
+        DateTime birthdate;
 
-        //property accessors
         public string Name
         {
             get
@@ -64,15 +62,15 @@ namespace EyeCTforParticipation
             }
         }
 
-        public DateTime DateOfBirth
+        public DateTime Birthdate
         {
             get
             {
-                return dateofbirth;
+                return birthdate;
             }
             set
             {
-                dateofbirth = value;
+                birthdate = value;
             }
         }
     }

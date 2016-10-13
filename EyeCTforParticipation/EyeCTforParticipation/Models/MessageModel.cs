@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EyeCTforParticipation
+namespace EyeCTforParticipation.Models
 {
     class MessageModel
     {
@@ -36,13 +36,6 @@ namespace EyeCTforParticipation
             {
                 date = value;
             }
-        }
-
-        //constructor
-        public MessageModel(string content, DateTime date)
-        {
-            Content = content;
-            Date = date;
         }
     }
 }
