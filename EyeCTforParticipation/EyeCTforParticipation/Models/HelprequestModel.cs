@@ -86,5 +86,4 @@ namespace EyeCTforParticipation
      //       Location = location;
      //       Urgency = urgency;
         }
-    }
 }

@@ -61,14 +61,5 @@ namespace EyeCTforParticipation
                 availability = value;
             }
         }
-
-        //constructor
-        public VolunteerModel(string name, string email, string password, int rfid, DateTime dateOfBirth, string location, bool driversLicense, bool car, bool availability) : base(name, email, password, rfid, dateOfBirth)
-        {
-            Location = location;
-            DriversLicense = driversLicense;
-            Car = car;
-            Availability = availability;
-        }
     }
 }
