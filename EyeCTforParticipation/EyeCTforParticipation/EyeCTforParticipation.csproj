@@ -86,7 +86,9 @@
     <Compile Include="Controls\RFIDLoginControl.Designer.cs">
       <DependentUpon>RFIDLoginControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SearchControl.cs" />
+    <Compile Include="Controls\SearchControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controls\SearchControl.Designer.cs">
       <DependentUpon>SearchControl.cs</DependentUpon>
     </Compile>

@@ -34,9 +34,9 @@
             this.searchWrapper = new System.Windows.Forms.Panel();
             this.locationWrapper = new System.Windows.Forms.Panel();
             this.tbPostalCodeWrapper = new System.Windows.Forms.Panel();
-            this.lbPostalCode = new System.Windows.Forms.Label();
-            this.cbDistance = new System.Windows.Forms.ComboBox();
             this.tbPostalCode = new System.Windows.Forms.TextBox();
+            this.cbDistance = new System.Windows.Forms.ComboBox();
+            this.lbPostalCode = new System.Windows.Forms.Label();
             this.btSearchWrapper = new System.Windows.Forms.FlowLayoutPanel();
             this.btSearch = new System.Windows.Forms.Button();
             this.tbSearchWrapper.SuspendLayout();
@@ -118,19 +118,15 @@
             this.tbPostalCodeWrapper.Size = new System.Drawing.Size(360, 85);
             this.tbPostalCodeWrapper.TabIndex = 8;
             // 
-            // lbPostalCode
+            // tbPostalCode
             // 
-            this.lbPostalCode.AutoSize = true;
-            this.lbPostalCode.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbPostalCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPostalCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbPostalCode.Location = new System.Drawing.Point(0, 0);
-            this.lbPostalCode.Margin = new System.Windows.Forms.Padding(0);
-            this.lbPostalCode.Name = "lbPostalCode";
-            this.lbPostalCode.Padding = new System.Windows.Forms.Padding(20, 40, 40, 20);
-            this.lbPostalCode.Size = new System.Drawing.Size(211, 105);
-            this.lbPostalCode.TabIndex = 9;
-            this.lbPostalCode.Text = "Postcode";
+            this.tbPostalCode.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbPostalCode.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbPostalCode.Location = new System.Drawing.Point(20, 0);
+            this.tbPostalCode.Margin = new System.Windows.Forms.Padding(0);
+            this.tbPostalCode.Name = "tbPostalCode";
+            this.tbPostalCode.Size = new System.Drawing.Size(199, 43);
+            this.tbPostalCode.TabIndex = 3;
             // 
             // cbDistance
             // 
@@ -146,15 +142,19 @@
             this.cbDistance.Size = new System.Drawing.Size(121, 43);
             this.cbDistance.TabIndex = 2;
             // 
-            // tbPostalCode
+            // lbPostalCode
             // 
-            this.tbPostalCode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbPostalCode.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPostalCode.Location = new System.Drawing.Point(20, 0);
-            this.tbPostalCode.Margin = new System.Windows.Forms.Padding(0);
-            this.tbPostalCode.Name = "tbPostalCode";
-            this.tbPostalCode.Size = new System.Drawing.Size(199, 43);
-            this.tbPostalCode.TabIndex = 3;
+            this.lbPostalCode.AutoSize = true;
+            this.lbPostalCode.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbPostalCode.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPostalCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbPostalCode.Location = new System.Drawing.Point(0, 0);
+            this.lbPostalCode.Margin = new System.Windows.Forms.Padding(0);
+            this.lbPostalCode.Name = "lbPostalCode";
+            this.lbPostalCode.Padding = new System.Windows.Forms.Padding(20, 40, 40, 20);
+            this.lbPostalCode.Size = new System.Drawing.Size(211, 105);
+            this.lbPostalCode.TabIndex = 9;
+            this.lbPostalCode.Text = "Postcode";
             // 
             // btSearchWrapper
             // 
