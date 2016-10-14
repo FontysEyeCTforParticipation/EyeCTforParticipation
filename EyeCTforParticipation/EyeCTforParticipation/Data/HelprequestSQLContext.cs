@@ -7,15 +7,15 @@ using EyeCTforParticipation.Models;
 
 namespace EyeCTforParticipation.Data
 {
-    public class HelprequestSQLContext : IHelprequestContext
+    public class HelpRequestSQLContext : IHelpRequestContext
     {
-        public List<HelprequestModel> Search()
+        public List<HelpRequestModel> Search()
         {
-            List<HelprequestModel> results = new List<HelprequestModel>();
+            List<HelpRequestModel> results = new List<HelpRequestModel>();
 
-            HelprequestModel result = new HelprequestModel();
+            HelpRequestModel result = new HelpRequestModel();
             result.Title = "Example help request";
-            UserModel user = new HelpseekerModel();
+            UserModel user = new HelpSeekerModel();
             user.Name = "John Doe";
             result.User = user;
             result.Date = DateTime.Now;
@@ -31,17 +31,17 @@ namespace EyeCTforParticipation.Data
             //throw new NotImplementedException();
         }
 
-        public List<HelprequestModel> Search(string keywords)
+        public List<HelpRequestModel> Search(string keywords)
         {
             throw new NotImplementedException();
         }
 
-        public List<HelprequestModel> Search(string postalCode, int distance)
+        public List<HelpRequestModel> Search(string postalCode, int distance)
         {
             throw new NotImplementedException();
         }
 
-        public List<HelprequestModel> Search(string keywords, string postalCode, int distance)
+        public List<HelpRequestModel> Search(string keywords, string postalCode, int distance)
         {
             throw new NotImplementedException();
         }

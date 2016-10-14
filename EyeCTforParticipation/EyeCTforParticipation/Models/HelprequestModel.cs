@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EyeCTforParticipation.Models
 {
-    public class HelprequestModel
+    public class HelpRequestModel
     {
         string title;
         UserModel user;

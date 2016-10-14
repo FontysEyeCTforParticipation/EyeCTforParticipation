@@ -24,10 +24,10 @@ namespace EyeCTforParticipation.Forms
             getSearchResults(searchControl.Results);
         }
 
-        private void getSearchResults(List<HelprequestModel> results)
+        private void getSearchResults(List<HelpRequestModel> results)
         {
             resultsWrapper.Controls.Clear();
-            foreach (HelprequestModel result in results)
+            foreach (HelpRequestModel result in results)
             {
                 HelpRequestDetailControl resultControl = new HelpRequestDetailControl(result);
                 resultControl.Dock = DockStyle.Top;

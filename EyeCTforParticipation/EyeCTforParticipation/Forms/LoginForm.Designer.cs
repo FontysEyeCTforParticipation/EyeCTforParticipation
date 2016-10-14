@@ -265,6 +265,7 @@
             this.passwordLoginControl.Name = "passwordLoginControl";
             this.passwordLoginControl.Size = new System.Drawing.Size(720, 669);
             this.passwordLoginControl.TabIndex = 0;
+            this.passwordLoginControl.User = null;
             // 
             // ForgotPasswordView
             // 

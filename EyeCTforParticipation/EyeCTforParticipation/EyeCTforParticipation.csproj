@@ -104,8 +104,8 @@
     <Compile Include="Controls\SearchControl.Designer.cs">
       <DependentUpon>SearchControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Data\HelprequestSQLContext.cs" />
-    <Compile Include="Data\IHelprequestContext.cs" />
+    <Compile Include="Data\HelpRequestSQLContext.cs" />
+    <Compile Include="Data\IHelpRequestContext.cs" />
     <Compile Include="Data\IUserContext.cs" />
     <Compile Include="Data\UserSQLContext.cs" />
     <Compile Include="Forms\RegisterForm.cs">
@@ -120,12 +120,12 @@
     <Compile Include="Forms\SearchForm.Designer.cs">
       <DependentUpon>SearchForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Logic\HelprequestRepository.cs" />
+    <Compile Include="Logic\HelpRequestRepository.cs" />
     <Compile Include="Logic\UserRepository.cs" />
     <Compile Include="Models\AidworkerModel.cs" />
     <Compile Include="Models\ChatModel.cs" />
-    <Compile Include="Models\HelprequestModel.cs" />
-    <Compile Include="Models\HelpseekerModel.cs" />
+    <Compile Include="Models\HelpRequestModel.cs" />
+    <Compile Include="Models\HelpSeekerModel.cs" />
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>

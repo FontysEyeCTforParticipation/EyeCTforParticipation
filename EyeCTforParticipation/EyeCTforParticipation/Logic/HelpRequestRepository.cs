@@ -8,33 +8,33 @@ using EyeCTforParticipation.Models;
 
 namespace EyeCTforParticipation.Logic
 {
-    public class HelprequestRepository
+    public class HelpRequestRepository
     {
-        IHelprequestContext context;
+        IHelpRequestContext context;
 
-        public HelprequestRepository(IHelprequestContext context)
+        public HelpRequestRepository(IHelpRequestContext context)
         {
             this.context = context;
         }
 
-        public List<HelprequestModel> Search()
+        public List<HelpRequestModel> Search()
         {
             return context.Search();
         }
 
-        public List<HelprequestModel> Search(string keywords)
+        public List<HelpRequestModel> Search(string keywords)
         {
             return context.Search(keywords);
         }
 
-        public List<HelprequestModel> Search(string keywords, string postalCode, int distance)
-        {
-            return context.Search(keywords, postalCode, distance);
-        }
-
-        public List<HelprequestModel> Search(string postalCode, int distance)
+        public List<HelpRequestModel> Search(string postalCode, int distance)
         {
             return context.Search(postalCode, distance);
+        }
+
+        public List<HelpRequestModel> Search(string keywords, string postalCode, int distance)
+        {
+            return context.Search(keywords, postalCode, distance);
         }
     }
 }

@@ -7,11 +7,11 @@ using EyeCTforParticipation.Models;
 
 namespace EyeCTforParticipation.Data
 {
-    public interface IHelprequestContext
+    public interface IHelpRequestContext
     {
-        List<HelprequestModel> Search();
-        List<HelprequestModel> Search(string keywords);
-        List<HelprequestModel> Search(string postalCode, int distance);
-        List<HelprequestModel> Search(string keywords, string postalCode, int distance);
+        List<HelpRequestModel> Search();
+        List<HelpRequestModel> Search(string keywords);
+        List<HelpRequestModel> Search(string postalCode, int distance);
+        List<HelpRequestModel> Search(string keywords, string postalCode, int distance);
     }
 }

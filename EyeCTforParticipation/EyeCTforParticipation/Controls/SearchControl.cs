@@ -10,18 +10,33 @@ using System.Windows.Forms;
 using EyeCTforParticipation.Logic;
 using EyeCTforParticipation.Data;
 using EyeCTforParticipation.Models;
+using System.Text.RegularExpressions;
 
 namespace EyeCTforParticipation.Controls
 {
     public partial class SearchControl : UserControl
     {
-        HelprequestRepository helpRequestRepository = new HelprequestRepository(new HelprequestSQLContext());
-        List<HelprequestModel> results;
+        HelpRequestRepository helpRequestRepository = new HelpRequestRepository(new HelpRequestSQLContext());
+        List<HelpRequestModel> results;
+        Dictionary<int, string> cbDistances;
         public event EventHandler Search;
 
         public SearchControl()
         {
             InitializeComponent();
+
+            cbDistances = new Dictionary<int, string>();
+            cbDistances.Add(0, "Alle afstanden");
+            cbDistances.Add(3, "< 3 km");
+            cbDistances.Add(5, "< 5 km");
+            cbDistances.Add(10, "< 10 km");
+            cbDistances.Add(15, "< 15 km");
+            cbDistances.Add(25, "< 25 km");
+            cbDistances.Add(50, "< 50 km");
+            cbDistances.Add(75, "< 75 km");
+            cbDistance.DataSource = new BindingSource(cbDistances, null);
+            cbDistance.DisplayMember = "Value";
+            cbDistance.ValueMember = "Key";
         }
 
         private void SearchControl_Load(object sender, EventArgs e)
@@ -70,7 +85,8 @@ namespace EyeCTforParticipation.Controls
             }
         }
 
-        public List<HelprequestModel> Results
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+        public List<HelpRequestModel> Results
         {
             get
             {
@@ -81,6 +97,37 @@ namespace EyeCTforParticipation.Controls
             {
                 results = value;
             }
+        }
+
+        private void tbPostalCode_TextChanged(object sender, EventArgs e)
+        {
+            string postalCode = tbPostalCode.Text;
+            if (postalCode.Length > 0)
+            {
+                int selection = tbPostalCode.SelectionStart;
+                string letters = Regex.Replace(postalCode, "[^a-zA-Z]", "").ToUpper();
+                if(letters.Length > 2)
+                {
+                    letters = letters.Substring(0, 2);
+                }
+                string numbers = Regex.Replace(postalCode, "[^\\d]", "");
+                if (numbers.Length >= 4)
+                {
+                    numbers = numbers.Substring(0, 4);
+                }
+                else
+                {
+                    letters = "";
+                }
+                tbPostalCode.Text = numbers + letters;
+                tbPostalCode.SelectionStart = selection;
+            }
+        }
+
+        private void cbDistance_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            e.DrawBackground();
+            e.Graphics.DrawString(cbDistances.Select(d => d.Value).ToArray()[e.Index], new Font("Segoe UI", 10), new SolidBrush(Color.FromArgb(64, 64, 64)), e.Bounds);
         }
     }
 }
