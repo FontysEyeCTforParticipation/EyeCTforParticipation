@@ -127,6 +127,45 @@ namespace EyeCTforParticipation.Logic
         }
 
         /// <summary>
+        /// Close the help request.
+        /// The help seeker and volunteer won't be able to continue sending each other messages.
+        /// </summary>
+        /// <param name="applicationId">
+        /// The id of the help request.
+        /// </param>
+        /// <param name="user">
+        /// The user that wants to close the help request.
+        /// The help request will only be closed if the user:
+        ///     - Is an Admin.
+        ///     - Created the help request.
+        ///     - Is an Aid worker who is approved by the help seeker that created the help request.
+        /// </param>
+        /// <remarks>
+        /// A help request cannot be closed if there aren't any applications.
+        /// </remarks>
+        public void Close(int helpRequestId, UserModel user)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Reopen a previously closed help request, the help request will be listed as a new help request.
+        /// </summary>
+        /// <param name="applicationId">
+        /// The id of the help request.
+        /// </param>
+        /// <param name="helpSeekerId">
+        /// The id of the help seeker that created the help request.
+        /// </param>
+        /// <remarks>
+        /// A help request cannot reopened if all the applications aren't closed.
+        /// </remarks>
+        public void Reopen(int helpRequestId, int helpSeekerId)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
         /// Apply to a help request as volunteer.
         /// </summary>
         /// <param name="helpRequestId">
@@ -148,10 +187,7 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         /// <param name="user">
         /// The user that wants to cancel the application.
-        /// The application will only be cancelled if the user:
-        ///     - Is an Admin.
-        ///     - Created the application.
-        ///     - Is an Aid worker who is approved by the help seeker who created the help request that was applied to.
+        /// The application will only be cancelled if the user created the application.
         /// </param>
         public void CancelApplication(int applicationId, UserModel user)
         {
@@ -173,7 +209,7 @@ namespace EyeCTforParticipation.Logic
         ///     - Aid worker:
         ///         A list of applications for the help requests created by the help seekers that approved the aid worker.
         /// </returns>
-        public List<HelpRequestApplicationModel> GetApplications(UserModel user)
+        public List<ApplicationModel> GetApplications(UserModel user)
         {
             throw new NotImplementedException();
         }
@@ -196,7 +232,7 @@ namespace EyeCTforParticipation.Logic
         ///     - Aid worker:
         ///         A list of applications for the help request created by the help seeker that approved the aidworker.
         /// </returns>
-        public List<HelpRequestApplicationModel> GetApplications(int helpRequestId, UserModel user)
+        public List<ApplicationModel> GetApplications(int helpRequestId, UserModel user)
         {
             throw new NotImplementedException();
         }
@@ -231,24 +267,6 @@ namespace EyeCTforParticipation.Logic
         /// A volunteer cannot be approved if there hasn't been a interview chat.
         /// </remarks>
         public void ApproveApplication(int applicationId, int helpSeekerId)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Disapprove a volunteer that was previously approved as final choice for the help request.
-        /// The help seeker and volunteer won't be able to continue sending each other messages.
-        /// </summary>
-        /// <param name="applicationId">
-        /// The id of the application.
-        /// </param>
-        /// <param name="helpSeekerId">
-        /// The id of the help seeker that created the help request that was applied to.
-        /// </param>
-        /// <remarks>
-        /// A volunteer cannot be disapproved if he wasn't approved before.
-        /// </remarks>
-        public void DisapproveApplication(int applicationId, int helpSeekerId)
         {
             throw new NotImplementedException();
         }

@@ -10,7 +10,7 @@ namespace EyeCTforParticipation.Models
     {
         int id;
         string title;
-        HelpRequestApplicationModel.State status;
+        ApplicationStatus status;
         List<MessageModel> messages;
 
         public int Id
@@ -39,7 +39,7 @@ namespace EyeCTforParticipation.Models
             }
         }
 
-        public HelpRequestApplicationModel.State Status
+        public ApplicationStatus Status
         {
             get
             {

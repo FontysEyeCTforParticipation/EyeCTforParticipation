@@ -141,8 +141,9 @@
     <Compile Include="Logic\HelpRequestRepository.cs" />
     <Compile Include="Logic\ReviewRepository.cs" />
     <Compile Include="Logic\UserRepository.cs" />
+    <Compile Include="Models\ApplicationStatus.cs" />
     <Compile Include="Models\ChatModel.cs" />
-    <Compile Include="Models\HelpRequestApplicationModel.cs" />
+    <Compile Include="Models\ApplicationModel.cs" />
     <Compile Include="Models\HelpRequestModel.cs" />
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace EyeCTforParticipation.Models
 {
-    public class HelpRequestApplicationModel
+    public class ApplicationModel
     {
         int id;
         HelpRequestModel helpRequest;
         VolunteerModel volunteer;
-        State status;
+        ApplicationStatus status;
 
         public int Id
         {
@@ -52,7 +52,7 @@ namespace EyeCTforParticipation.Models
             }
         }
 
-        public State Status
+        public ApplicationStatus Status
         {
             get
             {
@@ -63,13 +63,6 @@ namespace EyeCTforParticipation.Models
             {
                 status = value;
             }
-        }
-
-        public enum State
-        {
-            NONE,
-            INTERVIEW,
-            APPROVED
         }
     }
 }
