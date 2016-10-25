@@ -151,6 +151,7 @@
     <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\HelpRequestUrgency.cs" />
     <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\ReviewReplyModel.cs" />

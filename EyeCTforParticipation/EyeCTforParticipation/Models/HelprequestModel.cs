@@ -14,7 +14,7 @@ namespace EyeCTforParticipation.Models
         DateTime date;
         string location;
         int distance;
-        int urgency;
+        HelpRequestUrgency urgency;
 
         public int Id
         {
@@ -94,7 +94,7 @@ namespace EyeCTforParticipation.Models
             }
         }
 
-        public int Urgency
+        public HelpRequestUrgency Urgency
         {
             get
             {
