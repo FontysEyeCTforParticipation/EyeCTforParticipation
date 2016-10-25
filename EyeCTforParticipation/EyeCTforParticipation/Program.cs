@@ -20,7 +20,7 @@ namespace EyeCTforParticipation
             }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Forms.SearchForm());
+            Application.Run(new Forms.MainForm());
         }
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern bool SetProcessDPIAware();

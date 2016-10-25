@@ -106,7 +106,7 @@
             this.views.Controls.Add(this.RFIDLoginView);
             this.views.Controls.Add(this.PasswordLoginView);
             this.views.Controls.Add(this.ForgotPasswordView);
-            this.views.CurrentView = this.ForgotPasswordView;
+            this.views.CurrentView = this.PasswordLoginView;
             this.views.Dock = System.Windows.Forms.DockStyle.Fill;
             this.views.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.views.ItemSize = new System.Drawing.Size(0, 1);

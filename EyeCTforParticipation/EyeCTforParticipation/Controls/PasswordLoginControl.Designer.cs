@@ -140,9 +140,9 @@
             this.btLogin.Margin = new System.Windows.Forms.Padding(0);
             this.btLogin.Name = "btLogin";
             this.btLogin.Padding = new System.Windows.Forms.Padding(10);
-            this.btLogin.Size = new System.Drawing.Size(127, 67);
+            this.btLogin.Size = new System.Drawing.Size(181, 67);
             this.btLogin.TabIndex = 3;
-            this.btLogin.Text = "LOGIN";
+            this.btLogin.Text = "INLOGGEN";
             this.btLogin.UseVisualStyleBackColor = false;
             this.btLogin.Click += new System.EventHandler(this.btLogin_Click);
             // 

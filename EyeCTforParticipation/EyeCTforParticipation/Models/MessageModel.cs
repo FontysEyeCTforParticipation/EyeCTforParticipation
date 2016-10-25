@@ -6,13 +6,53 @@ using System.Threading.Tasks;
 
 namespace EyeCTforParticipation.Models
 {
-    class MessageModel
+    public class MessageModel
     {
-        //fields
-        private string content;
+        int id;
+        UserModel user;
+        ChatModel chat;
+        string content;
         DateTime date;
 
-        //property accessors
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
+        public UserModel User
+        {
+            get
+            {
+                return user;
+            }
+
+            set
+            {
+                user = value;
+            }
+        }
+
+        internal ChatModel Chat
+        {
+            get
+            {
+                return chat;
+            }
+
+            set
+            {
+                chat = value;
+            }
+        }
+
         public string Content
         {
             get
@@ -25,6 +65,7 @@ namespace EyeCTforParticipation.Models
                 content = value;
             }
         }
+
         public DateTime Date
         {
             get

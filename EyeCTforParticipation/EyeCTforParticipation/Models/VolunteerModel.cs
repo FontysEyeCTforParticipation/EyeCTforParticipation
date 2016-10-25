@@ -3,24 +3,45 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Device.Location;
 
 namespace EyeCTforParticipation.Models
 {
-    class VolunteerModel : UserModel
+    public class VolunteerModel : UserModel
     {
-        //fields
-        private string location;
-        private bool driverslicense;
-        private bool car;
-        private bool availability;
+        string about;
+        GeoCoordinate location;
+        bool driversLicense;
+        bool car;
 
-        //property accessors
-        public string Location
+        public override UserRole Role
+        {
+            get
+            {
+                return UserRole.Volunteer;
+            }
+        }
+
+        public string About
+        {
+            get
+            {
+                return about;
+            }
+
+            set
+            {
+                about = value;
+            }
+        }
+
+        public GeoCoordinate Location
         {
             get
             {
                 return location;
             }
+
             set
             {
                 location = value;
@@ -31,11 +52,12 @@ namespace EyeCTforParticipation.Models
         {
             get
             {
-                return driverslicense;
+                return driversLicense;
             }
+
             set
             {
-                driverslicense = value;
+                driversLicense = value;
             }
         }
 
@@ -45,20 +67,10 @@ namespace EyeCTforParticipation.Models
             {
                 return car;
             }
+
             set
             {
                 car = value;
-            }
-        }
-        public bool Availability
-        {
-            get
-            {
-                return availability;
-            }
-            set
-            {
-                availability = value;
             }
         }
     }

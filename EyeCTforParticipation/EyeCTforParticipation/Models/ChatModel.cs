@@ -6,23 +6,49 @@ using System.Threading.Tasks;
 
 namespace EyeCTforParticipation.Models
 {
-    class ChatModel
+    public class ChatModel
     {
-        //fields
-        private string title;
-        private List<MessageModel> messages;
+        int id;
+        UserModel helpSeeker;
+        List<UserModel> users;
+        List<MessageModel> messages;
 
-        //property accessors
-        public string Title
+        public int Id
         {
             get
             {
-                return title;
+                return id;
             }
 
             set
             {
-                title = value;
+                id = value;
+            }
+        }
+
+        public UserModel HelpSeeker
+        {
+            get
+            {
+                return helpSeeker;
+            }
+
+            set
+            {
+                helpSeeker = value;
+            }
+        }
+
+        public List<UserModel> Users
+        {
+            get
+            {
+                return users;
+            }
+
+            set
+            {
+                users = value;
             }
         }
 

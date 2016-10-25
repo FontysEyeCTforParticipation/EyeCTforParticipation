@@ -9,7 +9,5 @@ namespace EyeCTforParticipation.Data
 {
     public interface IUserContext
     {
-        UserModel Login(string rfid);
-        UserModel Login(string email, string password);
     }
 }

@@ -12,16 +12,17 @@ using EyeCTforParticipation.Models;
 
 namespace EyeCTforParticipation.Forms
 {
-    public partial class SearchForm : Form
+    public partial class MainForm : Form
     {
-        public SearchForm()
+        public MainForm()
         {
             InitializeComponent();
+            helpRequest.Back += helpRequest_Back;
         }
 
         private void searchControl_Search(object sender, EventArgs e)
         {
-            getSearchResults(searchControl.Results);
+            getSearchResults(search.Results);
         }
 
         private void getSearchResults(List<HelpRequestModel> results)
@@ -39,7 +40,30 @@ namespace EyeCTforParticipation.Forms
 
         private void ResultControl_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Click");
+            views.CurrentView = resultView;
+        }
+
+        private void helpRequest_Back(object sender, EventArgs e)
+        {
+            views.CurrentView = searchView;
+        }
+
+        private void btLogin_Click(object sender, EventArgs e)
+        {
+            LoginForm loginForm = new LoginForm();
+            loginForm.ShowDialog();
+            views.CurrentView = searchView;
+        }
+
+        private void btRegister_Click(object sender, EventArgs e)
+        {
+            RegisterForm registerForm = new RegisterForm();
+            registerForm.ShowDialog();
+        }
+
+        private void btBack_Click(object sender, EventArgs e)
+        {
+            views.CurrentView = startView;
         }
     }
 }

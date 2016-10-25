@@ -6,13 +6,41 @@ using System.Threading.Tasks;
 
 namespace EyeCTforParticipation.Models
 {
-    public abstract class UserModel
+    public class UserModel
     {
+        int id;
+        UserRole role;
         string name;
         string email;
+        string rfid;
         string password;
-        int rfid;
         DateTime birthdate;
+
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
+        public virtual UserRole Role
+        {
+            get
+            {
+                return role;
+            }
+
+            set
+            {
+                role = value;
+            }
+        }
 
         public string Name
         {
@@ -20,6 +48,7 @@ namespace EyeCTforParticipation.Models
             {
                 return name;
             }
+
             set
             {
                 name = value;
@@ -32,9 +61,23 @@ namespace EyeCTforParticipation.Models
             {
                 return email;
             }
+
             set
             {
                 email = value;
+            }
+        }
+
+        public string Rfid
+        {
+            get
+            {
+                return rfid;
+            }
+
+            set
+            {
+                rfid = value;
             }
         }
 
@@ -44,21 +87,10 @@ namespace EyeCTforParticipation.Models
             {
                 return password;
             }
+
             set
             {
                 password = value;
-            }
-        }
-
-        public int RFID
-        {
-            get
-            {
-                return rfid;
-            }
-            set
-            {
-                rfid = value;
             }
         }
 
@@ -68,6 +100,7 @@ namespace EyeCTforParticipation.Models
             {
                 return birthdate;
             }
+
             set
             {
                 birthdate = value;

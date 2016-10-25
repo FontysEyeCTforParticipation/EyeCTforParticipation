@@ -8,12 +8,26 @@ namespace EyeCTforParticipation.Models
 {
     public class HelpRequestModel
     {
+        int id;
         string title;
-        UserModel user;
+        UserModel helpSeeker;
         DateTime date;
         string location;
         int distance;
         int urgency;
+
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
 
         public string Title
         {
@@ -28,16 +42,16 @@ namespace EyeCTforParticipation.Models
             }
         }
 
-        public UserModel User
+        internal UserModel HelpSeeker
         {
             get
             {
-                return user;
+                return helpSeeker;
             }
 
             set
             {
-                user = value;
+                helpSeeker = value;
             }
         }
 

@@ -163,10 +163,10 @@
             this.btRegister.Location = new System.Drawing.Point(40, 31);
             this.btRegister.Margin = new System.Windows.Forms.Padding(0);
             this.btRegister.Name = "btRegister";
-            this.btRegister.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
-            this.btRegister.Size = new System.Drawing.Size(166, 67);
+            this.btRegister.Padding = new System.Windows.Forms.Padding(10);
+            this.btRegister.Size = new System.Drawing.Size(218, 67);
             this.btRegister.TabIndex = 3;
-            this.btRegister.Text = "REGISTER";
+            this.btRegister.Text = "REGISTREREN";
             this.btRegister.UseVisualStyleBackColor = false;
             // 
             // lbEmailRepeat

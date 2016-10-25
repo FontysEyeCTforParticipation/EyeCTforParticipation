@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace EyeCTforParticipation.Models
 {
-    public class ReviewModel
+    public class HelpRequestApplicationModel
     {
         int id;
-        UserModel helpSeeker;
+        HelpRequestModel helpRequest;
         VolunteerModel volunteer;
-        string content;
-        DateTime date;
+        State status;
 
         public int Id
         {
@@ -27,20 +26,20 @@ namespace EyeCTforParticipation.Models
             }
         }
 
-        public UserModel HelpSeeker
+        public HelpRequestModel HelpRequest
         {
             get
             {
-                return helpSeeker;
+                return helpRequest;
             }
 
             set
             {
-                helpSeeker = value;
+                helpRequest = value;
             }
         }
 
-        public VolunteerModel Volunteer
+        internal VolunteerModel Volunteer
         {
             get
             {
@@ -53,30 +52,24 @@ namespace EyeCTforParticipation.Models
             }
         }
 
-        public string Content
+        public State Status
         {
             get
             {
-                return content;
+                return status;
             }
 
             set
             {
-                content = value;
+                status = value;
             }
         }
 
-        public DateTime Date
+        public enum State
         {
-            get
-            {
-                return date;
-            }
-
-            set
-            {
-                date = value;
-            }
+            NONE,
+            INTERVIEW,
+            APPROVED
         }
     }
 }

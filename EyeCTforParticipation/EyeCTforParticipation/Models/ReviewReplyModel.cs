@@ -6,50 +6,22 @@ using System.Threading.Tasks;
 
 namespace EyeCTforParticipation.Models
 {
-    public class ReviewModel
+    public class ReviewReplyModel
     {
-        int id;
-        UserModel helpSeeker;
-        VolunteerModel volunteer;
+        ReviewModel review;
         string content;
         DateTime date;
 
-        public int Id
+        public ReviewModel Review
         {
             get
             {
-                return id;
+                return review;
             }
 
             set
             {
-                id = value;
-            }
-        }
-
-        public UserModel HelpSeeker
-        {
-            get
-            {
-                return helpSeeker;
-            }
-
-            set
-            {
-                helpSeeker = value;
-            }
-        }
-
-        public VolunteerModel Volunteer
-        {
-            get
-            {
-                return volunteer;
-            }
-
-            set
-            {
-                volunteer = value;
+                review = value;
             }
         }
 

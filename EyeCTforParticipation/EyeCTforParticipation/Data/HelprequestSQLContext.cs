@@ -13,14 +13,19 @@ namespace EyeCTforParticipation.Data
         {
             List<HelpRequestModel> results = new List<HelpRequestModel>();
 
-            HelpRequestModel result = new HelpRequestModel();
-            result.Title = "Example help request";
-            UserModel user = new HelpSeekerModel();
-            user.Name = "John Doe";
-            result.User = user;
-            result.Date = DateTime.Now;
-            result.Location = "Eindhoven";
-            result.Distance = 5;
+            HelpRequestModel result = new HelpRequestModel
+            {
+                Id = 4543,
+                Title = "Example help request",
+                HelpSeeker = new UserModel
+                {
+                    Id = 234,
+                    Name = "John Doe"
+                },
+                Date = DateTime.Now,
+                Location = "Eindhoven",
+                Distance = 5
+            };
 
             for(int x = 0; x < 10; x++)
             {
