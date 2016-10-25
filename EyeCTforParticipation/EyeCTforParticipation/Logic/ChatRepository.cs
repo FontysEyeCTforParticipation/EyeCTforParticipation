@@ -27,7 +27,7 @@ namespace EyeCTforParticipation.Logic
         /// A list of chats for the specific user id.
         /// </returns>
         /// <remarks>
-        /// List is based on ChatModel objects with HelpRequestApplication.Id as Id, HelpRequest.Title as Title and HelpRequestApplication.Status as Status.
+        /// List consists of ChatModel objects with Application.Id as Id, HelpRequest.Title as Title and Application.Status as Status.
         /// Different user roles get different lists.
         /// </remarks>
         public List<ChatModel> Get(int userId)
@@ -48,7 +48,7 @@ namespace EyeCTforParticipation.Logic
         /// A chat with a list of messages.
         /// </returns>
         /// <remarks>
-        /// The ChatModel object has HelpRequestApplication.Id as Id, HelpRequest.Title as Title, HelpRequestApplication.Status as Status.
+        /// The ChatModel object has Application.Id as Id, HelpRequest.Title as Title, Application.Status as Status.
         /// </remarks>
         public ChatModel Get(int chatId, int userId)
         {
