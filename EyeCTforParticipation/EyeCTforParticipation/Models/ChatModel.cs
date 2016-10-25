@@ -9,8 +9,8 @@ namespace EyeCTforParticipation.Models
     public class ChatModel
     {
         int id;
-        UserModel helpSeeker;
-        List<UserModel> users;
+        string title;
+        HelpRequestApplicationModel.State status;
         List<MessageModel> messages;
 
         public int Id
@@ -26,29 +26,29 @@ namespace EyeCTforParticipation.Models
             }
         }
 
-        public UserModel HelpSeeker
+        public string Title
         {
             get
             {
-                return helpSeeker;
+                return title;
             }
 
             set
             {
-                helpSeeker = value;
+                title = value;
             }
         }
 
-        public List<UserModel> Users
+        public HelpRequestApplicationModel.State Status
         {
             get
             {
-                return users;
+                return status;
             }
 
             set
             {
-                users = value;
+                status = value;
             }
         }
 
