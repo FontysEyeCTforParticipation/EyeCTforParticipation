@@ -40,9 +40,9 @@
             this.btBackWrapper = new System.Windows.Forms.Panel();
             this.btBack = new System.Windows.Forms.Button();
             this.titleWrapper = new System.Windows.Forms.Panel();
-            this.horizontalSeperator = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
             this.btApplyWrapper = new System.Windows.Forms.FlowLayoutPanel();
             this.btApply = new System.Windows.Forms.Button();
+            this.horizontalSeperator = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
             this.contentWrapper.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.btBackWrapper.SuspendLayout();
@@ -208,17 +208,6 @@
             this.titleWrapper.Size = new System.Drawing.Size(920, 202);
             this.titleWrapper.TabIndex = 16;
             // 
-            // horizontalSeperator
-            // 
-            this.horizontalSeperator.AutoSize = true;
-            this.horizontalSeperator.BackColor = System.Drawing.Color.Silver;
-            this.horizontalSeperator.Dock = System.Windows.Forms.DockStyle.Top;
-            this.horizontalSeperator.Location = new System.Drawing.Point(0, 202);
-            this.horizontalSeperator.Margin = new System.Windows.Forms.Padding(0);
-            this.horizontalSeperator.Name = "horizontalSeperator";
-            this.horizontalSeperator.Size = new System.Drawing.Size(920, 1);
-            this.horizontalSeperator.TabIndex = 6;
-            // 
             // btApplyWrapper
             // 
             this.btApplyWrapper.AutoSize = true;
@@ -250,6 +239,17 @@
             this.btApply.Text = "AANMELDEN";
             this.btApply.UseVisualStyleBackColor = false;
             this.btApply.Click += new System.EventHandler(this.btApply_Click);
+            // 
+            // horizontalSeperator
+            // 
+            this.horizontalSeperator.AutoSize = true;
+            this.horizontalSeperator.BackColor = System.Drawing.Color.Silver;
+            this.horizontalSeperator.Dock = System.Windows.Forms.DockStyle.Top;
+            this.horizontalSeperator.Location = new System.Drawing.Point(0, 202);
+            this.horizontalSeperator.Margin = new System.Windows.Forms.Padding(0);
+            this.horizontalSeperator.Name = "horizontalSeperator";
+            this.horizontalSeperator.Size = new System.Drawing.Size(920, 1);
+            this.horizontalSeperator.TabIndex = 6;
             // 
             // HelpRequestControl
             // 
