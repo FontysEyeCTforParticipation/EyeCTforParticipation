@@ -13,5 +13,6 @@ namespace EyeCTforParticipation.Data
         List<HelpRequestModel> Search(string keywords);
         List<HelpRequestModel> Search(string postalCode, int distance);
         List<HelpRequestModel> Search(string keywords, string postalCode, int distance);
+        void Create(HelpRequestModel helpRequest);
     }
 }

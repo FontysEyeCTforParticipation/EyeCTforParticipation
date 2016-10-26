@@ -23,7 +23,7 @@ namespace EyeCTforParticipation.Controls
             lbTitle.Text = helpRequest.Title;
             lbName.Text = helpRequest.HelpSeeker.Name;
             lbDate.Text = helpRequest.Date.ToString("dd-MM-yyy");
-            lbLocation.Text = helpRequest.Location;
+            lbLocation.Text = helpRequest.Address;
             lbDistance.Text = helpRequest.Distance.ToString() + " km";
         }
 

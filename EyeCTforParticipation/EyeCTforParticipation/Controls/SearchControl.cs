@@ -16,13 +16,12 @@ namespace EyeCTforParticipation.Controls
 {
     public partial class SearchControl : UserControl
     {
-        HelpRequestRepository helpRequestRepository = new HelpRequestRepository(new HelpRequestSQLContext());
+        HelpRequestRepository helpRequestRepository = new HelpRequestRepository(new HelpRequestXMLContext());
         List<HelpRequestModel> results;
         Dictionary<int, string> cbDistances;
         public event EventHandler Search;
 
-        public SearchControl()
-        {
+        public SearchControl() { 
             InitializeComponent();
 
             cbDistances = new Dictionary<int, string>();
@@ -41,6 +40,7 @@ namespace EyeCTforParticipation.Controls
 
         private void SearchControl_Load(object sender, EventArgs e)
         {
+
             //Get initial search results
             results = helpRequestRepository.Search();
 

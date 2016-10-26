@@ -10,6 +10,7 @@ namespace EyeCTforParticipation.Models
     public class VolunteerModel : UserModel
     {
         string about;
+        string address;
         GeoCoordinate location;
         bool driversLicense;
         bool car;
@@ -32,6 +33,19 @@ namespace EyeCTforParticipation.Models
             set
             {
                 about = value;
+            }
+        }
+
+        public string Address
+        {
+            get
+            {
+                return address;
+            }
+
+            set
+            {
+                address = value;
             }
         }
 

@@ -49,6 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Device" />
     <Reference Include="System.ServiceProcess" />
@@ -118,13 +119,17 @@
       <DependentUpon>SearchControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\ChatSQLContext.cs" />
+    <Compile Include="Data\ChatXMLContext.cs" />
     <Compile Include="Data\HelpRequestSQLContext.cs" />
+    <Compile Include="Data\HelpRequestXMLContext.cs" />
     <Compile Include="Data\IChatContext.cs" />
     <Compile Include="Data\IHelpRequestContext.cs" />
     <Compile Include="Data\IReviewContext.cs" />
     <Compile Include="Data\IUserContext.cs" />
     <Compile Include="Data\ReviewSQLContext.cs" />
+    <Compile Include="Data\ReviewXMLContext.cs" />
     <Compile Include="Data\UserSQLContext.cs" />
+    <Compile Include="Data\UserXMLContext.cs" />
     <Compile Include="Forms\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>

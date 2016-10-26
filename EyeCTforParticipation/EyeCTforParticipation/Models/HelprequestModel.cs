@@ -3,16 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Device.Location;
 
 namespace EyeCTforParticipation.Models
 {
     public class HelpRequestModel
     {
         int id;
-        string title;
         UserModel helpSeeker;
+        string title;
+        string content;
         DateTime date;
-        string location;
+        string address;
+        GeoCoordinate location;
         int distance;
         HelpRequestUrgency urgency;
 
@@ -29,6 +32,19 @@ namespace EyeCTforParticipation.Models
             }
         }
 
+        public UserModel HelpSeeker
+        {
+            get
+            {
+                return helpSeeker;
+            }
+
+            set
+            {
+                helpSeeker = value;
+            }
+        }
+
         public string Title
         {
             get
@@ -42,16 +58,16 @@ namespace EyeCTforParticipation.Models
             }
         }
 
-        internal UserModel HelpSeeker
+        public string Content
         {
             get
             {
-                return helpSeeker;
+                return content;
             }
 
             set
             {
-                helpSeeker = value;
+                content = value;
             }
         }
 
@@ -68,7 +84,20 @@ namespace EyeCTforParticipation.Models
             }
         }
 
-        public string Location
+        public string Address
+        {
+            get
+            {
+                return address;
+            }
+
+            set
+            {
+                address = value;
+            }
+        }
+
+        public GeoCoordinate Location
         {
             get
             {

@@ -103,9 +103,9 @@ namespace EyeCTforParticipation.Logic
         /// <param name="helpSeekerId">
         /// The id of the help seeker.
         /// </param>
-        public void Create(HelpRequestModel helpRequest, int helpSeekerId)
+        public void Create(HelpRequestModel helpRequest)
         {
-            throw new NotImplementedException();
+            context.Create(helpRequest);
         }
 
         /// <summary>
