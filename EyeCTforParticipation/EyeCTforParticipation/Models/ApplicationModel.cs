@@ -12,6 +12,7 @@ namespace EyeCTforParticipation.Models
         HelpRequestModel helpRequest;
         VolunteerModel volunteer;
         ApplicationStatus status;
+        DateTime date;
 
         public int Id
         {
@@ -62,6 +63,19 @@ namespace EyeCTforParticipation.Models
             set
             {
                 status = value;
+            }
+        }
+
+        public DateTime Date
+        {
+            get
+            {
+                return date;
+            }
+
+            set
+            {
+                date = value;
             }
         }
     }

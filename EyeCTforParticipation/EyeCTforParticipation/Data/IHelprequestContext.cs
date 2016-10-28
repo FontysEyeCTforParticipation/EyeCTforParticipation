@@ -13,6 +13,18 @@ namespace EyeCTforParticipation.Data
         List<HelpRequestModel> Search(string keywords);
         List<HelpRequestModel> Search(string postalCode, int distance);
         List<HelpRequestModel> Search(string keywords, string postalCode, int distance);
-        void Create(HelpRequestModel helpRequest);
+        HelpRequestModel Get(int id);
+        int Create(HelpRequestModel helpRequest);
+        void Update(HelpRequestModel helpRequest);
+        void Delete(int id);
+        void Close(int id, int helpSeekerId);
+        void Open(int id, int helpSeekerId);
+        int Apply(int id, int volunteerId);
+        void CancelApplication(int id, int volunteerId);
+        void CancelApplicationAsHelpSeeker(int id, int userId);
+        List<ApplicationModel> GetApplications(int volunteerId);
+        List<ApplicationModel> GetApplications(int id, int helpSeekerId);
+        void InterviewApplication(int id, int helpSeekerId);
+        void ApproveApplication(int id, int helpSeekerId);
     }
 }

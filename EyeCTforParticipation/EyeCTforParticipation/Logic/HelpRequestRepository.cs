@@ -90,79 +90,72 @@ namespace EyeCTforParticipation.Logic
         /// </returns>
         public HelpRequestModel Get(int id)
         {
-            throw new NotImplementedException();
+            return context.Get(id);
         }
 
         /// <summary>
-        /// Create a new help request for a specific help seeker if the id is null.
+        /// Create a new help request for a specific help seeker if the id is 0.
         /// Else if a help request already exists with the same id, the existing help request will be updated.
         /// </summary>
         /// <param name="helpRequest">
         /// The new or updated help request.
         /// </param>
-        /// <param name="helpSeekerId">
-        /// The id of the help seeker.
-        /// </param>
-        public void Create(HelpRequestModel helpRequest)
+        /// <returns>
+        /// The created or updated help request.
+        /// </returns>
+        public HelpRequestModel Save(HelpRequestModel helpRequest)
         {
-            context.Create(helpRequest);
+            if (helpRequest.Id == 0)
+            {
+                helpRequest.Id = context.Create(helpRequest);
+            } else
+            {
+                context.Update(helpRequest);
+            }
+            return helpRequest;
         }
 
         /// <summary>
         /// Remove a help request.
         /// </summary>
-        /// <param name="helpRequestId">
+        /// <param name="id">
         /// The id of the help request to be deleted.
         /// </param>
-        /// <param name="user">
-        /// The user that wants to remove the help request.
-        /// The help request will only be deleted if the user:
-        ///     - Is an Admin.
-        ///     - Created the help request.
-        ///     - Is an Aid worker who is approved by the help seeker that created the help request.
-        /// </param>
-        public void Delete(int helpRequestId, UserModel user)
+        /// <remarks>
+        /// Messages and applications related to the help request will be deleted too!
+        /// </remarks>
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+            context.Delete(id);
         }
 
         /// <summary>
         /// Close the help request.
         /// The help seeker and volunteer won't be able to continue sending each other messages.
         /// </summary>
-        /// <param name="applicationId">
+        /// <param name="id">
         /// The id of the help request.
         /// </param>
-        /// <param name="user">
-        /// The user that wants to close the help request.
-        /// The help request will only be closed if the user:
-        ///     - Is an Admin.
-        ///     - Created the help request.
-        ///     - Is an Aid worker who is approved by the help seeker that created the help request.
+        /// <param name="helpSeekerId">
+        /// The id of the help seeker.
         /// </param>
-        /// <remarks>
-        /// A help request cannot be closed if there aren't any applications.
-        /// </remarks>
-        public void Close(int helpRequestId, UserModel user)
+        public void Close(int id, int helpSeekerId)
         {
-            throw new NotImplementedException();
+            context.Close(id, helpSeekerId);
         }
 
         /// <summary>
-        /// Reopen a previously closed help request, the help request will be listed as a new help request.
+        /// Reopen a previously closed help request.
         /// </summary>
-        /// <param name="applicationId">
+        /// <param name="id">
         /// The id of the help request.
         /// </param>
         /// <param name="helpSeekerId">
         /// The id of the help seeker that created the help request.
         /// </param>
-        /// <remarks>
-        /// A help request cannot reopened if all the applications aren't closed.
-        /// </remarks>
-        public void Reopen(int helpRequestId, int helpSeekerId)
+        public void Open(int id, int helpSeekerId)
         {
-            throw new NotImplementedException();
+            context.Open(id, helpSeekerId);
         }
 
         /// <summary>
@@ -174,67 +167,83 @@ namespace EyeCTforParticipation.Logic
         /// <param name="volunteerId">
         /// The id of the volunteer that wants to apply.
         /// </param>
-        public void Apply(int helpRequestId, int volunteerId)
+        /// <returns>
+        /// The application.
+        /// </returns>
+        public ApplicationModel Apply(int id, int volunteerId)
         {
-            throw new NotImplementedException();
+            return new ApplicationModel
+            {
+                Id = context.Apply(id, volunteerId),
+                HelpRequest = new HelpRequestModel
+                {
+                    Id = id
+                },
+                Volunteer = new VolunteerModel
+                {
+                    Id = volunteerId
+                },
+                Status = ApplicationStatus.NONE,
+                Date = DateTime.Now
+            };
         }
 
         /// <summary>
         /// Cancel the application to a help request.
         /// </summary>
-        /// <param name="applicationId">
+        /// <param name="id">
         /// The id of the application.
         /// </param>
         /// <param name="user">
         /// The user that wants to cancel the application.
-        /// The application will only be cancelled if the user created the application.
+        /// The application will only be cancelled if the user is an:
+        ///     - Volunteer
+        ///         Created the application.
+        ///     - Help seeker:
+        ///         Created the help request that was applied to.
         /// </param>
-        public void CancelApplication(int applicationId, UserModel user)
+        public void CancelApplication(int id, UserModel user)
         {
-            throw new NotImplementedException();
+            switch (user.Role)
+            {
+                case UserRole.Volunteer:
+                    context.CancelApplication(id, user.Id);
+                    break;
+                case UserRole.HelpSeeker:
+                    context.CancelApplicationAsHelpSeeker(id, user.Id);
+                    break;
+            }
         }
 
         /// <summary>
-        /// Get a list of applications for help requests.
+        /// Get a list of applications a volunteer made.
         /// </summary>
-        /// <param name="user">
-        /// The user that wants to get the applications.
+        /// <param name="volunteerId">
+        /// The id of the volunteer.
         /// </param>
         /// <returns>
-        /// If the user is an:
-        ///     - Admin:
-        ///         A list of all applications.
-        ///     - Help seeker:
-        ///         A list of applications for the help requests created by the help seeker.
-        ///     - Aid worker:
-        ///         A list of applications for the help requests created by the help seekers that approved the aid worker.
+        /// A list of applications for help requests by the volunteer
         /// </returns>
-        public List<ApplicationModel> GetApplications(UserModel user)
+        public List<ApplicationModel> GetApplications(int volunteerId)
         {
-            throw new NotImplementedException();
+            return context.GetApplications(volunteerId);
         }
 
         /// <summary>
         /// Get a list of applications for a specific help request.
         /// </summary>
-        /// <param name="helpRequestId">
+        /// <param name="id">
         /// The id of the help request.
         /// </param>
-        /// <param name="user">
-        /// The user that wants to get the applications.
+        /// <param name="helpSeekerId">
+        /// The id of the help seeker.
         /// </param>
         /// <returns>
-        /// If the user is an:
-        ///     - Admin:
-        ///         A list of applications for the help request.
-        ///     - Help seeker:
-        ///         A list of applications for the help request created by the help seeker.
-        ///     - Aid worker:
-        ///         A list of applications for the help request created by the help seeker that approved the aidworker.
+        /// A list of applications for the help request created by the help seeker.
         /// </returns>
-        public List<ApplicationModel> GetApplications(int helpRequestId, UserModel user)
+        public List<ApplicationModel> GetApplications(int id, int helpSeekerId)
         {
-            throw new NotImplementedException();
+            return context.GetApplications(id, helpSeekerId);
         }
 
         /// <summary>
@@ -242,15 +251,15 @@ namespace EyeCTforParticipation.Logic
         /// The help seeker and volunteer will be able to send each other messages in a interview chat.
         /// (Dutch: kennismakingsgesprek)
         /// </summary>
-        /// <param name="applicationId">
+        /// <param name="id">
         /// The id of the application.
         /// </param>
         /// <param name="helpSeekerId">
         /// The id of the help seeker that created the help request that was applied to.
         /// </param>
-        public void InterviewApplication(int applicationId, int helpSeekerId)
+        public void InterviewApplication(int id, int helpSeekerId)
         {
-            throw new NotImplementedException();
+            context.InterviewApplication(id, helpSeekerId);
         }
 
         /// <summary>
@@ -266,9 +275,9 @@ namespace EyeCTforParticipation.Logic
         /// <remarks>
         /// A volunteer cannot be approved if there hasn't been a interview chat.
         /// </remarks>
-        public void ApproveApplication(int applicationId, int helpSeekerId)
+        public void ApproveApplication(int id, int helpSeekerId)
         {
-            throw new NotImplementedException();
+            context.ApproveApplication(id, helpSeekerId);
         }
     }
 }

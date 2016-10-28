@@ -11,7 +11,6 @@ namespace EyeCTforParticipation.Models
         NONE,
         INTERVIEW,
         APPROVED,
-        CANCELLED,
-        CLOSED
+        CANCELLED
     }
 }

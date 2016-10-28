@@ -18,6 +18,7 @@ namespace EyeCTforParticipation.Models
         GeoCoordinate location;
         int distance;
         HelpRequestUrgency urgency;
+        bool closed;
 
         public int Id
         {
@@ -133,6 +134,19 @@ namespace EyeCTforParticipation.Models
             set
             {
                 urgency = value;
+            }
+        }
+
+        public bool Closed
+        {
+            get
+            {
+                return closed;
+            }
+
+            set
+            {
+                closed = value;
             }
         }
     }
