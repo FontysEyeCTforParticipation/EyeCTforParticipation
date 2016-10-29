@@ -12,19 +12,72 @@ namespace EyeCTforParticipation.Data
 {
     public class HelpRequestSQLContext : IHelpRequestContext
     {
-        public List<HelpRequestModel> Search()
+        public List<HelpRequestModel> Search()  // no idea if this is correct
         {
-            throw new NotImplementedException();
+            List<HelpRequestModel> result = new List<HelpRequestModel>();
+            string query = "SELECT Title, Date, Address, Urgency"
+                         + "FROM HelpRequest"
+                         + "WHERE Closed = 0";   
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                using(SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(new HelpRequestModel
+                        {
+                            Title = reader.GetString(0),
+                            Date = reader.GetDateTime(1),
+                            Address = reader.GetString(2),
+                            Urgency = (HelpRequestUrgency)reader.GetInt32(3)
+                        });
+                    }
+                    return result;
+                }
+            }
         }
 
-        public List<HelpRequestModel> Search(string keywords)
+        public List<HelpRequestModel> Search(string keywords)  //Keyword is in the Title or in the Content
         {
-            throw new NotImplementedException();
+            List<HelpRequestModel> result = new List<HelpRequestModel>();
+            string query = "SELECT Title, Date, Address, Urgency"
+                        + "FROM HelpRequest"
+                        + "WHERE Closed = 0 AND Title LIKE %[(" + keywords.Replace(" ", ")(") + ")]%";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(new HelpRequestModel
+                        {
+                            Title = reader.GetString(0),
+                            Date = reader.GetDateTime(1),
+                            Address = reader.GetString(2),
+                            Urgency = (HelpRequestUrgency)reader.GetInt32(3)
+                        });
+                    }
+                    return result;
+                }
+            }
         }
 
-        public List<HelpRequestModel> Search(string postalCode, int distance)
+        public List<HelpRequestModel> Search(string postalCode, int distance)  // todo
         {
-            throw new NotImplementedException();
+            List<HelpRequestModel> result = new List<HelpRequestModel>();
+            string query = "SELECT Title, Date, Address, Urgency"
+                         + "FROM HelpRequest"
+                         + "WHERE Closed = 0";  //We only want helprequests that are open right? 
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+
+            }
+            return result;
         }
 
         public List<HelpRequestModel> Search(string keywords, string postalCode, int distance)
