@@ -15,9 +15,9 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> Search()  // no idea if this is correct
         {
             List<HelpRequestModel> result = new List<HelpRequestModel>();
-            string query = "SELECT Id, HelpSeekerUserId, Title, Content, Date, Address, Location.Lat, Location.Long, Urgency, Closed"
+            string query = "SELECT Title, Date, Address, Urgency"
                          + "FROM HelpRequest"
-                         + "WHERE Closed = '0'";   
+                         + "WHERE Closed = 0";   
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
@@ -28,18 +28,10 @@ namespace EyeCTforParticipation.Data
                     {
                         result.Add(new HelpRequestModel
                         {
-                            Id = reader.GetInt32(0),
-                            HelpSeeker = new UserModel //With this I only fill in the Id of the User. 
-                            {
-                                Id = reader.GetInt32(1)
-                            },
-                            Title = reader.GetString(2),
-                            Content = reader.GetString(3),
-                            Date = reader.GetDateTime(4),
-                            Address = reader.GetString(5),
-                            Location = new System.Device.Location.GeoCoordinate(reader.GetDouble(6), reader.GetDouble(7)),
-                            Urgency = (HelpRequestUrgency)reader.GetInt32(8),
-                            Closed = reader.GetBoolean(9)
+                            Title = reader.GetString(0),
+                            Date = reader.GetDateTime(1),
+                            Address = reader.GetString(2),
+                            Urgency = (HelpRequestUrgency)reader.GetInt32(3)
                         });
                     }
                     return result;
@@ -50,33 +42,23 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> Search(string keywords)  //Keyword is in the Title or in the Content
         {
             List<HelpRequestModel> result = new List<HelpRequestModel>();
-            string query = "SELECT Id, HelpSeekerUserId, Title, Content, Date, Address, Location.Lat, Location.Long, Urgency, Closed"
+            string query = "SELECT Title, Date, Address, Urgency"
                         + "FROM HelpRequest"
-                        + "WHERE Closed = 'false' AND Title LIKE %@keywords%"
-                        + "OR Clodes = 'false' AND Content LIKE %@keywords%";
+                        + "WHERE Closed = 0 AND Title LIKE %[(" + keywords.Replace(" ", ")(") + ")]%";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
-                cmd.Parameters.AddWithValue("@Keywords", keywords);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         result.Add(new HelpRequestModel
                         {
-                            Id = reader.GetInt32(0),
-                            HelpSeeker = new UserModel //With this I only fill in the Id of the User. 
-                            {
-                                Id = reader.GetInt32(1)
-                            },
-                            Title = reader.GetString(2),
-                            Content = reader.GetString(3),
-                            Date = reader.GetDateTime(4),
-                            Address = reader.GetString(5),
-                            Location = new System.Device.Location.GeoCoordinate(reader.GetDouble(6), reader.GetDouble(7)),
-                            Urgency = (HelpRequestUrgency)reader.GetInt32(8),
-                            Closed = reader.GetBoolean(9)
+                            Title = reader.GetString(0),
+                            Date = reader.GetDateTime(1),
+                            Address = reader.GetString(2),
+                            Urgency = (HelpRequestUrgency)reader.GetInt32(3)
                         });
                     }
                     return result;
@@ -84,12 +66,12 @@ namespace EyeCTforParticipation.Data
             }
         }
 
-        public List<HelpRequestModel> Search(string postalCode, int distance)
+        public List<HelpRequestModel> Search(string postalCode, int distance)  // todo
         {
             List<HelpRequestModel> result = new List<HelpRequestModel>();
-            string query = "SELECT Id, HelpSeekerUserId, Title, Content, Date, Address, Location.Lat, Location.Long, Urgency, Closed"
+            string query = "SELECT Title, Date, Address, Urgency"
                          + "FROM HelpRequest"
-                         + "WHERE Closed = 'false'";  //We only want helprequests that are open right? 
+                         + "WHERE Closed = 0";  //We only want helprequests that are open right? 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
