@@ -165,6 +165,7 @@
     <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\ReviewReplyModel.cs" />
+    <Compile Include="Models\UserComparer.cs" />
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
