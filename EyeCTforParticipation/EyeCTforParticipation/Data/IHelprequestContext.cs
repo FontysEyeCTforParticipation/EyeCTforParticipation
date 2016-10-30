@@ -11,8 +11,10 @@ namespace EyeCTforParticipation.Data
     {
         List<HelpRequestModel> Search();
         List<HelpRequestModel> Search(string keywords);
+        List<HelpRequestModel> SearchByRelevance(string keywords);
         List<HelpRequestModel> Search(string postalCode, int distance);
         List<HelpRequestModel> Search(string keywords, string postalCode, int distance);
+        List<HelpRequestModel> SearchByRelevance(string keywords, string postalCode, int distance);
         HelpRequestModel Get(int id);
         int Create(HelpRequestModel helpRequest);
         void Update(HelpRequestModel helpRequest);

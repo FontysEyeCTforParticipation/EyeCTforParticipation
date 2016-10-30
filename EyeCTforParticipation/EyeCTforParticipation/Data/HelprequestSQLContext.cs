@@ -12,12 +12,13 @@ namespace EyeCTforParticipation.Data
 {
     public class HelpRequestSQLContext : IHelpRequestContext
     {
-        public List<HelpRequestModel> Search()  // no idea if this is correct
+        public List<HelpRequestModel> Search() 
         {
-            List<HelpRequestModel> result = new List<HelpRequestModel>();
-            string query = "SELECT Title, Date, Address, Urgency"
-                         + "FROM HelpRequest"
-                         + "WHERE Closed = 0";   
+            List<HelpRequestModel> results = new List<HelpRequestModel>();
+            string query = "SELECT Title, Date, Address, Urgency "
+                         + "FROM HelpRequest "
+                         + "WHERE Closed = 0 "
+                         + "ORDER BY Date DESC;";   
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
@@ -26,7 +27,7 @@ namespace EyeCTforParticipation.Data
                 {
                     while (reader.Read())
                     {
-                        result.Add(new HelpRequestModel
+                        results.Add(new HelpRequestModel
                         {
                             Title = reader.GetString(0),
                             Date = reader.GetDateTime(1),
@@ -34,26 +35,28 @@ namespace EyeCTforParticipation.Data
                             Urgency = (HelpRequestUrgency)reader.GetInt32(3)
                         });
                     }
-                    return result;
+                    return results;
                 }
             }
         }
 
-        public List<HelpRequestModel> Search(string keywords)  //Keyword is in the Title or in the Content
+        public List<HelpRequestModel> Search(string keywords)
         {
-            List<HelpRequestModel> result = new List<HelpRequestModel>();
-            string query = "SELECT Title, Date, Address, Urgency"
-                        + "FROM HelpRequest"
-                        + "WHERE Closed = 0 AND Title LIKE %[(" + keywords.Replace(" ", ")(") + ")]%";
+            List<HelpRequestModel> results = new List<HelpRequestModel>();
+            string query = "SELECT Title, Date, Address, Urgency "
+                         + "FROM HelpRequest "
+                         + "WHERE Closed = 0 AND [dbo].KeywordMatch(Title + Content, @Keywords, ' ') = 1 "
+                         + "ORDER BY Date DESC;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
+                cmd.Parameters.AddWithValue("@Keywords", keywords);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        result.Add(new HelpRequestModel
+                        results.Add(new HelpRequestModel
                         {
                             Title = reader.GetString(0),
                             Date = reader.GetDateTime(1),
@@ -61,26 +64,60 @@ namespace EyeCTforParticipation.Data
                             Urgency = (HelpRequestUrgency)reader.GetInt32(3)
                         });
                     }
-                    return result;
+                    return results;
+                }
+            }
+        }
+
+        public List<HelpRequestModel> SearchByRelevance(string keywords)
+        {
+            List<HelpRequestModel> results = new List<HelpRequestModel>();
+            string query = "SELECT Title, Date, Address, Urgency, [dbo].KeywordMatches(Title + Content, @Keywords, ' ') AS Matches "
+                         + "FROM HelpRequest "
+                         + "WHERE Closed = 0 AND Matches > 1 "
+                         + "ORDER BY Matches DESC, Date DESC;";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@Keywords", keywords);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        results.Add(new HelpRequestModel
+                        {
+                            Title = reader.GetString(0),
+                            Date = reader.GetDateTime(1),
+                            Address = reader.GetString(2),
+                            Urgency = (HelpRequestUrgency)reader.GetInt32(3)
+                        });
+                    }
+                    return results;
                 }
             }
         }
 
         public List<HelpRequestModel> Search(string postalCode, int distance)  // todo
         {
-            List<HelpRequestModel> result = new List<HelpRequestModel>();
+            List<HelpRequestModel> results = new List<HelpRequestModel>();
             string query = "SELECT Title, Date, Address, Urgency"
                          + "FROM HelpRequest"
-                         + "WHERE Closed = 0";  //We only want helprequests that are open right? 
+                         + "WHERE Closed = 0";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
 
             }
-            return result;
+            return results;
         }
 
         public List<HelpRequestModel> Search(string keywords, string postalCode, int distance)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<HelpRequestModel> SearchByRelevance(string keywords, string postalCode, int distance)
         {
             throw new NotImplementedException();
         }

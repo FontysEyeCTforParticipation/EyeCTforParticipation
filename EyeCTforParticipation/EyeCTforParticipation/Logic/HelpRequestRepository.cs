@@ -34,11 +34,21 @@ namespace EyeCTforParticipation.Logic
         /// <param name="keywords">
         /// Keywords included in search results, keywords are seperated by whitespace.
         /// </param>
+        /// <param name="orderByRelevance">
+        /// Order results by relevance or date.
+        /// </param>
         /// <returns>
         /// A list of help requests.
         /// </returns>
-        public List<HelpRequestModel> Search(string keywords)
+        public List<HelpRequestModel> Search(string keywords, bool orderByRelevance = false)
         {
+            // Maximum keywords length is 200
+            keywords = keywords.Length > 200 ? keywords.Substring(0, 200) : keywords;
+
+            if(orderByRelevance)
+            {
+                return context.SearchByRelevance(keywords);
+            }
             return context.Search(keywords);
         }
 
@@ -71,11 +81,21 @@ namespace EyeCTforParticipation.Logic
         /// <param name="distance">
         /// The distance used as the radius of the search area.
         /// </param>
+        /// <param name="orderByRelevance">
+        /// Order results by relevance or date.
+        /// </param>
         /// <returns>
         /// A list of help requests.
         /// </returns>
-        public List<HelpRequestModel> Search(string keywords, string postalCode, int distance)
+        public List<HelpRequestModel> Search(string keywords, string postalCode, int distance, bool orderByRelevance = false)
         {
+            // Maximum keywords length is 200
+            keywords = keywords.Length > 200 ? keywords.Substring(0, 200) : keywords;
+
+            if (orderByRelevance)
+            {
+                return context.SearchByRelevance(keywords, postalCode, distance);
+            }
             return context.Search(keywords, postalCode, distance);
         }
 

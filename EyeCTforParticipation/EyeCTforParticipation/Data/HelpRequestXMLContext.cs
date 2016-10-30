@@ -33,12 +33,22 @@ namespace EyeCTforParticipation.Data
             throw new NotImplementedException();
         }
 
+        public List<HelpRequestModel> SearchByRelevance(string keywords)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<HelpRequestModel> Search(string postalCode, int distance)
         {
             throw new NotImplementedException();
         }
 
         public List<HelpRequestModel> Search(string keywords, string postalCode, int distance)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<HelpRequestModel> SearchByRelevance(string keywords, string postalCode, int distance)
         {
             throw new NotImplementedException();
         }
