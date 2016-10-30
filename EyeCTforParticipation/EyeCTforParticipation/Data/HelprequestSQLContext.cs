@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Configuration;
 using EyeCTforParticipation.Models;
-using System.Windows.Forms;
+using System.Device.Location;
 
 namespace EyeCTforParticipation.Data
 {
@@ -98,7 +98,7 @@ namespace EyeCTforParticipation.Data
             }
         }
 
-        public List<HelpRequestModel> Search(string postalCode, int distance)  // todo
+        public List<HelpRequestModel> Search(GeoCoordinate location, int distance)  // todo
         {
             List<HelpRequestModel> results = new List<HelpRequestModel>();
             string query = "SELECT Title, Date, Address, Urgency"
@@ -112,19 +112,19 @@ namespace EyeCTforParticipation.Data
             return results;
         }
 
-        public List<HelpRequestModel> Search(string keywords, string postalCode, int distance)
+        public List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int distance)
         {
             throw new NotImplementedException();
         }
 
-        public List<HelpRequestModel> SearchByRelevance(string keywords, string postalCode, int distance)
+        public List<HelpRequestModel> SearchByRelevance(string keywords, GeoCoordinate location, int distance)
         {
             throw new NotImplementedException();
         }
 
         public HelpRequestModel Get(int id)
         {
-            string query = "SELECT HelpSeekerUserId, Title, Content, Date, Address, Location.Lat, Location.Long, Urgency, Closed "
+            string query = "SELECT HelpSeekerUserId, Title, Content, Date, Address, Urgency, Closed "
                          + "FROM HelpRequest "
                          + "WHERE Id = @Id";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -147,9 +147,8 @@ namespace EyeCTforParticipation.Data
                             Content = reader.GetString(2),
                             Date = reader.GetDateTime(3),
                             Address = reader.GetString(4),
-                            Location = new System.Device.Location.GeoCoordinate(reader.GetDouble(5), reader.GetDouble(6)),
-                            Urgency = (HelpRequestUrgency)reader.GetInt32(7),
-                            Closed = reader.GetBoolean(8)
+                            Urgency = (HelpRequestUrgency)reader.GetInt32(5),
+                            Closed = reader.GetBoolean(6)
                         };
                     }
                     return null;

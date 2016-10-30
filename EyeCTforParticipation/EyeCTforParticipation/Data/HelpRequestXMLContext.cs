@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EyeCTforParticipation.Models;
+using System.Device.Location;
 
 namespace EyeCTforParticipation.Data
 {
@@ -18,7 +19,6 @@ namespace EyeCTforParticipation.Data
                 Title = "Example help request",
                 Content = "Example",
                 Address = "Eindhoven",
-                Location = new System.Device.Location.GeoCoordinate(0, 0),
                 Date = DateTime.Now,
                 Distance = 5,
                 Urgency = HelpRequestUrgency.NONE
@@ -38,17 +38,17 @@ namespace EyeCTforParticipation.Data
             throw new NotImplementedException();
         }
 
-        public List<HelpRequestModel> Search(string postalCode, int distance)
+        public List<HelpRequestModel> Search(GeoCoordinate location, int distance)
         {
             throw new NotImplementedException();
         }
 
-        public List<HelpRequestModel> Search(string keywords, string postalCode, int distance)
+        public List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int distance)
         {
             throw new NotImplementedException();
         }
 
-        public List<HelpRequestModel> SearchByRelevance(string keywords, string postalCode, int distance)
+        public List<HelpRequestModel> SearchByRelevance(string keywords, GeoCoordinate location, int distance)
         {
             throw new NotImplementedException();
         }

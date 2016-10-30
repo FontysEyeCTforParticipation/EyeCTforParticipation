@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EyeCTforParticipation.Models;
+using System.Device.Location;
 
 namespace EyeCTforParticipation.Data
 {
@@ -12,9 +13,9 @@ namespace EyeCTforParticipation.Data
         List<HelpRequestModel> Search();
         List<HelpRequestModel> Search(string keywords);
         List<HelpRequestModel> SearchByRelevance(string keywords);
-        List<HelpRequestModel> Search(string postalCode, int distance);
-        List<HelpRequestModel> Search(string keywords, string postalCode, int distance);
-        List<HelpRequestModel> SearchByRelevance(string keywords, string postalCode, int distance);
+        List<HelpRequestModel> Search(GeoCoordinate location, int distance);
+        List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int distance);
+        List<HelpRequestModel> SearchByRelevance(string keywords, GeoCoordinate location, int distance);
         HelpRequestModel Get(int id);
         int Create(HelpRequestModel helpRequest);
         void Update(HelpRequestModel helpRequest);

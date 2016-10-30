@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Device.Location;
+using EyeCTforParticipation.Logic;
 
 namespace EyeCTforParticipation.Models
 {
@@ -94,7 +95,16 @@ namespace EyeCTforParticipation.Models
 
             set
             {
-                address = value;
+                GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(value);
+                if(googleMapsApi == null)
+                {
+                    address = "";
+                    location = new GeoCoordinate(0, 0);
+                } else
+                {
+                    address = googleMapsApi.Address;
+                    location = googleMapsApi.Location;
+                }
             }
         }
 
@@ -103,11 +113,6 @@ namespace EyeCTforParticipation.Models
             get
             {
                 return location;
-            }
-
-            set
-            {
-                location = value;
             }
         }
 

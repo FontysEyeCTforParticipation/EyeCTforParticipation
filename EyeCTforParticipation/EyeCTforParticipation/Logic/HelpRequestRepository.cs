@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EyeCTforParticipation.Data;
 using EyeCTforParticipation.Models;
+using System.Device.Location;
 
 namespace EyeCTforParticipation.Logic
 {
@@ -66,7 +67,14 @@ namespace EyeCTforParticipation.Logic
         /// </returns>
         public List<HelpRequestModel> Search(string postalCode, int distance)
         {
-            return context.Search(postalCode, distance);
+            GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(postalCode + "Netherlands");
+
+            if (googleMapsApi == null)
+            {
+                return Search();
+            }
+
+            return context.Search(googleMapsApi.Location, distance);
         }
 
         /// <summary>
@@ -91,12 +99,18 @@ namespace EyeCTforParticipation.Logic
         {
             // Maximum keywords length is 200
             keywords = keywords.Length > 200 ? keywords.Substring(0, 200) : keywords;
+            GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(postalCode + "Netherlands");
+
+            if (googleMapsApi == null)
+            {
+                return Search(keywords, orderByRelevance);
+            }
 
             if (orderByRelevance)
             {
-                return context.SearchByRelevance(keywords, postalCode, distance);
+                return context.SearchByRelevance(keywords, googleMapsApi.Location, distance);
             }
-            return context.Search(keywords, postalCode, distance);
+            return context.Search(keywords, googleMapsApi.Location, distance);
         }
 
         /// <summary>

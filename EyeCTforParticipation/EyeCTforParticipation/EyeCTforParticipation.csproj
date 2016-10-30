@@ -147,8 +147,8 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Logic\ChatRepository.cs" />
+    <Compile Include="Logic\GoogleMapsApi.cs" />
     <Compile Include="Logic\HelpRequestRepository.cs" />
-    <Compile Include="Logic\PostalCodeToCoordinates.cs" />
     <Compile Include="Logic\ReviewRepository.cs" />
     <Compile Include="Logic\UserRepository.cs" />
     <Compile Include="Models\ApplicationStatus.cs" />
