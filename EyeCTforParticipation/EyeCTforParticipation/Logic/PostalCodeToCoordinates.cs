@@ -15,10 +15,14 @@ namespace EyeCTforParticipation.Logic
         {
             using (WebClient wc = new WebClient())
             {
-                object googleMapsAPI = JsonConvert.DeserializeObject(wc.DownloadString("https://maps.googleapis.com/maps/api/geocode/json?address=" + postalCode + "+Netherlands"));
+                GoogleMapsApi googleMapsAPI = JsonConvert.DeserializeObject<GoogleMapsApi>(wc.DownloadString("https://maps.googleapis.com/maps/api/geocode/json?address=" + postalCode + "+Netherlands"));
+                if(googleMapsAPI.Succes)
+                {
+                    return new GeoCoordinate(googleMapsAPI.results[0].geometry.location.lat, googleMapsAPI.results[0].geometry.location.lng);
+                }
             }
 
-            return new GeoCoordinate();
+            return null;
         }
     }
 
@@ -38,6 +42,14 @@ namespace EyeCTforParticipation.Logic
             public Geometry geometry;
         }
         public List<Result> results;
-        bool status;
+        public bool Succes;
+
+        public string Status
+        {
+            set
+            {
+                Succes = value == "OK" ? true : false;
+            }
+        }
     }
 }
