@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EyeCTforParticipation.Data;
 using EyeCTforParticipation.Models;
 using System.Device.Location;
+using System.Text.RegularExpressions;
 
 namespace EyeCTforParticipation.Logic
 {
@@ -53,11 +54,23 @@ namespace EyeCTforParticipation.Logic
             return context.Search(keywords);
         }
 
+        string FormatPostalCode(string postalCode)
+        {
+            Match match = Regex.Match(postalCode, "([0-9]{4}).*?([a-zA-Z]{2})");
+            if (match.Success)
+            {
+                string numbers = match.Groups[1].ToString();
+                string letters = match.Groups[2].ToString();
+                return numbers + letters.ToUpper();
+            }
+            return null;
+        }
+
         /// <summary>
         /// Get a list of help requests.
         /// </summary>
         /// <param name="postalCode">
-        /// The postal code used as the center of the search area.
+        /// The postal code used as the center of the search area. Example postal code: "5654 NE".
         /// </param>
         /// <param name="distance">
         /// The distance used as the radius of the search area.
@@ -67,13 +80,20 @@ namespace EyeCTforParticipation.Logic
         /// </returns>
         public List<HelpRequestModel> Search(string postalCode, int distance)
         {
-            GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(postalCode + "Netherlands");
+            // Check postal code
+            postalCode = FormatPostalCode(postalCode);
+
+            if (postalCode == null)
+            {
+                return Search();
+            }
+
+            GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(postalCode + " Netherlands");
 
             if (googleMapsApi == null)
             {
                 return Search();
             }
-
             return context.Search(googleMapsApi.Location, distance);
         }
 
@@ -84,7 +104,7 @@ namespace EyeCTforParticipation.Logic
         /// Keywords included in search results, keywords are seperated by whitespace.
         /// </param>
         /// <param name="postalCode">
-        /// The postal code used as the center of the search area.
+        /// The postal code used as the center of the search area. Example postal code: "5654 NE".
         /// </param>
         /// <param name="distance">
         /// The distance used as the radius of the search area.
@@ -99,7 +119,15 @@ namespace EyeCTforParticipation.Logic
         {
             // Maximum keywords length is 200
             keywords = keywords.Length > 200 ? keywords.Substring(0, 200) : keywords;
-            GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(postalCode + "Netherlands");
+            // Check postal code
+            postalCode = FormatPostalCode(postalCode);
+
+            if (postalCode == null)
+            {
+                return Search(keywords, orderByRelevance);
+            }
+
+            GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(postalCode + " Netherlands");
 
             if (googleMapsApi == null)
             {
