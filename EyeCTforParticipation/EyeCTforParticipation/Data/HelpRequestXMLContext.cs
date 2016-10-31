@@ -10,7 +10,7 @@ namespace EyeCTforParticipation.Data
 {
     public class HelpRequestXMLContext : IHelpRequestContext
     {
-        public List<HelpRequestModel> Search()
+        public List<HelpRequestModel> Search(SearchOrder order)
         {
             List<HelpRequestModel> results = new List<HelpRequestModel>();
             HelpRequestModel result = new HelpRequestModel
@@ -28,27 +28,17 @@ namespace EyeCTforParticipation.Data
             return results;
         }
 
-        public List<HelpRequestModel> Search(string keywords)
+        public List<HelpRequestModel> Search(string keywords, SearchOrder order1, SearchOrder order2)
         {
             throw new NotImplementedException();
         }
 
-        public List<HelpRequestModel> SearchByRelevance(string keywords)
+        public List<HelpRequestModel> Search(GeoCoordinate location, int distance, SearchOrder order1, SearchOrder order2)
         {
             throw new NotImplementedException();
         }
 
-        public List<HelpRequestModel> Search(GeoCoordinate location, int distance)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int distance)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<HelpRequestModel> SearchByRelevance(string keywords, GeoCoordinate location, int distance)
+        public List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int distance, SearchOrder order1, SearchOrder order2, SearchOrder order3)
         {
             throw new NotImplementedException();
         }

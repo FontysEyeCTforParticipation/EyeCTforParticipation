@@ -42,7 +42,7 @@ namespace EyeCTforParticipation.Controls
         {
 
             //Get initial search results
-            results = helpRequestRepository.Search();
+            results = helpRequestRepository.Search(null, null, null, SearchOrder.DATE_DESC, null, null);
 
             //Trigger search event
             if (Search != null)
@@ -56,27 +56,9 @@ namespace EyeCTforParticipation.Controls
             //Get values
             string keywords = tbSearch.Text;
             string postalCode = tbPostalCode.Text;
-            //int distance = Convert.ToInt32(cbDistance.Text);
-            int distance = 0;
+            int distance = Convert.ToInt32(cbDistance.Text);
 
-            //Check if values are valid as search filter
-            bool keywordsValue = keywords.Length > 0;
-            bool locationValue = postalCode.Length == 6 && distance > 0;
-
-            //Call search method depending on search filters
-            if (keywordsValue && locationValue)
-            {
-                results = helpRequestRepository.Search(keywords, postalCode, distance);
-            } else if(keywordsValue)
-            {
-                results = helpRequestRepository.Search(keywords);
-            } else if(locationValue)
-            {
-                results = helpRequestRepository.Search(postalCode, distance);
-            } else
-            {
-                results = helpRequestRepository.Search();
-            }
+            results = helpRequestRepository.Search(keywords, postalCode, distance, SearchOrder.DATE_DESC, null, null);
             
             //Trigger search event
             if (Search != null)

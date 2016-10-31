@@ -18,50 +18,18 @@ namespace EyeCTforParticipation.Logic
         {
             this.context = context;
         }
-        
-        /// <summary>
-        /// Get a list of helprequests.
-        /// </summary>
-        /// <returns>
-        /// A list of of help requests.
-        /// </returns>
-        public List<HelpRequestModel> Search()
-        {
-            return context.Search();
-        }
-
-        /// <summary>
-        /// Get a list of help requests.
-        /// </summary>
-        /// <param name="keywords">
-        /// Keywords included in search results, keywords are seperated by whitespace.
-        /// </param>
-        /// <param name="orderByRelevance">
-        /// Order results by relevance or date.
-        /// </param>
-        /// <returns>
-        /// A list of help requests.
-        /// </returns>
-        public List<HelpRequestModel> Search(string keywords, bool orderByRelevance = false)
-        {
-            // Maximum keywords length is 200
-            keywords = keywords.Length > 200 ? keywords.Substring(0, 200) : keywords;
-
-            if(orderByRelevance)
-            {
-                return context.SearchByRelevance(keywords);
-            }
-            return context.Search(keywords);
-        }
 
         string FormatPostalCode(string postalCode)
         {
-            Match match = Regex.Match(postalCode, "([0-9]{4}).*?([a-zA-Z]{2})");
-            if (match.Success)
+            if (postalCode != null)
             {
-                string numbers = match.Groups[1].ToString();
-                string letters = match.Groups[2].ToString();
-                return numbers + letters.ToUpper();
+                Match match = Regex.Match(postalCode, "([0-9]{4}).*?([a-zA-Z]{2})");
+                if (match.Success)
+                {
+                    string numbers = match.Groups[1].ToString();
+                    string letters = match.Groups[2].ToString();
+                    return numbers + letters.ToUpper();
+                }
             }
             return null;
         }
@@ -69,37 +37,6 @@ namespace EyeCTforParticipation.Logic
         /// <summary>
         /// Get a list of help requests.
         /// </summary>
-        /// <param name="postalCode">
-        /// The postal code used as the center of the search area. Example postal code: "5654 NE".
-        /// </param>
-        /// <param name="distance">
-        /// The distance used as the radius of the search area.
-        /// </param>
-        /// <returns>
-        /// A list of help requests.
-        /// </returns>
-        public List<HelpRequestModel> Search(string postalCode, int distance)
-        {
-            // Check postal code
-            postalCode = FormatPostalCode(postalCode);
-
-            if (postalCode == null)
-            {
-                return Search();
-            }
-
-            GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(postalCode + " Netherlands");
-
-            if (googleMapsApi == null)
-            {
-                return Search();
-            }
-            return context.Search(googleMapsApi.Location, distance);
-        }
-
-        /// <summary>
-        /// Get a list of help requests.
-        /// </summary>
         /// <param name="keywords">
         /// Keywords included in search results, keywords are seperated by whitespace.
         /// </param>
@@ -115,30 +52,63 @@ namespace EyeCTforParticipation.Logic
         /// <returns>
         /// A list of help requests.
         /// </returns>
-        public List<HelpRequestModel> Search(string keywords, string postalCode, int distance, bool orderByRelevance = false)
+        public List<HelpRequestModel> Search(string keywords, string postalCode, int? distance, SearchOrder order)
         {
             // Maximum keywords length is 200
-            keywords = keywords.Length > 200 ? keywords.Substring(0, 200) : keywords;
-            // Check postal code
+            keywords = keywords != null ? keywords.Length > 200 ? keywords.Substring(0, 200) : keywords.Length > 0 ? keywords : null : null;
+            // Format postal code
             postalCode = FormatPostalCode(postalCode);
-
-            if (postalCode == null)
+            // Make sure that distance is positive
+            distance = Math.Abs((int)distance);
+            //Check location
+            GeoCoordinate location = null;
+            if(postalCode != null)
             {
-                return Search(keywords, orderByRelevance);
+                GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(postalCode + " Netherlands");
+                if(googleMapsApi != null)
+                {
+                    location = googleMapsApi.Location;
+                }
             }
 
-            GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(postalCode + " Netherlands");
-
-            if (googleMapsApi == null)
+            if(keywords != null && location != null)
             {
-                return Search(keywords, orderByRelevance);
-            }
-
-            if (orderByRelevance)
+                return context.Search(keywords, location, (int)distance, order);
+            } else if(keywords != null)
             {
-                return context.SearchByRelevance(keywords, googleMapsApi.Location, distance);
+                switch (order)
+                {
+                    case SearchOrder.DATE_ASC:
+                    case SearchOrder.DATE_DESC:
+                    case SearchOrder.RELEVANCE_ASC:
+                    case SearchOrder.RELEVANCE_DESC:
+                        return context.Search(keywords, order);
+                    default:
+                        return context.Search(keywords, SearchOrder.DATE_DESC);
+                }
+            } else if (location != null)
+            {
+                switch (order)
+                {
+                    case SearchOrder.DATE_ASC:
+                    case SearchOrder.DATE_DESC:
+                    case SearchOrder.DISTANCE_ASC:
+                    case SearchOrder.DISTANCE_DESC:
+                        return context.Search(location, (int)distance, order);
+                    default:
+                        return context.Search(location, (int)distance, SearchOrder.DISTANCE_ASC);
+                }
+            } else
+            {
+                switch (order)
+                {
+                    case SearchOrder.DATE_ASC:
+                    case SearchOrder.DATE_DESC:
+                        return context.Search(order);
+                    default:
+                        return context.Search(SearchOrder.DATE_DESC);
+                }
             }
-            return context.Search(keywords, googleMapsApi.Location, distance);
         }
 
         /// <summary>

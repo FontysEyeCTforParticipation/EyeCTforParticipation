@@ -12,13 +12,33 @@ namespace EyeCTforParticipation.Data
 {
     public class HelpRequestSQLContext : IHelpRequestContext
     {
-        public List<HelpRequestModel> Search() 
+        string orderString(SearchOrder order)
+        {
+            switch (order)
+            {
+                case SearchOrder.DATE_ASC:
+                    return "Date ASC";
+                case SearchOrder.DATE_DESC:
+                    return "Date DESC";
+                case SearchOrder.DISTANCE_ASC:
+                    return "Distance ASC";
+                case SearchOrder.DISTANCE_DESC:
+                    return "Distance DESC";
+                case SearchOrder.RELEVANCE_ASC:
+                    return "Matches ASC";
+                case SearchOrder.RELEVANCE_DESC:
+                default:
+                    return "Matches DESC";
+            }
+        }
+
+        public List<HelpRequestModel> Search(SearchOrder order) 
         {
             List<HelpRequestModel> results = new List<HelpRequestModel>();
             string query = "SELECT Title, Date, Address, Urgency "
                          + "FROM HelpRequest "
                          + "WHERE Closed = 0 "
-                         + "ORDER BY Date DESC;";   
+                         + "ORDER BY " + orderString(order) + ";";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
@@ -35,47 +55,18 @@ namespace EyeCTforParticipation.Data
                             Urgency = (HelpRequestUrgency)reader.GetInt32(3)
                         });
                     }
-                    return results;
                 }
             }
+            return results;
         }
 
-        public List<HelpRequestModel> Search(string keywords)
-        {
-            List<HelpRequestModel> results = new List<HelpRequestModel>();
-            string query = "SELECT Title, Date, Address, Urgency "
-                         + "FROM HelpRequest "
-                         + "WHERE Closed = 0 AND [dbo].KeywordMatch(Title + Content, @Keywords, ' ') = 1 "
-                         + "ORDER BY Date DESC;";
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
-            using (SqlCommand cmd = new SqlCommand(query, conn))
-            {
-                conn.Open();
-                cmd.Parameters.AddWithValue("@Keywords", keywords);
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        results.Add(new HelpRequestModel
-                        {
-                            Title = reader.GetString(0),
-                            Date = reader.GetDateTime(1),
-                            Address = reader.GetString(2),
-                            Urgency = (HelpRequestUrgency)reader.GetInt32(3)
-                        });
-                    }
-                    return results;
-                }
-            }
-        }
-
-        public List<HelpRequestModel> SearchByRelevance(string keywords)
+        public List<HelpRequestModel> Search(string keywords, SearchOrder order)
         {
             List<HelpRequestModel> results = new List<HelpRequestModel>();
             string query = "SELECT Title, Date, Address, Urgency, [dbo].KeywordMatches(Title + Content, @Keywords, ' ') AS Matches "
                          + "FROM HelpRequest "
                          + "WHERE Closed = 0 AND Matches > 1 "
-                         + "ORDER BY Matches DESC, Date DESC;";
+                         + "ORDER BY " + orderString(order) + ";";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
@@ -93,33 +84,72 @@ namespace EyeCTforParticipation.Data
                             Urgency = (HelpRequestUrgency)reader.GetInt32(3)
                         });
                     }
-                    return results;
                 }
-            }
-        }
-
-        public List<HelpRequestModel> Search(GeoCoordinate location, int distance)  // todo
-        {
-            List<HelpRequestModel> results = new List<HelpRequestModel>();
-            string query = "SELECT Title, Date, Address, Urgency"
-                         + "FROM HelpRequest"
-                         + "WHERE Closed = 0";
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
-            using (SqlCommand cmd = new SqlCommand(query, conn))
-            {
-
             }
             return results;
         }
 
-        public List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int distance)
+        public List<HelpRequestModel> Search(GeoCoordinate location, int distance, SearchOrder order)
         {
-            throw new NotImplementedException();
+            List<HelpRequestModel> results = new List<HelpRequestModel>();
+            string query = "SELECT Title, Date, Address, Urgency, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance "
+                         + "FROM HelpRequest "
+                         + "WHERE Closed = 0 AND (Distance < @Distance * 1000 OR @Distance = 0) "
+                         + "ORDER BY " + orderString(order) + ";";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@Location", "POINT(" + location.Latitude + " " + location.Longitude + ")");
+                cmd.Parameters.AddWithValue("@Distance", distance);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        results.Add(new HelpRequestModel
+                        {
+                            Title = reader.GetString(0),
+                            Date = reader.GetDateTime(1),
+                            Address = reader.GetString(2),
+                            Urgency = (HelpRequestUrgency)reader.GetInt32(3),
+                            Distance = reader.GetInt32(4)
+                        });
+                    }
+                }
+            }
+            return results;
         }
-
-        public List<HelpRequestModel> SearchByRelevance(string keywords, GeoCoordinate location, int distance)
+        
+        public List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int distance, SearchOrder order)
         {
-            throw new NotImplementedException();
+            List<HelpRequestModel> results = new List<HelpRequestModel>();
+            string query = "SELECT Title, Date, Address, Urgency, [dbo].KeywordMatches(Title + Content, @Keywords, ' ') AS Matches, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance "
+                         + "FROM HelpRequest "
+                         + "WHERE Closed = 0 AND Matches > 1 AND (Distance < @Distance * 1000 OR @Distance = 0) "
+                         + "ORDER BY " + orderString(order) + ";";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@Keywords", keywords);
+                cmd.Parameters.AddWithValue("@Location", "POINT(" + location.Latitude + " " + location.Longitude + ")");
+                cmd.Parameters.AddWithValue("@Distance", distance);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        results.Add(new HelpRequestModel
+                        {
+                            Title = reader.GetString(0),
+                            Date = reader.GetDateTime(1),
+                            Address = reader.GetString(2),
+                            Urgency = (HelpRequestUrgency)reader.GetInt32(3),
+                            Distance = reader.GetInt32(5)
+                        });
+                    }
+                }
+            }
+            return results;
         }
 
         public HelpRequestModel Get(int id)
