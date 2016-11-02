@@ -28,7 +28,7 @@ namespace EyeCTforParticipation.Logic
                 {
                     string numbers = match.Groups[1].ToString();
                     string letters = match.Groups[2].ToString();
-                    return numbers + letters.ToUpper();
+                    return numbers + " " + letters.ToUpper();
                 }
             }
             return null;
