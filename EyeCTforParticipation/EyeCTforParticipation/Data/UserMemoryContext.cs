@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EyeCTforParticipation.Data
 {
-    public class UserXMLContext : IUserContext
+    public class UserMemoryContext : IUserContext
     {
     }
 }

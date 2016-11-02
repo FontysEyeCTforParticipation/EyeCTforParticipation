@@ -123,17 +123,17 @@
       <DependentUpon>SearchControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\ChatSQLContext.cs" />
-    <Compile Include="Data\ChatXMLContext.cs" />
+    <Compile Include="Data\ChatMemoryContext.cs" />
     <Compile Include="Data\HelpRequestSQLContext.cs" />
-    <Compile Include="Data\HelpRequestXMLContext.cs" />
+    <Compile Include="Data\HelpRequestMemoryContext.cs" />
     <Compile Include="Data\IChatContext.cs" />
     <Compile Include="Data\IHelpRequestContext.cs" />
     <Compile Include="Data\IReviewContext.cs" />
     <Compile Include="Data\IUserContext.cs" />
     <Compile Include="Data\ReviewSQLContext.cs" />
-    <Compile Include="Data\ReviewXMLContext.cs" />
+    <Compile Include="Data\ReviewMemoryContext.cs" />
     <Compile Include="Data\UserSQLContext.cs" />
-    <Compile Include="Data\UserXMLContext.cs" />
+    <Compile Include="Data\UserMemoryContext.cs" />
     <Compile Include="Forms\RegisterForm.cs">
       <SubType>Form</SubType>
     </Compile>

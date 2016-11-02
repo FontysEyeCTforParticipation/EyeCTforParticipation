@@ -8,8 +8,10 @@ using System.Device.Location;
 
 namespace EyeCTforParticipation.Data
 {
-    public class HelpRequestXMLContext : IHelpRequestContext
+    public class HelpRequestMemoryContext : IHelpRequestContext
     {
+        static List<HelpRequestModel> helpRequests = new List<HelpRequestModel>();
+
         public List<HelpRequestModel> Search(SearchOrder order)
         {
             List<HelpRequestModel> results = new List<HelpRequestModel>();
@@ -28,17 +30,7 @@ namespace EyeCTforParticipation.Data
             return results;
         }
 
-        public List<HelpRequestModel> Search(string keywords, SearchOrder order1, SearchOrder order2)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<HelpRequestModel> Search(GeoCoordinate location, int distance, SearchOrder order1, SearchOrder order2)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int distance, SearchOrder order1, SearchOrder order2, SearchOrder order3)
+        public List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int distance, SearchOrder order)
         {
             throw new NotImplementedException();
         }
