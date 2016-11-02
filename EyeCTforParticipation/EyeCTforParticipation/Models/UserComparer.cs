@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EyeCTforParticipation.Models
 {
-    class UserComparer : IComparer<UserModel>
+    public class UserComparer : IComparer<UserModel>
     {
         public int Compare(UserModel x, UserModel y)
         {

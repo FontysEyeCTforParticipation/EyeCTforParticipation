@@ -10,7 +10,7 @@ using System.Device.Location;
 
 namespace EyeCTforParticipation.Data
 {
-    public class HelpRequestSQLContext : IHelpRequestContext
+    class HelpRequestSQLContext : IHelpRequestContext
     {
         string orderString(SearchOrder order)
         {
@@ -94,7 +94,7 @@ namespace EyeCTforParticipation.Data
             List<HelpRequestModel> results = new List<HelpRequestModel>();
             string query = "SELECT Title, Date, Address, Urgency, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance "
                          + "FROM HelpRequest "
-                         + "WHERE Closed = 0 AND (Distance < @Distance * 1000 OR @Distance = 0) "
+                         + "WHERE Closed = 0 AND (Distance <= @Distance * 1000 OR @Distance = 0) "
                          + "ORDER BY " + orderString(order) + ";";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -112,7 +112,7 @@ namespace EyeCTforParticipation.Data
                             Date = reader.GetDateTime(1),
                             Address = reader.GetString(2),
                             Urgency = (HelpRequestUrgency)reader.GetInt32(3),
-                            Distance = reader.GetInt32(4)
+                            Distance = reader.GetDouble(4)
                         });
                     }
                 }
@@ -125,7 +125,7 @@ namespace EyeCTforParticipation.Data
             List<HelpRequestModel> results = new List<HelpRequestModel>();
             string query = "SELECT Title, Date, Address, Urgency, [dbo].KeywordMatches(Title + Content, @Keywords, ' ') AS Matches, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance "
                          + "FROM HelpRequest "
-                         + "WHERE Closed = 0 AND Matches > 0 AND (Distance < @Distance * 1000 OR @Distance = 0) "
+                         + "WHERE Closed = 0 AND Matches > 0 AND (Distance <= @Distance * 1000 OR @Distance = 0) "
                          + "ORDER BY " + orderString(order) + ";";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -144,7 +144,7 @@ namespace EyeCTforParticipation.Data
                             Date = reader.GetDateTime(1),
                             Address = reader.GetString(2),
                             Urgency = (HelpRequestUrgency)reader.GetInt32(3),
-                            Distance = reader.GetInt32(5)
+                            Distance = reader.GetDouble(5)
                         });
                     }
                 }
@@ -154,6 +154,7 @@ namespace EyeCTforParticipation.Data
 
         public HelpRequestModel Get(int id)
         {
+            HelpRequestModel result = null;
             string query = "SELECT HelpSeekerUserId, Title, Content, Date, Address, Urgency, Closed "
                          + "FROM HelpRequest "
                          + "WHERE Id = @Id";
@@ -166,7 +167,7 @@ namespace EyeCTforParticipation.Data
                 {
                     if(reader.Read())
                     {
-                        return new HelpRequestModel
+                        result = new HelpRequestModel
                         {
                             Id = id,
                             HelpSeeker = new UserModel
@@ -181,13 +182,14 @@ namespace EyeCTforParticipation.Data
                             Closed = reader.GetBoolean(6)
                         };
                     }
-                    return null;
                 }
             }
+            return result;
         }
 
         public int Create(HelpRequestModel helpRequest)
         {
+            int id;
             string query = "INSERT INTO HelpRequest "
                          + "(HelpSeekerUserId, Title, Content, Date, Address, Location, Urgency) "
                          + "VALUES (@HelpSeekerUserId, @Title, @Content, GETDATE(), @Address, geography::STPointFromText(@Location, 4326), @Urgency);"
@@ -202,20 +204,22 @@ namespace EyeCTforParticipation.Data
                 cmd.Parameters.AddWithValue("@Address", helpRequest.Address);
                 cmd.Parameters.AddWithValue("@Location", "POINT(" + helpRequest.Location.Latitude + " " + helpRequest.Location.Longitude + ")");
                 cmd.Parameters.AddWithValue("@Urgency", (int)helpRequest.Urgency);
-                return Convert.ToInt32(cmd.ExecuteScalar());
+                id = Convert.ToInt32(cmd.ExecuteScalar());
             }
+            return id;
         }
 
         public void Update(HelpRequestModel helpRequest)
         {
             string query = "UPDATE HelpRequest "
                          + "SET Title = @Title, Content = @Content, Address = @Address, Location = geography::STPointFromText(@Location, 4326), Urgency = @Urgency "
-                         + "WHERE Id = @Id;";
+                         + "WHERE Id = @Id AND HelpSeekerUserId = @HelpSeekerUserId";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
                 cmd.Parameters.AddWithValue("@Id", helpRequest.Id);
+                cmd.Parameters.AddWithValue("@HelpSeekerUserId", helpRequest.HelpSeeker.Id);
                 cmd.Parameters.AddWithValue("@Title", helpRequest.Title);
                 cmd.Parameters.AddWithValue("@Content", helpRequest.Content);
                 cmd.Parameters.AddWithValue("@Address", helpRequest.Address);
@@ -283,6 +287,7 @@ namespace EyeCTforParticipation.Data
 
         public int Apply(int id, int volunteerId)
         {
+            int applicationId;
             string query = "INSERT INTO Application "
                          + "(HelpRequestId, VolunteerId, Status, Date) "
                          + "VALUES (@Id, @VolunteerId, @Status, GETDATE());"
@@ -294,8 +299,9 @@ namespace EyeCTforParticipation.Data
                 cmd.Parameters.AddWithValue("@Id", id);
                 cmd.Parameters.AddWithValue("@VolunteerId", volunteerId);
                 cmd.Parameters.AddWithValue("@Status", (int)ApplicationStatus.NONE);
-                return Convert.ToInt32(cmd.ExecuteScalar());
+                applicationId = Convert.ToInt32(cmd.ExecuteScalar());
             }
+            return applicationId;
         }
 
         public void CancelApplication(int id, int volunteerId)
@@ -365,9 +371,9 @@ namespace EyeCTforParticipation.Data
                             Date = reader.GetDateTime(6)
                         });
                     }
-                    return applications;
                 }
             }
+            return applications;
         }
 
         public List<ApplicationModel> GetApplications(int id, int helpSeekerId)
@@ -405,9 +411,9 @@ namespace EyeCTforParticipation.Data
                             Date = reader.GetDateTime(8)
                         });
                     }
-                    return applications;
                 }
             }
+            return applications;
         }
 
         public void InterviewApplication(int id, int helpSeekerId)

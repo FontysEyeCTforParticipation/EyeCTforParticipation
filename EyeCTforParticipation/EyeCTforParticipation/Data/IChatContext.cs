@@ -7,7 +7,7 @@ using EyeCTforParticipation.Models;
 
 namespace EyeCTforParticipation.Data
 {
-    public interface IChatContext
+    interface IChatContext
     {
     }
 }

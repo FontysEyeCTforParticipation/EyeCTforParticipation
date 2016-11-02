@@ -10,7 +10,7 @@ using System.Text.RegularExpressions;
 
 namespace EyeCTforParticipation.Logic
 {
-    public class HelpRequestRepository
+    class HelpRequestRepository
     {
         IHelpRequestContext context;
 

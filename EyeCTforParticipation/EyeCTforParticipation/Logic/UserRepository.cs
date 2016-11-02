@@ -8,7 +8,7 @@ using EyeCTforParticipation.Models;
 
 namespace EyeCTforParticipation.Logic
 {
-    public class UserRepository
+    class UserRepository
     {
         IUserContext context;
 

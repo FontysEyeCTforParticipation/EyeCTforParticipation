@@ -7,7 +7,7 @@ using EyeCTforParticipation.Models;
 
 namespace EyeCTforParticipation.Data
 {
-    public interface IReviewContext
+    interface IReviewContext
     {
     }
 }

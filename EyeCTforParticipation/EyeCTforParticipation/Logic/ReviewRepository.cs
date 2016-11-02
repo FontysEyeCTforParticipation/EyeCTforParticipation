@@ -8,7 +8,7 @@ using EyeCTforParticipation.Models;
 
 namespace EyeCTforParticipation.Logic
 {
-    public class ReviewRepository
+    class ReviewRepository
     {
         IReviewContext context;
 

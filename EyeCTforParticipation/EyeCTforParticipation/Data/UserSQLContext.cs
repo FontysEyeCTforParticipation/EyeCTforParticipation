@@ -7,7 +7,7 @@ using EyeCTforParticipation.Models;
 
 namespace EyeCTforParticipation.Data
 {
-    public class UserSQLContext : IUserContext
+    class UserSQLContext : IUserContext
     {
     }
 }

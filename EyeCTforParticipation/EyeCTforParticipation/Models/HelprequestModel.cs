@@ -17,9 +17,10 @@ namespace EyeCTforParticipation.Models
         DateTime date;
         string address;
         GeoCoordinate location;
-        int distance;
+        double distance;
         HelpRequestUrgency urgency;
         bool closed;
+        int relevance;
 
         public int Id
         {
@@ -116,7 +117,7 @@ namespace EyeCTforParticipation.Models
             }
         }
 
-        public int Distance
+        public double Distance
         {
             get
             {
@@ -152,6 +153,19 @@ namespace EyeCTforParticipation.Models
             set
             {
                 closed = value;
+            }
+        }
+
+        public int Relevance
+        {
+            get
+            {
+                return relevance;
+            }
+
+            set
+            {
+                relevance = value;
             }
         }
     }

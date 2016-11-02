@@ -154,6 +154,8 @@
     <Compile Include="Models\ApplicationStatus.cs" />
     <Compile Include="Models\ChatModel.cs" />
     <Compile Include="Models\ApplicationModel.cs" />
+    <Compile Include="Models\HelpRequestCompare.cs" />
+    <Compile Include="Models\HelpRequestComparer.cs" />
     <Compile Include="Models\HelpRequestModel.cs" />
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
@@ -162,6 +164,7 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\HelpRequestUrgency.cs" />
+    <Compile Include="Models\MemoryContext.cs" />
     <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\ReviewReplyModel.cs" />
