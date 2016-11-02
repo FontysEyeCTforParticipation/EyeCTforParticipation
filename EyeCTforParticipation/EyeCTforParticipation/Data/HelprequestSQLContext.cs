@@ -65,7 +65,7 @@ namespace EyeCTforParticipation.Data
             List<HelpRequestModel> results = new List<HelpRequestModel>();
             string query = "SELECT Title, Date, Address, Urgency, [dbo].KeywordMatches(Title + Content, @Keywords, ' ') AS Matches "
                          + "FROM HelpRequest "
-                         + "WHERE Closed = 0 AND Matches > 1 "
+                         + "WHERE Closed = 0 AND Matches > 0 "
                          + "ORDER BY " + orderString(order) + ";";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -125,7 +125,7 @@ namespace EyeCTforParticipation.Data
             List<HelpRequestModel> results = new List<HelpRequestModel>();
             string query = "SELECT Title, Date, Address, Urgency, [dbo].KeywordMatches(Title + Content, @Keywords, ' ') AS Matches, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance "
                          + "FROM HelpRequest "
-                         + "WHERE Closed = 0 AND Matches > 1 AND (Distance < @Distance * 1000 OR @Distance = 0) "
+                         + "WHERE Closed = 0 AND Matches > 0 AND (Distance < @Distance * 1000 OR @Distance = 0) "
                          + "ORDER BY " + orderString(order) + ";";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
