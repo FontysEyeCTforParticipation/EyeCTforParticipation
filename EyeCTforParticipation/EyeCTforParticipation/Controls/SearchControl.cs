@@ -16,7 +16,7 @@ namespace EyeCTforParticipation.Controls
 {
     public partial class SearchControl : UserControl
     {
-        HelpRequestRepository helpRequestRepository = new HelpRequestRepository(new HelpRequestXMLContext());
+        HelpRequestRepository helpRequestRepository = new HelpRequestRepository(new HelpRequestMemoryContext());
         List<HelpRequestModel> results;
         Dictionary<int, string> cbDistances;
         public event EventHandler Search;
@@ -42,7 +42,7 @@ namespace EyeCTforParticipation.Controls
         {
 
             //Get initial search results
-            results = helpRequestRepository.Search(null, null, null, SearchOrder.DATE_DESC, null, null);
+            results = helpRequestRepository.Search(null, null, null, SearchOrder.DATE_DESC);
 
             //Trigger search event
             if (Search != null)
@@ -58,7 +58,7 @@ namespace EyeCTforParticipation.Controls
             string postalCode = tbPostalCode.Text;
             int distance = Convert.ToInt32(cbDistance.Text);
 
-            results = helpRequestRepository.Search(keywords, postalCode, distance, SearchOrder.DATE_DESC, null, null);
+            results = helpRequestRepository.Search(keywords, postalCode, distance, SearchOrder.DATE_DESC);
             
             //Trigger search event
             if (Search != null)

@@ -10,6 +10,9 @@ namespace EyeCTforParticipation.Data
 {
     public interface IHelpRequestContext
     {
+        List<HelpRequestModel> Search(SearchOrder order);
+        List<HelpRequestModel> Search(string keywords, SearchOrder order);
+        List<HelpRequestModel> Search(GeoCoordinate location, int distance, SearchOrder order);
         List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int distance, SearchOrder order);
         HelpRequestModel Get(int id);
         int Create(HelpRequestModel helpRequest);

@@ -14,20 +14,18 @@ namespace EyeCTforParticipation.Data
 
         public List<HelpRequestModel> Search(SearchOrder order)
         {
-            List<HelpRequestModel> results = new List<HelpRequestModel>();
-            HelpRequestModel result = new HelpRequestModel
-            {
-                Id = 1,
-                Title = "Example help request",
-                Content = "Example",
-                Address = "Eindhoven",
-                Date = DateTime.Now,
-                Distance = 5,
-                Urgency = HelpRequestUrgency.NONE
-            };
-            results.Add(result);
-
+            List<HelpRequestModel> results = helpRequests;
             return results;
+        }
+        
+        public List<HelpRequestModel> Search(string keywords, SearchOrder order)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<HelpRequestModel> Search(GeoCoordinate location, int distance, SearchOrder order)
+        {
+            throw new NotImplementedException();
         }
 
         public List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int distance, SearchOrder order)
