@@ -27,7 +27,7 @@ namespace EyeCTforParticipation.Models
                     return x.Distance.CompareTo(y.Distance);
                 case HelpRequestCompare.DISTANCE_DESC:
                     return y.Distance.CompareTo(y.Distance);
-                    return y.Relevance.CompareTo(x.Relevance);
+                    return y.Distance.CompareTo(x.Distance);
                 case HelpRequestCompare.TITLE_ASC:
                     return x.Title.CompareTo(y.Title);
                 case HelpRequestCompare.TITLE_DESC:
