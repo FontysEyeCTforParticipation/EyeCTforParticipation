@@ -52,6 +52,10 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Phidget21.NET, Version=2.1.8.222, Culture=neutral, PublicKeyToken=c2b1f2a3594bce52, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>RFID spul\Phidget21.NET.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -179,6 +183,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Models\VolunteerModel.cs" />
+    <Compile Include="RFID spul\rfid-simple\Program.cs" />
+    <Compile Include="RFID spul\rfid-simple\Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\accountControl.resx">
       <DependentUpon>AccountControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -260,6 +266,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\chip_card.png" />
+    <Content Include="RFID spul\Phidget21.NET.dll" />
+    <Content Include="RFID spul\RFID-simple.sln" />
+    <Content Include="RFID spul\rfid-simple\RFID-simple.csproj" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
