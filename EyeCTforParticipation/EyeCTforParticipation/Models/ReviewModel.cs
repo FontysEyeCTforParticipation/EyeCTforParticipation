@@ -78,5 +78,12 @@ namespace EyeCTforParticipation.Models
                 date = value;
             }
         }
+        public ReviewModel(int id, UserModel helpSeeker, VolunteerModel volunteer, DateTime date)
+        {
+            this.id = id;
+            this.helpSeeker = helpSeeker;
+            this.volunteer = volunteer;
+            this.date = date;
+        }
     }
 }
