@@ -13,6 +13,6 @@ namespace EyeCTforParticipation.Data
         List<ReviewModel> GetFromVolunteer(int id);
         int create(ReviewModel review);
         void update(ReviewModel review);
-        void delete(int id);
+        void delete(int Id);
     }
 }
