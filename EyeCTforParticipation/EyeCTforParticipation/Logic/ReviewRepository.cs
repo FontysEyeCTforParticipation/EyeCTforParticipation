@@ -23,20 +23,28 @@ namespace EyeCTforParticipation.Logic
         }
 
         /// <summary>
-        /// Create a new review if the id is null.
+        /// Create a new review if the id is 0.
         /// Else if a review exists with the same id, the existing review will be updated.
         /// </summary>
         /// <param name="review">
         /// The new or updated review.
         /// </param>
-        public int Create(ReviewModel review)
+        public ReviewModel Save(ReviewModel review)
         {
-            throw new NotImplementedException();
-            if (review == null)
+            if (review.Id == 0)
             {
-                
+                review.Id = context.Create(review);
+            } else
+            {
+                context.Update(review);
             }
-            
+            return review;            
+        }
+
+        public ReviewReplyModel Save(ReviewReplyModel reviewReply)
+        {
+            context.SaveReply(reviewReply);
+            return reviewReply;
         }
 
         /// <summary>
@@ -53,7 +61,15 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         public void Delete(int reviewId, UserModel user)
         {
-            throw new NotImplementedException();
+            switch (user.Role)
+            {
+                case UserRole.Admin:
+                    context.Delete(reviewId);
+                    break;
+                case UserRole.HelpSeeker:
+                    context.DeleteAsHelpSeeker(reviewId, user.Id);
+                    break;
+            }
         }
 
         /// <summary>
@@ -64,7 +80,7 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         public void Reply(ReviewReplyModel reply)
         {
-            throw new NotImplementedException();
+            context.SaveReply(reply);
         }
 
         /// <summary>

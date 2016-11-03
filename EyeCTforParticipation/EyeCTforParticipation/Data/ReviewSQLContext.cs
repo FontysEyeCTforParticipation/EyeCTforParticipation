@@ -14,10 +14,10 @@ namespace EyeCTforParticipation.Data
         public int Create(ReviewModel review)
         {
             int id;
-            string query = "INSERT INTO Review"
-                            + "(HelpSeekerUserId, VolunteerId, Content, Date)"
-                            + "VALUES (@HelpSeekerUserId, @VolunteerId, @Content, GETDATE());"
-                            + "SELECT SCOPE_IDENTITY()";
+            string query = @"INSERT INTO Review 
+                             (HelpSeekerUserId, VolunteerId, Content, Date) 
+                             VALUES (@HelpSeekerUserId, @VolunteerId, @Content, GETDATE()); 
+                             SELECT SCOPE_IDENTITY()";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
@@ -30,38 +30,45 @@ namespace EyeCTforParticipation.Data
             return id;
         }
 
-        public int CreateReply(ReviewReplyModel reviewreplymodel)
-        {
-            int id;
-            string query = "INSERT INTO ReviewReply"
-                         + "(Content, Date)"
-                         + "(VALUES (@Content, GETDATE());"
-                         + "SELECT SCOPE_IDENTITY()";
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
-            using (SqlCommand cmd = new SqlCommand(query, conn))
-            {
-                conn.Open();
-                cmd.Parameters.AddWithValue("@Content", reviewreplymodel.Content);
-                id = Convert.ToInt32(cmd.ExecuteScalar());
-            }
-            return id;
-        }
-
-        public void Delete(int Id)
+        public void Delete(int id)
         {
             // Delete reply related to the Review                     
-            string query = "DELETE FROM ReviewReply "
-                         + "ReviewId = @Id;"
+            string query = @"DELETE FROM ReviewReply 
+                             WHERE ReviewId = @Id;"
 
-                         // Delete Review
-                         + "DELETE FROM Review "
-                         + "WHERE Id = @Id;";
+                           // Delete Review
+                         + @"DELETE FROM Review 
+                             WHERE Id = @Id;";
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
-                cmd.Parameters.AddWithValue("@Id", Id);
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteAsHelpSeeker(int id, int userId)
+        {
+            // Delete reply related to the Review                     
+            string query = @"DELETE FROM ReviewReply 
+                             WHERE ReviewId = @Id AND ReviewId IN ( 
+                                SELECT Id 
+                                FROM Review 
+                                WHERE HelpSeekerUserId = @HelpSeekerUserId 
+                             );"
+
+                           // Delete Review
+                         + @"DELETE FROM Review 
+                             WHERE Id = @Id AND HelpSeekerUserId = @HelpSeekerUserId;";
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@HelpSeekerUserId", userId);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -78,9 +85,9 @@ namespace EyeCTforParticipation.Data
 
         public void Update(ReviewModel review)
         {
-            string query = "UPDATE Review "
-                         + "SET Content = @Content "
-                         + "WHERE Id = @Id";
+            string query = @"UPDATE Review 
+                             SET Content = @Content 
+                             WHERE Id = @Id AND HelpSeekerUserId = @HelpSeekerUserId;";
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -88,23 +95,57 @@ namespace EyeCTforParticipation.Data
                 conn.Open();
                 cmd.Parameters.AddWithValue("@Id", review.Id);
                 cmd.Parameters.AddWithValue("@Content", review.Content);
+                cmd.Parameters.AddWithValue("@HelpSeekerUserId", review.HelpSeeker.Id);
                 cmd.ExecuteNonQuery();
             }
         }
 
-        public void UpdateReply(ReviewReplyModel reviewreplymodel)
+        public void SaveReply(ReviewReplyModel reviewreplymodel)
         {
-            string query = "UPDATE ReviewReply"
-                         + "SET Content = @Content "
-                         + "WHERE Id = @Id";
+            string query = @"IF NOT EXISTS(
+                                SELECT *
+                                FROM ReviewReply
+                                WHERE ReviewId = @Id
+                             )
+                             BEGIN
+                                IF EXISTS(
+                                    SELECT *
+                                    FROM Review
+                                    WHERE Id = @Id AND VolunteerId = @VolunteerId
+                                )
+                                BEGIN
+                                    INSERT INTO ReviewReply (ReviewId, Content, Date)
+                                    VALUES (@Id, @Content, GETDATE())
+                                END
+                             ELSE
+                             BEGIN
+                                UPDATE ReviewReply
+                                SET Content = @Content 
+                                WHERE ReviewId = @Id AND ReviewId IN (
+                                    SELECT Id
+                                    FROM Review
+                                    WHERE VolunteerId = @VolunteerId
+                                )
+                             END";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
                 cmd.Parameters.AddWithValue("@Id", reviewreplymodel.Review);
                 cmd.Parameters.AddWithValue("@Content", reviewreplymodel.Content);
+                cmd.Parameters.AddWithValue("@VolunteerId", reviewreplymodel.Review.Volunteer.Id);
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        public void DeleteReply(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteReplyVolunteer(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

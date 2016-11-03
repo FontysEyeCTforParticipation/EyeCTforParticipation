@@ -12,9 +12,11 @@ namespace EyeCTforParticipation.Data
         List<ReviewModel> GetFromHelpSeeker(int id);
         List<ReviewModel> GetFromVolunteer(int id);
         int Create(ReviewModel review);
-        int CreateReply(ReviewReplyModel reviewreplymodel);
         void Update(ReviewModel review);
-        void UpdateReply(ReviewReplyModel reviewreplymodel);
-        void Delete(int Id);
+        void SaveReply(ReviewReplyModel reviewreplymodel);
+        void Delete(int id);
+        void DeleteAsHelpSeeker(int id, int userId);
+        void DeleteReply(int id);
+        void DeleteReplyVolunteer(int id);
     }
 }
