@@ -18,6 +18,7 @@ namespace EyeCTforParticipation.Forms
         {
             InitializeComponent();
             helpRequest.Back += helpRequest_Back;
+            
         }
 
         private void searchControl_Search(object sender, EventArgs e)

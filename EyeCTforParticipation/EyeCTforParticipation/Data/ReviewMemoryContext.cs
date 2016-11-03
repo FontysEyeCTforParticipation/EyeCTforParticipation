@@ -9,12 +9,27 @@ namespace EyeCTforParticipation.Data
 {
     class ReviewMemoryContext : IReviewContext
     {
-        public int create(ReviewModel review)
+        public int Create(ReviewModel review)
         {
             throw new NotImplementedException();
         }
 
-        public void delete(int id)
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteAsHelpSeeker(int id, int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteReply(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void DeleteReplyVolunteer(int id)
         {
             throw new NotImplementedException();
         }
@@ -29,7 +44,12 @@ namespace EyeCTforParticipation.Data
             throw new NotImplementedException();
         }
 
-        public void update(ReviewModel review)
+        public void SaveReply(ReviewReplyModel reviewreplymodel)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(ReviewModel review)
         {
             throw new NotImplementedException();
         }
