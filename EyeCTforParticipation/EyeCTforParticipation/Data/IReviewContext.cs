@@ -9,5 +9,10 @@ namespace EyeCTforParticipation.Data
 {
     interface IReviewContext
     {
+        List<ReviewModel> GetFromHelpSeeker(int id);
+        List<ReviewModel> GetFromVolunteer(int id);
+        int create(ReviewModel review);
+        void update(ReviewModel review);
+        void delete(ReviewModel review);
     }
 }
