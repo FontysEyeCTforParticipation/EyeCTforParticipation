@@ -17,6 +17,11 @@ namespace EyeCTforParticipation.Logic
             this.context = context;
         }
 
+        List<ReviewModel> Get(UserModel user)
+        {
+            throw new NotImplementedException(); 
+        }
+
         /// <summary>
         /// Create a new review if the id is null.
         /// Else if a review exists with the same id, the existing review will be updated.
