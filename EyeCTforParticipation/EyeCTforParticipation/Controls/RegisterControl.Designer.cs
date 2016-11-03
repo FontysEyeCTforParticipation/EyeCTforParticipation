@@ -69,11 +69,11 @@
             this.lbEmail.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbEmail.Location = new System.Drawing.Point(0, 148);
+            this.lbEmail.Location = new System.Drawing.Point(0, 145);
             this.lbEmail.Margin = new System.Windows.Forms.Padding(0);
             this.lbEmail.Name = "lbEmail";
-            this.lbEmail.Padding = new System.Windows.Forms.Padding(40, 20, 40, 20);
-            this.lbEmail.Size = new System.Drawing.Size(189, 85);
+            this.lbEmail.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
+            this.lbEmail.Size = new System.Drawing.Size(189, 83);
             this.lbEmail.TabIndex = 2;
             this.lbEmail.Text = "E-mail";
             // 
@@ -82,11 +82,11 @@
             this.tbEmailWrapper.AutoSize = true;
             this.tbEmailWrapper.Controls.Add(this.tbEmail);
             this.tbEmailWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tbEmailWrapper.Location = new System.Drawing.Point(0, 233);
+            this.tbEmailWrapper.Location = new System.Drawing.Point(0, 228);
             this.tbEmailWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.tbEmailWrapper.Name = "tbEmailWrapper";
-            this.tbEmailWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 20);
-            this.tbEmailWrapper.Size = new System.Drawing.Size(740, 63);
+            this.tbEmailWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 19);
+            this.tbEmailWrapper.Size = new System.Drawing.Size(720, 62);
             this.tbEmailWrapper.TabIndex = 6;
             // 
             // tbEmail
@@ -96,7 +96,7 @@
             this.tbEmail.Location = new System.Drawing.Point(40, 0);
             this.tbEmail.Margin = new System.Windows.Forms.Padding(0);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(660, 43);
+            this.tbEmail.Size = new System.Drawing.Size(640, 43);
             this.tbEmail.TabIndex = 1;
             this.tbEmail.TextChanged += new System.EventHandler(this.tbEmail_TextChanged);
             // 
@@ -106,11 +106,11 @@
             this.lbPassword.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbPassword.Location = new System.Drawing.Point(0, 529);
+            this.lbPassword.Location = new System.Drawing.Point(0, 518);
             this.lbPassword.Margin = new System.Windows.Forms.Padding(0);
             this.lbPassword.Name = "lbPassword";
-            this.lbPassword.Padding = new System.Windows.Forms.Padding(40, 20, 40, 20);
-            this.lbPassword.Size = new System.Drawing.Size(280, 85);
+            this.lbPassword.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
+            this.lbPassword.Size = new System.Drawing.Size(280, 83);
             this.lbPassword.TabIndex = 7;
             this.lbPassword.Text = "Wachtwoord";
             // 
@@ -119,11 +119,11 @@
             this.tbPasswordWrapper.AutoSize = true;
             this.tbPasswordWrapper.Controls.Add(this.tbPassword);
             this.tbPasswordWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tbPasswordWrapper.Location = new System.Drawing.Point(0, 614);
+            this.tbPasswordWrapper.Location = new System.Drawing.Point(0, 601);
             this.tbPasswordWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.tbPasswordWrapper.Name = "tbPasswordWrapper";
-            this.tbPasswordWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 20);
-            this.tbPasswordWrapper.Size = new System.Drawing.Size(740, 63);
+            this.tbPasswordWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 19);
+            this.tbPasswordWrapper.Size = new System.Drawing.Size(720, 62);
             this.tbPasswordWrapper.TabIndex = 8;
             // 
             // tbPassword
@@ -134,7 +134,7 @@
             this.tbPassword.Margin = new System.Windows.Forms.Padding(0);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
-            this.tbPassword.Size = new System.Drawing.Size(660, 43);
+            this.tbPassword.Size = new System.Drawing.Size(640, 43);
             this.tbPassword.TabIndex = 2;
             this.tbPassword.TextChanged += new System.EventHandler(this.tbPassword_TextChanged);
             // 
@@ -143,11 +143,11 @@
             this.btRegisterWrapper.AutoSize = true;
             this.btRegisterWrapper.Controls.Add(this.btRegister);
             this.btRegisterWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btRegisterWrapper.Location = new System.Drawing.Point(0, 1208);
+            this.btRegisterWrapper.Location = new System.Drawing.Point(0, 1183);
             this.btRegisterWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btRegisterWrapper.Name = "btRegisterWrapper";
-            this.btRegisterWrapper.Padding = new System.Windows.Forms.Padding(40, 30, 40, 40);
-            this.btRegisterWrapper.Size = new System.Drawing.Size(740, 137);
+            this.btRegisterWrapper.Padding = new System.Windows.Forms.Padding(40, 31, 40, 40);
+            this.btRegisterWrapper.Size = new System.Drawing.Size(720, 138);
             this.btRegisterWrapper.TabIndex = 9;
             // 
             // btRegister
@@ -160,13 +160,13 @@
             this.btRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btRegister.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btRegister.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btRegister.Location = new System.Drawing.Point(40, 30);
+            this.btRegister.Location = new System.Drawing.Point(40, 31);
             this.btRegister.Margin = new System.Windows.Forms.Padding(0);
             this.btRegister.Name = "btRegister";
             this.btRegister.Padding = new System.Windows.Forms.Padding(10);
-            this.btRegister.Size = new System.Drawing.Size(166, 67);
+            this.btRegister.Size = new System.Drawing.Size(218, 67);
             this.btRegister.TabIndex = 3;
-            this.btRegister.Text = "REGISTER";
+            this.btRegister.Text = "REGISTREREN";
             this.btRegister.UseVisualStyleBackColor = false;
             // 
             // lbEmailRepeat
@@ -175,11 +175,11 @@
             this.lbEmailRepeat.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbEmailRepeat.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbEmailRepeat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbEmailRepeat.Location = new System.Drawing.Point(0, 296);
+            this.lbEmailRepeat.Location = new System.Drawing.Point(0, 290);
             this.lbEmailRepeat.Margin = new System.Windows.Forms.Padding(0);
             this.lbEmailRepeat.Name = "lbEmailRepeat";
-            this.lbEmailRepeat.Padding = new System.Windows.Forms.Padding(40, 20, 40, 20);
-            this.lbEmailRepeat.Size = new System.Drawing.Size(321, 85);
+            this.lbEmailRepeat.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
+            this.lbEmailRepeat.Size = new System.Drawing.Size(321, 83);
             this.lbEmailRepeat.TabIndex = 10;
             this.lbEmailRepeat.Text = "E-mail herhalen";
             // 
@@ -188,11 +188,11 @@
             this.tbEmailRepeatWrapper.AutoSize = true;
             this.tbEmailRepeatWrapper.Controls.Add(this.tbEmailRepeat);
             this.tbEmailRepeatWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tbEmailRepeatWrapper.Location = new System.Drawing.Point(0, 381);
+            this.tbEmailRepeatWrapper.Location = new System.Drawing.Point(0, 373);
             this.tbEmailRepeatWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.tbEmailRepeatWrapper.Name = "tbEmailRepeatWrapper";
-            this.tbEmailRepeatWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 20);
-            this.tbEmailRepeatWrapper.Size = new System.Drawing.Size(740, 63);
+            this.tbEmailRepeatWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 19);
+            this.tbEmailRepeatWrapper.Size = new System.Drawing.Size(720, 62);
             this.tbEmailRepeatWrapper.TabIndex = 11;
             // 
             // tbEmailRepeat
@@ -202,7 +202,7 @@
             this.tbEmailRepeat.Location = new System.Drawing.Point(40, 0);
             this.tbEmailRepeat.Margin = new System.Windows.Forms.Padding(0);
             this.tbEmailRepeat.Name = "tbEmailRepeat";
-            this.tbEmailRepeat.Size = new System.Drawing.Size(660, 43);
+            this.tbEmailRepeat.Size = new System.Drawing.Size(640, 43);
             this.tbEmailRepeat.TabIndex = 1;
             this.tbEmailRepeat.TextChanged += new System.EventHandler(this.tbEmailRepeat_TextChanged);
             // 
@@ -211,11 +211,11 @@
             this.tbPasswordRepeatWrapper.AutoSize = true;
             this.tbPasswordRepeatWrapper.Controls.Add(this.tbPasswordRepeat);
             this.tbPasswordRepeatWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tbPasswordRepeatWrapper.Location = new System.Drawing.Point(0, 762);
+            this.tbPasswordRepeatWrapper.Location = new System.Drawing.Point(0, 746);
             this.tbPasswordRepeatWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.tbPasswordRepeatWrapper.Name = "tbPasswordRepeatWrapper";
-            this.tbPasswordRepeatWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 20);
-            this.tbPasswordRepeatWrapper.Size = new System.Drawing.Size(740, 63);
+            this.tbPasswordRepeatWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 19);
+            this.tbPasswordRepeatWrapper.Size = new System.Drawing.Size(720, 62);
             this.tbPasswordRepeatWrapper.TabIndex = 12;
             // 
             // tbPasswordRepeat
@@ -226,7 +226,7 @@
             this.tbPasswordRepeat.Margin = new System.Windows.Forms.Padding(0);
             this.tbPasswordRepeat.Name = "tbPasswordRepeat";
             this.tbPasswordRepeat.PasswordChar = '*';
-            this.tbPasswordRepeat.Size = new System.Drawing.Size(660, 43);
+            this.tbPasswordRepeat.Size = new System.Drawing.Size(640, 43);
             this.tbPasswordRepeat.TabIndex = 2;
             this.tbPasswordRepeat.TextChanged += new System.EventHandler(this.tbPasswordRepeat_TextChanged);
             // 
@@ -236,11 +236,11 @@
             this.lbPasswordRepeat.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbPasswordRepeat.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPasswordRepeat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbPasswordRepeat.Location = new System.Drawing.Point(0, 677);
+            this.lbPasswordRepeat.Location = new System.Drawing.Point(0, 663);
             this.lbPasswordRepeat.Margin = new System.Windows.Forms.Padding(0);
             this.lbPasswordRepeat.Name = "lbPasswordRepeat";
-            this.lbPasswordRepeat.Padding = new System.Windows.Forms.Padding(40, 20, 40, 20);
-            this.lbPasswordRepeat.Size = new System.Drawing.Size(412, 85);
+            this.lbPasswordRepeat.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
+            this.lbPasswordRepeat.Size = new System.Drawing.Size(412, 83);
             this.lbPasswordRepeat.TabIndex = 13;
             this.lbPasswordRepeat.Text = "Wachtwoord herhalen";
             // 
@@ -253,8 +253,8 @@
             this.lbName.Location = new System.Drawing.Point(0, 0);
             this.lbName.Margin = new System.Windows.Forms.Padding(0);
             this.lbName.Name = "lbName";
-            this.lbName.Padding = new System.Windows.Forms.Padding(40, 20, 40, 20);
-            this.lbName.Size = new System.Drawing.Size(184, 85);
+            this.lbName.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
+            this.lbName.Size = new System.Drawing.Size(184, 83);
             this.lbName.TabIndex = 14;
             this.lbName.Text = "Naam";
             // 
@@ -263,11 +263,11 @@
             this.tbNameWrapper.AutoSize = true;
             this.tbNameWrapper.Controls.Add(this.tbName);
             this.tbNameWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tbNameWrapper.Location = new System.Drawing.Point(0, 85);
+            this.tbNameWrapper.Location = new System.Drawing.Point(0, 83);
             this.tbNameWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.tbNameWrapper.Name = "tbNameWrapper";
-            this.tbNameWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 20);
-            this.tbNameWrapper.Size = new System.Drawing.Size(740, 63);
+            this.tbNameWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 19);
+            this.tbNameWrapper.Size = new System.Drawing.Size(720, 62);
             this.tbNameWrapper.TabIndex = 15;
             // 
             // tbName
@@ -277,7 +277,7 @@
             this.tbName.Location = new System.Drawing.Point(40, 0);
             this.tbName.Margin = new System.Windows.Forms.Padding(0);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(660, 43);
+            this.tbName.Size = new System.Drawing.Size(640, 43);
             this.tbName.TabIndex = 1;
             // 
             // cbRoleWrapper
@@ -285,11 +285,11 @@
             this.cbRoleWrapper.AutoSize = true;
             this.cbRoleWrapper.Controls.Add(this.cbRole);
             this.cbRoleWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.cbRoleWrapper.Location = new System.Drawing.Point(0, 1143);
+            this.cbRoleWrapper.Location = new System.Drawing.Point(0, 1119);
             this.cbRoleWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.cbRoleWrapper.Name = "cbRoleWrapper";
-            this.cbRoleWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 20);
-            this.cbRoleWrapper.Size = new System.Drawing.Size(740, 65);
+            this.cbRoleWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 19);
+            this.cbRoleWrapper.Size = new System.Drawing.Size(720, 64);
             this.cbRoleWrapper.TabIndex = 9;
             // 
             // cbRole
@@ -299,8 +299,9 @@
             this.cbRole.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbRole.FormattingEnabled = true;
             this.cbRole.Location = new System.Drawing.Point(40, 0);
+            this.cbRole.Margin = new System.Windows.Forms.Padding(0);
             this.cbRole.Name = "cbRole";
-            this.cbRole.Size = new System.Drawing.Size(660, 45);
+            this.cbRole.Size = new System.Drawing.Size(640, 45);
             this.cbRole.TabIndex = 16;
             // 
             // lbRole
@@ -309,11 +310,11 @@
             this.lbRole.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbRole.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbRole.Location = new System.Drawing.Point(0, 1058);
+            this.lbRole.Location = new System.Drawing.Point(0, 1036);
             this.lbRole.Margin = new System.Windows.Forms.Padding(0);
             this.lbRole.Name = "lbRole";
-            this.lbRole.Padding = new System.Windows.Forms.Padding(40, 20, 40, 20);
-            this.lbRole.Size = new System.Drawing.Size(288, 85);
+            this.lbRole.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
+            this.lbRole.Size = new System.Drawing.Size(288, 83);
             this.lbRole.TabIndex = 16;
             this.lbRole.Text = "Account type";
             // 
@@ -323,11 +324,11 @@
             this.lbPasswordMismatch.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbPasswordMismatch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPasswordMismatch.ForeColor = System.Drawing.Color.Firebrick;
-            this.lbPasswordMismatch.Location = new System.Drawing.Point(0, 825);
+            this.lbPasswordMismatch.Location = new System.Drawing.Point(0, 808);
             this.lbPasswordMismatch.Margin = new System.Windows.Forms.Padding(0);
             this.lbPasswordMismatch.Name = "lbPasswordMismatch";
-            this.lbPasswordMismatch.Padding = new System.Windows.Forms.Padding(40, 20, 40, 20);
-            this.lbPasswordMismatch.Size = new System.Drawing.Size(608, 85);
+            this.lbPasswordMismatch.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
+            this.lbPasswordMismatch.Size = new System.Drawing.Size(608, 83);
             this.lbPasswordMismatch.TabIndex = 17;
             this.lbPasswordMismatch.Text = "Wachtwoorden komen niet overeen";
             this.lbPasswordMismatch.Visible = false;
@@ -338,11 +339,11 @@
             this.lbEmailMismatch.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbEmailMismatch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbEmailMismatch.ForeColor = System.Drawing.Color.Firebrick;
-            this.lbEmailMismatch.Location = new System.Drawing.Point(0, 444);
+            this.lbEmailMismatch.Location = new System.Drawing.Point(0, 435);
             this.lbEmailMismatch.Margin = new System.Windows.Forms.Padding(0);
             this.lbEmailMismatch.Name = "lbEmailMismatch";
-            this.lbEmailMismatch.Padding = new System.Windows.Forms.Padding(40, 20, 40, 20);
-            this.lbEmailMismatch.Size = new System.Drawing.Size(617, 85);
+            this.lbEmailMismatch.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
+            this.lbEmailMismatch.Size = new System.Drawing.Size(617, 83);
             this.lbEmailMismatch.TabIndex = 18;
             this.lbEmailMismatch.Text = "E-mail adressen komen niet overeen";
             this.lbEmailMismatch.Visible = false;
@@ -353,11 +354,11 @@
             this.lbBirthdate.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbBirthdate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbBirthdate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbBirthdate.Location = new System.Drawing.Point(0, 910);
+            this.lbBirthdate.Location = new System.Drawing.Point(0, 891);
             this.lbBirthdate.Margin = new System.Windows.Forms.Padding(0);
             this.lbBirthdate.Name = "lbBirthdate";
-            this.lbBirthdate.Padding = new System.Windows.Forms.Padding(40, 20, 40, 20);
-            this.lbBirthdate.Size = new System.Drawing.Size(327, 85);
+            this.lbBirthdate.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
+            this.lbBirthdate.Size = new System.Drawing.Size(327, 83);
             this.lbBirthdate.TabIndex = 19;
             this.lbBirthdate.Text = "Geboortedatum";
             // 
@@ -366,11 +367,11 @@
             this.dtBirthdateWrapper.AutoSize = true;
             this.dtBirthdateWrapper.Controls.Add(this.dtBirthdate);
             this.dtBirthdateWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dtBirthdateWrapper.Location = new System.Drawing.Point(0, 995);
+            this.dtBirthdateWrapper.Location = new System.Drawing.Point(0, 974);
             this.dtBirthdateWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.dtBirthdateWrapper.Name = "dtBirthdateWrapper";
-            this.dtBirthdateWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 20);
-            this.dtBirthdateWrapper.Size = new System.Drawing.Size(740, 63);
+            this.dtBirthdateWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 19);
+            this.dtBirthdateWrapper.Size = new System.Drawing.Size(720, 62);
             this.dtBirthdateWrapper.TabIndex = 20;
             // 
             // dtBirthdate
@@ -380,14 +381,18 @@
             this.dtBirthdate.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtBirthdate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtBirthdate.Location = new System.Drawing.Point(40, 0);
+            this.dtBirthdate.Margin = new System.Windows.Forms.Padding(0);
             this.dtBirthdate.Name = "dtBirthdate";
-            this.dtBirthdate.Size = new System.Drawing.Size(660, 43);
+            this.dtBirthdate.Size = new System.Drawing.Size(640, 43);
             this.dtBirthdate.TabIndex = 3;
+            this.dtBirthdate.ValueChanged += new System.EventHandler(this.dtBirthdate_ValueChanged);
             // 
             // RegisterControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.btRegisterWrapper);
             this.Controls.Add(this.cbRoleWrapper);
@@ -407,8 +412,9 @@
             this.Controls.Add(this.tbNameWrapper);
             this.Controls.Add(this.lbName);
             this.Margin = new System.Windows.Forms.Padding(0);
+            this.MinimumSize = new System.Drawing.Size(720, 0);
             this.Name = "RegisterControl";
-            this.Size = new System.Drawing.Size(740, 1360);
+            this.Size = new System.Drawing.Size(720, 1321);
             this.tbEmailWrapper.ResumeLayout(false);
             this.tbEmailWrapper.PerformLayout();
             this.tbPasswordWrapper.ResumeLayout(false);

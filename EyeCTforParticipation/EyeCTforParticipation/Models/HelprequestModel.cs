@@ -3,19 +3,51 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Device.Location;
+using EyeCTforParticipation.Logic;
 
-namespace EyeCTforParticipation
+namespace EyeCTforParticipation.Models
 {
-    class HelprequestModel
+    public class HelpRequestModel
     {
-        //fields
-        private string title;
-        private string content;
-        private DateTime date;
-        private string location;
-        private int urgency;
+        int id;
+        UserModel helpSeeker;
+        string title;
+        string content;
+        DateTime date;
+        string address;
+        GeoCoordinate location;
+        double distance;
+        HelpRequestUrgency urgency;
+        bool closed;
+        int relevance;
 
-        //property accessors
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
+        public UserModel HelpSeeker
+        {
+            get
+            {
+                return helpSeeker;
+            }
+
+            set
+            {
+                helpSeeker = value;
+            }
+        }
+
         public string Title
         {
             get
@@ -28,6 +60,7 @@ namespace EyeCTforParticipation
                 title = value;
             }
         }
+
         public string Content
         {
             get
@@ -40,6 +73,7 @@ namespace EyeCTforParticipation
                 content = value;
             }
         }
+
         public DateTime Date
         {
             get
@@ -52,19 +86,51 @@ namespace EyeCTforParticipation
                 date = value;
             }
         }
-        public string Location
+
+        public string Address
+        {
+            get
+            {
+                return address;
+            }
+
+            set
+            {
+                GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(value);
+                if(googleMapsApi == null)
+                {
+                    address = "";
+                    location = new GeoCoordinate(0, 0);
+                } else
+                {
+                    address = googleMapsApi.Address;
+                    location = googleMapsApi.Location;
+                }
+            }
+        }
+
+        public GeoCoordinate Location
         {
             get
             {
                 return location;
             }
+        }
+
+        public double Distance
+        {
+            get
+            {
+                return distance;
+            }
 
             set
             {
-                location = value;
+                distance = value;
             }
         }
-        public int Urgency
+
+        public HelpRequestUrgency Urgency
         {
             get
             {
@@ -77,14 +143,30 @@ namespace EyeCTforParticipation
             }
         }
 
-        //constructor
-        public HelprequestModel(string title, string content, DateTime date, string location, int urgency)
+        public bool Closed
         {
-            Title = title;
-            Content = content;
-            Date = date;
-            Location = location;
-            Urgency = urgency;
+            get
+            {
+                return closed;
+            }
+
+            set
+            {
+                closed = value;
+            }
+        }
+
+        public int Relevance
+        {
+            get
+            {
+                return relevance;
+            }
+
+            set
+            {
+                relevance = value;
+            }
         }
     }
 }

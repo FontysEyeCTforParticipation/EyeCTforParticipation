@@ -46,7 +46,7 @@
             this.lbInstructions.ForeColor = System.Drawing.Color.Gray;
             this.lbInstructions.Location = new System.Drawing.Point(0, 0);
             this.lbInstructions.Margin = new System.Windows.Forms.Padding(0);
-            this.lbInstructions.MaximumSize = new System.Drawing.Size(715, 0);
+            this.lbInstructions.MaximumSize = new System.Drawing.Size(720, 0);
             this.lbInstructions.Name = "lbInstructions";
             this.lbInstructions.Padding = new System.Windows.Forms.Padding(40, 20, 40, 20);
             this.lbInstructions.Size = new System.Drawing.Size(713, 130);
@@ -76,7 +76,7 @@
             this.tbEmailWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.tbEmailWrapper.Name = "tbEmailWrapper";
             this.tbEmailWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 20);
-            this.tbEmailWrapper.Size = new System.Drawing.Size(740, 63);
+            this.tbEmailWrapper.Size = new System.Drawing.Size(700, 63);
             this.tbEmailWrapper.TabIndex = 12;
             // 
             // tbEmail
@@ -86,7 +86,7 @@
             this.tbEmail.Location = new System.Drawing.Point(40, 0);
             this.tbEmail.Margin = new System.Windows.Forms.Padding(0);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(660, 43);
+            this.tbEmail.Size = new System.Drawing.Size(620, 43);
             this.tbEmail.TabIndex = 3;
             // 
             // btSendWrapper
@@ -98,7 +98,7 @@
             this.btSendWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btSendWrapper.Name = "btSendWrapper";
             this.btSendWrapper.Padding = new System.Windows.Forms.Padding(40, 30, 40, 40);
-            this.btSendWrapper.Size = new System.Drawing.Size(740, 137);
+            this.btSendWrapper.Size = new System.Drawing.Size(700, 137);
             this.btSendWrapper.TabIndex = 13;
             // 
             // btSend
@@ -124,14 +124,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.btSendWrapper);
             this.Controls.Add(this.tbEmailWrapper);
             this.Controls.Add(this.lbEmail);
             this.Controls.Add(this.lbInstructions);
             this.Margin = new System.Windows.Forms.Padding(0);
+            this.MinimumSize = new System.Drawing.Size(700, 0);
             this.Name = "ForgotPasswordControl";
-            this.Size = new System.Drawing.Size(740, 920);
+            this.Size = new System.Drawing.Size(700, 415);
             this.tbEmailWrapper.ResumeLayout(false);
             this.tbEmailWrapper.PerformLayout();
             this.btSendWrapper.ResumeLayout(false);

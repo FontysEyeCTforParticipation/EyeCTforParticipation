@@ -4,24 +4,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EyeCTforParticipation
+namespace EyeCTforParticipation.Models
 {
-    abstract class UserModel
+    public class UserModel
     {
-        //fields
-        private string name;
-        private string email;
-        private string password;
-        private int rfid;
-        private DateTime dateofbirth;
+        int id;
+        UserRole role;
+        string name;
+        string email;
+        string rfid;
+        string password;
+        DateTime birthdate;
 
-        //property accessors
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
+        public virtual UserRole Role
+        {
+            get
+            {
+                return role;
+            }
+
+            set
+            {
+                role = value;
+            }
+        }
+
         public string Name
         {
             get
             {
                 return name;
             }
+
             set
             {
                 name = value;
@@ -34,9 +61,23 @@ namespace EyeCTforParticipation
             {
                 return email;
             }
+
             set
             {
                 email = value;
+            }
+        }
+
+        public string Rfid
+        {
+            get
+            {
+                return rfid;
+            }
+
+            set
+            {
+                rfid = value;
             }
         }
 
@@ -46,44 +87,24 @@ namespace EyeCTforParticipation
             {
                 return password;
             }
+
             set
             {
                 password = value;
             }
         }
 
-        public int RFID
+        public DateTime Birthdate
         {
             get
             {
-                return rfid;
+                return birthdate;
             }
+
             set
             {
-                rfid = value;
+                birthdate = value;
             }
-        }
-
-        public DateTime DateOfBirth
-        {
-            get
-            {
-                return dateofbirth;
-            }
-            set
-            {
-                dateofbirth = value;
-            }
-        }
-
-        //constructor
-        public UserModel(string name, string email, string password, int rfid, DateTime dateOfBirth)
-        {
-            Name = name;
-            Email = email;
-            Password = password;
-            RFID = rfid;
-            DateOfBirth = dateOfBirth;
         }
     }
 }

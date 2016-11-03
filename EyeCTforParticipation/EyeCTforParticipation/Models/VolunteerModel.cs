@@ -3,24 +3,59 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Device.Location;
 
-namespace EyeCTforParticipation
+namespace EyeCTforParticipation.Models
 {
-    class VolunteerModel : UserModel
+    public class VolunteerModel : UserModel
     {
-        //fields
-        private string location;
-        private bool driverslicense;
-        private bool car;
-        private bool availability;
+        string about;
+        string address;
+        GeoCoordinate location;
+        bool driversLicense;
+        bool car;
 
-        //property accessors
-        public string Location
+        public override UserRole Role
+        {
+            get
+            {
+                return UserRole.Volunteer;
+            }
+        }
+
+        public string About
+        {
+            get
+            {
+                return about;
+            }
+
+            set
+            {
+                about = value;
+            }
+        }
+
+        public string Address
+        {
+            get
+            {
+                return address;
+            }
+
+            set
+            {
+                address = value;
+            }
+        }
+
+        public GeoCoordinate Location
         {
             get
             {
                 return location;
             }
+
             set
             {
                 location = value;
@@ -31,11 +66,12 @@ namespace EyeCTforParticipation
         {
             get
             {
-                return driverslicense;
+                return driversLicense;
             }
+
             set
             {
-                driverslicense = value;
+                driversLicense = value;
             }
         }
 
@@ -45,30 +81,11 @@ namespace EyeCTforParticipation
             {
                 return car;
             }
+
             set
             {
                 car = value;
             }
-        }
-        public bool Availability
-        {
-            get
-            {
-                return availability;
-            }
-            set
-            {
-                availability = value;
-            }
-        }
-
-        //constructor
-        public VolunteerModel(string name, string email, string password, int rfid, DateTime dateOfBirth, string location, bool driversLicense, bool car, bool availability) : base(name, email, password, rfid, dateOfBirth)
-        {
-            Location = location;
-            DriversLicense = driversLicense;
-            Car = car;
-            Availability = availability;
         }
     }
 }

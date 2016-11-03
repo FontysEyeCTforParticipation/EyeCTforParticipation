@@ -4,15 +4,55 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EyeCTforParticipation
+namespace EyeCTforParticipation.Models
 {
-    class MessageModel
+    public class MessageModel
     {
-        //fields
-        private string content;
+        int id;
+        UserModel user;
+        ChatModel chat;
+        string content;
         DateTime date;
 
-        //property accessors
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
+        public UserModel User
+        {
+            get
+            {
+                return user;
+            }
+
+            set
+            {
+                user = value;
+            }
+        }
+
+        internal ChatModel Chat
+        {
+            get
+            {
+                return chat;
+            }
+
+            set
+            {
+                chat = value;
+            }
+        }
+
         public string Content
         {
             get
@@ -25,6 +65,7 @@ namespace EyeCTforParticipation
                 content = value;
             }
         }
+
         public DateTime Date
         {
             get
@@ -36,13 +77,6 @@ namespace EyeCTforParticipation
             {
                 date = value;
             }
-        }
-
-        //constructor
-        public MessageModel(string content, DateTime date)
-        {
-            Content = content;
-            Date = date;
         }
     }
 }

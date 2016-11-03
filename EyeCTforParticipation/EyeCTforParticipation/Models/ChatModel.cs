@@ -4,15 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EyeCTforParticipation
+namespace EyeCTforParticipation.Models
 {
-    class ChatModel
+    public class ChatModel
     {
-        //fields
-        private string title;
-        private List<MessageModel> messages;
+        int id;
+        string title;
+        ApplicationStatus status;
+        List<MessageModel> messages;
 
-        //property accessors
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+
+            set
+            {
+                id = value;
+            }
+        }
+
         public string Title
         {
             get
@@ -23,6 +36,19 @@ namespace EyeCTforParticipation
             set
             {
                 title = value;
+            }
+        }
+
+        public ApplicationStatus Status
+        {
+            get
+            {
+                return status;
+            }
+
+            set
+            {
+                status = value;
             }
         }
 
@@ -37,14 +63,6 @@ namespace EyeCTforParticipation
             {
                 messages = value;
             }
-        }
-
-
-
-        //constructor
-        public ChatModel(string title)
-        {
-            Title = title;
         }
     }
 }

@@ -16,5 +16,7 @@ namespace EyeCTforParticipation.Controls
         {
             InitializeComponent();
         }
+
+        public event EventHandler Send;
     }
 }

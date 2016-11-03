@@ -4,27 +4,55 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EyeCTforParticipation
+namespace EyeCTforParticipation.Models
 {
-    class ReviewModel
+    public class ReviewModel
     {
-        //fields
-        private string title;
-        private string content;
+        int id;
+        UserModel helpSeeker;
+        VolunteerModel volunteer;
+        string content;
+        DateTime date;
 
-        //property accessor
-        public string Title
+        public int Id
         {
             get
             {
-                return title;
+                return id;
             }
 
             set
             {
-                title = value;
+                id = value;
             }
         }
+
+        public UserModel HelpSeeker
+        {
+            get
+            {
+                return helpSeeker;
+            }
+
+            set
+            {
+                helpSeeker = value;
+            }
+        }
+
+        public VolunteerModel Volunteer
+        {
+            get
+            {
+                return volunteer;
+            }
+
+            set
+            {
+                volunteer = value;
+            }
+        }
+
         public string Content
         {
             get
@@ -38,11 +66,17 @@ namespace EyeCTforParticipation
             }
         }
 
-        //constructor
-        public ReviewModel(string title, string content)
+        public DateTime Date
         {
-            Title = title;
-            Content = content;
+            get
+            {
+                return date;
+            }
+
+            set
+            {
+                date = value;
+            }
         }
     }
 }

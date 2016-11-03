@@ -106,7 +106,7 @@
             this.views.Controls.Add(this.RFIDLoginView);
             this.views.Controls.Add(this.PasswordLoginView);
             this.views.Controls.Add(this.ForgotPasswordView);
-            this.views.CurrentView = this.ForgotPasswordView;
+            this.views.CurrentView = this.PasswordLoginView;
             this.views.Dock = System.Windows.Forms.DockStyle.Fill;
             this.views.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.views.ItemSize = new System.Drawing.Size(0, 1);
@@ -165,12 +165,15 @@
             // 
             // rfidLoginControl
             // 
+            this.rfidLoginControl.AutoSize = true;
+            this.rfidLoginControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.rfidLoginControl.BackColor = System.Drawing.Color.White;
             this.rfidLoginControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rfidLoginControl.Location = new System.Drawing.Point(0, 0);
             this.rfidLoginControl.Margin = new System.Windows.Forms.Padding(0);
+            this.rfidLoginControl.MinimumSize = new System.Drawing.Size(720, 0);
             this.rfidLoginControl.Name = "rfidLoginControl";
-            this.rfidLoginControl.Size = new System.Drawing.Size(714, 669);
+            this.rfidLoginControl.Size = new System.Drawing.Size(720, 669);
             this.rfidLoginControl.TabIndex = 0;
             // 
             // PasswordLoginView
@@ -252,13 +255,17 @@
             // 
             // passwordLoginControl
             // 
+            this.passwordLoginControl.AutoSize = true;
+            this.passwordLoginControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.passwordLoginControl.BackColor = System.Drawing.Color.White;
             this.passwordLoginControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.passwordLoginControl.Location = new System.Drawing.Point(0, 0);
             this.passwordLoginControl.Margin = new System.Windows.Forms.Padding(0);
+            this.passwordLoginControl.MinimumSize = new System.Drawing.Size(720, 0);
             this.passwordLoginControl.Name = "passwordLoginControl";
-            this.passwordLoginControl.Size = new System.Drawing.Size(714, 669);
+            this.passwordLoginControl.Size = new System.Drawing.Size(720, 669);
             this.passwordLoginControl.TabIndex = 0;
+            this.passwordLoginControl.User = null;
             // 
             // ForgotPasswordView
             // 
@@ -273,9 +280,13 @@
             // 
             // forgotPasswordControl
             // 
+            this.forgotPasswordControl.AutoSize = true;
+            this.forgotPasswordControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.forgotPasswordControl.BackColor = System.Drawing.Color.White;
             this.forgotPasswordControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.forgotPasswordControl.Location = new System.Drawing.Point(0, 0);
+            this.forgotPasswordControl.Margin = new System.Windows.Forms.Padding(0);
+            this.forgotPasswordControl.MinimumSize = new System.Drawing.Size(700, 0);
             this.forgotPasswordControl.Name = "forgotPasswordControl";
             this.forgotPasswordControl.Size = new System.Drawing.Size(714, 669);
             this.forgotPasswordControl.TabIndex = 0;
@@ -307,6 +318,7 @@
             this.btForgotPasswordWrapper.ResumeLayout(false);
             this.btForgotPasswordWrapper.PerformLayout();
             this.ForgotPasswordView.ResumeLayout(false);
+            this.ForgotPasswordView.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
