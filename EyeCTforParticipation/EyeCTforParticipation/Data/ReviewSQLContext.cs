@@ -75,12 +75,70 @@ namespace EyeCTforParticipation.Data
 
         public List<ReviewModel> GetFromHelpSeeker(int id)
         {
-            throw new NotImplementedException();
+            List<ReviewModel> results = new List<ReviewModel>();
+            string query = @"SELECT Review.Id, Review.VolunteerId, User.Name, Content, Date 
+                             FROM Review 
+                             JOIN User ON Review.VolunteerId = User.Id 
+                             WHERE Review.HelpSeekerUserId = @HelpSeekerUserId 
+                             ORDER BY Review.Date DESC";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@HelpSeekerUserId", id);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        results.Add(new ReviewModel
+                        {
+                            Id = reader.GetInt32(0),
+                            Volunteer = new VolunteerModel
+                            {
+                                Id = reader.GetInt32(1),
+                                Name = reader.GetString(2)
+                            },
+                            Content = reader.GetString(3),
+                            Date = reader.GetDateTime(4)
+                        });
+                    }
+                }
+            }
+            return results;
         }
 
         public List<ReviewModel> GetFromVolunteer(int id)
         {
-            throw new NotImplementedException();
+            List<ReviewModel> results = new List<ReviewModel>();
+            string query = @"SELECT Review.Id, Review.HelpSeekerUserId, User.Name, Content, Date 
+                             FROM Review 
+                             JOIN User ON Review.HelpSeekerUserId = User.Id 
+                             WHERE Review.VolunteerId = @VolunteerId 
+                             ORDER BY Review.Date DESC";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@HelpSeekerUserId", id);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        results.Add(new ReviewModel
+                        {
+                            Id = reader.GetInt32(0),
+                            HelpSeeker = new UserModel
+                            {
+                                Id = reader.GetInt32(1),
+                                Name = reader.GetString(2)
+                            },
+                            Content = reader.GetString(3),
+                            Date = reader.GetDateTime(4)
+                        });
+                    }
+                }
+            }
+            return results;
         }
 
         public void Update(ReviewModel review)
