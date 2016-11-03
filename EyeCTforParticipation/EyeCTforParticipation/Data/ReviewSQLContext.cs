@@ -9,5 +9,29 @@ namespace EyeCTforParticipation.Data
 {
     class ReviewSQLContext : IReviewContext
     {
+        public int create(ReviewModel review)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ReviewModel> GetFromHelpSeeker(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ReviewModel> GetFromVolunteer(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void update(ReviewModel review)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

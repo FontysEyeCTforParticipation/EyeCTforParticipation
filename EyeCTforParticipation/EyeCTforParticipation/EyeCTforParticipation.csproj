@@ -154,6 +154,7 @@
     <Compile Include="Logic\GoogleMapsApi.cs" />
     <Compile Include="Logic\HelpRequestRepository.cs" />
     <Compile Include="Logic\ReviewRepository.cs" />
+    <Compile Include="Logic\RFID\RFIDScanner.cs" />
     <Compile Include="Logic\UserRepository.cs" />
     <Compile Include="Models\ApplicationStatus.cs" />
     <Compile Include="Models\ChatModel.cs" />
@@ -183,8 +184,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Models\VolunteerModel.cs" />
-    <Compile Include="RFID spul\rfid-simple\Program.cs" />
-    <Compile Include="RFID spul\rfid-simple\Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\accountControl.resx">
       <DependentUpon>AccountControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -265,10 +264,8 @@
       <DependentUpon>Database.mdf</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Logic\RFID\Phidget21.NET.dll" />
     <Content Include="Resources\chip_card.png" />
-    <Content Include="RFID spul\Phidget21.NET.dll" />
-    <Content Include="RFID spul\RFID-simple.sln" />
-    <Content Include="RFID spul\rfid-simple\RFID-simple.csproj" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

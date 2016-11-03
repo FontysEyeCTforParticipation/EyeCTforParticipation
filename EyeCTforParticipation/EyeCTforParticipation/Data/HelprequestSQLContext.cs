@@ -439,14 +439,14 @@ namespace EyeCTforParticipation.Data
 
         public void ApproveApplication(int id, int helpSeekerId)
         {
-            string query = "UPDATE Application "
-                         + "SET Status = @Status "
-                         + "WHERE Id = @Id AND Id IN ("
-                             + "SELECT Application.Id "
-                             + "FROM Application "
-                             + "JOIN HelpRequest ON Application.HelpRequestId = HelpRequest.Id "
-                             + "WHERE HelpRequest.HelpSeekerUserId = @HelpSeekerUserId"
-                         + ");";
+            string query = @"UPDATE Application 
+                             SET Status = @Status 
+                             WHERE Id = @Id AND Id IN (
+                                SELECT Application.Id 
+                                FROM Application 
+                                JOIN HelpRequest ON Application.HelpRequestId = HelpRequest.Id 
+                                WHERE HelpRequest.HelpSeekerUserId = @HelpSeekerUserId
+                             );";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
