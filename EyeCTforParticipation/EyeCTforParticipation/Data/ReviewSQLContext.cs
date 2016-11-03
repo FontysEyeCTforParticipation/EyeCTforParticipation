@@ -30,6 +30,11 @@ namespace EyeCTforParticipation.Data
             return id;
         }
 
+        public int createReply(ReviewReplyModel reviewreplymodel)
+        {
+            throw new NotImplementedException();
+        }
+
         public void delete(int Id)
         {
             // Delete reply related to the Review                     
@@ -73,6 +78,11 @@ namespace EyeCTforParticipation.Data
                 cmd.Parameters.AddWithValue("@Content", review.Content);
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        public void updateReply(ReviewReplyModel reviewreplymodel)
+        {
+            throw new NotImplementedException();
         }
     }
 }
