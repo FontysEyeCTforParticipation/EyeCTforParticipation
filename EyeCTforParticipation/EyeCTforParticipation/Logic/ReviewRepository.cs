@@ -29,7 +29,7 @@ namespace EyeCTforParticipation.Logic
         /// <param name="review">
         /// The new or updated review.
         /// </param>
-        public void Create(ReviewModel review)
+        public int Create(ReviewModel review)
         {
             throw new NotImplementedException();
         }
