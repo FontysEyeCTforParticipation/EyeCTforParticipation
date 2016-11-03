@@ -31,9 +31,9 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         public void Create(ReviewModel review)
         {
-            if (review == null) //is dit niet beter met een overload?
+            if (review == null)
             {
-                //review = new ReviewModel(???);
+                
             }
             
         }
