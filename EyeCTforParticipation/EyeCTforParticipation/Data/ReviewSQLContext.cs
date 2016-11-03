@@ -32,7 +32,19 @@ namespace EyeCTforParticipation.Data
 
         public int CreateReply(ReviewReplyModel reviewreplymodel)
         {
-            throw new NotImplementedException();
+            int id;
+            string query = "INSERT INTO ReviewReply"
+                         + "(Content, Date)"
+                         + "(VALUES (@Content, GETDATE());"
+                         + "SELECT SCOPE_IDENTITY()";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@Content", reviewreplymodel.Content);
+                id = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            return id;
         }
 
         public void Delete(int Id)
@@ -82,7 +94,17 @@ namespace EyeCTforParticipation.Data
 
         public void UpdateReply(ReviewReplyModel reviewreplymodel)
         {
-            throw new NotImplementedException();
+            string query = "UPDATE ReviewReply"
+                         + "SET Content = @Content "
+                         + "WHERE Id = @Id";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@Id", reviewreplymodel.Review);
+                cmd.Parameters.AddWithValue("@Content", reviewreplymodel.Content);
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }
