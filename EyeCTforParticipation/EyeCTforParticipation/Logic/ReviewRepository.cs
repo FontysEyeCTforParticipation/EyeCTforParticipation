@@ -26,7 +26,11 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         public void Create(ReviewModel review)
         {
-            throw new NotImplementedException();
+            if (review == null) //is dit niet beter met een overload?
+            {
+                //review = new ReviewModel(???);
+            }
+            
         }
 
         /// <summary>
