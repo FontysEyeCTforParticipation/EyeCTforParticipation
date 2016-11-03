@@ -11,7 +11,7 @@ namespace EyeCTforParticipation.Data
 {
     class ReviewSQLContext : IReviewContext
     {
-        public int create(ReviewModel review)
+        public int Create(ReviewModel review)
         {
             int id;
             string query = "INSERT INTO Review"
@@ -30,12 +30,12 @@ namespace EyeCTforParticipation.Data
             return id;
         }
 
-        public int createReply(ReviewReplyModel reviewreplymodel)
+        public int CreateReply(ReviewReplyModel reviewreplymodel)
         {
             throw new NotImplementedException();
         }
 
-        public void delete(int Id)
+        public void Delete(int Id)
         {
             // Delete reply related to the Review                     
             string query = "DELETE FROM ReviewReply "
@@ -64,7 +64,7 @@ namespace EyeCTforParticipation.Data
             throw new NotImplementedException();
         }
 
-        public void update(ReviewModel review)
+        public void Update(ReviewModel review)
         {
             string query = "UPDATE Review "
                          + "SET Content = @Content "
@@ -80,7 +80,7 @@ namespace EyeCTforParticipation.Data
             }
         }
 
-        public void updateReply(ReviewReplyModel reviewreplymodel)
+        public void UpdateReply(ReviewReplyModel reviewreplymodel)
         {
             throw new NotImplementedException();
         }
