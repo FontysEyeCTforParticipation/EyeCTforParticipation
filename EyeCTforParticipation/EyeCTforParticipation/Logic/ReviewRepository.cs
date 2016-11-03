@@ -31,6 +31,7 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         public int Create(ReviewModel review)
         {
+            throw new NotImplementedException();
             if (review == null)
             {
                 
