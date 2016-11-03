@@ -20,7 +20,6 @@ namespace EyeCTforParticipation.Models
         double distance;
         HelpRequestUrgency urgency;
         bool closed;
-        int relevance;
 
         public int Id
         {
@@ -153,19 +152,6 @@ namespace EyeCTforParticipation.Models
             set
             {
                 closed = value;
-            }
-        }
-
-        public int Relevance
-        {
-            get
-            {
-                return relevance;
-            }
-
-            set
-            {
-                relevance = value;
             }
         }
     }
