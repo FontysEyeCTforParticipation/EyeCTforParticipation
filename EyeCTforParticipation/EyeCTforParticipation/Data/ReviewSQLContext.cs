@@ -37,7 +37,7 @@ namespace EyeCTforParticipation.Data
 
         public List<ReviewModel> GetFromHelpSeeker(int id)
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException();//c
         }
 
         public List<ReviewModel> GetFromVolunteer(int id)
