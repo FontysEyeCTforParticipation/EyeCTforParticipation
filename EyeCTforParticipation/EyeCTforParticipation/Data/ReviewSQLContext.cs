@@ -13,7 +13,21 @@ namespace EyeCTforParticipation.Data
     {
         public int create(ReviewModel review)
         {
-            throw new NotImplementedException();
+            int id;
+            string query = "INSERT INTO Review"
+                            + "(HelpSeekerUserId, VolunteerId, Content, Date)"
+                            + "VALUES (@HelpSeekerUserId, @VolunteerId, @Content, GETDATE());"
+                            + "SELECT SCOPE_IDENTITY()";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@HelpSeekerUserId", review.HelpSeeker.Id);
+                cmd.Parameters.AddWithValue("@VolunteerId", review.Volunteer.Id);
+                cmd.Parameters.AddWithValue("@Content", review.Content); ;
+                id = Convert.ToInt32(cmd.ExecuteScalar());
+            }
+            return id;
         }
 
         public void delete(int Id)
@@ -47,7 +61,18 @@ namespace EyeCTforParticipation.Data
 
         public void update(ReviewModel review)
         {
-            throw new NotImplementedException();
+            string query = "UPDATE Review "
+                         + "SET Content = @Content "
+                         + "WHERE Id = @Id";
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@Id", review.Id);
+                cmd.Parameters.AddWithValue("@Content", review.Content);
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }
