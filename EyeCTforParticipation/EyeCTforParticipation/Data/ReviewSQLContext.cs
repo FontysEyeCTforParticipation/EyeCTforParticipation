@@ -140,12 +140,33 @@ namespace EyeCTforParticipation.Data
 
         public void DeleteReply(int id)
         {
-            throw new NotImplementedException();
+            string query = @"DELETE FROM ReviewReply 
+                             WHERE ReviewId = @ReviewId;";
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@ReviewId", id);
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public void DeleteReplyVolunteer(int id)
         {
-            throw new NotImplementedException();
+            string query = @"DELETE FROM ReviewReply  
+                             WHERE ReviewId = (
+                             SELECT Id 
+                             FROM Review 
+                             WHERE VolunteerId = @VolunteerId;" ;
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@volunteerId", id);
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }

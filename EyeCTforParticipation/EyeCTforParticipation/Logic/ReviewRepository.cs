@@ -97,7 +97,15 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         public void DeleteReply(int reviewId, UserModel user)
         {
-            throw new NotImplementedException();
+            switch (user.Role)
+            {
+                case UserRole.Admin:
+                    context.DeleteReply(reviewId);
+                    break;
+                case UserRole.Volunteer:
+                    context.DeleteReplyVolunteer(reviewId);
+                    break;
+            }
         }
     }
 }
