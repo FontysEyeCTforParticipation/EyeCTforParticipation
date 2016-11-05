@@ -19,8 +19,14 @@ namespace EyeCTforParticipation.Forms
             rfidLoginControl.Login += new EventHandler(onLogin);
         }
 
+        public EventHandler Login;
+
         private void onLogin(object sender, EventArgs e)
         {
+            if(Login != null)
+            {
+                Login(null, EventArgs.Empty);
+            }
             Close();
         }
 

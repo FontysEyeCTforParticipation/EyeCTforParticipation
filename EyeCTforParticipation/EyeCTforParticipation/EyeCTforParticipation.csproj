@@ -72,11 +72,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\AccountControl.cs">
+    <Compile Include="Controls\ChatButtonControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\HeaderControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\AccountControl.Designer.cs">
-      <DependentUpon>AccountControl.cs</DependentUpon>
+    <Compile Include="Controls\HeaderControl.Designer.cs">
+      <DependentUpon>HeaderControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\ForgotPasswordControl.cs">
       <SubType>UserControl</SubType>
@@ -155,6 +158,7 @@
     <Compile Include="Logic\HelpRequestRepository.cs" />
     <Compile Include="Logic\ReviewRepository.cs" />
     <Compile Include="Logic\RFID\RFIDScanner.cs" />
+    <Compile Include="Logic\Session.cs" />
     <Compile Include="Logic\UserRepository.cs" />
     <Compile Include="Models\ApplicationStatus.cs" />
     <Compile Include="Models\ChatModel.cs" />
@@ -184,8 +188,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Models\VolunteerModel.cs" />
-    <EmbeddedResource Include="Controls\accountControl.resx">
-      <DependentUpon>AccountControl.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\HeaderControl.resx">
+      <DependentUpon>HeaderControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\ForgotPasswordControl.resx">
       <DependentUpon>ForgotPasswordControl.cs</DependentUpon>
@@ -266,6 +270,7 @@
     </Content>
     <Content Include="Logic\RFID\Phidget21.NET.dll" />
     <Content Include="Resources\chip_card.png" />
+    <Content Include="Resources\message.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

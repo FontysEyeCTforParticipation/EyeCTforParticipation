@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EyeCTforParticipation.Models;
 using System.Device.Location;
+using EyeCTforParticipation.Data.MemoryContext;
 
 namespace EyeCTforParticipation.Data
 {
@@ -12,7 +13,7 @@ namespace EyeCTforParticipation.Data
     {
         public List<HelpRequestModel> Search(SearchOrder order)
         {
-            var results = from helpRequest in MemoryContext.Tables.HelpRequest
+            var results = from helpRequest in Tables.HelpRequest
                           orderby
                             order == SearchOrder.DATE_ASC ? helpRequest.Date : default(DateTime),
                             order == SearchOrder.DATE_DESC ? helpRequest.Date : default(DateTime) descending
@@ -28,8 +29,8 @@ namespace EyeCTforParticipation.Data
         
         public List<HelpRequestModel> Search(string keywords, SearchOrder order)
         {
-            var results = from helpRequest in MemoryContext.Tables.HelpRequest
-                          let matches = MemoryContext.Functions.KeywordMatches(helpRequest.Title + helpRequest.Content, keywords, ' ')
+            var results = from helpRequest in Tables.HelpRequest
+                          let matches = Functions.KeywordMatches(helpRequest.Title + helpRequest.Content, keywords, ' ')
                           where matches > 0
                           orderby
                             order == SearchOrder.DATE_ASC ? helpRequest.Date : default(DateTime),
@@ -48,7 +49,7 @@ namespace EyeCTforParticipation.Data
 
         public List<HelpRequestModel> Search(GeoCoordinate location, int distance, SearchOrder order)
         {
-            var results = from helpRequest in MemoryContext.Tables.HelpRequest
+            var results = from helpRequest in Tables.HelpRequest
                           let getDistance = helpRequest.Location.GetDistanceTo(location)
                           where getDistance <= distance
                           orderby
@@ -69,8 +70,8 @@ namespace EyeCTforParticipation.Data
 
         public List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int distance, SearchOrder order)
         {
-            var results = from helpRequest in MemoryContext.Tables.HelpRequest
-                          let matches = MemoryContext.Functions.KeywordMatches(helpRequest.Title + helpRequest.Content, keywords, ' ')
+            var results = from helpRequest in Tables.HelpRequest
+                          let matches = Functions.KeywordMatches(helpRequest.Title + helpRequest.Content, keywords, ' ')
                           let getDistance = helpRequest.Location.GetDistanceTo(location)
                           where getDistance <= distance && matches > 0
                           orderby
@@ -94,7 +95,7 @@ namespace EyeCTforParticipation.Data
         public HelpRequestModel Get(int id)
         {
 
-            var result = from helpRequest in MemoryContext.Tables.HelpRequest
+            var result = from helpRequest in Tables.HelpRequest
                          where helpRequest.Id == id
                          select new HelpRequestModel
                          {
@@ -117,7 +118,7 @@ namespace EyeCTforParticipation.Data
 
         public void Update(HelpRequestModel updatedHelpRequest)
         {
-            var results = from helpRequest in MemoryContext.Tables.HelpRequest
+            var results = from helpRequest in Tables.HelpRequest
                           where helpRequest.Id == updatedHelpRequest.Id && helpRequest.HelpSeeker.Id == updatedHelpRequest.HelpSeeker.Id
                           select helpRequest;
             if(results.Count() == 1)
@@ -132,34 +133,34 @@ namespace EyeCTforParticipation.Data
 
         public void Delete(int id)
         {
-            var applicationResults = from application in MemoryContext.Tables.Application
+            var applicationResults = from application in Tables.Application
                                      where application.HelpRequest.Id == id
                                      select application;
             for(int x = 0; x < applicationResults.Count(); x++)
             {
-                MemoryContext.Tables.Application.Remove(applicationResults.ElementAt(x));
+                Tables.Application.Remove(applicationResults.ElementAt(x));
             }
 
-            var messageResults = from message in MemoryContext.Tables.Message
-                                 where MemoryContext.Tables.Application.Any(x => x.HelpRequest.Id == id)
+            var messageResults = from message in Tables.Message
+                                 where Tables.Application.Any(x => x.HelpRequest.Id == id)
                                  select message;
             for (int x = 0; x < messageResults.Count(); x++)
             {
-                MemoryContext.Tables.Message.Remove(messageResults.ElementAt(x));
+                Tables.Message.Remove(messageResults.ElementAt(x));
             }
 
-            var results = from helpRequest in MemoryContext.Tables.HelpRequest
+            var results = from helpRequest in Tables.HelpRequest
                           where helpRequest.Id == id
                           select helpRequest;
             if(results.Count() == 1)
             {
-                MemoryContext.Tables.HelpRequest.Remove(results.ElementAt(0));
+                Tables.HelpRequest.Remove(results.ElementAt(0));
             }
         }
 
         public void Close(int id, int helpSeekerId)
         {
-            var results = from helpRequest in MemoryContext.Tables.HelpRequest
+            var results = from helpRequest in Tables.HelpRequest
                          where helpRequest.Id == id && helpRequest.HelpSeeker.Id == helpSeekerId
                          select helpRequest;
             if (results.Count() == 1)
@@ -170,7 +171,7 @@ namespace EyeCTforParticipation.Data
 
         public void Open(int id, int helpSeekerId)
         {
-            var results = from helpRequest in MemoryContext.Tables.HelpRequest
+            var results = from helpRequest in Tables.HelpRequest
                           where helpRequest.Id == id && helpRequest.HelpSeeker.Id == helpSeekerId
                           select helpRequest;
             if (results.Count() == 1)
@@ -183,7 +184,7 @@ namespace EyeCTforParticipation.Data
         {
             ApplicationModel application = new ApplicationModel
             {
-                Id = MemoryContext.Tables.Application.Max(x => x.Id) + 1,
+                Id = Tables.Application.Max(x => x.Id) + 1,
                 Volunteer = new VolunteerModel
                 {
                     Id = volunteerId
@@ -191,13 +192,13 @@ namespace EyeCTforParticipation.Data
                 Status = ApplicationStatus.NONE,
                 Date = DateTime.Now
             };
-            MemoryContext.Tables.Application.Add(application);
+            Tables.Application.Add(application);
             return application.Id;
         }
 
         public void CancelApplication(int id, int volunteerId)
         {
-            var results = from application in MemoryContext.Tables.Application
+            var results = from application in Tables.Application
                           where application.Id == id && application.Volunteer.Id == volunteerId
                           select application;
             if (results.Count() == 1)
@@ -208,8 +209,8 @@ namespace EyeCTforParticipation.Data
 
         public void CancelApplicationAsHelpSeeker(int id, int userId)
         {
-            var results = from application in MemoryContext.Tables.Application
-                          join helpRequest in MemoryContext.Tables.HelpRequest on application.HelpRequest.Id equals helpRequest.Id
+            var results = from application in Tables.Application
+                          join helpRequest in Tables.HelpRequest on application.HelpRequest.Id equals helpRequest.Id
                           where application.Id == id && helpRequest.HelpSeeker.Id == userId
                           select application;
             if (results.Count() == 1)
@@ -220,8 +221,8 @@ namespace EyeCTforParticipation.Data
 
         public List<ApplicationModel> GetApplications(int volunteerId)
         {
-            var results = from application in MemoryContext.Tables.Application
-                          join helpRequest in MemoryContext.Tables.HelpRequest on application.HelpRequest.Id equals helpRequest.Id
+            var results = from application in Tables.Application
+                          join helpRequest in Tables.HelpRequest on application.HelpRequest.Id equals helpRequest.Id
                           where application.Volunteer.Id == volunteerId
                           select new ApplicationModel
                           {
@@ -241,10 +242,10 @@ namespace EyeCTforParticipation.Data
 
         public List<ApplicationModel> GetApplications(int id, int helpSeekerId)
         {
-            var results = from application in MemoryContext.Tables.Application
-                          join volunteer in MemoryContext.Tables.Volunteer on application.Volunteer.Id equals volunteer.Id
-                          join user in MemoryContext.Tables.User on application.Volunteer.Id equals user.Id
-                          join helpRequest in MemoryContext.Tables.HelpRequest on application.HelpRequest.Id equals helpRequest.Id
+            var results = from application in Tables.Application
+                          join volunteer in Tables.Volunteer on application.Volunteer.Id equals volunteer.Id
+                          join user in Tables.User on application.Volunteer.Id equals user.Id
+                          join helpRequest in Tables.HelpRequest on application.HelpRequest.Id equals helpRequest.Id
                           where application.HelpRequest.Id == id && helpRequest.HelpSeeker.Id == helpSeekerId
                           select new ApplicationModel
                           {
@@ -266,8 +267,8 @@ namespace EyeCTforParticipation.Data
 
         public void InterviewApplication(int id, int helpSeekerId)
         {
-            var results = from application in MemoryContext.Tables.Application
-                          join helpRequest in MemoryContext.Tables.HelpRequest on application.HelpRequest.Id equals helpRequest.Id
+            var results = from application in Tables.Application
+                          join helpRequest in Tables.HelpRequest on application.HelpRequest.Id equals helpRequest.Id
                           where application.Id == id && helpRequest.HelpSeeker.Id == helpSeekerId
                           select application;
             if(results.Count() == 1)
@@ -278,8 +279,8 @@ namespace EyeCTforParticipation.Data
 
         public void ApproveApplication(int id, int helpSeekerId)
         {
-            var results = from application in MemoryContext.Tables.Application
-                          join helpRequest in MemoryContext.Tables.HelpRequest on application.HelpRequest.Id equals helpRequest.Id
+            var results = from application in Tables.Application
+                          join helpRequest in Tables.HelpRequest on application.HelpRequest.Id equals helpRequest.Id
                           where application.Id == id && helpRequest.HelpSeeker.Id == helpSeekerId
                           select application;
             if (results.Count() == 1)

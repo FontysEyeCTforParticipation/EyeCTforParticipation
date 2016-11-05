@@ -18,7 +18,8 @@ namespace EyeCTforParticipation.Forms
         {
             InitializeComponent();
             helpRequest.Back += helpRequest_Back;
-            
+            header.Login += header_Login;
+            header.Logout += header_Logout;
         }
 
         private void searchControl_Search(object sender, EventArgs e)
@@ -49,20 +50,17 @@ namespace EyeCTforParticipation.Forms
             views.CurrentView = searchView;
         }
 
-        private void btLogin_Click(object sender, EventArgs e)
-        {
-            LoginForm loginForm = new LoginForm();
-            loginForm.ShowDialog();
-            views.CurrentView = searchView;
-        }
-
-        private void btRegister_Click(object sender, EventArgs e)
-        {
-            RegisterForm registerForm = new RegisterForm();
-            registerForm.ShowDialog();
-        }
-
         private void btBack_Click(object sender, EventArgs e)
+        {
+            views.CurrentView = startView;
+        }
+
+        private void header_Login(object sender, EventArgs e)
+        {
+            views.CurrentView = helpSeekerView;
+        }
+
+        private void header_Logout(object sender, EventArgs e)
         {
             views.CurrentView = startView;
         }

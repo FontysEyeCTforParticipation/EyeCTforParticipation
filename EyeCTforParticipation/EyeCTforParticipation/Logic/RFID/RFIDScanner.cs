@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using Phidgets;
 using Phidgets.Events;
 
-namespace EyeCTforParticipation.Logic.RFID
+namespace EyeCTforParticipation.Logic
 {
     class RFIDScanner
     {
-        Phidgets.RFID rfid = new Phidgets.RFID();
+        RFID rfid = new RFID();
     }
 }

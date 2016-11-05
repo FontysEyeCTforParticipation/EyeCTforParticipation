@@ -16,7 +16,6 @@ namespace EyeCTforParticipation.Controls
     public partial class PasswordLoginControl : UserControl
     {
         UserRepository userRepository = new UserRepository(new UserSQLContext());
-        UserModel user;
 
         public PasswordLoginControl()
         {
@@ -27,8 +26,9 @@ namespace EyeCTforParticipation.Controls
 
         private void btLogin_Click(object sender, EventArgs e)
         {
-            user = userRepository.Login("test@test.com", "secret");
-            if(user != null)
+            //user = userRepository.Login("test@test.com", "secret");
+            Session.User = new UserModel();
+            if (Session.User != null)
             {
                 //Succesvol ingelogd
                 //Trigger login event
@@ -36,19 +36,6 @@ namespace EyeCTforParticipation.Controls
                 {
                     Login(this, EventArgs.Empty);
                 }
-            }
-        }
-
-        public UserModel User
-        {
-            get
-            {
-                return user;
-            }
-
-            set
-            {
-                user = value;
             }
         }
     }
