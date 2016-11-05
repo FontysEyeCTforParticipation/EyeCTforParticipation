@@ -19,7 +19,20 @@ namespace EyeCTforParticipation.Logic
 
         List<ReviewModel> Get(UserModel user)
         {
-            throw new NotImplementedException(); 
+            List<ReviewModel> reviewList;
+            if (user.Role == UserRole.HelpSeeker)
+            {
+                reviewList = context.GetFromHelpSeeker(user.Id);
+            }
+            else if (user.Role == UserRole.Volunteer)
+            {
+                reviewList = context.GetFromVolunteer(user.Id);
+            }
+            else
+            {
+                return null;
+            }
+            return reviewList;
         }
 
         /// <summary>
