@@ -29,7 +29,18 @@ namespace EyeCTforParticipation.Logic
         /// </returns>
         public UserModel Login(string rfid)
         {
-            return context.Login(rfid);
+            UserModel user = context.Login(rfid);
+            if (user != null)
+            {
+                if (user.Approved)
+                {
+                    return user;
+                }
+                //Throw unapproved exception
+                return null;
+            }
+            //Throw invalid email and/or password exception
+            return null;
         }
 
         /// <summary>
@@ -46,11 +57,17 @@ namespace EyeCTforParticipation.Logic
         /// </returns>
         public UserModel Login(string email, string password)
         {
-            UserModel user =  context.LoginPassword(email);
+            UserModel user = context.LoginPassword(email);
             if(user != null && Crypter.CheckPassword(password, user.Password))
             {
-                return user;
+                if(user.Approved)
+                {
+                    return user;
+                }
+                //Throw unapproved exception
+                return null;
             }
+            //Throw invalid email and/or password exception
             return null;
         }
 

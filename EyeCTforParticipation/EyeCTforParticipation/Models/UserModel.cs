@@ -15,6 +15,7 @@ namespace EyeCTforParticipation.Models
         string rfid;
         string password;
         DateTime birthdate;
+        bool approved;
 
         public int Id
         {
@@ -104,6 +105,19 @@ namespace EyeCTforParticipation.Models
             set
             {
                 birthdate = value;
+            }
+        }
+
+        public bool Approved
+        {
+            get
+            {
+                return approved;
+            }
+
+            set
+            {
+                approved = value;
             }
         }
     }

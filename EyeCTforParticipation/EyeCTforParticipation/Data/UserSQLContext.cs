@@ -14,9 +14,9 @@ namespace EyeCTforParticipation.Data
         public UserModel Login(string rfid)
         {
             UserModel result = null;
-            string query = @"SELECT Id, Role, Name
+            string query = @"SELECT Id, Role, Name, Approved 
                              FROM User 
-                             WHERE RFID = @RFID AND Approved = 1";
+                             WHERE RFID = @RFID;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
@@ -30,7 +30,8 @@ namespace EyeCTforParticipation.Data
                         {
                             Id = reader.GetInt32(0),
                             Role = (UserRole)reader.GetInt32(1),
-                            Name = reader.GetString(2)
+                            Name = reader.GetString(2),
+                            Approved = reader.GetBoolean(3)
                         };
                     }
                 }
@@ -41,9 +42,9 @@ namespace EyeCTforParticipation.Data
         public UserModel LoginPassword(string email)
         {
             UserModel result = null;
-            string query = @"SELECT Id, Role, Name, Password 
+            string query = @"SELECT Id, Role, Name, Password, Approved 
                              FROM User 
-                             WHERE Email = @Email AND Approved = 1";
+                             WHERE Email = @Email;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
@@ -58,7 +59,8 @@ namespace EyeCTforParticipation.Data
                             Id = reader.GetInt32(0),
                             Role = (UserRole)reader.GetInt32(1),
                             Name = reader.GetString(2),
-                            Password = reader.GetString(3)
+                            Password = reader.GetString(3),
+                            Approved = reader.GetBoolean(4)
                         };
                     }
                 }
