@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EyeCTforParticipation.Data;
 using EyeCTforParticipation.Models;
+using CryptSharp;
 
 namespace EyeCTforParticipation.Logic
 {
@@ -28,7 +29,7 @@ namespace EyeCTforParticipation.Logic
         /// </returns>
         public UserModel Login(string rfid)
         {
-            throw new NotImplementedException();
+            return context.Login(rfid);
         }
 
         /// <summary>
@@ -45,7 +46,12 @@ namespace EyeCTforParticipation.Logic
         /// </returns>
         public UserModel Login(string email, string password)
         {
-            throw new NotImplementedException();
+            UserModel user =  context.LoginPassword(email);
+            if(user != null && Crypter.CheckPassword(password, user.Password))
+            {
+                return user;
+            }
+            return null;
         }
 
         /// <summary>
@@ -56,7 +62,29 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         public void Register(RegisterModel register)
         {
-            throw new NotImplementedException();
+            if (register.Password == register.PasswordRepeat)
+            {
+                string hash = Crypter.Blowfish.Crypt(register.Password);
+                bool approved = false;
+                switch (register.Role)
+                {
+                    case UserRole.HelpSeeker:
+                        approved = true;
+                        break;
+                    case UserRole.Volunteer:
+                        break;
+                    case UserRole.AidWorker:
+                        break;
+                }
+                context.Register(new UserModel
+                {
+                    Role = register.Role,
+                    Email = register.Email,
+                    Name = register.Name,
+                    Password = hash,
+                    Birthdate = register.Birthdate
+                }, approved);
+            }
         }
 
         /// <summary>
