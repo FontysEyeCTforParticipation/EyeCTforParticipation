@@ -19,20 +19,15 @@ namespace EyeCTforParticipation.Logic
 
         List<ReviewModel> Get(UserModel user)
         {
-            List<ReviewModel> reviewList;
-            if (user.Role == UserRole.HelpSeeker)
+            switch (user.Role)
             {
-                reviewList = context.GetFromHelpSeeker(user.Id);
+                case UserRole.HelpSeeker:
+                    return context.GetFromHelpSeeker(user.Id);
+                case UserRole.Volunteer:
+                    return context.GetFromVolunteer(user.Id);
+                default:
+                    return null;
             }
-            else if (user.Role == UserRole.Volunteer)
-            {
-                reviewList = context.GetFromVolunteer(user.Id);
-            }
-            else
-            {
-                return null;
-            }
-            return reviewList;
         }
 
         /// <summary>
