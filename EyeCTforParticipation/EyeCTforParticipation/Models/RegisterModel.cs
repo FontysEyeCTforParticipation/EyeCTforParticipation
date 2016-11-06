@@ -16,7 +16,7 @@ namespace EyeCTforParticipation.Models
         string passwordRepeat;
         DateTime birthdate;
         Bitmap avatar;
-        string VOG;
+        string vog;
 
         public UserRole Role
         {
@@ -109,16 +109,16 @@ namespace EyeCTforParticipation.Models
             }
         }
 
-        public string VOG1
+        public string VOG
         {
             get
             {
-                return VOG;
+                return vog;
             }
 
             set
             {
-                VOG = value;
+                vog = value;
             }
         }
     }
