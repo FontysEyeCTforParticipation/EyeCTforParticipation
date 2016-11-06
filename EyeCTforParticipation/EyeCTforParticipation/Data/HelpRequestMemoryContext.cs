@@ -94,25 +94,65 @@ namespace EyeCTforParticipation.Data
 
         public HelpRequestModel Get(int id)
         {
-
             var result = from helpRequest in Tables.HelpRequest
                          where helpRequest.Id == id
+                         join user in Tables.User on helpRequest.HelpSeeker.Id equals user.Id
                          select new HelpRequestModel
                          {
-                            Title = helpRequest.Title,
-                            Content = helpRequest.Content,
-                            Date = helpRequest.Date,
-                            Address = helpRequest.Address,
-                            Urgency = helpRequest.Urgency,
-                            Closed = helpRequest.Closed
+                             Id = helpRequest.Id,
+                             Title = helpRequest.Title,
+                             HelpSeeker = new UserModel
+                             {
+                                 Id = helpRequest.HelpSeeker.Id,
+                                 Name = user.Name
+                             },
+                             Content = helpRequest.Content,
+                             Date = helpRequest.Date,
+                             Address = helpRequest.Address,
+                             Urgency = helpRequest.Urgency,
+                             Closed = helpRequest.Closed
                          };
             return result.Count() > 0 ? result.First() : null;
         }
 
+        public List<HelpRequestModel> GetFromHelpSeeker(int userId)
+        {
+            var results = from helpRequest in Tables.HelpRequest
+                          where helpRequest.HelpSeeker.Id == userId
+                          join user in Tables.User on helpRequest.HelpSeeker.Id equals user.Id
+                          select new HelpRequestModel
+                          {
+                              Id = helpRequest.Id,
+                              Title = helpRequest.Title,
+                              HelpSeeker = new UserModel
+                              {
+                                  Id = helpRequest.HelpSeeker.Id,
+                                  Name = user.Name
+                              },
+                              Content = helpRequest.Content,
+                              Date = helpRequest.Date,
+                              Address = helpRequest.Address,
+                              Urgency = helpRequest.Urgency,
+                              Closed = helpRequest.Closed
+                          };
+            return results.ToList();
+        }
+
         public int Create(HelpRequestModel helpRequest)
         {
-            helpRequest.Id = MemoryContext.Tables.HelpRequest.Max(x => x.Id) + 1;
-            MemoryContext.Tables.HelpRequest.Add(helpRequest);
+            int id = Tables.HelpRequest.Count() > 0 ? Tables.HelpRequest.Max(x => x.Id) + 1 : 1;
+            Tables.HelpRequest.Add(new HelpRequestModel
+            {
+                Id = id,
+                Title = helpRequest.Title,
+                Address = helpRequest.Address,
+                Location = helpRequest.Location,
+                Content = helpRequest.Content,
+                Date = DateTime.Now,
+                Closed = false,
+                Urgency = helpRequest.Urgency,
+                HelpSeeker = helpRequest.HelpSeeker
+            });
             return helpRequest.Id;
         }
 

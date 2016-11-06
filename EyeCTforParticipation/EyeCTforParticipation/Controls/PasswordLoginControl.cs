@@ -27,7 +27,12 @@ namespace EyeCTforParticipation.Controls
         private void btLogin_Click(object sender, EventArgs e)
         {
             //user = userRepository.Login("test@test.com", "secret");
-            Session.User = new UserModel();
+            Session.User = new UserModel {
+                Id = 5,
+                Name = "Thomas Gladdines",
+                Role = UserRole.HelpSeeker
+            };
+            Data.MemoryContext.Tables.User.Add(Session.User);
             if (Session.User != null)
             {
                 //Succesvol ingelogd

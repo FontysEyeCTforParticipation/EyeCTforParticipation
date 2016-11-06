@@ -16,10 +16,17 @@ namespace EyeCTforParticipation.Logic
         {
             using (WebClient wc = new WebClient())
             {
-                Response response = JsonConvert.DeserializeObject<Response>(wc.DownloadString("https://maps.googleapis.com/maps/api/geocode/json?address=" + address));
-                if (response.Succes)
+                try
                 {
-                    return response;
+                    Response response = JsonConvert.DeserializeObject<Response>(wc.DownloadString("https://maps.googleapis.com/maps/api/geocode/json?language=nl&address=" + address));
+                    if (response.Succes)
+                    {
+                        return response;
+                    }
+                }
+                catch (Exception)
+                {
+                    return null;
                 }
             }
 
@@ -27,6 +34,11 @@ namespace EyeCTforParticipation.Logic
         }
         public class Response
         {
+
+            public GeoCoordinate Location;
+            public string Address;
+            public bool Succes;
+
             public class Result
             {
                 public class Geometry
@@ -39,21 +51,19 @@ namespace EyeCTforParticipation.Logic
                     public Location location;
                 }
                 public Geometry geometry;
+
+                public string formatted_address;
             }
 
             public List<Result> results
             {
                 set
                 {
-                    Location = new GeoCoordinate(value[0].geometry.location.lat, value[0].geometry.location.lng);
-                }
-            }
-
-            public string formatted_address
-            {
-                set
-                {
-                    Address = value;
+                    if(value != null && value.Count() > 0)
+                    {
+                        Location = new GeoCoordinate(value[0].geometry.location.lat, value[0].geometry.location.lng);
+                        Address = value[0].formatted_address;
+                    }
                 }
             }
 
@@ -64,10 +74,6 @@ namespace EyeCTforParticipation.Logic
                     Succes = value == "OK" ? true : false;
                 }
             }
-
-            public GeoCoordinate Location;
-            public string Address;
-            public bool Succes;
         }
     }
 }

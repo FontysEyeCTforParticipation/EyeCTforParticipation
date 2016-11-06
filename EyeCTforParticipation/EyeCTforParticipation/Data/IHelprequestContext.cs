@@ -15,6 +15,7 @@ namespace EyeCTforParticipation.Data
         List<HelpRequestModel> Search(GeoCoordinate location, int distance, SearchOrder order);
         List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int distance, SearchOrder order);
         HelpRequestModel Get(int id);
+        List<HelpRequestModel> GetFromHelpSeeker(int userId);
         int Create(HelpRequestModel helpRequest);
         void Update(HelpRequestModel helpRequest);
         void Delete(int id);

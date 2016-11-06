@@ -126,6 +126,20 @@ namespace EyeCTforParticipation.Logic
         }
 
         /// <summary>
+        /// Get help requests from a help seeker.
+        /// </summary>
+        /// <param name="userId">
+        /// The id of the help seeker
+        /// </param>
+        /// <returns>
+        /// A list of help requests.
+        /// </returns>
+        public List<HelpRequestModel> GetFromHelpSeeker(int userId)
+        {
+            return context.GetFromHelpSeeker(userId);
+        }
+
+        /// <summary>
         /// Create a new help request for a specific help seeker if the id is 0.
         /// Else if a help request already exists with the same id, the existing help request will be updated.
         /// </summary>
@@ -137,9 +151,24 @@ namespace EyeCTforParticipation.Logic
         /// </returns>
         public HelpRequestModel Save(HelpRequestModel helpRequest)
         {
+            string address = "";
+            GeoCoordinate location = new GeoCoordinate(0, 0);
+            if(helpRequest.Address != null || helpRequest.Address != "")
+            {
+                GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(helpRequest.Address + " Nederland");
+                if (googleMapsApi != null)
+                {
+                    address = googleMapsApi.Address;
+                    location = googleMapsApi.Location;
+                }
+            }
+            helpRequest.Address = address;
+            helpRequest.Location = location;
+
             if (helpRequest.Id == 0)
             {
                 helpRequest.Id = context.Create(helpRequest);
+                Console.WriteLine(helpRequest.Id + helpRequest.Title);
             } else
             {
                 context.Update(helpRequest);

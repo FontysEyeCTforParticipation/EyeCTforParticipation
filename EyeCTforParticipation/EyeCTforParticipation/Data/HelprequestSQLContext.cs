@@ -155,8 +155,9 @@ namespace EyeCTforParticipation.Data
         public HelpRequestModel Get(int id)
         {
             HelpRequestModel result = null;
-            string query = @"SELECT HelpSeekerUserId, Title, Content, Date, Address, Urgency, Closed 
+            string query = @"SELECT HelpRequest.HelpSeekerUserId, User.Name, HelpRequest.Title, HelpRequest.Content, HelpRequest.Date, HelpRequest.Address, HelpRequest.Urgency, HelpRequest.Closed 
                              FROM HelpRequest 
+                             JOIN User ON HelpRequest.HelpSeekerUserId = User.Id 
                              WHERE Id = @Id";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -172,19 +173,57 @@ namespace EyeCTforParticipation.Data
                             Id = id,
                             HelpSeeker = new UserModel
                             {
-                                Id = reader.GetInt32(0)
+                                Id = reader.GetInt32(0),
+                                Name = reader.GetString(1)
                             },
-                            Title = reader.GetString(1),
-                            Content = reader.GetString(2),
-                            Date = reader.GetDateTime(3),
-                            Address = reader.GetString(4),
-                            Urgency = (HelpRequestUrgency)reader.GetInt32(5),
-                            Closed = reader.GetBoolean(6)
+                            Title = reader.GetString(2),
+                            Content = reader.GetString(3),
+                            Date = reader.GetDateTime(4),
+                            Address = reader.GetString(5),
+                            Urgency = (HelpRequestUrgency)reader.GetInt32(6),
+                            Closed = reader.GetBoolean(7)
                         };
                     }
                 }
             }
             return result;
+        }
+        
+        public List<HelpRequestModel> GetFromHelpSeeker(int userId)
+        {
+            List<HelpRequestModel> results = null;
+            string query = @"SELECT HelpRequest.Id, HelpRequest.HelpSeekerUserId, User.Name, HelpRequest.Title, HelpRequest.Content, HelpRequest.Date, HelpRequest.Address, HelpRequest.Urgency, HelpRequest.Closed 
+                             FROM HelpRequest 
+                             JOIN User ON HelpRequest.HelpSeekerUserId = User.Id 
+                             WHERE HelpSeekerUserId = @HelpSeekerUserId;";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@HelpSeekerUserId", userId);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        results.Add(new HelpRequestModel
+                        {
+                            Id = reader.GetInt32(0),
+                            HelpSeeker = new UserModel
+                            {
+                                Id = reader.GetInt32(1),
+                                Name = reader.GetString(2)
+                            },
+                            Title = reader.GetString(3),
+                            Content = reader.GetString(4),
+                            Date = reader.GetDateTime(5),
+                            Address = reader.GetString(6),
+                            Urgency = (HelpRequestUrgency)reader.GetInt32(7),
+                            Closed = reader.GetBoolean(8)
+                        });
+                    }
+                }
+            }
+            return results;
         }
 
         public int Create(HelpRequestModel helpRequest)

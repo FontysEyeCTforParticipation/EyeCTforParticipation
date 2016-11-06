@@ -95,16 +95,7 @@ namespace EyeCTforParticipation.Models
 
             set
             {
-                GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(value);
-                if(googleMapsApi == null)
-                {
-                    address = "";
-                    location = new GeoCoordinate(0, 0);
-                } else
-                {
-                    address = googleMapsApi.Address;
-                    location = googleMapsApi.Location;
-                }
+                address = value;
             }
         }
 
@@ -113,6 +104,11 @@ namespace EyeCTforParticipation.Models
             get
             {
                 return location;
+            }
+
+            set
+            {
+                location = value;
             }
         }
 

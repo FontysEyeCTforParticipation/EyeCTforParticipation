@@ -18,13 +18,36 @@ namespace EyeCTforParticipation.Controls
             InitializeComponent();
             WireAllControls(this);
         }
+
+        int id;
+        public int Id
+        {
+            get
+            {
+                return id;
+            }
+        }
         public HelpRequestDetailControl(HelpRequestModel helpRequest) : this()
         {
+            id = helpRequest.Id;
             lbTitle.Text = helpRequest.Title;
             lbName.Text = helpRequest.HelpSeeker.Name;
-            lbDate.Text = helpRequest.Date.ToString("dd-MM-yyy");
+            lbDate.Text = helpRequest.Date.ToString("dd-MM-yyyy");
             lbLocation.Text = helpRequest.Address;
             lbDistance.Text = helpRequest.Distance.ToString() + " km";
+            lbDistance.Visible = helpRequest.Distance != 0;
+            switch (helpRequest.Urgency)
+            {
+                case HelpRequestUrgency.LOW:
+                    lbUrgencyLowWrapper.Show();
+                    break;
+                case HelpRequestUrgency.NORMAL:
+                    lbUrgencyNormalWrapper.Show();
+                    break;
+                case HelpRequestUrgency.CRITICAL:
+                    lbUrgencyCrititcalWrapper.Show();
+                    break;
+            }
         }
 
         //<3 Stackoverflow
