@@ -11,7 +11,6 @@ using EyeCTforParticipation.Controls;
 using EyeCTforParticipation.Models;
 using EyeCTforParticipation.Logic;
 using EyeCTforParticipation.Data;
-using System.IO;
 
 namespace EyeCTforParticipation.Forms
 {
@@ -113,7 +112,8 @@ namespace EyeCTforParticipation.Forms
                         }
                         views.CurrentView = helpSeekerView;
                         break;
-
+                    case UserRole.Volunteer:
+                        break;
                 }
             }
         }
