@@ -23,13 +23,13 @@ namespace EyeCTforParticipation.Data
         public List<ChatModel> List()
         {
             var results = from application in Tables.Application
-                         join helpRequest in Tables.HelpRequest on application.HelpRequest.Id equals helpRequest.Id
-                         select new ChatModel
-                         {
+                          join helpRequest in Tables.HelpRequest on application.HelpRequest.Id equals helpRequest.Id
+                          select new ChatModel
+                          {
                              Id = application.Id,
                              Title = helpRequest.Title,
                              Status = application.Status
-                         };
+                          };
             return results.ToList();
         }
 
@@ -37,6 +37,8 @@ namespace EyeCTforParticipation.Data
         {
             var results = from application in Tables.Application
                           join helpRequest in Tables.HelpRequest on application.HelpRequest.Id equals helpRequest.Id
+                          join helpSeekerAidWorker in Tables.HelpSeekerAidWorker on helpRequest.HelpSeeker.Id equals helpSeekerAidWorker.HelpSeekerUserId
+                          where helpSeekerAidWorker.AidWorkerUserId == userId
                           select new ChatModel
                           {
                               Id = application.Id,
@@ -48,12 +50,30 @@ namespace EyeCTforParticipation.Data
 
         public List<ChatModel> ListAsHelpSeeker(int userId)
         {
-            throw new NotImplementedException();
+            var results = from application in Tables.Application
+                          join helpRequest in Tables.HelpRequest on application.HelpRequest.Id equals helpRequest.Id
+                          where helpRequest.HelpSeeker.Id == userId
+                          select new ChatModel
+                          {
+                              Id = application.Id,
+                              Title = helpRequest.Title,
+                              Status = application.Status
+                          };
+            return results.ToList();
         }
 
         public List<ChatModel> ListAsVolunteer(int userId)
         {
-            throw new NotImplementedException();
+            var results = from application in Tables.Application
+                          join helpRequest in Tables.HelpRequest on application.HelpRequest.Id equals helpRequest.Id
+                          where application.Volunteer.Id == userId
+                          select new ChatModel
+                          {
+                              Id = application.Id,
+                              Title = helpRequest.Title,
+                              Status = application.Status
+                          };
+            return results.ToList();
         }
 
         public void SendMessage(MessageModel message)
