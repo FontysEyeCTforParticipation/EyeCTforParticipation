@@ -54,5 +54,62 @@ namespace EyeCTforParticipation.Data
             });
             return id;
         }
+        public void ApproveRegistration(int userId)
+        {
+            var results = from user in Tables.User
+                          where user.Id == userId
+                          select user;
+            if (results.Count() == 1)
+            {
+                UserModel result = results.ElementAt(0);
+                result.Approved = true;
+            }
+        }
+        public void Edit(UserModel updatedUser)
+        {
+            var results = from user in Tables.User
+                          where user.Id == updatedUser.Id
+                          select user;
+            if (results.Count() == 1)
+            {
+                //(Email, Name, Password, Birthdate, Approved)
+                UserModel result = results.ElementAt(0);
+                result.Email = updatedUser.Email;
+                result.Name = updatedUser.Name;
+                result.Password = updatedUser.Password;
+                result.Birthdate = updatedUser.Birthdate;
+                result.Approved = updatedUser.Approved;
+            }
+        }
+        public void Delete(int deletedUserId)
+        {
+            throw new NotImplementedException();
+        }
+        public void AddHelpSeeker(int helpSeekerId, int aidWorkerId)
+        {
+            Tables.HelpSeekerAidWorker.Add(new HelpSeekerAidWorkerModel
+            {
+                HelpSeekerUserId = helpSeekerId,
+                AidWorkerUserId = aidWorkerId,
+                Approved = false
+            });
+        }
+        public void RemoveHelpSeeker(int helpSeekerId, int aidWorkerId)
+        {
+            throw new NotImplementedException();
+        }
+        public void ChangeApproveAidWorker(int helpSeekerId, int aidWorkerId, bool approved)
+        {
+            throw new NotImplementedException();
+        }
+        public List<UserModel> GetHelpSeekers(int aidWorkerId)
+        {
+            throw new NotImplementedException();
+        }
+        public List<UserModel> GetAidWorkers(int HelpSeekerId)
+        {
+            throw new NotImplementedException();
+        }
+
     }
 }

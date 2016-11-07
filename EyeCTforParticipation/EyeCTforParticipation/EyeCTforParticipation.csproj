@@ -103,7 +103,9 @@
     <Compile Include="Controls\HelpRequestDetailControl.Designer.cs">
       <DependentUpon>HelpRequestDetailControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\HelpRequestEditControl.cs" />
+    <Compile Include="Controls\HelpRequestEditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Controls\HelpRequestEditControl.Designer.cs">
       <DependentUpon>HelpRequestEditControl.cs</DependentUpon>
     </Compile>
@@ -188,6 +190,7 @@
     </Compile>
     <Compile Include="Models\HelpRequestUrgency.cs" />
     <Compile Include="Data\MemoryContext.cs" />
+    <Compile Include="Models\HelpSeekerAidWorkerModel.cs" />
     <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\ReviewReplyModel.cs" />
@@ -255,7 +258,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -267,7 +272,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">

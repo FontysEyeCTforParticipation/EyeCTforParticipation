@@ -104,16 +104,15 @@ namespace EyeCTforParticipation.Data
         }
         public void Edit(UserModel user)
         {
-            //(Role, Email, Name, Password, Birthdate, Approved)
+            //(Email, Name, Password, Birthdate, Approved)
             string query = @"UPDATE [User] 
-                             SET Role = @Role, Email = @Email, Name = @Name, Password = @Password, Approved = @Approved 
+                             SET Email = @Email, Name = @Name, Password = @Password, Approved = @Approved 
                              WHERE Id = @Id;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
                 cmd.Parameters.AddWithValue("@Id", user.Id);
-                cmd.Parameters.AddWithValue("@Role", user.Role);
                 cmd.Parameters.AddWithValue("@Email", user.Email);
                 cmd.Parameters.AddWithValue("@Name", user.Name);
                 cmd.Parameters.AddWithValue("@Password", user.Password);
@@ -175,7 +174,7 @@ namespace EyeCTforParticipation.Data
                 cmd.ExecuteNonQuery();
             }
         }
-        List<UserModel> GetHelpSeekers(int aidWorkerId)
+        public List<UserModel> GetHelpSeekers(int aidWorkerId)
         {
             List<UserModel> results = null;
             string query = @"SELECT User.Id, User.Name
@@ -205,7 +204,7 @@ namespace EyeCTforParticipation.Data
             return results;
         }
 
-        List<UserModel> GetAidWorkers(int helpSeekerId)
+        public List<UserModel> GetAidWorkers(int helpSeekerId)
         {
             List<UserModel> results = null;
             string query = @"SELECT User.Id, User.Name
