@@ -52,21 +52,21 @@
             this.tbSearchWrapper.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tbSearchWrapper.Controls.Add(this.tbSearch);
             this.tbSearchWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tbSearchWrapper.Location = new System.Drawing.Point(40, 95);
+            this.tbSearchWrapper.Location = new System.Drawing.Point(27, 60);
             this.tbSearchWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.tbSearchWrapper.Name = "tbSearchWrapper";
-            this.tbSearchWrapper.Padding = new System.Windows.Forms.Padding(14, 10, 20, 14);
-            this.tbSearchWrapper.Size = new System.Drawing.Size(571, 67);
+            this.tbSearchWrapper.Padding = new System.Windows.Forms.Padding(9, 6, 13, 9);
+            this.tbSearchWrapper.Size = new System.Drawing.Size(381, 45);
             this.tbSearchWrapper.TabIndex = 7;
             // 
             // tbSearch
             // 
             this.tbSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.tbSearch.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbSearch.Location = new System.Drawing.Point(14, 10);
+            this.tbSearch.Location = new System.Drawing.Point(9, 6);
             this.tbSearch.Margin = new System.Windows.Forms.Padding(0);
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(537, 43);
+            this.tbSearch.Size = new System.Drawing.Size(359, 30);
             this.tbSearch.TabIndex = 1;
             // 
             // lbSearch
@@ -75,11 +75,11 @@
             this.lbSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbSearch.Location = new System.Drawing.Point(40, 0);
+            this.lbSearch.Location = new System.Drawing.Point(27, 0);
             this.lbSearch.Margin = new System.Windows.Forms.Padding(0);
             this.lbSearch.Name = "lbSearch";
-            this.lbSearch.Padding = new System.Windows.Forms.Padding(16, 40, 40, 10);
-            this.lbSearch.Size = new System.Drawing.Size(181, 95);
+            this.lbSearch.Padding = new System.Windows.Forms.Padding(11, 26, 27, 6);
+            this.lbSearch.Size = new System.Drawing.Size(114, 60);
             this.lbSearch.TabIndex = 8;
             this.lbSearch.Text = "Zoeken";
             // 
@@ -91,8 +91,8 @@
             this.searchWrapper.Location = new System.Drawing.Point(0, 0);
             this.searchWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.searchWrapper.Name = "searchWrapper";
-            this.searchWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.searchWrapper.Size = new System.Drawing.Size(611, 202);
+            this.searchWrapper.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
+            this.searchWrapper.Size = new System.Drawing.Size(408, 129);
             this.searchWrapper.TabIndex = 2;
             // 
             // locationWrapper
@@ -100,12 +100,12 @@
             this.locationWrapper.Controls.Add(this.tbPostalCodeWrapper);
             this.locationWrapper.Controls.Add(this.lbPostalCode);
             this.locationWrapper.Dock = System.Windows.Forms.DockStyle.Right;
-            this.locationWrapper.Location = new System.Drawing.Point(611, 0);
+            this.locationWrapper.Location = new System.Drawing.Point(408, 0);
             this.locationWrapper.Margin = new System.Windows.Forms.Padding(0);
-            this.locationWrapper.MinimumSize = new System.Drawing.Size(400, 0);
+            this.locationWrapper.MinimumSize = new System.Drawing.Size(267, 0);
             this.locationWrapper.Name = "locationWrapper";
-            this.locationWrapper.Padding = new System.Windows.Forms.Padding(0, 0, 0, 40);
-            this.locationWrapper.Size = new System.Drawing.Size(400, 202);
+            this.locationWrapper.Padding = new System.Windows.Forms.Padding(0, 0, 0, 26);
+            this.locationWrapper.Size = new System.Drawing.Size(267, 129);
             this.locationWrapper.TabIndex = 2;
             // 
             // tbPostalCodeWrapper
@@ -116,21 +116,21 @@
             this.tbPostalCodeWrapper.Controls.Add(this.cbDistance);
             this.tbPostalCodeWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbPostalCodeWrapper.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPostalCodeWrapper.Location = new System.Drawing.Point(0, 95);
+            this.tbPostalCodeWrapper.Location = new System.Drawing.Point(0, 60);
             this.tbPostalCodeWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.tbPostalCodeWrapper.Name = "tbPostalCodeWrapper";
-            this.tbPostalCodeWrapper.Padding = new System.Windows.Forms.Padding(0, 10, 20, 8);
-            this.tbPostalCodeWrapper.Size = new System.Drawing.Size(400, 67);
+            this.tbPostalCodeWrapper.Padding = new System.Windows.Forms.Padding(0, 6, 13, 5);
+            this.tbPostalCodeWrapper.Size = new System.Drawing.Size(267, 43);
             this.tbPostalCodeWrapper.TabIndex = 8;
             // 
             // tbPostalCode
             // 
             this.tbPostalCode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbPostalCode.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPostalCode.Location = new System.Drawing.Point(0, 10);
+            this.tbPostalCode.Location = new System.Drawing.Point(0, 6);
             this.tbPostalCode.Margin = new System.Windows.Forms.Padding(0);
             this.tbPostalCode.Name = "tbPostalCode";
-            this.tbPostalCode.Size = new System.Drawing.Size(140, 43);
+            this.tbPostalCode.Size = new System.Drawing.Size(93, 30);
             this.tbPostalCode.TabIndex = 3;
             this.tbPostalCode.Tag = "";
             this.tbPostalCode.TextChanged += new System.EventHandler(this.tbPostalCode_TextChanged);
@@ -144,10 +144,10 @@
             this.cbDistance.FormattingEnabled = true;
             this.cbDistance.IntegralHeight = false;
             this.cbDistance.ItemHeight = 37;
-            this.cbDistance.Location = new System.Drawing.Point(140, 10);
+            this.cbDistance.Location = new System.Drawing.Point(93, 6);
             this.cbDistance.Margin = new System.Windows.Forms.Padding(0);
             this.cbDistance.Name = "cbDistance";
-            this.cbDistance.Size = new System.Drawing.Size(240, 43);
+            this.cbDistance.Size = new System.Drawing.Size(161, 43);
             this.cbDistance.TabIndex = 2;
             this.cbDistance.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cbDistance_DrawItem);
             // 
@@ -160,8 +160,8 @@
             this.lbPostalCode.Location = new System.Drawing.Point(0, 0);
             this.lbPostalCode.Margin = new System.Windows.Forms.Padding(0);
             this.lbPostalCode.Name = "lbPostalCode";
-            this.lbPostalCode.Padding = new System.Windows.Forms.Padding(0, 40, 40, 10);
-            this.lbPostalCode.Size = new System.Drawing.Size(191, 95);
+            this.lbPostalCode.Padding = new System.Windows.Forms.Padding(0, 26, 27, 6);
+            this.lbPostalCode.Size = new System.Drawing.Size(120, 60);
             this.lbPostalCode.TabIndex = 9;
             this.lbPostalCode.Text = "Postcode";
             // 
@@ -170,11 +170,11 @@
             this.btSearchWrapper.AutoSize = true;
             this.btSearchWrapper.Controls.Add(this.btSearch);
             this.btSearchWrapper.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btSearchWrapper.Location = new System.Drawing.Point(1011, 0);
+            this.btSearchWrapper.Location = new System.Drawing.Point(675, 0);
             this.btSearchWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btSearchWrapper.Name = "btSearchWrapper";
-            this.btSearchWrapper.Padding = new System.Windows.Forms.Padding(0, 95, 40, 0);
-            this.btSearchWrapper.Size = new System.Drawing.Size(189, 202);
+            this.btSearchWrapper.Padding = new System.Windows.Forms.Padding(0, 61, 27, 0);
+            this.btSearchWrapper.Size = new System.Drawing.Size(125, 129);
             this.btSearchWrapper.TabIndex = 10;
             // 
             // btSearch
@@ -187,11 +187,11 @@
             this.btSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btSearch.Location = new System.Drawing.Point(0, 95);
+            this.btSearch.Location = new System.Drawing.Point(0, 61);
             this.btSearch.Margin = new System.Windows.Forms.Padding(0);
             this.btSearch.Name = "btSearch";
-            this.btSearch.Padding = new System.Windows.Forms.Padding(10);
-            this.btSearch.Size = new System.Drawing.Size(149, 67);
+            this.btSearch.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btSearch.Size = new System.Drawing.Size(98, 45);
             this.btSearch.TabIndex = 4;
             this.btSearch.Text = "ZOEKEN";
             this.btSearch.UseVisualStyleBackColor = false;
@@ -199,7 +199,7 @@
             // 
             // SearchControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -208,9 +208,9 @@
             this.Controls.Add(this.locationWrapper);
             this.Controls.Add(this.btSearchWrapper);
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.MinimumSize = new System.Drawing.Size(1200, 202);
+            this.MinimumSize = new System.Drawing.Size(800, 129);
             this.Name = "SearchControl";
-            this.Size = new System.Drawing.Size(1200, 202);
+            this.Size = new System.Drawing.Size(800, 129);
             this.Load += new System.EventHandler(this.SearchControl_Load);
             this.tbSearchWrapper.ResumeLayout(false);
             this.tbSearchWrapper.PerformLayout();

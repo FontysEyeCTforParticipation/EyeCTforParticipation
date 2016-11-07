@@ -42,7 +42,7 @@ namespace EyeCTforParticipation.Controls
         {
 
             //Get initial search results
-            results = helpRequestRepository.Search(null, null, 5, SearchOrder.DATE_DESC);
+            results = helpRequestRepository.Search(null, null, null, SearchOrder.DATE_DESC);
 
             //Trigger search event
             if (Search != null)

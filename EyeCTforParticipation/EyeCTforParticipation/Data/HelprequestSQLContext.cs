@@ -38,7 +38,7 @@ namespace EyeCTforParticipation.Data
             string query = @"SELECT [HelpRequest].Id, [HelpRequest].Title, [HelpRequest].Date, [HelpRequest].Address, [HelpRequest].Urgency, [User].Name 
                              FROM [HelpRequest] 
                              JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
-                             WHERE Closed = 0 
+                             WHERE [HelpRequest].Closed = 0 
                              ORDER BY " + orderString(order);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -72,7 +72,7 @@ namespace EyeCTforParticipation.Data
             string query = @"SELECT [HelpRequest].Id, [HelpRequest].Title, [HelpRequest].Date, [HelpRequest].Address, [HelpRequest].Urgency, [dbo].KeywordMatches([HelpRequest].Title + [HelpRequest].Content, @Keywords, ' ') AS Matches, [User].Name 
                              FROM [HelpRequest] 
                              JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
-                             WHERE Closed = 0 AND Matches > 0 
+                             WHERE [HelpRequest].Closed = 0 AND Matches > 0 
                              ORDER BY " + orderString(order);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -107,7 +107,7 @@ namespace EyeCTforParticipation.Data
             string query = @"SELECT [HelpRequest].Id, Title, Date, Address, Urgency, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance, [User].Name 
                             FROM [HelpRequest] 
                             JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
-                            WHERE Closed = 0 AND (Distance <= @Distance OR @Distance = 0) 
+                            WHERE [HelpRequest].Closed = 0 AND (Distance <= @Distance OR @Distance = 0) 
                             ORDER BY " + orderString(order);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -144,7 +144,7 @@ namespace EyeCTforParticipation.Data
             string query = @"SELECT [HelpRequest].Id, Title, Date, Address, Urgency, [dbo].KeywordMatches(Title + Content, @Keywords, ' ') AS Matches, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance, [User].Name 
                              FROM [HelpRequest] 
                              JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
-                             WHERE Closed = 0 AND Matches > 0 AND (Distance <= @Distance OR @Distance = 0) 
+                             WHERE [HelpRequest].Closed = 0 AND Matches > 0 AND (Distance <= @Distance OR @Distance = 0) 
                              ORDER BY " + orderString(order);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
