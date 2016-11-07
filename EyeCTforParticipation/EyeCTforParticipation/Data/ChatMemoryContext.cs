@@ -14,12 +14,27 @@ namespace EyeCTforParticipation.Data
             throw new NotImplementedException();
         }
 
-        public ChatModel Get(int chatid)
+        public ChatModel Get(int chatId)
         {
             throw new NotImplementedException();
         }
 
-        public List<ChatModel> List(int userid)
+        public List<ChatModel> List(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ChatModel> ListAsAidWorkerUser(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ChatModel> ListAsHelpSeeker(int userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<ChatModel> ListAsVolunteer(int userId)
         {
             throw new NotImplementedException();
         }
