@@ -106,7 +106,14 @@ namespace EyeCTforParticipation.Data
         }
         public void ChangeApproveAidWorker(int helpSeekerId, int aidWorkerId, bool approved)
         {
-            throw new NotImplementedException();
+            var results = from helpSeekerAidWorker in Tables.HelpSeekerAidWorker
+                          where helpSeekerId == helpSeekerAidWorker.HelpSeekerUserId && aidWorkerId == helpSeekerAidWorker.AidWorkerUserId
+                          select helpSeekerAidWorker;
+            if (results.Count() == 1)
+            {
+                HelpSeekerAidWorkerModel result = results.ElementAt(0);
+                result.Approved = approved;
+            }
         }
         public List<UserModel> GetHelpSeekers(int aidWorkerId)
         {
