@@ -248,7 +248,11 @@ namespace EyeCTforParticipation.Logic
         /// </remarks>
         List<UserModel> GetHelpSeekers(int aidWorkerId)
         {
-            throw new NotImplementedException();
+            return context.GetHelpSeekers(aidWorkerId);
+        }
+        List<UserModel> GetAidWorkers(int helpSeekerId)
+        {
+            return context.GetAidWorkersSeekers(helpSeekerId);
         }
     }
 }
