@@ -96,7 +96,13 @@ namespace EyeCTforParticipation.Data
         }
         public void RemoveHelpSeeker(int helpSeekerId, int aidWorkerId)
         {
-            throw new NotImplementedException();
+            var helpSeekerResults = from helpSeekerAidWorker in Tables.HelpSeekerAidWorker
+                                     where helpSeekerId == helpSeekerAidWorker.HelpSeekerUserId && aidWorkerId == helpSeekerAidWorker.AidWorkerUserId
+                                     select helpSeekerAidWorker;
+            for (int x = 0; x < helpSeekerResults.Count(); x++)
+            {
+                Tables.HelpSeekerAidWorker.Remove(helpSeekerResults.ElementAt(x));
+            }
         }
         public void ChangeApproveAidWorker(int helpSeekerId, int aidWorkerId, bool approved)
         {
