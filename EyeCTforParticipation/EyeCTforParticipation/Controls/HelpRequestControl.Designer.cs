@@ -32,7 +32,7 @@
             this.lbContent = new System.Windows.Forms.Label();
             this.lbName = new System.Windows.Forms.Label();
             this.contentWrapper = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.locationWrapper = new System.Windows.Forms.FlowLayoutPanel();
             this.lbLocation = new System.Windows.Forms.Label();
             this.lbDistance = new System.Windows.Forms.Label();
             this.lbDate = new System.Windows.Forms.Label();
@@ -41,12 +41,18 @@
             this.titleWrapper = new System.Windows.Forms.Panel();
             this.lbTitleWrapper = new System.Windows.Forms.Panel();
             this.lbTitle = new System.Windows.Forms.Label();
+            this.lbCloseWrapper = new System.Windows.Forms.Panel();
+            this.lbClose = new System.Windows.Forms.Label();
             this.lbUrgencyCrititcalWrapper = new System.Windows.Forms.Panel();
             this.lbUrgencyCritical = new System.Windows.Forms.Label();
             this.lbUrgencyNormalWrapper = new System.Windows.Forms.Panel();
             this.lbUrgencyNormal = new System.Windows.Forms.Label();
             this.lbUrgencyLowWrapper = new System.Windows.Forms.Panel();
             this.lbUrgencyLow = new System.Windows.Forms.Label();
+            this.btCloseWrapper = new System.Windows.Forms.FlowLayoutPanel();
+            this.btClose = new System.Windows.Forms.Button();
+            this.btOpenWrapper = new System.Windows.Forms.FlowLayoutPanel();
+            this.btOpen = new System.Windows.Forms.Button();
             this.btApplicationsWrapper = new System.Windows.Forms.FlowLayoutPanel();
             this.btApplications = new System.Windows.Forms.Button();
             this.btEditWrapper = new System.Windows.Forms.FlowLayoutPanel();
@@ -55,13 +61,16 @@
             this.btApply = new System.Windows.Forms.Button();
             this.horizontalSeperator = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
             this.contentWrapper.SuspendLayout();
-            this.flowLayoutPanel1.SuspendLayout();
+            this.locationWrapper.SuspendLayout();
             this.btBackWrapper.SuspendLayout();
             this.titleWrapper.SuspendLayout();
             this.lbTitleWrapper.SuspendLayout();
+            this.lbCloseWrapper.SuspendLayout();
             this.lbUrgencyCrititcalWrapper.SuspendLayout();
             this.lbUrgencyNormalWrapper.SuspendLayout();
             this.lbUrgencyLowWrapper.SuspendLayout();
+            this.btCloseWrapper.SuspendLayout();
+            this.btOpenWrapper.SuspendLayout();
             this.btApplicationsWrapper.SuspendLayout();
             this.btEditWrapper.SuspendLayout();
             this.btApplyWrapper.SuspendLayout();
@@ -102,27 +111,27 @@
             this.contentWrapper.AutoSize = true;
             this.contentWrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.contentWrapper.Controls.Add(this.lbContent);
-            this.contentWrapper.Controls.Add(this.flowLayoutPanel1);
+            this.contentWrapper.Controls.Add(this.locationWrapper);
             this.contentWrapper.Controls.Add(this.lbDate);
             this.contentWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
             this.contentWrapper.Location = new System.Drawing.Point(0, 203);
             this.contentWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.contentWrapper.Name = "contentWrapper";
-            this.contentWrapper.Size = new System.Drawing.Size(1498, 1118);
+            this.contentWrapper.Size = new System.Drawing.Size(1907, 1042);
             this.contentWrapper.TabIndex = 5;
             // 
-            // flowLayoutPanel1
+            // locationWrapper
             // 
-            this.flowLayoutPanel1.AutoSize = true;
-            this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.Controls.Add(this.lbLocation);
-            this.flowLayoutPanel1.Controls.Add(this.lbDistance);
-            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 77);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(40, 20, 0, 0);
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1498, 57);
-            this.flowLayoutPanel1.TabIndex = 15;
+            this.locationWrapper.AutoSize = true;
+            this.locationWrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.locationWrapper.Controls.Add(this.lbLocation);
+            this.locationWrapper.Controls.Add(this.lbDistance);
+            this.locationWrapper.Dock = System.Windows.Forms.DockStyle.Top;
+            this.locationWrapper.Location = new System.Drawing.Point(0, 77);
+            this.locationWrapper.Name = "locationWrapper";
+            this.locationWrapper.Padding = new System.Windows.Forms.Padding(40, 20, 0, 0);
+            this.locationWrapper.Size = new System.Drawing.Size(1907, 57);
+            this.locationWrapper.TabIndex = 15;
             // 
             // lbLocation
             // 
@@ -206,11 +215,13 @@
             this.titleWrapper.Controls.Add(this.btApplicationsWrapper);
             this.titleWrapper.Controls.Add(this.btEditWrapper);
             this.titleWrapper.Controls.Add(this.btApplyWrapper);
+            this.titleWrapper.Controls.Add(this.btCloseWrapper);
+            this.titleWrapper.Controls.Add(this.btOpenWrapper);
             this.titleWrapper.Controls.Add(this.btBackWrapper);
             this.titleWrapper.Dock = System.Windows.Forms.DockStyle.Top;
             this.titleWrapper.Location = new System.Drawing.Point(0, 0);
             this.titleWrapper.Name = "titleWrapper";
-            this.titleWrapper.Size = new System.Drawing.Size(1498, 202);
+            this.titleWrapper.Size = new System.Drawing.Size(1907, 202);
             this.titleWrapper.TabIndex = 16;
             // 
             // lbTitleWrapper
@@ -221,13 +232,14 @@
             this.lbTitleWrapper.Controls.Add(this.lbUrgencyCrititcalWrapper);
             this.lbTitleWrapper.Controls.Add(this.lbUrgencyNormalWrapper);
             this.lbTitleWrapper.Controls.Add(this.lbUrgencyLowWrapper);
+            this.lbTitleWrapper.Controls.Add(this.lbCloseWrapper);
             this.lbTitleWrapper.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbTitleWrapper.Location = new System.Drawing.Point(120, 0);
             this.lbTitleWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.lbTitleWrapper.MinimumSize = new System.Drawing.Size(0, 85);
             this.lbTitleWrapper.Name = "lbTitleWrapper";
             this.lbTitleWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.lbTitleWrapper.Size = new System.Drawing.Size(589, 85);
+            this.lbTitleWrapper.Size = new System.Drawing.Size(613, 85);
             this.lbTitleWrapper.TabIndex = 20;
             // 
             // lbTitle
@@ -236,7 +248,7 @@
             this.lbTitle.Dock = System.Windows.Forms.DockStyle.Left;
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbTitle.Location = new System.Drawing.Point(455, 0);
+            this.lbTitle.Location = new System.Drawing.Point(591, 0);
             this.lbTitle.Margin = new System.Windows.Forms.Padding(0);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Padding = new System.Windows.Forms.Padding(0, 30, 60, 10);
@@ -244,12 +256,37 @@
             this.lbTitle.TabIndex = 3;
             this.lbTitle.Text = "Titel";
             // 
+            // lbCloseWrapper
+            // 
+            this.lbCloseWrapper.AutoSize = true;
+            this.lbCloseWrapper.Controls.Add(this.lbClose);
+            this.lbCloseWrapper.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbCloseWrapper.Location = new System.Drawing.Point(40, 0);
+            this.lbCloseWrapper.Name = "lbCloseWrapper";
+            this.lbCloseWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 10, 0);
+            this.lbCloseWrapper.Size = new System.Drawing.Size(136, 85);
+            this.lbCloseWrapper.TabIndex = 8;
+            this.lbCloseWrapper.Visible = false;
+            // 
+            // lbClose
+            // 
+            this.lbClose.AutoSize = true;
+            this.lbClose.BackColor = System.Drawing.Color.Gray;
+            this.lbClose.Font = new System.Drawing.Font("Segoe UI Semibold", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbClose.ForeColor = System.Drawing.Color.White;
+            this.lbClose.Location = new System.Drawing.Point(0, 34);
+            this.lbClose.Name = "lbClose";
+            this.lbClose.Padding = new System.Windows.Forms.Padding(5);
+            this.lbClose.Size = new System.Drawing.Size(123, 40);
+            this.lbClose.TabIndex = 4;
+            this.lbClose.Text = "GESLOTEN";
+            // 
             // lbUrgencyCrititcalWrapper
             // 
             this.lbUrgencyCrititcalWrapper.AutoSize = true;
             this.lbUrgencyCrititcalWrapper.Controls.Add(this.lbUrgencyCritical);
             this.lbUrgencyCrititcalWrapper.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbUrgencyCrititcalWrapper.Location = new System.Drawing.Point(294, 0);
+            this.lbUrgencyCrititcalWrapper.Location = new System.Drawing.Point(430, 0);
             this.lbUrgencyCrititcalWrapper.Name = "lbUrgencyCrititcalWrapper";
             this.lbUrgencyCrititcalWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 0, 0);
             this.lbUrgencyCrititcalWrapper.Size = new System.Drawing.Size(161, 85);
@@ -274,7 +311,7 @@
             this.lbUrgencyNormalWrapper.AutoSize = true;
             this.lbUrgencyNormalWrapper.Controls.Add(this.lbUrgencyNormal);
             this.lbUrgencyNormalWrapper.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbUrgencyNormalWrapper.Location = new System.Drawing.Point(186, 0);
+            this.lbUrgencyNormalWrapper.Location = new System.Drawing.Point(322, 0);
             this.lbUrgencyNormalWrapper.Name = "lbUrgencyNormalWrapper";
             this.lbUrgencyNormalWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 0, 0);
             this.lbUrgencyNormalWrapper.Size = new System.Drawing.Size(108, 85);
@@ -299,7 +336,7 @@
             this.lbUrgencyLowWrapper.AutoSize = true;
             this.lbUrgencyLowWrapper.Controls.Add(this.lbUrgencyLow);
             this.lbUrgencyLowWrapper.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbUrgencyLowWrapper.Location = new System.Drawing.Point(40, 0);
+            this.lbUrgencyLowWrapper.Location = new System.Drawing.Point(176, 0);
             this.lbUrgencyLowWrapper.Name = "lbUrgencyLowWrapper";
             this.lbUrgencyLowWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 0, 0);
             this.lbUrgencyLowWrapper.Size = new System.Drawing.Size(146, 85);
@@ -319,12 +356,78 @@
             this.lbUrgencyLow.TabIndex = 4;
             this.lbUrgencyLow.Text = "BELANGRIJK";
             // 
+            // btCloseWrapper
+            // 
+            this.btCloseWrapper.AutoSize = true;
+            this.btCloseWrapper.Controls.Add(this.btClose);
+            this.btCloseWrapper.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btCloseWrapper.Location = new System.Drawing.Point(1522, 0);
+            this.btCloseWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.btCloseWrapper.Name = "btCloseWrapper";
+            this.btCloseWrapper.Padding = new System.Windows.Forms.Padding(0, 67, 40, 0);
+            this.btCloseWrapper.Size = new System.Drawing.Size(192, 202);
+            this.btCloseWrapper.TabIndex = 20;
+            this.btCloseWrapper.Visible = false;
+            // 
+            // btClose
+            // 
+            this.btClose.AutoSize = true;
+            this.btClose.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btClose.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btClose.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btClose.FlatAppearance.BorderSize = 0;
+            this.btClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btClose.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btClose.Location = new System.Drawing.Point(0, 67);
+            this.btClose.Margin = new System.Windows.Forms.Padding(0);
+            this.btClose.Name = "btClose";
+            this.btClose.Padding = new System.Windows.Forms.Padding(10);
+            this.btClose.Size = new System.Drawing.Size(152, 67);
+            this.btClose.TabIndex = 4;
+            this.btClose.Text = "SLUITEN";
+            this.btClose.UseVisualStyleBackColor = false;
+            this.btClose.Click += new System.EventHandler(this.btClose_Click);
+            // 
+            // btOpenWrapper
+            // 
+            this.btOpenWrapper.AutoSize = true;
+            this.btOpenWrapper.Controls.Add(this.btOpen);
+            this.btOpenWrapper.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btOpenWrapper.Location = new System.Drawing.Point(1714, 0);
+            this.btOpenWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.btOpenWrapper.Name = "btOpenWrapper";
+            this.btOpenWrapper.Padding = new System.Windows.Forms.Padding(0, 67, 40, 0);
+            this.btOpenWrapper.Size = new System.Drawing.Size(193, 202);
+            this.btOpenWrapper.TabIndex = 21;
+            this.btOpenWrapper.Visible = false;
+            // 
+            // btOpen
+            // 
+            this.btOpen.AutoSize = true;
+            this.btOpen.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btOpen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btOpen.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btOpen.FlatAppearance.BorderSize = 0;
+            this.btOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btOpen.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btOpen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btOpen.Location = new System.Drawing.Point(0, 67);
+            this.btOpen.Margin = new System.Windows.Forms.Padding(0);
+            this.btOpen.Name = "btOpen";
+            this.btOpen.Padding = new System.Windows.Forms.Padding(10);
+            this.btOpen.Size = new System.Drawing.Size(153, 67);
+            this.btOpen.TabIndex = 4;
+            this.btOpen.Text = "OPENEN";
+            this.btOpen.UseVisualStyleBackColor = false;
+            this.btOpen.Click += new System.EventHandler(this.btOpen_Click);
+            // 
             // btApplicationsWrapper
             // 
             this.btApplicationsWrapper.AutoSize = true;
             this.btApplicationsWrapper.Controls.Add(this.btApplications);
             this.btApplicationsWrapper.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btApplicationsWrapper.Location = new System.Drawing.Point(709, 0);
+            this.btApplicationsWrapper.Location = new System.Drawing.Point(733, 0);
             this.btApplicationsWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btApplicationsWrapper.Name = "btApplicationsWrapper";
             this.btApplicationsWrapper.Padding = new System.Windows.Forms.Padding(0, 67, 40, 0);
@@ -356,7 +459,7 @@
             this.btEditWrapper.AutoSize = true;
             this.btEditWrapper.Controls.Add(this.btEdit);
             this.btEditWrapper.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btEditWrapper.Location = new System.Drawing.Point(1007, 0);
+            this.btEditWrapper.Location = new System.Drawing.Point(1031, 0);
             this.btEditWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btEditWrapper.Name = "btEditWrapper";
             this.btEditWrapper.Padding = new System.Windows.Forms.Padding(0, 67, 40, 0);
@@ -389,7 +492,7 @@
             this.btApplyWrapper.AutoSize = true;
             this.btApplyWrapper.Controls.Add(this.btApply);
             this.btApplyWrapper.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btApplyWrapper.Location = new System.Drawing.Point(1248, 0);
+            this.btApplyWrapper.Location = new System.Drawing.Point(1272, 0);
             this.btApplyWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btApplyWrapper.Name = "btApplyWrapper";
             this.btApplyWrapper.Padding = new System.Windows.Forms.Padding(0, 67, 40, 0);
@@ -425,7 +528,7 @@
             this.horizontalSeperator.Location = new System.Drawing.Point(0, 202);
             this.horizontalSeperator.Margin = new System.Windows.Forms.Padding(0);
             this.horizontalSeperator.Name = "horizontalSeperator";
-            this.horizontalSeperator.Size = new System.Drawing.Size(1498, 1);
+            this.horizontalSeperator.Size = new System.Drawing.Size(1907, 1);
             this.horizontalSeperator.TabIndex = 6;
             // 
             // HelpRequestControl
@@ -439,24 +542,30 @@
             this.Controls.Add(this.titleWrapper);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "HelpRequestControl";
-            this.Size = new System.Drawing.Size(1498, 1321);
+            this.Size = new System.Drawing.Size(1907, 1245);
             this.Load += new System.EventHandler(this.HelpRequestControl_Load);
             this.SizeChanged += new System.EventHandler(this.HelpRequestControl_SizeChanged);
             this.contentWrapper.ResumeLayout(false);
             this.contentWrapper.PerformLayout();
-            this.flowLayoutPanel1.ResumeLayout(false);
-            this.flowLayoutPanel1.PerformLayout();
+            this.locationWrapper.ResumeLayout(false);
+            this.locationWrapper.PerformLayout();
             this.btBackWrapper.ResumeLayout(false);
             this.titleWrapper.ResumeLayout(false);
             this.titleWrapper.PerformLayout();
             this.lbTitleWrapper.ResumeLayout(false);
             this.lbTitleWrapper.PerformLayout();
+            this.lbCloseWrapper.ResumeLayout(false);
+            this.lbCloseWrapper.PerformLayout();
             this.lbUrgencyCrititcalWrapper.ResumeLayout(false);
             this.lbUrgencyCrititcalWrapper.PerformLayout();
             this.lbUrgencyNormalWrapper.ResumeLayout(false);
             this.lbUrgencyNormalWrapper.PerformLayout();
             this.lbUrgencyLowWrapper.ResumeLayout(false);
             this.lbUrgencyLowWrapper.PerformLayout();
+            this.btCloseWrapper.ResumeLayout(false);
+            this.btCloseWrapper.PerformLayout();
+            this.btOpenWrapper.ResumeLayout(false);
+            this.btOpenWrapper.PerformLayout();
             this.btApplicationsWrapper.ResumeLayout(false);
             this.btApplicationsWrapper.PerformLayout();
             this.btEditWrapper.ResumeLayout(false);
@@ -476,7 +585,7 @@
         private HorizontalSeperatorControl horizontalSeperator;
         private System.Windows.Forms.Label lbDate;
         private System.Windows.Forms.Label lbLocation;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel locationWrapper;
         private System.Windows.Forms.Label lbDistance;
         private System.Windows.Forms.Panel btBackWrapper;
         private System.Windows.Forms.Button btBack;
@@ -495,5 +604,11 @@
         private System.Windows.Forms.Label lbUrgencyNormal;
         private System.Windows.Forms.Panel lbUrgencyLowWrapper;
         private System.Windows.Forms.Label lbUrgencyLow;
+        private System.Windows.Forms.FlowLayoutPanel btCloseWrapper;
+        private System.Windows.Forms.Button btClose;
+        private System.Windows.Forms.FlowLayoutPanel btOpenWrapper;
+        private System.Windows.Forms.Button btOpen;
+        private System.Windows.Forms.Panel lbCloseWrapper;
+        private System.Windows.Forms.Label lbClose;
     }
 }

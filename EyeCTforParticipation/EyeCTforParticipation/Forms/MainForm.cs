@@ -47,6 +47,7 @@ namespace EyeCTforParticipation.Forms
         private void ResultControl_Click(object sender, EventArgs e)
         {
             HelpRequestDetailControl resultControl = (HelpRequestDetailControl)sender;
+            MessageBox.Show(resultControl.Id.ToString());
             helpRequest = new HelpRequestControl(helpRequestRepository.Get(resultControl.Id));
         }
 
@@ -113,6 +114,17 @@ namespace EyeCTforParticipation.Forms
                         views.CurrentView = helpSeekerView;
                         break;
                     case UserRole.Volunteer:
+                        lbVolunteerName.Text = Session.User.Name;
+                        if (Session.User.Avatar != null)
+                        {
+                            pbVolunteerAvatar.Image = Session.User.Avatar;
+                            pbVolunteerAvatar.Show();
+                        }
+                        else
+                        {
+                            pbVolunteerAvatar.Hide();
+                        }
+                        views.CurrentView = volunteerView;
                         break;
                 }
             }
@@ -144,6 +156,11 @@ namespace EyeCTforParticipation.Forms
         private void HelpRequestEditForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             getHelpRequests(helpRequestRepository.GetFromHelpSeeker(Session.User.Id));
+        }
+
+        private void btSearch_Click(object sender, EventArgs e)
+        {
+            views.CurrentView = searchView;
         }
     }
 }

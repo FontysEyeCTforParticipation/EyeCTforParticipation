@@ -40,12 +40,11 @@
             this.lbHelpRequests = new System.Windows.Forms.Label();
             this.btHelpSeekerEditProfileWrapper = new System.Windows.Forms.FlowLayoutPanel();
             this.btHelpSeekerEditProfile = new System.Windows.Forms.Button();
-            this.lbProfile = new System.Windows.Forms.Label();
+            this.lbHelpSeekerProfile = new System.Windows.Forms.Label();
+            this.helpSeekerTitle = new System.Windows.Forms.FlowLayoutPanel();
+            this.pbHelpSeekerAvatar = new System.Windows.Forms.PictureBox();
             this.lbHelpSeekerName = new System.Windows.Forms.Label();
             this.volunteerView = new System.Windows.Forms.TabPage();
-            this.btSearchWrapper = new System.Windows.Forms.FlowLayoutPanel();
-            this.btSearch = new System.Windows.Forms.Button();
-            this.lbVolunteerName = new System.Windows.Forms.Label();
             this.searchView = new System.Windows.Forms.TabPage();
             this.resultsWrapper = new System.Windows.Forms.Panel();
             this.searchSeperator = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
@@ -65,16 +64,24 @@
             this.btHelpRequestsBackWrapper = new System.Windows.Forms.Panel();
             this.btHelpRequestsBack = new System.Windows.Forms.Button();
             this.header = new EyeCTforParticipation.Controls.HeaderControl();
-            this.pbHelpSeekerAvatar = new System.Windows.Forms.PictureBox();
-            this.helpSeekerTitle = new System.Windows.Forms.FlowLayoutPanel();
+            this.volunteerTitle = new System.Windows.Forms.FlowLayoutPanel();
+            this.pbVolunteerAvatar = new System.Windows.Forms.PictureBox();
+            this.lbVolunteerName = new System.Windows.Forms.Label();
+            this.btVolunteerProfileWrapper = new System.Windows.Forms.FlowLayoutPanel();
+            this.btVolunteerProfile = new System.Windows.Forms.Button();
+            this.lbVolunteerProfile = new System.Windows.Forms.Label();
+            this.btSearchWrapper = new System.Windows.Forms.FlowLayoutPanel();
+            this.btSearch = new System.Windows.Forms.Button();
+            this.lbSearch = new System.Windows.Forms.Label();
             this.views.SuspendLayout();
             this.startView.SuspendLayout();
             this.helpSeekerView.SuspendLayout();
             this.btAidWorkersManageWrapper.SuspendLayout();
             this.btHelpRequestsManageWrapper.SuspendLayout();
             this.btHelpSeekerEditProfileWrapper.SuspendLayout();
+            this.helpSeekerTitle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHelpSeekerAvatar)).BeginInit();
             this.volunteerView.SuspendLayout();
-            this.btSearchWrapper.SuspendLayout();
             this.searchView.SuspendLayout();
             this.searchTitleWrapper.SuspendLayout();
             this.btSearchBackWrapper.SuspendLayout();
@@ -83,8 +90,10 @@
             this.helpRequestsTitleWrapper.SuspendLayout();
             this.btHelpRequestCreateWrapper.SuspendLayout();
             this.btHelpRequestsBackWrapper.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbHelpSeekerAvatar)).BeginInit();
-            this.helpSeekerTitle.SuspendLayout();
+            this.volunteerTitle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVolunteerAvatar)).BeginInit();
+            this.btVolunteerProfileWrapper.SuspendLayout();
+            this.btSearchWrapper.SuspendLayout();
             this.SuspendLayout();
             // 
             // views
@@ -96,7 +105,7 @@
             this.views.Controls.Add(this.searchView);
             this.views.Controls.Add(this.helpRequestView);
             this.views.Controls.Add(this.helpRequestsManageView);
-            this.views.CurrentView = this.helpSeekerView;
+            this.views.CurrentView = this.volunteerView;
             this.views.Dock = System.Windows.Forms.DockStyle.Fill;
             this.views.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.views.ItemSize = new System.Drawing.Size(0, 1);
@@ -142,7 +151,7 @@
             this.helpSeekerView.Controls.Add(this.btHelpRequestsManageWrapper);
             this.helpSeekerView.Controls.Add(this.lbHelpRequests);
             this.helpSeekerView.Controls.Add(this.btHelpSeekerEditProfileWrapper);
-            this.helpSeekerView.Controls.Add(this.lbProfile);
+            this.helpSeekerView.Controls.Add(this.lbHelpSeekerProfile);
             this.helpSeekerView.Controls.Add(this.helpSeekerTitle);
             this.helpSeekerView.Location = new System.Drawing.Point(0, 0);
             this.helpSeekerView.Margin = new System.Windows.Forms.Padding(0);
@@ -275,20 +284,43 @@
             this.btHelpSeekerEditProfile.Text = "WIJZIGEN";
             this.btHelpSeekerEditProfile.UseVisualStyleBackColor = false;
             // 
-            // lbProfile
+            // lbHelpSeekerProfile
             // 
-            this.lbProfile.AutoSize = true;
-            this.lbProfile.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbProfile.Font = new System.Drawing.Font("Segoe UI", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbProfile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbProfile.Location = new System.Drawing.Point(0, 199);
-            this.lbProfile.Margin = new System.Windows.Forms.Padding(0);
-            this.lbProfile.Name = "lbProfile";
-            this.lbProfile.Padding = new System.Windows.Forms.Padding(40, 40, 0, 40);
-            this.lbProfile.Size = new System.Drawing.Size(220, 151);
-            this.lbProfile.TabIndex = 4;
-            this.lbProfile.Text = "Profiel";
-            this.lbProfile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbHelpSeekerProfile.AutoSize = true;
+            this.lbHelpSeekerProfile.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbHelpSeekerProfile.Font = new System.Drawing.Font("Segoe UI", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbHelpSeekerProfile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbHelpSeekerProfile.Location = new System.Drawing.Point(0, 199);
+            this.lbHelpSeekerProfile.Margin = new System.Windows.Forms.Padding(0);
+            this.lbHelpSeekerProfile.Name = "lbHelpSeekerProfile";
+            this.lbHelpSeekerProfile.Padding = new System.Windows.Forms.Padding(40, 40, 0, 40);
+            this.lbHelpSeekerProfile.Size = new System.Drawing.Size(220, 151);
+            this.lbHelpSeekerProfile.TabIndex = 4;
+            this.lbHelpSeekerProfile.Text = "Profiel";
+            this.lbHelpSeekerProfile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // helpSeekerTitle
+            // 
+            this.helpSeekerTitle.AutoSize = true;
+            this.helpSeekerTitle.Controls.Add(this.pbHelpSeekerAvatar);
+            this.helpSeekerTitle.Controls.Add(this.lbHelpSeekerName);
+            this.helpSeekerTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.helpSeekerTitle.Location = new System.Drawing.Point(0, 0);
+            this.helpSeekerTitle.Name = "helpSeekerTitle";
+            this.helpSeekerTitle.Padding = new System.Windows.Forms.Padding(40, 40, 0, 20);
+            this.helpSeekerTitle.Size = new System.Drawing.Size(1574, 199);
+            this.helpSeekerTitle.TabIndex = 25;
+            // 
+            // pbHelpSeekerAvatar
+            // 
+            this.pbHelpSeekerAvatar.Location = new System.Drawing.Point(40, 40);
+            this.pbHelpSeekerAvatar.Margin = new System.Windows.Forms.Padding(0, 0, 40, 0);
+            this.pbHelpSeekerAvatar.Name = "pbHelpSeekerAvatar";
+            this.pbHelpSeekerAvatar.Size = new System.Drawing.Size(128, 128);
+            this.pbHelpSeekerAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbHelpSeekerAvatar.TabIndex = 23;
+            this.pbHelpSeekerAvatar.TabStop = false;
+            this.pbHelpSeekerAvatar.Visible = false;
             // 
             // lbHelpSeekerName
             // 
@@ -308,58 +340,16 @@
             // 
             this.volunteerView.BackColor = System.Drawing.Color.White;
             this.volunteerView.Controls.Add(this.btSearchWrapper);
-            this.volunteerView.Controls.Add(this.lbVolunteerName);
+            this.volunteerView.Controls.Add(this.lbSearch);
+            this.volunteerView.Controls.Add(this.btVolunteerProfileWrapper);
+            this.volunteerView.Controls.Add(this.lbVolunteerProfile);
+            this.volunteerView.Controls.Add(this.volunteerTitle);
             this.volunteerView.Location = new System.Drawing.Point(0, 0);
             this.volunteerView.Margin = new System.Windows.Forms.Padding(0);
             this.volunteerView.Name = "volunteerView";
             this.volunteerView.Size = new System.Drawing.Size(1574, 981);
             this.volunteerView.TabIndex = 3;
             this.volunteerView.Text = "tabPage1";
-            // 
-            // btSearchWrapper
-            // 
-            this.btSearchWrapper.AutoSize = true;
-            this.btSearchWrapper.Controls.Add(this.btSearch);
-            this.btSearchWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btSearchWrapper.Location = new System.Drawing.Point(0, 151);
-            this.btSearchWrapper.Margin = new System.Windows.Forms.Padding(0);
-            this.btSearchWrapper.Name = "btSearchWrapper";
-            this.btSearchWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 0, 20);
-            this.btSearchWrapper.Size = new System.Drawing.Size(1574, 87);
-            this.btSearchWrapper.TabIndex = 19;
-            // 
-            // btSearch
-            // 
-            this.btSearch.AutoSize = true;
-            this.btSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btSearch.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btSearch.FlatAppearance.BorderSize = 0;
-            this.btSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btSearch.Location = new System.Drawing.Point(40, 0);
-            this.btSearch.Margin = new System.Windows.Forms.Padding(0);
-            this.btSearch.Name = "btSearch";
-            this.btSearch.Padding = new System.Windows.Forms.Padding(10);
-            this.btSearch.Size = new System.Drawing.Size(149, 67);
-            this.btSearch.TabIndex = 4;
-            this.btSearch.Text = "ZOEKEN";
-            this.btSearch.UseVisualStyleBackColor = false;
-            // 
-            // lbVolunteerName
-            // 
-            this.lbVolunteerName.AutoSize = true;
-            this.lbVolunteerName.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbVolunteerName.Font = new System.Drawing.Font("Segoe UI", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbVolunteerName.Location = new System.Drawing.Point(0, 0);
-            this.lbVolunteerName.Margin = new System.Windows.Forms.Padding(0);
-            this.lbVolunteerName.Name = "lbVolunteerName";
-            this.lbVolunteerName.Padding = new System.Windows.Forms.Padding(40, 40, 0, 40);
-            this.lbVolunteerName.Size = new System.Drawing.Size(291, 151);
-            this.lbVolunteerName.TabIndex = 1;
-            this.lbVolunteerName.Text = "John Doe";
-            this.lbVolunteerName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // searchView
             // 
@@ -614,34 +604,142 @@
             this.header.BackColor = System.Drawing.Color.White;
             this.header.Dock = System.Windows.Forms.DockStyle.Top;
             this.header.Location = new System.Drawing.Point(0, 0);
+            this.header.LoggedIn = false;
             this.header.Margin = new System.Windows.Forms.Padding(0);
             this.header.MinimumSize = new System.Drawing.Size(920, 0);
             this.header.Name = "header";
             this.header.Size = new System.Drawing.Size(1574, 148);
             this.header.TabIndex = 1;
             // 
-            // pbHelpSeekerAvatar
+            // volunteerTitle
             // 
-            this.pbHelpSeekerAvatar.Location = new System.Drawing.Point(40, 40);
-            this.pbHelpSeekerAvatar.Margin = new System.Windows.Forms.Padding(0, 0, 40, 0);
-            this.pbHelpSeekerAvatar.Name = "pbHelpSeekerAvatar";
-            this.pbHelpSeekerAvatar.Size = new System.Drawing.Size(128, 128);
-            this.pbHelpSeekerAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbHelpSeekerAvatar.TabIndex = 23;
-            this.pbHelpSeekerAvatar.TabStop = false;
-            this.pbHelpSeekerAvatar.Visible = false;
+            this.volunteerTitle.AutoSize = true;
+            this.volunteerTitle.Controls.Add(this.pbVolunteerAvatar);
+            this.volunteerTitle.Controls.Add(this.lbVolunteerName);
+            this.volunteerTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.volunteerTitle.Location = new System.Drawing.Point(0, 0);
+            this.volunteerTitle.Name = "volunteerTitle";
+            this.volunteerTitle.Padding = new System.Windows.Forms.Padding(40, 40, 0, 20);
+            this.volunteerTitle.Size = new System.Drawing.Size(1574, 199);
+            this.volunteerTitle.TabIndex = 26;
             // 
-            // helpSeekerTitle
+            // pbVolunteerAvatar
             // 
-            this.helpSeekerTitle.AutoSize = true;
-            this.helpSeekerTitle.Controls.Add(this.pbHelpSeekerAvatar);
-            this.helpSeekerTitle.Controls.Add(this.lbHelpSeekerName);
-            this.helpSeekerTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.helpSeekerTitle.Location = new System.Drawing.Point(0, 0);
-            this.helpSeekerTitle.Name = "helpSeekerTitle";
-            this.helpSeekerTitle.Padding = new System.Windows.Forms.Padding(40, 40, 0, 20);
-            this.helpSeekerTitle.Size = new System.Drawing.Size(1574, 199);
-            this.helpSeekerTitle.TabIndex = 25;
+            this.pbVolunteerAvatar.Location = new System.Drawing.Point(40, 40);
+            this.pbVolunteerAvatar.Margin = new System.Windows.Forms.Padding(0, 0, 40, 0);
+            this.pbVolunteerAvatar.Name = "pbVolunteerAvatar";
+            this.pbVolunteerAvatar.Size = new System.Drawing.Size(128, 128);
+            this.pbVolunteerAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbVolunteerAvatar.TabIndex = 23;
+            this.pbVolunteerAvatar.TabStop = false;
+            this.pbVolunteerAvatar.Visible = false;
+            // 
+            // lbVolunteerName
+            // 
+            this.lbVolunteerName.AutoSize = true;
+            this.lbVolunteerName.Font = new System.Drawing.Font("Segoe UI", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbVolunteerName.ForeColor = System.Drawing.Color.Gray;
+            this.lbVolunteerName.Location = new System.Drawing.Point(208, 40);
+            this.lbVolunteerName.Margin = new System.Windows.Forms.Padding(0);
+            this.lbVolunteerName.Name = "lbVolunteerName";
+            this.lbVolunteerName.Padding = new System.Windows.Forms.Padding(0, 40, 0, 40);
+            this.lbVolunteerName.Size = new System.Drawing.Size(202, 139);
+            this.lbVolunteerName.TabIndex = 2;
+            this.lbVolunteerName.Text = "John Doe";
+            this.lbVolunteerName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btVolunteerProfileWrapper
+            // 
+            this.btVolunteerProfileWrapper.AutoSize = true;
+            this.btVolunteerProfileWrapper.Controls.Add(this.btVolunteerProfile);
+            this.btVolunteerProfileWrapper.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btVolunteerProfileWrapper.Location = new System.Drawing.Point(0, 350);
+            this.btVolunteerProfileWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.btVolunteerProfileWrapper.Name = "btVolunteerProfileWrapper";
+            this.btVolunteerProfileWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 0, 20);
+            this.btVolunteerProfileWrapper.Size = new System.Drawing.Size(1574, 87);
+            this.btVolunteerProfileWrapper.TabIndex = 27;
+            // 
+            // btVolunteerProfile
+            // 
+            this.btVolunteerProfile.AutoSize = true;
+            this.btVolunteerProfile.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btVolunteerProfile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btVolunteerProfile.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btVolunteerProfile.FlatAppearance.BorderSize = 0;
+            this.btVolunteerProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btVolunteerProfile.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btVolunteerProfile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btVolunteerProfile.Location = new System.Drawing.Point(40, 0);
+            this.btVolunteerProfile.Margin = new System.Windows.Forms.Padding(0);
+            this.btVolunteerProfile.Name = "btVolunteerProfile";
+            this.btVolunteerProfile.Padding = new System.Windows.Forms.Padding(10);
+            this.btVolunteerProfile.Size = new System.Drawing.Size(170, 67);
+            this.btVolunteerProfile.TabIndex = 4;
+            this.btVolunteerProfile.Text = "WIJZIGEN";
+            this.btVolunteerProfile.UseVisualStyleBackColor = false;
+            // 
+            // lbVolunteerProfile
+            // 
+            this.lbVolunteerProfile.AutoSize = true;
+            this.lbVolunteerProfile.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbVolunteerProfile.Font = new System.Drawing.Font("Segoe UI", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbVolunteerProfile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbVolunteerProfile.Location = new System.Drawing.Point(0, 199);
+            this.lbVolunteerProfile.Margin = new System.Windows.Forms.Padding(0);
+            this.lbVolunteerProfile.Name = "lbVolunteerProfile";
+            this.lbVolunteerProfile.Padding = new System.Windows.Forms.Padding(40, 40, 0, 40);
+            this.lbVolunteerProfile.Size = new System.Drawing.Size(220, 151);
+            this.lbVolunteerProfile.TabIndex = 28;
+            this.lbVolunteerProfile.Text = "Profiel";
+            this.lbVolunteerProfile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btSearchWrapper
+            // 
+            this.btSearchWrapper.AutoSize = true;
+            this.btSearchWrapper.Controls.Add(this.btSearch);
+            this.btSearchWrapper.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btSearchWrapper.Location = new System.Drawing.Point(0, 588);
+            this.btSearchWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.btSearchWrapper.Name = "btSearchWrapper";
+            this.btSearchWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 0, 20);
+            this.btSearchWrapper.Size = new System.Drawing.Size(1574, 87);
+            this.btSearchWrapper.TabIndex = 29;
+            // 
+            // btSearch
+            // 
+            this.btSearch.AutoSize = true;
+            this.btSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btSearch.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btSearch.FlatAppearance.BorderSize = 0;
+            this.btSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btSearch.Location = new System.Drawing.Point(40, 0);
+            this.btSearch.Margin = new System.Windows.Forms.Padding(0);
+            this.btSearch.Name = "btSearch";
+            this.btSearch.Padding = new System.Windows.Forms.Padding(10);
+            this.btSearch.Size = new System.Drawing.Size(149, 67);
+            this.btSearch.TabIndex = 4;
+            this.btSearch.Text = "ZOEKEN";
+            this.btSearch.UseVisualStyleBackColor = false;
+            this.btSearch.Click += new System.EventHandler(this.btSearch_Click);
+            // 
+            // lbSearch
+            // 
+            this.lbSearch.AutoSize = true;
+            this.lbSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbSearch.Font = new System.Drawing.Font("Segoe UI", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbSearch.Location = new System.Drawing.Point(0, 437);
+            this.lbSearch.Margin = new System.Windows.Forms.Padding(0);
+            this.lbSearch.Name = "lbSearch";
+            this.lbSearch.Padding = new System.Windows.Forms.Padding(40, 40, 0, 40);
+            this.lbSearch.Size = new System.Drawing.Size(638, 151);
+            this.lbSearch.TabIndex = 30;
+            this.lbSearch.Text = "Zoeken naar hulpvragen";
+            this.lbSearch.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MainForm
             // 
@@ -665,10 +763,11 @@
             this.btHelpRequestsManageWrapper.PerformLayout();
             this.btHelpSeekerEditProfileWrapper.ResumeLayout(false);
             this.btHelpSeekerEditProfileWrapper.PerformLayout();
+            this.helpSeekerTitle.ResumeLayout(false);
+            this.helpSeekerTitle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHelpSeekerAvatar)).EndInit();
             this.volunteerView.ResumeLayout(false);
             this.volunteerView.PerformLayout();
-            this.btSearchWrapper.ResumeLayout(false);
-            this.btSearchWrapper.PerformLayout();
             this.searchView.ResumeLayout(false);
             this.searchView.PerformLayout();
             this.searchTitleWrapper.ResumeLayout(false);
@@ -683,9 +782,13 @@
             this.btHelpRequestCreateWrapper.ResumeLayout(false);
             this.btHelpRequestCreateWrapper.PerformLayout();
             this.btHelpRequestsBackWrapper.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbHelpSeekerAvatar)).EndInit();
-            this.helpSeekerTitle.ResumeLayout(false);
-            this.helpSeekerTitle.PerformLayout();
+            this.volunteerTitle.ResumeLayout(false);
+            this.volunteerTitle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVolunteerAvatar)).EndInit();
+            this.btVolunteerProfileWrapper.ResumeLayout(false);
+            this.btVolunteerProfileWrapper.PerformLayout();
+            this.btSearchWrapper.ResumeLayout(false);
+            this.btSearchWrapper.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -704,15 +807,12 @@
         private System.Windows.Forms.TabPage startView;
         private System.Windows.Forms.Label lbStartTitle;
         private System.Windows.Forms.TabPage volunteerView;
-        private System.Windows.Forms.Label lbVolunteerName;
-        private System.Windows.Forms.FlowLayoutPanel btSearchWrapper;
-        private System.Windows.Forms.Button btSearch;
         private Controls.HeaderControl header;
         private System.Windows.Forms.TabPage helpSeekerView;
         private System.Windows.Forms.Label lbHelpSeekerName;
         private System.Windows.Forms.Label lbAidWorkers;
         private System.Windows.Forms.Label lbHelpRequests;
-        private System.Windows.Forms.Label lbProfile;
+        private System.Windows.Forms.Label lbHelpSeekerProfile;
         private System.Windows.Forms.FlowLayoutPanel btAidWorkersManageWrapper;
         private System.Windows.Forms.Button btAidWorkersManage;
         private System.Windows.Forms.FlowLayoutPanel btHelpRequestsManageWrapper;
@@ -731,5 +831,14 @@
         private Controls.HelpRequestControl helpRequest;
         private System.Windows.Forms.FlowLayoutPanel helpSeekerTitle;
         private System.Windows.Forms.PictureBox pbHelpSeekerAvatar;
+        private System.Windows.Forms.Label lbVolunteerProfile;
+        private System.Windows.Forms.FlowLayoutPanel btVolunteerProfileWrapper;
+        private System.Windows.Forms.Button btVolunteerProfile;
+        private System.Windows.Forms.FlowLayoutPanel volunteerTitle;
+        private System.Windows.Forms.PictureBox pbVolunteerAvatar;
+        private System.Windows.Forms.Label lbVolunteerName;
+        private System.Windows.Forms.FlowLayoutPanel btSearchWrapper;
+        private System.Windows.Forms.Button btSearch;
+        private System.Windows.Forms.Label lbSearch;
     }
 }

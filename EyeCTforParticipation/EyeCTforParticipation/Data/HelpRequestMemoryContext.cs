@@ -14,6 +14,8 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> Search(SearchOrder order)
         {
             var results = from helpRequest in Tables.HelpRequest
+                          join user in Tables.User on helpRequest.HelpSeeker.Id equals user.Id
+                          where helpRequest.Closed == false
                           orderby
                             order == SearchOrder.DATE_ASC ? helpRequest.Date : default(DateTime),
                             order == SearchOrder.DATE_DESC ? helpRequest.Date : default(DateTime) descending
@@ -22,7 +24,11 @@ namespace EyeCTforParticipation.Data
                               Title = helpRequest.Title,
                               Date = helpRequest.Date,
                               Address = helpRequest.Address,
-                              Urgency = helpRequest.Urgency
+                              Urgency = helpRequest.Urgency,
+                              HelpSeeker = new UserModel
+                              {
+                                  Name = user.Name
+                              }
                           };
             return results.ToList();
         }
@@ -30,8 +36,9 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> Search(string keywords, SearchOrder order)
         {
             var results = from helpRequest in Tables.HelpRequest
+                          join user in Tables.User on helpRequest.HelpSeeker.Id equals user.Id
                           let matches = Functions.KeywordMatches(helpRequest.Title + helpRequest.Content, keywords, ' ')
-                          where matches > 0
+                          where matches > 0 && helpRequest.Closed == false
                           orderby
                             order == SearchOrder.DATE_ASC ? helpRequest.Date : default(DateTime),
                             order == SearchOrder.DATE_DESC ? helpRequest.Date : default(DateTime) descending,
@@ -42,7 +49,11 @@ namespace EyeCTforParticipation.Data
                               Title = helpRequest.Title,
                               Date = helpRequest.Date,
                               Address = helpRequest.Address,
-                              Urgency = helpRequest.Urgency
+                              Urgency = helpRequest.Urgency,
+                              HelpSeeker = new UserModel
+                              {
+                                  Name = user.Name
+                              }
                           };
             return results.ToList();
         }
@@ -50,8 +61,9 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> Search(GeoCoordinate location, int distance, SearchOrder order)
         {
             var results = from helpRequest in Tables.HelpRequest
+                          join user in Tables.User on helpRequest.HelpSeeker.Id equals user.Id
                           let getDistance = helpRequest.Location.GetDistanceTo(location)
-                          where getDistance <= distance
+                          where getDistance <= distance && helpRequest.Closed == false
                           orderby
                             order == SearchOrder.DATE_ASC ? helpRequest.Date : default(DateTime),
                             order == SearchOrder.DATE_DESC ? helpRequest.Date : default(DateTime) descending,
@@ -63,7 +75,11 @@ namespace EyeCTforParticipation.Data
                               Date = helpRequest.Date,
                               Address = helpRequest.Address,
                               Urgency = helpRequest.Urgency,
-                              Distance = getDistance
+                              Distance = getDistance,
+                              HelpSeeker = new UserModel
+                              {
+                                  Name = user.Name
+                              }
                           };
             return results.ToList();
         }
@@ -71,9 +87,10 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int distance, SearchOrder order)
         {
             var results = from helpRequest in Tables.HelpRequest
+                          join user in Tables.User on helpRequest.HelpSeeker.Id equals user.Id
                           let matches = Functions.KeywordMatches(helpRequest.Title + helpRequest.Content, keywords, ' ')
                           let getDistance = helpRequest.Location.GetDistanceTo(location)
-                          where getDistance <= distance && matches > 0
+                          where getDistance <= distance && matches > 0 && helpRequest.Closed == false
                           orderby
                             order == SearchOrder.DATE_ASC ? helpRequest.Date : default(DateTime),
                             order == SearchOrder.DATE_DESC ? helpRequest.Date : default(DateTime) descending,
@@ -87,7 +104,11 @@ namespace EyeCTforParticipation.Data
                               Date = helpRequest.Date,
                               Address = helpRequest.Address,
                               Urgency = helpRequest.Urgency,
-                              Distance = getDistance
+                              Distance = getDistance,
+                              HelpSeeker = new UserModel
+                              {
+                                  Name = user.Name
+                              }
                           };
             return results.ToList();
         }

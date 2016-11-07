@@ -41,7 +41,7 @@ namespace EyeCTforParticipation.Data
 
         public int Register(UserModel user, bool approved)
         {
-            int id = Tables.HelpRequest.Count() > 0 ? Tables.User.Max(x => x.Id) + 1 : 1;
+            int id = Tables.User.Count() > 0 ? Tables.User.Max(x => x.Id) + 1 : 1;
             Tables.User.Add(new UserModel
             {
                 Id = id,
@@ -53,6 +53,10 @@ namespace EyeCTforParticipation.Data
                 Approved = approved
             });
             return id;
+        }
+        public void approveRegistration(int userId)
+        {
+            throw new NotImplementedException();
         }
     }
 }
