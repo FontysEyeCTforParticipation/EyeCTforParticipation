@@ -122,7 +122,7 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         public void ApproveRegistration(int userId)
         {
-            throw new NotImplementedException();
+            context.approveRegistration(userId);
         }
 
         /// <summary>
