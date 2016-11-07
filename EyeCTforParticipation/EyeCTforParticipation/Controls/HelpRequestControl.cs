@@ -46,6 +46,9 @@ namespace EyeCTforParticipation.Controls
                     btApplicationsWrapper.Show();
                     break;
             }
+            lbCloseWrapper.Visible = helpRequest.Closed;
+            btCloseWrapper.Visible = !helpRequest.Closed;
+            btOpenWrapper.Visible = helpRequest.Closed;
         }
 
         private void setContent()
@@ -71,6 +74,7 @@ namespace EyeCTforParticipation.Controls
                     lbUrgencyCrititcalWrapper.Show();
                     break;
             }
+            lbTitleWrapper.Controls.SetChildIndex(lbCloseWrapper, 3);
         }
 
         private void HelpRequestControl_SizeChanged(object sender, EventArgs e)
@@ -110,6 +114,23 @@ namespace EyeCTforParticipation.Controls
         {
             helpRequest = helpRequestRepository.Get(helpRequest.Id);
             setContent();
+        }
+
+        private void btClose_Click(object sender, EventArgs e)
+        {
+            helpRequestRepository.Close(helpRequest.Id, Session.User.Id);
+            btCloseWrapper.Hide();
+            btOpenWrapper.Show();
+            lbCloseWrapper.Show();
+            lbTitleWrapper.Controls.SetChildIndex(lbCloseWrapper, 3);
+        }
+
+        private void btOpen_Click(object sender, EventArgs e)
+        {
+            helpRequestRepository.Open(helpRequest.Id, Session.User.Id);
+            btOpenWrapper.Hide();
+            btCloseWrapper.Show();
+            lbCloseWrapper.Hide();
         }
     }
 }

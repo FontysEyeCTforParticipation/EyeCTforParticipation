@@ -37,6 +37,8 @@
             this.lbUrgencyNormal = new System.Windows.Forms.Label();
             this.lbUrgencyLowWrapper = new System.Windows.Forms.Panel();
             this.lbUrgencyLow = new System.Windows.Forms.Label();
+            this.lbCloseWrapper = new System.Windows.Forms.Panel();
+            this.lbClose = new System.Windows.Forms.Label();
             this.lbName = new System.Windows.Forms.Label();
             this.lbLocation = new System.Windows.Forms.Label();
             this.lbDistance = new System.Windows.Forms.Label();
@@ -47,6 +49,7 @@
             this.lbUrgencyCrititcalWrapper.SuspendLayout();
             this.lbUrgencyNormalWrapper.SuspendLayout();
             this.lbUrgencyLowWrapper.SuspendLayout();
+            this.lbCloseWrapper.SuspendLayout();
             this.lbLocationWrapper.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +65,7 @@
             this.lbTitleNameWrapper.Location = new System.Drawing.Point(0, 0);
             this.lbTitleNameWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.lbTitleNameWrapper.Name = "lbTitleNameWrapper";
-            this.lbTitleNameWrapper.Size = new System.Drawing.Size(596, 170);
+            this.lbTitleNameWrapper.Size = new System.Drawing.Size(732, 170);
             this.lbTitleNameWrapper.TabIndex = 5;
             // 
             // titleWrapper
@@ -73,12 +76,13 @@
             this.titleWrapper.Controls.Add(this.lbUrgencyCrititcalWrapper);
             this.titleWrapper.Controls.Add(this.lbUrgencyNormalWrapper);
             this.titleWrapper.Controls.Add(this.lbUrgencyLowWrapper);
+            this.titleWrapper.Controls.Add(this.lbCloseWrapper);
             this.titleWrapper.Location = new System.Drawing.Point(0, 0);
             this.titleWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.titleWrapper.MinimumSize = new System.Drawing.Size(0, 85);
             this.titleWrapper.Name = "titleWrapper";
             this.titleWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.titleWrapper.Size = new System.Drawing.Size(596, 85);
+            this.titleWrapper.Size = new System.Drawing.Size(732, 85);
             this.titleWrapper.TabIndex = 5;
             // 
             // lbTitle
@@ -87,7 +91,7 @@
             this.lbTitle.Dock = System.Windows.Forms.DockStyle.Left;
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbTitle.Location = new System.Drawing.Point(455, 0);
+            this.lbTitle.Location = new System.Drawing.Point(591, 0);
             this.lbTitle.Margin = new System.Windows.Forms.Padding(0);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Padding = new System.Windows.Forms.Padding(0, 30, 60, 10);
@@ -100,7 +104,7 @@
             this.lbUrgencyCrititcalWrapper.AutoSize = true;
             this.lbUrgencyCrititcalWrapper.Controls.Add(this.lbUrgencyCritical);
             this.lbUrgencyCrititcalWrapper.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbUrgencyCrititcalWrapper.Location = new System.Drawing.Point(294, 0);
+            this.lbUrgencyCrititcalWrapper.Location = new System.Drawing.Point(430, 0);
             this.lbUrgencyCrititcalWrapper.Name = "lbUrgencyCrititcalWrapper";
             this.lbUrgencyCrititcalWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 0, 0);
             this.lbUrgencyCrititcalWrapper.Size = new System.Drawing.Size(161, 85);
@@ -125,7 +129,7 @@
             this.lbUrgencyNormalWrapper.AutoSize = true;
             this.lbUrgencyNormalWrapper.Controls.Add(this.lbUrgencyNormal);
             this.lbUrgencyNormalWrapper.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbUrgencyNormalWrapper.Location = new System.Drawing.Point(186, 0);
+            this.lbUrgencyNormalWrapper.Location = new System.Drawing.Point(322, 0);
             this.lbUrgencyNormalWrapper.Name = "lbUrgencyNormalWrapper";
             this.lbUrgencyNormalWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 0, 0);
             this.lbUrgencyNormalWrapper.Size = new System.Drawing.Size(108, 85);
@@ -150,7 +154,7 @@
             this.lbUrgencyLowWrapper.AutoSize = true;
             this.lbUrgencyLowWrapper.Controls.Add(this.lbUrgencyLow);
             this.lbUrgencyLowWrapper.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbUrgencyLowWrapper.Location = new System.Drawing.Point(40, 0);
+            this.lbUrgencyLowWrapper.Location = new System.Drawing.Point(176, 0);
             this.lbUrgencyLowWrapper.Name = "lbUrgencyLowWrapper";
             this.lbUrgencyLowWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 0, 0);
             this.lbUrgencyLowWrapper.Size = new System.Drawing.Size(146, 85);
@@ -169,6 +173,31 @@
             this.lbUrgencyLow.Size = new System.Drawing.Size(143, 40);
             this.lbUrgencyLow.TabIndex = 4;
             this.lbUrgencyLow.Text = "BELANGRIJK";
+            // 
+            // lbCloseWrapper
+            // 
+            this.lbCloseWrapper.AutoSize = true;
+            this.lbCloseWrapper.Controls.Add(this.lbClose);
+            this.lbCloseWrapper.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbCloseWrapper.Location = new System.Drawing.Point(40, 0);
+            this.lbCloseWrapper.Name = "lbCloseWrapper";
+            this.lbCloseWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 10, 0);
+            this.lbCloseWrapper.Size = new System.Drawing.Size(136, 85);
+            this.lbCloseWrapper.TabIndex = 9;
+            this.lbCloseWrapper.Visible = false;
+            // 
+            // lbClose
+            // 
+            this.lbClose.AutoSize = true;
+            this.lbClose.BackColor = System.Drawing.Color.Gray;
+            this.lbClose.Font = new System.Drawing.Font("Segoe UI Semibold", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbClose.ForeColor = System.Drawing.Color.White;
+            this.lbClose.Location = new System.Drawing.Point(0, 34);
+            this.lbClose.Name = "lbClose";
+            this.lbClose.Padding = new System.Windows.Forms.Padding(5);
+            this.lbClose.Size = new System.Drawing.Size(123, 40);
+            this.lbClose.TabIndex = 4;
+            this.lbClose.Text = "GESLOTEN";
             // 
             // lbName
             // 
@@ -206,7 +235,7 @@
             this.lbDistance.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbDistance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDistance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbDistance.Location = new System.Drawing.Point(1256, 0);
+            this.lbDistance.Location = new System.Drawing.Point(1392, 0);
             this.lbDistance.Margin = new System.Windows.Forms.Padding(0);
             this.lbDistance.Name = "lbDistance";
             this.lbDistance.Padding = new System.Windows.Forms.Padding(0, 0, 40, 0);
@@ -221,7 +250,7 @@
             this.lbDate.Dock = System.Windows.Forms.DockStyle.Right;
             this.lbDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbDate.Location = new System.Drawing.Point(596, 0);
+            this.lbDate.Location = new System.Drawing.Point(732, 0);
             this.lbDate.Margin = new System.Windows.Forms.Padding(0);
             this.lbDate.Name = "lbDate";
             this.lbDate.Padding = new System.Windows.Forms.Padding(40, 0, 20, 0);
@@ -236,7 +265,7 @@
             this.lbLocationWrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.lbLocationWrapper.Controls.Add(this.lbLocation);
             this.lbLocationWrapper.Dock = System.Windows.Forms.DockStyle.Right;
-            this.lbLocationWrapper.Location = new System.Drawing.Point(896, 0);
+            this.lbLocationWrapper.Location = new System.Drawing.Point(1032, 0);
             this.lbLocationWrapper.Name = "lbLocationWrapper";
             this.lbLocationWrapper.Padding = new System.Windows.Forms.Padding(0, 60, 0, 0);
             this.lbLocationWrapper.Size = new System.Drawing.Size(360, 170);
@@ -255,7 +284,7 @@
             this.Controls.Add(this.lbDistance);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "HelpRequestDetailControl";
-            this.Size = new System.Drawing.Size(1426, 170);
+            this.Size = new System.Drawing.Size(1562, 170);
             this.lbTitleNameWrapper.ResumeLayout(false);
             this.lbTitleNameWrapper.PerformLayout();
             this.titleWrapper.ResumeLayout(false);
@@ -266,6 +295,8 @@
             this.lbUrgencyNormalWrapper.PerformLayout();
             this.lbUrgencyLowWrapper.ResumeLayout(false);
             this.lbUrgencyLowWrapper.PerformLayout();
+            this.lbCloseWrapper.ResumeLayout(false);
+            this.lbCloseWrapper.PerformLayout();
             this.lbLocationWrapper.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -288,5 +319,7 @@
         private System.Windows.Forms.Label lbUrgencyNormal;
         private System.Windows.Forms.Panel lbUrgencyLowWrapper;
         private System.Windows.Forms.Label lbUrgencyLow;
+        private System.Windows.Forms.Panel lbCloseWrapper;
+        private System.Windows.Forms.Label lbClose;
     }
 }

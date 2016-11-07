@@ -128,7 +128,7 @@
             this.RFIDLoginView.Location = new System.Drawing.Point(0, 0);
             this.RFIDLoginView.Margin = new System.Windows.Forms.Padding(0);
             this.RFIDLoginView.Name = "RFIDLoginView";
-            this.RFIDLoginView.Size = new System.Drawing.Size(714, 669);
+            this.RFIDLoginView.Size = new System.Drawing.Size(714, 668);
             this.RFIDLoginView.TabIndex = 0;
             this.RFIDLoginView.Text = "tabPage1";
             // 
@@ -137,7 +137,7 @@
             this.btPasswordLoginWrapper.AutoSize = true;
             this.btPasswordLoginWrapper.Controls.Add(this.btPasswordLogin);
             this.btPasswordLoginWrapper.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btPasswordLoginWrapper.Location = new System.Drawing.Point(0, 527);
+            this.btPasswordLoginWrapper.Location = new System.Drawing.Point(0, 526);
             this.btPasswordLoginWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btPasswordLoginWrapper.Name = "btPasswordLoginWrapper";
             this.btPasswordLoginWrapper.Padding = new System.Windows.Forms.Padding(40);
@@ -174,7 +174,7 @@
             this.rfidLoginControl.Margin = new System.Windows.Forms.Padding(0);
             this.rfidLoginControl.MinimumSize = new System.Drawing.Size(720, 0);
             this.rfidLoginControl.Name = "rfidLoginControl";
-            this.rfidLoginControl.Size = new System.Drawing.Size(720, 669);
+            this.rfidLoginControl.Size = new System.Drawing.Size(720, 668);
             this.rfidLoginControl.TabIndex = 0;
             // 
             // PasswordLoginView
@@ -274,7 +274,7 @@
             this.ForgotPasswordView.Location = new System.Drawing.Point(0, 0);
             this.ForgotPasswordView.Margin = new System.Windows.Forms.Padding(0);
             this.ForgotPasswordView.Name = "ForgotPasswordView";
-            this.ForgotPasswordView.Size = new System.Drawing.Size(714, 669);
+            this.ForgotPasswordView.Size = new System.Drawing.Size(714, 668);
             this.ForgotPasswordView.TabIndex = 2;
             this.ForgotPasswordView.Text = "tabPage1";
             // 
@@ -288,7 +288,7 @@
             this.forgotPasswordControl.Margin = new System.Windows.Forms.Padding(0);
             this.forgotPasswordControl.MinimumSize = new System.Drawing.Size(700, 0);
             this.forgotPasswordControl.Name = "forgotPasswordControl";
-            this.forgotPasswordControl.Size = new System.Drawing.Size(714, 669);
+            this.forgotPasswordControl.Size = new System.Drawing.Size(714, 668);
             this.forgotPasswordControl.TabIndex = 0;
             // 
             // horizontalSeperatorControl

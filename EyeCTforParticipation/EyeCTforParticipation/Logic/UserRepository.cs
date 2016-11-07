@@ -105,12 +105,15 @@ namespace EyeCTforParticipation.Logic
             }, approved);
             if(userId >  0)
             {
-                string directory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\EyeCTforParticipation\\Uploads\\Avatars";
-                if (Directory.Exists(directory) == false)
+                if (register.Avatar != null)
                 {
-                    Directory.CreateDirectory(directory);
+                    string directory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\EyeCTforParticipation\\Uploads\\Avatars";
+                    if (Directory.Exists(directory) == false)
+                    {
+                        Directory.CreateDirectory(directory);
+                    }
+                    register.Avatar.Save(directory + "\\" + userId.ToString() + ".png", System.Drawing.Imaging.ImageFormat.Png);
                 }
-                register.Avatar.Save(directory + "\\" + userId.ToString() + ".png", System.Drawing.Imaging.ImageFormat.Png);
             }
             //Throw failed to register exception
         }

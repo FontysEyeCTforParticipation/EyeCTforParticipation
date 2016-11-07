@@ -56,10 +56,10 @@
             this.lbAvatar = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btAvatarRemove = new System.Windows.Forms.Button();
             this.btAvatar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbAvatar = new System.Windows.Forms.PictureBox();
-            this.btAvatarRemove = new System.Windows.Forms.Button();
             this.horizontalSeperatorControl1 = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
             this.tbEmailWrapper.SuspendLayout();
             this.tbPasswordWrapper.SuspendLayout();
@@ -439,6 +439,27 @@
             this.flowLayoutPanel1.Size = new System.Drawing.Size(640, 67);
             this.flowLayoutPanel1.TabIndex = 10;
             // 
+            // btAvatarRemove
+            // 
+            this.btAvatarRemove.AutoSize = true;
+            this.btAvatarRemove.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btAvatarRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btAvatarRemove.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btAvatarRemove.FlatAppearance.BorderSize = 0;
+            this.btAvatarRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btAvatarRemove.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAvatarRemove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btAvatarRemove.Location = new System.Drawing.Point(0, 0);
+            this.btAvatarRemove.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.btAvatarRemove.Name = "btAvatarRemove";
+            this.btAvatarRemove.Padding = new System.Windows.Forms.Padding(10);
+            this.btAvatarRemove.Size = new System.Drawing.Size(225, 67);
+            this.btAvatarRemove.TabIndex = 4;
+            this.btAvatarRemove.Text = "VERWIJDEREN";
+            this.btAvatarRemove.UseVisualStyleBackColor = false;
+            this.btAvatarRemove.Visible = false;
+            this.btAvatarRemove.Click += new System.EventHandler(this.btAvatarRemove_Click);
+            // 
             // btAvatar
             // 
             this.btAvatar.AutoSize = true;
@@ -481,27 +502,6 @@
             this.pbAvatar.TabIndex = 5;
             this.pbAvatar.TabStop = false;
             this.pbAvatar.Visible = false;
-            // 
-            // btAvatarRemove
-            // 
-            this.btAvatarRemove.AutoSize = true;
-            this.btAvatarRemove.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btAvatarRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btAvatarRemove.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btAvatarRemove.FlatAppearance.BorderSize = 0;
-            this.btAvatarRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAvatarRemove.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAvatarRemove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btAvatarRemove.Location = new System.Drawing.Point(0, 0);
-            this.btAvatarRemove.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.btAvatarRemove.Name = "btAvatarRemove";
-            this.btAvatarRemove.Padding = new System.Windows.Forms.Padding(10);
-            this.btAvatarRemove.Size = new System.Drawing.Size(225, 67);
-            this.btAvatarRemove.TabIndex = 4;
-            this.btAvatarRemove.Text = "VERWIJDEREN";
-            this.btAvatarRemove.UseVisualStyleBackColor = false;
-            this.btAvatarRemove.Visible = false;
-            this.btAvatarRemove.Click += new System.EventHandler(this.btAvatarRemove_Click);
             // 
             // horizontalSeperatorControl1
             // 

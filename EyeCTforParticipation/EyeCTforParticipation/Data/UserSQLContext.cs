@@ -177,11 +177,11 @@ namespace EyeCTforParticipation.Data
         public List<UserModel> GetHelpSeekers(int aidWorkerId)
         {
             List<UserModel> results = null;
-            string query = @"SELECT User.Id, User.Name
-                             FROM User 
+            string query = @"SELECT [User].Id, [User].Name
+                             FROM [User]
                              WHERE User.ID IN (
                                 SELECT HelpSeekerUserId
-                                FROM HelpSeekerAidWorker
+                                FROM [HelpSeekerAidWorker]
                                 WHERE AidWorkerUserID = @aidWorkerId
                              );";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -207,11 +207,11 @@ namespace EyeCTforParticipation.Data
         public List<UserModel> GetAidWorkers(int helpSeekerId)
         {
             List<UserModel> results = null;
-            string query = @"SELECT User.Id, User.Name
-                             FROM User 
+            string query = @"SELECT [User].Id, [User].Name
+                             FROM [User] 
                              WHERE User.ID IN (
                                 SELECT AidWorkerUserId
-                                FROM HelpSeekerAidWorker
+                                FROM [HelpSeekerAidWorker]
                                 WHERE HelpSeekerUser = @helpSeekerId
                              );";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))

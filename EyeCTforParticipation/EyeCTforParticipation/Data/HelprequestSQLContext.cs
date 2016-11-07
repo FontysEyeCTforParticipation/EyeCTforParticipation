@@ -35,8 +35,9 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> Search(SearchOrder order) 
         {
             List<HelpRequestModel> results = new List<HelpRequestModel>();
-            string query = @"SELECT Title, Date, Address, Urgency 
+            string query = @"SELECT HelpRequest.Id, HelpRequest.Title, HelpRequest.Date, HelpRequest.Address, HelpRequest.Urgency, [User].Name 
                              FROM HelpRequest 
+                             JOIN [User] ON HelpRequest.HelpSeekerUserId = [User].Id 
                              WHERE Closed = 0 
                              ORDER BY " + orderString(order);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -49,10 +50,15 @@ namespace EyeCTforParticipation.Data
                     {
                         results.Add(new HelpRequestModel
                         {
-                            Title = reader.GetString(0),
-                            Date = reader.GetDateTime(1),
-                            Address = reader.GetString(2),
-                            Urgency = (HelpRequestUrgency)reader.GetInt32(3)
+                            Id = reader.GetInt32(0),
+                            Title = reader.GetString(1),
+                            Date = reader.GetDateTime(2),
+                            Address = reader.GetString(3),
+                            Urgency = (HelpRequestUrgency)reader.GetInt32(4),
+                            HelpSeeker = new UserModel
+                            {
+                                Name = reader.GetString(5)
+                            }
                         });
                     }
                 }
@@ -63,8 +69,9 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> Search(string keywords, SearchOrder order)
         {
             List<HelpRequestModel> results = new List<HelpRequestModel>();
-            string query = @"SELECT Title, Date, Address, Urgency, [dbo].KeywordMatches(Title + Content, @Keywords, ' ') AS Matches 
+            string query = @"SELECT HelpRequest.Id, HelpRequest.Title, HelpRequest.Date, HelpRequest.Address, HelpRequest.Urgency, [dbo].KeywordMatches(HelpRequest.Title + HelpRequest.Content, @Keywords, ' ') AS Matches, [User].Name 
                              FROM HelpRequest 
+                             JOIN [User] ON HelpRequest.HelpSeekerUserId = [User].Id 
                              WHERE Closed = 0 AND Matches > 0 
                              ORDER BY " + orderString(order);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -78,10 +85,15 @@ namespace EyeCTforParticipation.Data
                     {
                         results.Add(new HelpRequestModel
                         {
-                            Title = reader.GetString(0),
-                            Date = reader.GetDateTime(1),
-                            Address = reader.GetString(2),
-                            Urgency = (HelpRequestUrgency)reader.GetInt32(3)
+                            Id = reader.GetInt32(0),
+                            Title = reader.GetString(1),
+                            Date = reader.GetDateTime(2),
+                            Address = reader.GetString(3),
+                            Urgency = (HelpRequestUrgency)reader.GetInt32(4),
+                            HelpSeeker = new UserModel
+                            {
+                                Name = reader.GetString(5)
+                            }
                         });
                     }
                 }
@@ -92,8 +104,9 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> Search(GeoCoordinate location, int distance, SearchOrder order)
         {
             List<HelpRequestModel> results = new List<HelpRequestModel>();
-            string query = @"SELECT Title, Date, Address, Urgency, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance 
-                            FROM HelpRequest
+            string query = @"SELECT HelpRequest.Id, Title, Date, Address, Urgency, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance, [User].Name 
+                            FROM HelpRequest 
+                            JOIN [User] ON HelpRequest.HelpSeekerUserId = [User].Id 
                             WHERE Closed = 0 AND (Distance <= @Distance OR @Distance = 0) 
                             ORDER BY " + orderString(order);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -108,11 +121,16 @@ namespace EyeCTforParticipation.Data
                     {
                         results.Add(new HelpRequestModel
                         {
-                            Title = reader.GetString(0),
-                            Date = reader.GetDateTime(1),
-                            Address = reader.GetString(2),
-                            Urgency = (HelpRequestUrgency)reader.GetInt32(3),
-                            Distance = reader.GetDouble(4)
+                            Id = reader.GetInt32(0),
+                            Title = reader.GetString(1),
+                            Date = reader.GetDateTime(2),
+                            Address = reader.GetString(3),
+                            Urgency = (HelpRequestUrgency)reader.GetInt32(4),
+                            Distance = reader.GetDouble(5),
+                            HelpSeeker = new UserModel
+                            {
+                                Name = reader.GetString(6)
+                            }
                         });
                     }
                 }
@@ -123,8 +141,9 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int distance, SearchOrder order)
         {
             List<HelpRequestModel> results = new List<HelpRequestModel>();
-            string query = @"SELECT Title, Date, Address, Urgency, [dbo].KeywordMatches(Title + Content, @Keywords, ' ') AS Matches, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance 
+            string query = @"SELECT HelpRequest.Id, Title, Date, Address, Urgency, [dbo].KeywordMatches(Title + Content, @Keywords, ' ') AS Matches, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance, [User].Name 
                              FROM HelpRequest 
+                             JOIN [User] ON HelpRequest.HelpSeekerUserId = [User].Id 
                              WHERE Closed = 0 AND Matches > 0 AND (Distance <= @Distance OR @Distance = 0) 
                              ORDER BY " + orderString(order);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -140,11 +159,16 @@ namespace EyeCTforParticipation.Data
                     {
                         results.Add(new HelpRequestModel
                         {
-                            Title = reader.GetString(0),
-                            Date = reader.GetDateTime(1),
-                            Address = reader.GetString(2),
-                            Urgency = (HelpRequestUrgency)reader.GetInt32(3),
-                            Distance = reader.GetDouble(5)
+                            Id = reader.GetInt32(0),
+                            Title = reader.GetString(1),
+                            Date = reader.GetDateTime(2),
+                            Address = reader.GetString(3),
+                            Urgency = (HelpRequestUrgency)reader.GetInt32(4),
+                            Distance = reader.GetDouble(6),
+                            HelpSeeker = new UserModel
+                            {
+                                Name = reader.GetString(7)
+                            }
                         });
                     }
                 }
@@ -157,7 +181,7 @@ namespace EyeCTforParticipation.Data
             HelpRequestModel result = null;
             string query = @"SELECT HelpRequest.HelpSeekerUserId, User.Name, HelpRequest.Title, HelpRequest.Content, HelpRequest.Date, HelpRequest.Address, HelpRequest.Urgency, HelpRequest.Closed 
                              FROM HelpRequest 
-                             JOIN User ON HelpRequest.HelpSeekerUserId = User.Id 
+                             JOIN [User] ON HelpRequest.HelpSeekerUserId = [User].Id 
                              WHERE Id = @Id";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -194,7 +218,7 @@ namespace EyeCTforParticipation.Data
             List<HelpRequestModel> results = null;
             string query = @"SELECT HelpRequest.Id, HelpRequest.HelpSeekerUserId, User.Name, HelpRequest.Title, HelpRequest.Content, HelpRequest.Date, HelpRequest.Address, HelpRequest.Urgency, HelpRequest.Closed 
                              FROM HelpRequest 
-                             JOIN User ON HelpRequest.HelpSeekerUserId = User.Id 
+                             JOIN [User] ON HelpRequest.HelpSeekerUserId = User.Id 
                              WHERE HelpSeekerUserId = @HelpSeekerUserId;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))

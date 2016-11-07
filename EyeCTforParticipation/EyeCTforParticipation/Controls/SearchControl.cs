@@ -56,7 +56,7 @@ namespace EyeCTforParticipation.Controls
             //Get values
             string keywords = tbSearch.Text;
             string postalCode = tbPostalCode.Text;
-            int distance = Convert.ToInt32(cbDistance.Text);
+            int distance = (int)cbDistance.SelectedValue;
 
             results = helpRequestRepository.Search(keywords, postalCode, distance, SearchOrder.DATE_DESC);
             
