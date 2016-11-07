@@ -16,5 +16,6 @@ namespace EyeCTforParticipation.Data
         void Edit(UserModel user);
         void Delete(int userId);
         void AddHelpSeeker(int helpSeekerId, int aidWorkerId);
+        void RemoveHelpSeeker(int helpSeekerId, int aidWorkerId);
     }
 }

@@ -138,5 +138,18 @@ namespace EyeCTforParticipation.Data
                 cmd.Parameters.AddWithValue("@AidWorkerUserId", aidWorkerId);
             }
         }
+        public void RemoveHelpSeeker(int helpSeekerId, int aidWorkerId)
+        {
+            string query = @"DELETE FROM [HelpSeekerAidWorker] 
+                             WHERE HelpSeekerUserId = @helpSeekerId AND AidWorkerUserId = @aidWorkerId;";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@helpSeekerId", Convert.ToString(helpSeekerId));
+                cmd.Parameters.AddWithValue("@AidWorkerId", Convert.ToString(aidWorkerId));
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

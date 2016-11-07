@@ -200,7 +200,7 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         public void RemoveHelpSeeker(int helpSeekerId, int aidWorkerId)
         {
-            throw new NotImplementedException();
+            context.RemoveHelpSeeker(helpSeekerId, aidWorkerId);
         }
 
         /// <summary>
