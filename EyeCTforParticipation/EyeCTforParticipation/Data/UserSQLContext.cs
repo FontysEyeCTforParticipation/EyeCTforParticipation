@@ -89,7 +89,7 @@ namespace EyeCTforParticipation.Data
             return id;
         }
 
-        public void approveRegistration(int userId)
+        public void ApproveRegistration(int userId)
         {
             string query = @"UPDATE [User]
                             SET Approved = 1
@@ -99,6 +99,55 @@ namespace EyeCTforParticipation.Data
             {
                 conn.Open();
                 cmd.Parameters.AddWithValue("@Id", userId);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public void Edit(UserModel user)
+        {
+            //(Role, Email, Name, Password, Birthdate, Approved)
+            string query = @"UPDATE [User] 
+                             SET Role = @Role, Email = @Email, Name = @Name, Password = @Password, Approved = @Approved 
+                             WHERE Id = @Id;";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@Id", user.Id);
+                cmd.Parameters.AddWithValue("@Role", user.Role);
+                cmd.Parameters.AddWithValue("@Email", user.Email);
+                cmd.Parameters.AddWithValue("@Name", user.Name);
+                cmd.Parameters.AddWithValue("@Password", user.Password);
+                cmd.Parameters.AddWithValue("@Approved", user.Approved);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public void Delete(int Id)
+        {
+            throw new NotImplementedException();
+        }
+        public void AddHelpSeeker(int helpSeekerId, int aidWorkerId)
+        {
+            string query = @"INSERT INTO [HelpSeekerAidWorker] 
+                             (HelpSeekerUserId, AidWorkerUserId, Approved) 
+                             VALUES(@helpSeekerId, @aidWorkerId, 0);";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@helpSeekerId", helpSeekerId);
+                cmd.Parameters.AddWithValue("@AidWorkerUserId", aidWorkerId);
+            }
+        }
+        public void RemoveHelpSeeker(int helpSeekerId, int aidWorkerId)
+        {
+            string query = @"DELETE FROM [HelpSeekerAidWorker] 
+                             WHERE HelpSeekerUserId = @helpSeekerId AND AidWorkerUserId = @aidWorkerId;";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@helpSeekerId", Convert.ToString(helpSeekerId));
+                cmd.Parameters.AddWithValue("@AidWorkerId", Convert.ToString(aidWorkerId));
                 cmd.ExecuteNonQuery();
             }
         }
