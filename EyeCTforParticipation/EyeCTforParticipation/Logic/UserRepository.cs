@@ -160,6 +160,7 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         public void Edit(UserModel user)
         {
+            user.Password = user.Password != null ? Crypter.Blowfish.Crypt(user.Password) : null; //'?' ternary operator
             context.Edit(user);
         }
 
