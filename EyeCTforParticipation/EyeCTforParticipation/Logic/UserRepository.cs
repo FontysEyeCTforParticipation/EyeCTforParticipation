@@ -172,6 +172,7 @@ namespace EyeCTforParticipation.Logic
         public void Delete(int userId)
         {
             throw new NotImplementedException();
+            //this method checks every single table, from top to bottom, then back up top
         }
 
         /// <summary>
@@ -185,7 +186,7 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         public void AddHelpSeeker(int helpSeekerId, int aidWorkerId)
         {
-            throw new NotImplementedException();
+           context.AddHelpSeeker(helpSeekerId, aidWorkerId);
         }
 
         /// <summary>

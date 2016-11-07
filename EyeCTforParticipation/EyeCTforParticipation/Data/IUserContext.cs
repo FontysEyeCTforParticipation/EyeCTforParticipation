@@ -14,5 +14,7 @@ namespace EyeCTforParticipation.Data
         int Register(UserModel user, bool approved);
         void ApproveRegistration(int userId);
         void Edit(UserModel user);
+        void Delete(int userId);
+        void AddHelpSeeker(int helpSeekerId, int aidWorkerId);
     }
 }

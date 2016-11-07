@@ -121,5 +121,22 @@ namespace EyeCTforParticipation.Data
                 cmd.ExecuteNonQuery();
             }
         }
+        public void Delete(int Id)
+        {
+            throw new NotImplementedException();
+        }
+        public void AddHelpSeeker(int helpSeekerId, int aidWorkerId)
+        {
+            string query = @"INSERT INTO [HelpSeekerAidWorker] 
+                             (HelpSeekerUserId, AidWorkerUserId, Approved) 
+                             VALUES(@helpSeekerId, @aidWorkerId, 0);";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@helpSeekerId", helpSeekerId);
+                cmd.Parameters.AddWithValue("@AidWorkerUserId", aidWorkerId);
+            }
+        }
     }
 }
