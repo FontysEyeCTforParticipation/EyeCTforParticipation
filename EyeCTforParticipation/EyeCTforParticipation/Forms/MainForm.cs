@@ -64,8 +64,25 @@ namespace EyeCTforParticipation.Forms
             HelpRequestControl helpRequest = new HelpRequestControl(helpRequestRepository.Get(helpRequestControl.Id));
             helpRequest.Back += helpRequest_Back;
             helpRequest.Dock = DockStyle.Fill;
+            helpRequest.Applications += helpRequest_Applications;
             helpRequestView.Controls.Add(helpRequest);
             views.CurrentView = helpRequestView;
+        }
+
+        private void helpRequest_Applications(object sender, EventArgs e)
+        {
+            views.CurrentView = applicationsView;
+            HelpRequestControl helpRequestControl = (HelpRequestControl)sender;
+            applicationsWrapper.Controls.Clear();
+            List<ApplicationModel> applications = helpRequestRepository.GetApplications(helpRequestControl.Id, Session.User.Id);
+            Console.Write(Data.MemoryContext.Tables.Application);
+            foreach(ApplicationModel application in applications)
+            {
+                ApplicationControl applicationControl = new ApplicationControl(application);
+                applicationControl.Dock = DockStyle.Top;
+                applicationsWrapper.Controls.Add(new HorizontalSeperatorControl());
+                applicationsWrapper.Controls.Add(applicationControl);
+            }
         }
 
         private void helpRequest_Back(object sender, EventArgs e)
@@ -154,6 +171,11 @@ namespace EyeCTforParticipation.Forms
         private void btSearch_Click(object sender, EventArgs e)
         {
             views.CurrentView = searchView;
+        }
+
+        private void btApplicationsBack_Click(object sender, EventArgs e)
+        {
+            views.CurrentView = helpRequestView;
         }
     }
 }

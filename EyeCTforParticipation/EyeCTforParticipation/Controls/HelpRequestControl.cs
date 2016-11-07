@@ -18,6 +18,10 @@ namespace EyeCTforParticipation.Controls
     {
         public EventHandler Back;
 
+        public EventHandler Applications;
+
+        public int Id;
+
         HelpRequestRepository helpRequestRepository = new HelpRequestRepository(new HelpRequestMemoryContext());
 
         public HelpRequestControl()
@@ -29,6 +33,7 @@ namespace EyeCTforParticipation.Controls
         
         public HelpRequestControl(HelpRequestModel helpRequest) : this()
         {
+            Id = helpRequest.Id;
             this.helpRequest = helpRequest;
             setContent();
 
@@ -146,6 +151,14 @@ namespace EyeCTforParticipation.Controls
             helpRequestRepository.CancelApplication(helpRequest.Id, Session.User);
             btCancelWrapper.Hide();
             btApplyWrapper.Show();
+        }
+
+        private void btApplications_Click(object sender, EventArgs e)
+        {
+            if(Applications != null)
+            {
+                Applications(this, EventArgs.Empty);
+            }
         }
     }
 }

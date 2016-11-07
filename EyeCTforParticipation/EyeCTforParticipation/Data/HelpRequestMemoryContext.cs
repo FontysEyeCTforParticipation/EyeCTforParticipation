@@ -312,7 +312,6 @@ namespace EyeCTforParticipation.Data
         public List<ApplicationModel> GetApplications(int id, int helpSeekerId)
         {
             var results = from application in Tables.Application
-                          join volunteer in Tables.Volunteer on application.Volunteer.Id equals volunteer.Id
                           join user in Tables.User on application.Volunteer.Id equals user.Id
                           join helpRequest in Tables.HelpRequest on application.HelpRequest.Id equals helpRequest.Id
                           where application.HelpRequest.Id == id && helpRequest.HelpSeeker.Id == helpSeekerId
@@ -321,12 +320,8 @@ namespace EyeCTforParticipation.Data
                               Id = application.Id,
                               Volunteer = new VolunteerModel
                               {
-                                  Id = volunteer.Id,
-                                  Name = user.Name,
-                                  Birthdate = user.Birthdate,
-                                  About = volunteer.About,
-                                  DriversLicense = volunteer.DriversLicense,
-                                  Car = volunteer.Car
+                                  Id = user.Id,
+                                  Name = user.Name
                               },
                               Status = application.Status,
                               Date = application.Date

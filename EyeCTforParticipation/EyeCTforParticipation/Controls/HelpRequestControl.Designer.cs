@@ -391,6 +391,7 @@
             this.btApplications.TabIndex = 4;
             this.btApplications.Text = "AANMELDINGEN";
             this.btApplications.UseVisualStyleBackColor = false;
+            this.btApplications.Click += new System.EventHandler(this.btApplications_Click);
             // 
             // btEditWrapper
             // 
