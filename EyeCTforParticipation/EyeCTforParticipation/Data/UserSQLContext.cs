@@ -73,7 +73,7 @@ namespace EyeCTforParticipation.Data
             int id;
             string query = @"INSERT INTO [User] 
                              (Role, Email, Name, Password, Birthdate, Approved) 
-                             VALUES(@Role, @Email, @Password, @Birthdate, @Approved); 
+                             VALUES(@Role, @Email, @Name, @Password, @Birthdate, @Approved); 
                              SELECT SCOPE_IDENTITY();";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -81,10 +81,11 @@ namespace EyeCTforParticipation.Data
                 conn.Open();
                 cmd.Parameters.AddWithValue("@Role", user.Role);
                 cmd.Parameters.AddWithValue("@Email", user.Email);
+                cmd.Parameters.AddWithValue("@Name", user.Name);
                 cmd.Parameters.AddWithValue("@Password", user.Password);
                 cmd.Parameters.AddWithValue("@Birthdate", user.Birthdate);
                 cmd.Parameters.AddWithValue("@Approved", approved);
-                id = (int)cmd.ExecuteScalar();
+                id = Convert.ToInt32(cmd.ExecuteScalar());
             }
             return id;
         }
