@@ -16,7 +16,8 @@ namespace EyeCTforParticipation.Controls
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
-            Rectangle rc = new Rectangle(this.Padding.Right + 8, this.Padding.Bottom + 8, 38, 38);
+            int dpi = (int)CreateGraphics().DpiX / 96;
+            Rectangle rc = new Rectangle(this.Padding.Right + 8 * dpi, this.Padding.Bottom + 8 * dpi, 19 * dpi, 19 * dpi);
             e.Graphics.DrawImage(backgroundImage, rc);
         }
     }
