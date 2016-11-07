@@ -63,7 +63,7 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         public void Clear(int chatId)
         {
-            context.Purge(chatId);
+            throw new NotImplementedException();
         }
 
         /// <summary>
