@@ -17,5 +17,6 @@ namespace EyeCTforParticipation.Data
         void Delete(int userId);
         void AddHelpSeeker(int helpSeekerId, int aidWorkerId);
         void RemoveHelpSeeker(int helpSeekerId, int aidWorkerId);
+        void ChangeApproveAidWorker(int helpSeekerId, int aidWorkerId, bool approved);
     }
 }

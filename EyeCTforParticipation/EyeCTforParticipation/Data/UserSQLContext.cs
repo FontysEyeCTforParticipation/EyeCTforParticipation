@@ -151,5 +151,29 @@ namespace EyeCTforParticipation.Data
                 cmd.ExecuteNonQuery();
             }
         }
+        public void ChangeApproveAidWorker(int helpSeekerId, int aidWorkerID, bool approved)
+        {
+            int approvedAsInt;
+            if (approved)
+            {
+                approvedAsInt = 1;
+            }
+            else
+            {
+                approvedAsInt = 0;
+            }
+            string query = @"UPDATE [HelpSeekerAidWorker] 
+                             SET Approved = @Approved 
+                             WHERE HelpSeekerUserId = @helpSeekerId AND AidWorkerUserId = @aidWorkerId;";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@helpSeekerId", Convert.ToString(helpSeekerId));
+                cmd.Parameters.AddWithValue("@AidWorkerId", Convert.ToString(aidWorkerID));
+                cmd.Parameters.AddWithValue("@Approved", Convert.ToString(approvedAsInt));
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }
