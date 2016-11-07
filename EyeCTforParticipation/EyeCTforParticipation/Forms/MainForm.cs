@@ -38,17 +38,10 @@ namespace EyeCTforParticipation.Forms
             {
                 HelpRequestDetailControl resultControl = new HelpRequestDetailControl(result);
                 resultControl.Dock = DockStyle.Top;
-                resultControl.Click += ResultControl_Click;
+                resultControl.Click += HelpRequestControl_Click;
                 resultsWrapper.Controls.Add(new HorizontalSeperatorControl());
                 resultsWrapper.Controls.Add(resultControl);
             }
-        }
-
-        private void ResultControl_Click(object sender, EventArgs e)
-        {
-            HelpRequestDetailControl resultControl = (HelpRequestDetailControl)sender;
-            MessageBox.Show(resultControl.Id.ToString());
-            helpRequest = new HelpRequestControl(helpRequestRepository.Get(resultControl.Id));
         }
 
         private void getHelpRequests(List<HelpRequestModel> helpRequests)
@@ -91,7 +84,7 @@ namespace EyeCTforParticipation.Forms
 
         private void btBack_Click(object sender, EventArgs e)
         {
-            views.CurrentView = startView;
+            views.CurrentView = volunteerView;
         }
 
         private void header_Login(object sender, EventArgs e)

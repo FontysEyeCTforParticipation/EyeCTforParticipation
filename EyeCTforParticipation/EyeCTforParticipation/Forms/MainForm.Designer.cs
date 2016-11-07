@@ -105,7 +105,7 @@
             this.views.Controls.Add(this.searchView);
             this.views.Controls.Add(this.helpRequestView);
             this.views.Controls.Add(this.helpRequestsManageView);
-            this.views.CurrentView = this.volunteerView;
+            this.views.CurrentView = this.searchView;
             this.views.Dock = System.Windows.Forms.DockStyle.Fill;
             this.views.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.views.ItemSize = new System.Drawing.Size(0, 1);
