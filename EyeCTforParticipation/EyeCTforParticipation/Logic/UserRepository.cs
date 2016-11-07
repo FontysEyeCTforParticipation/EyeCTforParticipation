@@ -252,7 +252,7 @@ namespace EyeCTforParticipation.Logic
         }
         List<UserModel> GetAidWorkers(int helpSeekerId)
         {
-            return context.GetAidWorkersSeekers(helpSeekerId);
+            return context.GetAidWorkers(helpSeekerId);
         }
     }
 }
