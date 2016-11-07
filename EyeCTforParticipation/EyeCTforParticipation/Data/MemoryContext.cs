@@ -15,6 +15,8 @@ namespace EyeCTforParticipation.Data.MemoryContext
         static public List<VolunteerModel> Volunteer = new List<VolunteerModel>();
         static public List<UserModel> User = new List<UserModel>();
         static public List<HelpSeekerAidWorkerModel> HelpSeekerAidWorker = new List<HelpSeekerAidWorkerModel>();
+        static public List<ChatModel> Chat = new List<ChatModel>();
+        
     }
     public class Functions
     {
@@ -39,6 +41,7 @@ namespace EyeCTforParticipation.Data.MemoryContext
             Tables.Volunteer.Clear();
             Tables.User.Clear();
             Tables.HelpSeekerAidWorker.Clear();
+            Tables.Chat.Clear();
         }
     }
 }

@@ -72,7 +72,7 @@ namespace EyeCTforParticipation.Data
             return result;
         }
 
-        public List<ChatModel> List(int userId)
+        public List<ChatModel> List()
         {
             List<ChatModel> result = null;
             string query = @"SELECT [Application].Id, [HelpRequest].Title, [Application].Status  
