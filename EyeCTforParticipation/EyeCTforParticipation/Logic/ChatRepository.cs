@@ -86,7 +86,7 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         public void SendMessage(MessageModel message)
         {
-            throw new NotImplementedException();
+            context.SendMessage(message);
         }
     }
 }

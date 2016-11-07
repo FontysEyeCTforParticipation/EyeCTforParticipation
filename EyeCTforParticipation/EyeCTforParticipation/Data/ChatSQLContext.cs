@@ -10,8 +10,8 @@ namespace EyeCTforParticipation.Data
     {
         public void Clear(int chatId)
         {
-            string query = @"DELETE Id, UserId, ApplicationId, Message.Content, Message.Date 
-                             FROM Messege 
+            string query = @"DELETE Id, UserId, ApplicationId, Content, Date 
+                             FROM [Message] 
                              Where ApplicationId = @ApplicationId;";
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -26,12 +26,12 @@ namespace EyeCTforParticipation.Data
         public ChatModel Get(int chatid)
         {
             ChatModel result = null;
-            string query = @"SELECT HelpRequest.Title as Title, Application.Status as Status, Messege.Id, Message.UserId, Message.Content, Message.Date  
-                             FROM Message 
-                             JOIN Application ON Application.Id = Message.ApplicationId 
-                             JOIN HelpRequest ON HelpRequest.Id = Application.HelpRequestId  
-                             Where Message.ApplicationId = @ApplicationId 
-                             ORDER BY Message.Date DESC;";
+            string query = @"SELECT [HelpRequest].Title, [Application].Status, [Message].Id, [Message].UserId, [Message].Content, [Message].Date  
+                             FROM [Message] 
+                             JOIN [Application] ON [Application].Id = [Message].ApplicationId 
+                             JOIN [HelpRequest] ON [HelpRequest].Id = [Application].HelpRequestId  
+                             Where [Message].ApplicationId = @ApplicationId 
+                             ORDER BY [Message].Date DESC;";
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -75,9 +75,9 @@ namespace EyeCTforParticipation.Data
         public List<ChatModel> List(int userId)
         {
             List<ChatModel> result = null;
-            string query = @"SELECT Application.Id as Id, HelpRequest.Title as Title, Application.Status as Status 
-                             FROM Application 
-                             JOIN HelpRequest ON HelpRequest.Id = Application.HelpRequestId;"; 
+            string query = @"SELECT [Application].Id, [HelpRequest].Title, [Application].Status  
+                             FROM [Application] 
+                             JOIN [HelpRequest] ON [HelpRequest].Id = [Application].HelpRequestId;"; 
                              
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -102,10 +102,10 @@ namespace EyeCTforParticipation.Data
         public List<ChatModel> ListAsAidWorkerUser(int userId)
         {
             List<ChatModel> result = null;
-            string query = @"SELECT Application.Id as Id, HelpRequest.Title as Title, Application.Status as Status 
-                             FROM Application 
-                             JOIN HelpRequest ON HelpRequest.Id = Application.HelpRequestId;
-                             JOIN HelpSeekerAidWorker ON HelpRequest.HelpSeekerUserId = HelpSeekerAidWorker.HelpSeekerUserId 
+            string query = @"SELECT [Application].Id, [HelpRequest].Title, [Application].Status 
+                             FROM [Application] 
+                             JOIN [HelpRequest] ON [HelpRequest].Id = [Application].HelpRequestId;
+                             JOIN [HelpSeekerAidWorker] ON [HelpRequest].HelpSeekerUserId = [HelpSeekerAidWorker].HelpSeekerUserId 
                              Where AidWorkerUserId = @AidWorkerUserId;";
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -132,9 +132,9 @@ namespace EyeCTforParticipation.Data
         public List<ChatModel> ListAsHelpSeeker(int userId)
         {
             List<ChatModel> result = null;
-            string query = @"SELECT Application.Id as Id, HelpRequest.Title as Title, Application.Status as Status 
-                             FROM Application 
-                             JOIN HelpRequest ON HelpRequest.Id = Application.HelpRequestId 
+            string query = @"SELECT [Application].Id, [HelpRequest].Title, [Application].Status 
+                             FROM [Application] 
+                             JOIN [HelpRequest] ON [HelpRequest].Id = [Application].HelpRequestId 
                              Where HelpSeekerUserId = @HelpSeekerUserId;";
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -161,9 +161,9 @@ namespace EyeCTforParticipation.Data
         public List<ChatModel> ListAsVolunteer(int userId)
         {
             List<ChatModel> result = null;
-            string query = @"SELECT Application.Id as Id, HelpRequest.Title as Title, Application.Status as Status 
-                             FROM Application 
-                             JOIN HelpRequest ON HelpRequest.Id = Application.HelpRequestId 
+            string query = @"SELECT [Application].Id, [HelpRequest].Title, [Application].Status 
+                             FROM [Application] 
+                             JOIN [HelpRequest] ON [HelpRequest].Id = [Application].HelpRequestId 
                              Where VolunteerId = @VolunteerId;";
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -189,7 +189,19 @@ namespace EyeCTforParticipation.Data
 
         public void SendMessage(MessageModel message)
         {
-            throw new NotImplementedException();
+            string query = @"INSERT INTO [Message] 
+                             (UserId, ApplicationId, Content, Date) 
+                             VALUES (@UserId, @ApplicationId, @Content, GETDATE());";
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@UserId", message.User.Id);
+                cmd.Parameters.AddWithValue("@ApplicationId", message.Chat.Id);
+                cmd.Parameters.AddWithValue("@Content", message.Content);
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }
