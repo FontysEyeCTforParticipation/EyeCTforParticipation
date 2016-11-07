@@ -14,7 +14,7 @@ namespace EyeCTforParticipation.Data
         public int Create(ReviewModel review)
         {
             int id;
-            string query = @"INSERT INTO Review 
+            string query = @"INSERT INTO [Review] 
                              (HelpSeekerUserId, VolunteerId, Content, Date) 
                              VALUES (@HelpSeekerUserId, @VolunteerId, @Content, GETDATE()); 
                              SELECT SCOPE_IDENTITY()";
@@ -33,11 +33,11 @@ namespace EyeCTforParticipation.Data
         public void Delete(int id)
         {
             // Delete reply related to the Review                     
-            string query = @"DELETE FROM ReviewReply 
+            string query = @"DELETE FROM [ReviewReply] 
                              WHERE ReviewId = @Id;"
 
                            // Delete Review
-                         + @"DELETE FROM Review 
+                         + @"DELETE FROM [Review] 
                              WHERE Id = @Id;";
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -52,15 +52,15 @@ namespace EyeCTforParticipation.Data
         public void DeleteAsHelpSeeker(int id, int userId)
         {
             // Delete reply related to the Review                     
-            string query = @"DELETE FROM ReviewReply 
+            string query = @"DELETE FROM [ReviewReply] 
                              WHERE ReviewId = @Id AND ReviewId IN ( 
                                 SELECT Id 
-                                FROM Review 
+                                FROM [Review] 
                                 WHERE HelpSeekerUserId = @HelpSeekerUserId 
                              );"
 
                            // Delete Review
-                         + @"DELETE FROM Review 
+                         + @"DELETE FROM [Review] 
                              WHERE Id = @Id AND HelpSeekerUserId = @HelpSeekerUserId;";
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -76,11 +76,11 @@ namespace EyeCTforParticipation.Data
         public List<ReviewModel> GetFromHelpSeeker(int id)
         {
             List<ReviewModel> results = new List<ReviewModel>();
-            string query = @"SELECT Review.Id, Review.VolunteerId, User.Name, Content, Date 
-                             FROM Review 
-                             JOIN User ON Review.VolunteerId = User.Id 
-                             WHERE Review.HelpSeekerUserId = @HelpSeekerUserId 
-                             ORDER BY Review.Date DESC";
+            string query = @"SELECT [Review].Id, [Review].VolunteerId, [User].Name, Content, Date 
+                             FROM [Review] 
+                             JOIN [User] ON [Review].VolunteerId = [User].Id 
+                             WHERE [Review].HelpSeekerUserId = @HelpSeekerUserId 
+                             ORDER BY [Review].Date DESC";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
@@ -110,11 +110,11 @@ namespace EyeCTforParticipation.Data
         public List<ReviewModel> GetFromVolunteer(int id)
         {
             List<ReviewModel> results = new List<ReviewModel>();
-            string query = @"SELECT Review.Id, Review.HelpSeekerUserId, User.Name, Content, Date 
-                             FROM Review 
-                             JOIN User ON Review.HelpSeekerUserId = User.Id 
-                             WHERE Review.VolunteerId = @VolunteerId 
-                             ORDER BY Review.Date DESC";
+            string query = @"SELECT [Review].Id, [Review].HelpSeekerUserId, [User].Name, Content, Date 
+                             FROM [Review] 
+                             JOIN [User] ON [Review].HelpSeekerUserId = [User].Id 
+                             WHERE [Review].VolunteerId = @VolunteerId 
+                             ORDER BY [Review].Date DESC";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
@@ -143,7 +143,7 @@ namespace EyeCTforParticipation.Data
 
         public void Update(ReviewModel review)
         {
-            string query = @"UPDATE Review 
+            string query = @"UPDATE [Review] 
                              SET Content = @Content 
                              WHERE Id = @Id AND HelpSeekerUserId = @HelpSeekerUserId;";
 
@@ -162,26 +162,26 @@ namespace EyeCTforParticipation.Data
         {
             string query = @"IF NOT EXISTS(
                                 SELECT *
-                                FROM ReviewReply
+                                FROM [ReviewReply]
                                 WHERE ReviewId = @Id
                              )
                              BEGIN
                                 IF EXISTS(
                                     SELECT *
-                                    FROM Review
+                                    FROM [Review]
                                     WHERE Id = @Id AND VolunteerId = @VolunteerId
                                 )
                                 BEGIN
-                                    INSERT INTO ReviewReply (ReviewId, Content, Date)
+                                    INSERT INTO [ReviewReply] (ReviewId, Content, Date)
                                     VALUES (@Id, @Content, GETDATE())
                                 END
                              ELSE
                              BEGIN
-                                UPDATE ReviewReply
+                                UPDATE [ReviewReply]
                                 SET Content = @Content 
                                 WHERE ReviewId = @Id AND ReviewId IN (
                                     SELECT Id
-                                    FROM Review
+                                    FROM [Review]
                                     WHERE VolunteerId = @VolunteerId
                                 )
                              END";
@@ -198,7 +198,7 @@ namespace EyeCTforParticipation.Data
 
         public void DeleteReply(int id)
         {
-            string query = @"DELETE FROM ReviewReply 
+            string query = @"DELETE FROM [ReviewReply] 
                              WHERE ReviewId = @ReviewId;";
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -212,10 +212,10 @@ namespace EyeCTforParticipation.Data
 
         public void DeleteReplyVolunteer(int id)
         {
-            string query = @"DELETE FROM ReviewReply  
+            string query = @"DELETE FROM [ReviewReply]  
                              WHERE ReviewId = (
                              SELECT Id 
-                             FROM Review 
+                             FROM [Review] 
                              WHERE VolunteerId = @VolunteerId;" ;
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
