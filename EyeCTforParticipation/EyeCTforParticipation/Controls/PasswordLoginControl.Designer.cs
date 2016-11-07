@@ -50,8 +50,8 @@
             this.lbEmail.Location = new System.Drawing.Point(0, 0);
             this.lbEmail.Margin = new System.Windows.Forms.Padding(0);
             this.lbEmail.Name = "lbEmail";
-            this.lbEmail.Padding = new System.Windows.Forms.Padding(40, 20, 40, 20);
-            this.lbEmail.Size = new System.Drawing.Size(189, 85);
+            this.lbEmail.Padding = new System.Windows.Forms.Padding(27, 13, 27, 13);
+            this.lbEmail.Size = new System.Drawing.Size(121, 54);
             this.lbEmail.TabIndex = 2;
             this.lbEmail.Text = "E-mail";
             // 
@@ -60,21 +60,21 @@
             this.tbEmailWrapper.AutoSize = true;
             this.tbEmailWrapper.Controls.Add(this.tbEmail);
             this.tbEmailWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tbEmailWrapper.Location = new System.Drawing.Point(0, 85);
+            this.tbEmailWrapper.Location = new System.Drawing.Point(0, 54);
             this.tbEmailWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.tbEmailWrapper.Name = "tbEmailWrapper";
-            this.tbEmailWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 20);
-            this.tbEmailWrapper.Size = new System.Drawing.Size(740, 63);
+            this.tbEmailWrapper.Padding = new System.Windows.Forms.Padding(27, 0, 27, 13);
+            this.tbEmailWrapper.Size = new System.Drawing.Size(493, 43);
             this.tbEmailWrapper.TabIndex = 6;
             // 
             // tbEmail
             // 
             this.tbEmail.Dock = System.Windows.Forms.DockStyle.Top;
             this.tbEmail.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbEmail.Location = new System.Drawing.Point(40, 0);
+            this.tbEmail.Location = new System.Drawing.Point(27, 0);
             this.tbEmail.Margin = new System.Windows.Forms.Padding(0);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(660, 43);
+            this.tbEmail.Size = new System.Drawing.Size(439, 30);
             this.tbEmail.TabIndex = 1;
             // 
             // lbPassword
@@ -83,11 +83,11 @@
             this.lbPassword.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbPassword.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbPassword.Location = new System.Drawing.Point(0, 148);
+            this.lbPassword.Location = new System.Drawing.Point(0, 97);
             this.lbPassword.Margin = new System.Windows.Forms.Padding(0);
             this.lbPassword.Name = "lbPassword";
-            this.lbPassword.Padding = new System.Windows.Forms.Padding(40, 20, 40, 20);
-            this.lbPassword.Size = new System.Drawing.Size(280, 85);
+            this.lbPassword.Padding = new System.Windows.Forms.Padding(27, 13, 27, 13);
+            this.lbPassword.Size = new System.Drawing.Size(179, 54);
             this.lbPassword.TabIndex = 7;
             this.lbPassword.Text = "Wachtwoord";
             // 
@@ -96,22 +96,22 @@
             this.tbPasswordWrapper.AutoSize = true;
             this.tbPasswordWrapper.Controls.Add(this.tbPassword);
             this.tbPasswordWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tbPasswordWrapper.Location = new System.Drawing.Point(0, 233);
+            this.tbPasswordWrapper.Location = new System.Drawing.Point(0, 151);
             this.tbPasswordWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.tbPasswordWrapper.Name = "tbPasswordWrapper";
-            this.tbPasswordWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 20);
-            this.tbPasswordWrapper.Size = new System.Drawing.Size(740, 63);
+            this.tbPasswordWrapper.Padding = new System.Windows.Forms.Padding(27, 0, 27, 13);
+            this.tbPasswordWrapper.Size = new System.Drawing.Size(493, 43);
             this.tbPasswordWrapper.TabIndex = 8;
             // 
             // tbPassword
             // 
             this.tbPassword.Dock = System.Windows.Forms.DockStyle.Top;
             this.tbPassword.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbPassword.Location = new System.Drawing.Point(40, 0);
+            this.tbPassword.Location = new System.Drawing.Point(27, 0);
             this.tbPassword.Margin = new System.Windows.Forms.Padding(0);
             this.tbPassword.Name = "tbPassword";
             this.tbPassword.PasswordChar = '*';
-            this.tbPassword.Size = new System.Drawing.Size(660, 43);
+            this.tbPassword.Size = new System.Drawing.Size(439, 30);
             this.tbPassword.TabIndex = 2;
             // 
             // btLoginWrapper
@@ -119,11 +119,11 @@
             this.btLoginWrapper.AutoSize = true;
             this.btLoginWrapper.Controls.Add(this.btLogin);
             this.btLoginWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btLoginWrapper.Location = new System.Drawing.Point(0, 296);
+            this.btLoginWrapper.Location = new System.Drawing.Point(0, 194);
             this.btLoginWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btLoginWrapper.Name = "btLoginWrapper";
-            this.btLoginWrapper.Padding = new System.Windows.Forms.Padding(40, 30, 40, 40);
-            this.btLoginWrapper.Size = new System.Drawing.Size(740, 137);
+            this.btLoginWrapper.Padding = new System.Windows.Forms.Padding(27, 19, 27, 26);
+            this.btLoginWrapper.Size = new System.Drawing.Size(493, 90);
             this.btLoginWrapper.TabIndex = 9;
             // 
             // btLogin
@@ -136,11 +136,11 @@
             this.btLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btLogin.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btLogin.Location = new System.Drawing.Point(40, 30);
+            this.btLogin.Location = new System.Drawing.Point(27, 19);
             this.btLogin.Margin = new System.Windows.Forms.Padding(0);
             this.btLogin.Name = "btLogin";
-            this.btLogin.Padding = new System.Windows.Forms.Padding(10);
-            this.btLogin.Size = new System.Drawing.Size(181, 67);
+            this.btLogin.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.btLogin.Size = new System.Drawing.Size(119, 45);
             this.btLogin.TabIndex = 3;
             this.btLogin.Text = "INLOGGEN";
             this.btLogin.UseVisualStyleBackColor = false;
@@ -148,7 +148,7 @@
             // 
             // PasswordLoginControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -159,9 +159,9 @@
             this.Controls.Add(this.tbEmailWrapper);
             this.Controls.Add(this.lbEmail);
             this.Margin = new System.Windows.Forms.Padding(0);
-            this.MinimumSize = new System.Drawing.Size(740, 0);
+            this.MinimumSize = new System.Drawing.Size(493, 0);
             this.Name = "PasswordLoginControl";
-            this.Size = new System.Drawing.Size(740, 433);
+            this.Size = new System.Drawing.Size(493, 284);
             this.tbEmailWrapper.ResumeLayout(false);
             this.tbEmailWrapper.PerformLayout();
             this.tbPasswordWrapper.ResumeLayout(false);
