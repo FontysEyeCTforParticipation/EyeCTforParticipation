@@ -7,7 +7,7 @@ using EyeCTforParticipation.Models;
 
 namespace EyeCTforParticipation.Data
 {
-    interface IUserContext
+    public interface IUserContext
     {
         UserModel Login(string rfid);
         UserModel LoginPassword(string email);

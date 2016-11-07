@@ -11,9 +11,9 @@ using System.IO;
 
 namespace EyeCTforParticipation.Logic
 {
-    class UserRepository
+    public class UserRepository
     {
-        IUserContext context;
+        public IUserContext context;
 
         public UserRepository(IUserContext context)
         {

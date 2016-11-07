@@ -8,7 +8,7 @@ using EyeCTforParticipation.Data.MemoryContext;
 
 namespace EyeCTforParticipation.Data
 {
-    class UserMemoryContext : IUserContext
+    public class UserMemoryContext : IUserContext
     {
         public UserModel Login(string rfid)
         {

@@ -7,7 +7,7 @@ using EyeCTforParticipation.Models;
 
 namespace EyeCTforParticipation.Data.MemoryContext
 {
-    class Tables
+    public class Tables
     {
         static public List<HelpRequestModel> HelpRequest = new List<HelpRequestModel>();
         static public List<ApplicationModel> Application = new List<ApplicationModel>();
@@ -18,7 +18,7 @@ namespace EyeCTforParticipation.Data.MemoryContext
         static public List<ChatModel> Chat = new List<ChatModel>();
         
     }
-    class Functions
+    public class Functions
     {
         static public int KeywordMatches(string text, string keywords, char seperator)
         {

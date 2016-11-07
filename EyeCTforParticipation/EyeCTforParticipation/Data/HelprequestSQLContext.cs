@@ -35,9 +35,9 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> Search(SearchOrder order) 
         {
             List<HelpRequestModel> results = new List<HelpRequestModel>();
-            string query = @"SELECT HelpRequest.Id, HelpRequest.Title, HelpRequest.Date, HelpRequest.Address, HelpRequest.Urgency, [User].Name 
-                             FROM HelpRequest 
-                             JOIN [User] ON HelpRequest.HelpSeekerUserId = [User].Id 
+            string query = @"SELECT [HelpRequest].Id, [HelpRequest].Title, [HelpRequest].Date, [HelpRequest].Address, [HelpRequest].Urgency, [User].Name 
+                             FROM [HelpRequest] 
+                             JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
                              WHERE Closed = 0 
                              ORDER BY " + orderString(order);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -69,9 +69,9 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> Search(string keywords, SearchOrder order)
         {
             List<HelpRequestModel> results = new List<HelpRequestModel>();
-            string query = @"SELECT HelpRequest.Id, HelpRequest.Title, HelpRequest.Date, HelpRequest.Address, HelpRequest.Urgency, [dbo].KeywordMatches(HelpRequest.Title + HelpRequest.Content, @Keywords, ' ') AS Matches, [User].Name 
-                             FROM HelpRequest 
-                             JOIN [User] ON HelpRequest.HelpSeekerUserId = [User].Id 
+            string query = @"SELECT [HelpRequest].Id, [HelpRequest].Title, [HelpRequest].Date, [HelpRequest].Address, [HelpRequest].Urgency, [dbo].KeywordMatches([HelpRequest].Title + [HelpRequest].Content, @Keywords, ' ') AS Matches, [User].Name 
+                             FROM [HelpRequest] 
+                             JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
                              WHERE Closed = 0 AND Matches > 0 
                              ORDER BY " + orderString(order);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -104,9 +104,9 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> Search(GeoCoordinate location, int distance, SearchOrder order)
         {
             List<HelpRequestModel> results = new List<HelpRequestModel>();
-            string query = @"SELECT HelpRequest.Id, Title, Date, Address, Urgency, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance, [User].Name 
-                            FROM HelpRequest 
-                            JOIN [User] ON HelpRequest.HelpSeekerUserId = [User].Id 
+            string query = @"SELECT [HelpRequest].Id, Title, Date, Address, Urgency, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance, [User].Name 
+                            FROM [HelpRequest] 
+                            JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
                             WHERE Closed = 0 AND (Distance <= @Distance OR @Distance = 0) 
                             ORDER BY " + orderString(order);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -141,9 +141,9 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int distance, SearchOrder order)
         {
             List<HelpRequestModel> results = new List<HelpRequestModel>();
-            string query = @"SELECT HelpRequest.Id, Title, Date, Address, Urgency, [dbo].KeywordMatches(Title + Content, @Keywords, ' ') AS Matches, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance, [User].Name 
-                             FROM HelpRequest 
-                             JOIN [User] ON HelpRequest.HelpSeekerUserId = [User].Id 
+            string query = @"SELECT [HelpRequest].Id, Title, Date, Address, Urgency, [dbo].KeywordMatches(Title + Content, @Keywords, ' ') AS Matches, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance, [User].Name 
+                             FROM [HelpRequest] 
+                             JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
                              WHERE Closed = 0 AND Matches > 0 AND (Distance <= @Distance OR @Distance = 0) 
                              ORDER BY " + orderString(order);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -179,9 +179,9 @@ namespace EyeCTforParticipation.Data
         public HelpRequestModel Get(int id)
         {
             HelpRequestModel result = null;
-            string query = @"SELECT HelpRequest.HelpSeekerUserId, User.Name, HelpRequest.Title, HelpRequest.Content, HelpRequest.Date, HelpRequest.Address, HelpRequest.Urgency, HelpRequest.Closed 
-                             FROM HelpRequest 
-                             JOIN [User] ON HelpRequest.HelpSeekerUserId = [User].Id 
+            string query = @"SELECT [HelpRequest].HelpSeekerUserId, [User].Name, [HelpRequest].Title, [HelpRequest].Content, [HelpRequest].Date, [HelpRequest].Address, [HelpRequest].Urgency, [HelpRequest].Closed 
+                             FROM [HelpRequest] 
+                             JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
                              WHERE Id = @Id";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -216,9 +216,9 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> GetFromHelpSeeker(int userId)
         {
             List<HelpRequestModel> results = null;
-            string query = @"SELECT HelpRequest.Id, HelpRequest.HelpSeekerUserId, User.Name, HelpRequest.Title, HelpRequest.Content, HelpRequest.Date, HelpRequest.Address, HelpRequest.Urgency, HelpRequest.Closed 
-                             FROM HelpRequest 
-                             JOIN [User] ON HelpRequest.HelpSeekerUserId = User.Id 
+            string query = @"SELECT [HelpRequest].Id, [HelpRequest].HelpSeekerUserId, [User].Name, [HelpRequest].Title, [HelpRequest].Content, [HelpRequest].Date, [HelpRequest].Address, [HelpRequest].Urgency, [HelpRequest].Closed 
+                             FROM [HelpRequest] 
+                             JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
                              WHERE HelpSeekerUserId = @HelpSeekerUserId;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -253,7 +253,7 @@ namespace EyeCTforParticipation.Data
         public int Create(HelpRequestModel helpRequest)
         {
             int id;
-            string query = @"INSERT INTO HelpRequest 
+            string query = @"INSERT INTO [HelpRequest] 
                              (HelpSeekerUserId, Title, Content, Date, Address, Location, Urgency) 
                              VALUES (@HelpSeekerUserId, @Title, @Content, GETDATE(), @Address, geography::STPointFromText(@Location, 4326), @Urgency);
                              SELECT SCOPE_IDENTITY();";
@@ -274,7 +274,7 @@ namespace EyeCTforParticipation.Data
 
         public void Update(HelpRequestModel helpRequest)
         {
-            string query = @"UPDATE HelpRequest 
+            string query = @"UPDATE [HelpRequest] 
                              SET Title = @Title, Content = @Content, Address = @Address, Location = geography::STPointFromText(@Location, 4326), Urgency = @Urgency 
                              WHERE Id = @Id AND HelpSeekerUserId = @HelpSeekerUserId";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -295,19 +295,19 @@ namespace EyeCTforParticipation.Data
         public void Delete(int id)
         {       
                            //Delete applications related to the help request
-            string query = @"DELETE FROM Application 
+            string query = @"DELETE FROM [Application] 
                              WHERE HelpRequestId = @Id;"
 
                            //Delete messages related to the help request
-                         + @"DELETE FROM Message 
+                         + @"DELETE FROM [Message] 
                              WHERE ApplicationId IN (
                                 SELECT Id 
-                                FROM Application 
+                                FROM [Application] 
                                 WHERE HelpRequestId = @Id
                              );"
 
                            //Delete help request
-                         + @"DELETE FROM HelpRequest 
+                         + @"DELETE FROM [HelpRequest] 
                              WHERE Id = @Id;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -320,7 +320,7 @@ namespace EyeCTforParticipation.Data
 
         public void Close(int id, int helpSeekerId)
         {
-            string query = @"UPDATE HelpRequest 
+            string query = @"UPDATE [HelpRequest] 
                              SET Closed = 1 
                              WHERE Id = @Id AND HelpSeekerUserId = @HelpSeekerUserId;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -335,7 +335,7 @@ namespace EyeCTforParticipation.Data
 
         public void Open(int id, int helpSeekerId)
         {
-            string query = @"UPDATE HelpRequest 
+            string query = @"UPDATE [HelpRequest] 
                              SET Closed = 0 
                              WHERE Id = @Id AND HelpSeekerUserId = @HelpSeekerUserId;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -351,7 +351,7 @@ namespace EyeCTforParticipation.Data
         public int Apply(int id, int volunteerId)
         {
             int applicationId;
-            string query = @"INSERT INTO Application 
+            string query = @"INSERT INTO [Application] 
                              (HelpRequestId, VolunteerId, Status, Date) 
                              VALUES (@Id, @VolunteerId, @Status, GETDATE());
                              SELECT SCOPE_IDENTITY();";
@@ -369,7 +369,7 @@ namespace EyeCTforParticipation.Data
 
         public void CancelApplication(int id, int volunteerId)
         {
-            string query = @"UPDATE Application 
+            string query = @"UPDATE [Application] 
                              SET Status = @Status 
                              WHERE Id = @Id AND VolunteerId = @VolunteerId;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -385,13 +385,13 @@ namespace EyeCTforParticipation.Data
 
         public void CancelApplicationAsHelpSeeker(int id, int userId)
         {
-            string query = @"UPDATE Application 
+            string query = @"UPDATE [Application] 
                              SET Status = @Status 
                              WHERE Id = @Id AND Id IN (
-                                SELECT Application.Id 
-                                FROM Application 
-                                JOIN HelpRequest ON Application.HelpRequestId = HelpRequest.Id 
-                                WHERE HelpRequest.HelpSeekerUserId = @HelpSeekerUserId
+                                SELECT [Application].Id 
+                                FROM [Application] 
+                                JOIN [HelpRequest] ON [Application].HelpRequestId = HelpRequest.Id 
+                                WHERE [HelpRequest].HelpSeekerUserId = @HelpSeekerUserId
                              );";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -406,10 +406,10 @@ namespace EyeCTforParticipation.Data
 
         public List<ApplicationModel> GetApplications(int volunteerId)
         {
-            string query = @"SELECT Application.Id, HelpRequest.Id, HelpRequest.Title, HelpRequest.Urgency, HelpRequest.Closed, Application.Status, Application.Date 
-                             FROM Application 
-                             JOIN HelpRequest ON Application.HelpRequestId = HelpRequest.Id 
-                             WHERE Application.VolunteerId = @VolunteerId";
+            string query = @"SELECT [Application].Id, [HelpRequest].Id, [HelpRequest].Title, [HelpRequest].Urgency, [HelpRequest].Closed, [Application].Status, [Application].Date 
+                             FROM [Application] 
+                             JOIN [HelpRequest] ON [Application].HelpRequestId = [HelpRequest].Id 
+                             WHERE [Application].VolunteerId = @VolunteerId";
             List<ApplicationModel> applications = new List<ApplicationModel>();
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -441,12 +441,12 @@ namespace EyeCTforParticipation.Data
 
         public List<ApplicationModel> GetApplications(int id, int helpSeekerId)
         {
-            string query = @"SELECT Application.Id, User.Id, User.Name, User.Birthdate, Volunteer.About, Volunteer.DriversLicense, Volunteer.Car, Application.Status, Application.Date 
-                             FROM Application 
-                             JOIN Volunteer ON Application.VolunteerId = Volunteer.Id 
-                             JOIN User ON Application.VolunteerId = User.Id 
-                             JOIN HelpRequest ON Application.HelpRequestId = HelpRequest.Id 
-                             WHERE Application.HelpRequestId = @Id AND HelpRequest.HelpSeekerUserId = @HelpSeekerUserId";
+            string query = @"SELECT [Application].Id, [User].Id, [User].Name, [User].Birthdate, [Volunteer].About, [Volunteer].DriversLicense, [Volunteer].Car, [Application].Status, [Application].Date 
+                             FROM [Application] 
+                             JOIN [Volunteer] ON [Application].VolunteerId = Volunteer.Id 
+                             JOIN [User] ON [Application].VolunteerId = [User].Id 
+                             JOIN [HelpRequest] ON [Application].HelpRequestId = [HelpRequest].Id 
+                             WHERE [Application].HelpRequestId = @Id AND [HelpRequest].HelpSeekerUserId = @HelpSeekerUserId";
             List<ApplicationModel> applications = new List<ApplicationModel>();
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -481,13 +481,13 @@ namespace EyeCTforParticipation.Data
 
         public void InterviewApplication(int id, int helpSeekerId)
         {
-            string query = @"UPDATE Application 
+            string query = @"UPDATE [Application] 
                              SET Status = @Status 
                              WHERE Id = @Id AND Id IN (
-                                SELECT Application.Id 
-                                FROM Application 
-                                JOIN HelpRequest ON Application.HelpRequestId = HelpRequest.Id 
-                                WHERE HelpRequest.HelpSeekerUserId = @HelpSeekerUserId
+                                SELECT [Application].Id 
+                                FROM [Application] 
+                                JOIN [HelpRequest] ON [Application].HelpRequestId = [HelpRequest].Id 
+                                WHERE [HelpRequest].HelpSeekerUserId = @HelpSeekerUserId
                              );";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -502,13 +502,13 @@ namespace EyeCTforParticipation.Data
 
         public void ApproveApplication(int id, int helpSeekerId)
         {
-            string query = @"UPDATE Application 
+            string query = @"UPDATE [Application] 
                              SET Status = @Status 
                              WHERE Id = @Id AND Id IN (
-                                SELECT Application.Id 
-                                FROM Application 
-                                JOIN HelpRequest ON Application.HelpRequestId = HelpRequest.Id 
-                                WHERE HelpRequest.HelpSeekerUserId = @HelpSeekerUserId
+                                SELECT [Application].Id 
+                                FROM [Application] 
+                                JOIN [HelpRequest] ON [Application].HelpRequestId = [HelpRequest].Id 
+                                WHERE [HelpRequest].HelpSeekerUserId = @HelpSeekerUserId
                              );";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
