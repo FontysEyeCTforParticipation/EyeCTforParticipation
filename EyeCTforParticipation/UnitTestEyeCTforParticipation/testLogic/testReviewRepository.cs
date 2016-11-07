@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace UnitTestEyeCTforParticipation
 {
     [TestClass]
-    public class testReviewRepository
+    public class TestReviewRepository
     {
         [TestMethod]
         public void TestMethod1()
