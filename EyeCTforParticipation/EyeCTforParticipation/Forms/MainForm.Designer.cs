@@ -73,6 +73,13 @@
             this.btHelpRequestsBackWrapper = new System.Windows.Forms.Panel();
             this.btHelpRequestsBack = new System.Windows.Forms.Button();
             this.header = new EyeCTforParticipation.Controls.HeaderControl();
+            this.applicationsView = new System.Windows.Forms.TabPage();
+            this.applicationsTitleWrapper = new System.Windows.Forms.Panel();
+            this.lbApplications = new System.Windows.Forms.Label();
+            this.btApplicationsBackWrapper = new System.Windows.Forms.Panel();
+            this.btApplicationsBack = new System.Windows.Forms.Button();
+            this.applicationsControl = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
+            this.applicationsWrapper = new System.Windows.Forms.Panel();
             this.views.SuspendLayout();
             this.startView.SuspendLayout();
             this.helpSeekerView.SuspendLayout();
@@ -94,6 +101,9 @@
             this.helpRequestsTitleWrapper.SuspendLayout();
             this.btHelpRequestCreateWrapper.SuspendLayout();
             this.btHelpRequestsBackWrapper.SuspendLayout();
+            this.applicationsView.SuspendLayout();
+            this.applicationsTitleWrapper.SuspendLayout();
+            this.btApplicationsBackWrapper.SuspendLayout();
             this.SuspendLayout();
             // 
             // views
@@ -105,7 +115,8 @@
             this.views.Controls.Add(this.searchView);
             this.views.Controls.Add(this.helpRequestView);
             this.views.Controls.Add(this.helpRequestsManageView);
-            this.views.CurrentView = this.searchView;
+            this.views.Controls.Add(this.applicationsView);
+            this.views.CurrentView = this.applicationsView;
             this.views.Dock = System.Windows.Forms.DockStyle.Fill;
             this.views.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.views.ItemSize = new System.Drawing.Size(0, 1);
@@ -741,6 +752,99 @@
             this.header.Size = new System.Drawing.Size(1574, 148);
             this.header.TabIndex = 1;
             // 
+            // applicationsView
+            // 
+            this.applicationsView.Controls.Add(this.applicationsWrapper);
+            this.applicationsView.Controls.Add(this.applicationsControl);
+            this.applicationsView.Controls.Add(this.applicationsTitleWrapper);
+            this.applicationsView.Location = new System.Drawing.Point(0, 0);
+            this.applicationsView.Name = "applicationsView";
+            this.applicationsView.Padding = new System.Windows.Forms.Padding(3);
+            this.applicationsView.Size = new System.Drawing.Size(1574, 981);
+            this.applicationsView.TabIndex = 6;
+            this.applicationsView.Text = "tabPage1";
+            this.applicationsView.UseVisualStyleBackColor = true;
+            // 
+            // applicationsTitleWrapper
+            // 
+            this.applicationsTitleWrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.applicationsTitleWrapper.BackColor = System.Drawing.Color.White;
+            this.applicationsTitleWrapper.Controls.Add(this.lbApplications);
+            this.applicationsTitleWrapper.Controls.Add(this.btApplicationsBackWrapper);
+            this.applicationsTitleWrapper.Dock = System.Windows.Forms.DockStyle.Top;
+            this.applicationsTitleWrapper.Location = new System.Drawing.Point(3, 3);
+            this.applicationsTitleWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.applicationsTitleWrapper.Name = "applicationsTitleWrapper";
+            this.applicationsTitleWrapper.Size = new System.Drawing.Size(1568, 202);
+            this.applicationsTitleWrapper.TabIndex = 19;
+            // 
+            // lbApplications
+            // 
+            this.lbApplications.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbApplications.Font = new System.Drawing.Font("Segoe UI", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbApplications.Location = new System.Drawing.Point(120, 0);
+            this.lbApplications.Margin = new System.Windows.Forms.Padding(0);
+            this.lbApplications.Name = "lbApplications";
+            this.lbApplications.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.lbApplications.Size = new System.Drawing.Size(1448, 202);
+            this.lbApplications.TabIndex = 16;
+            this.lbApplications.Text = "Hulpvragen";
+            this.lbApplications.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btApplicationsBackWrapper
+            // 
+            this.btApplicationsBackWrapper.AutoSize = true;
+            this.btApplicationsBackWrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btApplicationsBackWrapper.BackColor = System.Drawing.Color.White;
+            this.btApplicationsBackWrapper.Controls.Add(this.btApplicationsBack);
+            this.btApplicationsBackWrapper.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btApplicationsBackWrapper.Location = new System.Drawing.Point(0, 0);
+            this.btApplicationsBackWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.btApplicationsBackWrapper.Name = "btApplicationsBackWrapper";
+            this.btApplicationsBackWrapper.Padding = new System.Windows.Forms.Padding(40, 40, 0, 40);
+            this.btApplicationsBackWrapper.Size = new System.Drawing.Size(120, 202);
+            this.btApplicationsBackWrapper.TabIndex = 15;
+            // 
+            // btApplicationsBack
+            // 
+            this.btApplicationsBack.BackColor = System.Drawing.Color.White;
+            this.btApplicationsBack.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btApplicationsBack.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btApplicationsBack.FlatAppearance.BorderSize = 0;
+            this.btApplicationsBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btApplicationsBack.Font = new System.Drawing.Font("Arial Narrow", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btApplicationsBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btApplicationsBack.Location = new System.Drawing.Point(40, 40);
+            this.btApplicationsBack.Margin = new System.Windows.Forms.Padding(0);
+            this.btApplicationsBack.MinimumSize = new System.Drawing.Size(80, 100);
+            this.btApplicationsBack.Name = "btApplicationsBack";
+            this.btApplicationsBack.Size = new System.Drawing.Size(80, 122);
+            this.btApplicationsBack.TabIndex = 14;
+            this.btApplicationsBack.Text = "❮";
+            this.btApplicationsBack.UseVisualStyleBackColor = false;
+            // 
+            // applicationsControl
+            // 
+            this.applicationsControl.AutoSize = true;
+            this.applicationsControl.BackColor = System.Drawing.Color.Silver;
+            this.applicationsControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.applicationsControl.Location = new System.Drawing.Point(3, 205);
+            this.applicationsControl.Margin = new System.Windows.Forms.Padding(0);
+            this.applicationsControl.Name = "applicationsControl";
+            this.applicationsControl.Size = new System.Drawing.Size(1568, 1);
+            this.applicationsControl.TabIndex = 20;
+            // 
+            // applicationsWrapper
+            // 
+            this.applicationsWrapper.AutoScroll = true;
+            this.applicationsWrapper.BackColor = System.Drawing.Color.White;
+            this.applicationsWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.applicationsWrapper.Location = new System.Drawing.Point(3, 206);
+            this.applicationsWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.applicationsWrapper.Name = "applicationsWrapper";
+            this.applicationsWrapper.Size = new System.Drawing.Size(1568, 772);
+            this.applicationsWrapper.TabIndex = 21;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -789,6 +893,11 @@
             this.btHelpRequestCreateWrapper.ResumeLayout(false);
             this.btHelpRequestCreateWrapper.PerformLayout();
             this.btHelpRequestsBackWrapper.ResumeLayout(false);
+            this.applicationsView.ResumeLayout(false);
+            this.applicationsView.PerformLayout();
+            this.applicationsTitleWrapper.ResumeLayout(false);
+            this.applicationsTitleWrapper.PerformLayout();
+            this.btApplicationsBackWrapper.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -840,5 +949,12 @@
         private System.Windows.Forms.FlowLayoutPanel btSearchWrapper;
         private System.Windows.Forms.Button btSearch;
         private System.Windows.Forms.Label lbSearch;
+        private System.Windows.Forms.TabPage applicationsView;
+        private System.Windows.Forms.Panel applicationsWrapper;
+        private Controls.HorizontalSeperatorControl applicationsControl;
+        private System.Windows.Forms.Panel applicationsTitleWrapper;
+        private System.Windows.Forms.Label lbApplications;
+        private System.Windows.Forms.Panel btApplicationsBackWrapper;
+        private System.Windows.Forms.Button btApplicationsBack;
     }
 }
