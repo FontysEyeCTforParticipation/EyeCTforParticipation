@@ -88,5 +88,19 @@ namespace EyeCTforParticipation.Data
             }
             return id;
         }
+
+        public void approveRegistration(int userId)
+        {
+            string query = @"UPDATE [User]
+                            SET Approved = 1
+                            WHERE Id = @Id;";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@Id", userId);
+                cmd.ExecuteNonQuery();
+            }
+        }
     }
 }

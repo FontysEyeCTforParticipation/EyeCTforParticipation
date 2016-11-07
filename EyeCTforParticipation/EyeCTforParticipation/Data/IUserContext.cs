@@ -12,5 +12,6 @@ namespace EyeCTforParticipation.Data
         UserModel Login(string rfid);
         UserModel LoginPassword(string email);
         int Register(UserModel user, bool approved);
+        void approveRegistration(int userId);
     }
 }

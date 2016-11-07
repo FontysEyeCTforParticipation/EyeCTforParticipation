@@ -103,9 +103,7 @@
     <Compile Include="Controls\HelpRequestDetailControl.Designer.cs">
       <DependentUpon>HelpRequestDetailControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\HelpRequestEditControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Controls\HelpRequestEditControl.cs" />
     <Compile Include="Controls\HelpRequestEditControl.Designer.cs">
       <DependentUpon>HelpRequestEditControl.cs</DependentUpon>
     </Compile>
