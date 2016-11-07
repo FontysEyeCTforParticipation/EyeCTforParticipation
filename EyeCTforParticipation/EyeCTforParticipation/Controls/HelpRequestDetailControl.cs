@@ -34,7 +34,7 @@ namespace EyeCTforParticipation.Controls
             lbName.Text = helpRequest.HelpSeeker.Name;
             lbDate.Text = helpRequest.Date.ToString("dd-MM-yyyy");
             lbLocation.Text = helpRequest.Address;
-            lbDistance.Text = helpRequest.Distance.ToString() + " km";
+            lbDistance.Text = Math.Round(helpRequest.Distance / 1000).ToString() + " km";
             lbDistance.Visible = helpRequest.Distance != 0;
             lbCloseWrapper.Visible = helpRequest.Closed;
             switch (helpRequest.Urgency)

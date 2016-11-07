@@ -21,6 +21,7 @@ namespace EyeCTforParticipation.Data
                             order == SearchOrder.DATE_DESC ? helpRequest.Date : default(DateTime) descending
                           select new HelpRequestModel
                           {
+                              Id = helpRequest.Id,
                               Title = helpRequest.Title,
                               Date = helpRequest.Date,
                               Address = helpRequest.Address,
@@ -46,6 +47,7 @@ namespace EyeCTforParticipation.Data
                             order == SearchOrder.RELEVANCE_DESC ? matches : 0 descending
                           select new HelpRequestModel
                           {
+                              Id = helpRequest.Id,
                               Title = helpRequest.Title,
                               Date = helpRequest.Date,
                               Address = helpRequest.Address,
@@ -63,7 +65,7 @@ namespace EyeCTforParticipation.Data
             var results = from helpRequest in Tables.HelpRequest
                           join user in Tables.User on helpRequest.HelpSeeker.Id equals user.Id
                           let getDistance = helpRequest.Location.GetDistanceTo(location)
-                          where getDistance <= distance && helpRequest.Closed == false
+                          where (getDistance <= distance * 1000 || distance == 0) && helpRequest.Closed == false
                           orderby
                             order == SearchOrder.DATE_ASC ? helpRequest.Date : default(DateTime),
                             order == SearchOrder.DATE_DESC ? helpRequest.Date : default(DateTime) descending,
@@ -71,6 +73,7 @@ namespace EyeCTforParticipation.Data
                             order == SearchOrder.DISTANCE_DESC ? getDistance : 0 descending
                           select new HelpRequestModel
                           {
+                              Id = helpRequest.Id,
                               Title = helpRequest.Title,
                               Date = helpRequest.Date,
                               Address = helpRequest.Address,
@@ -90,7 +93,7 @@ namespace EyeCTforParticipation.Data
                           join user in Tables.User on helpRequest.HelpSeeker.Id equals user.Id
                           let matches = Functions.KeywordMatches(helpRequest.Title + helpRequest.Content, keywords, ' ')
                           let getDistance = helpRequest.Location.GetDistanceTo(location)
-                          where getDistance <= distance && matches > 0 && helpRequest.Closed == false
+                          where (getDistance <= distance * 1000 || distance == 0) && matches > 0 && helpRequest.Closed == false
                           orderby
                             order == SearchOrder.DATE_ASC ? helpRequest.Date : default(DateTime),
                             order == SearchOrder.DATE_DESC ? helpRequest.Date : default(DateTime) descending,
@@ -100,6 +103,7 @@ namespace EyeCTforParticipation.Data
                             order == SearchOrder.RELEVANCE_DESC ? matches : 0 descending
                           select new HelpRequestModel
                           {
+                              Id = helpRequest.Id,
                               Title = helpRequest.Title,
                               Date = helpRequest.Date,
                               Address = helpRequest.Address,
@@ -245,13 +249,17 @@ namespace EyeCTforParticipation.Data
         {
             ApplicationModel application = new ApplicationModel
             {
-                Id = Tables.Application.Max(x => x.Id) + 1,
+                Id = Tables.Application.Count() > 0 ? Tables.Application.Max(x => x.Id) + 1 : 1,
                 Volunteer = new VolunteerModel
                 {
                     Id = volunteerId
                 },
                 Status = ApplicationStatus.NONE,
-                Date = DateTime.Now
+                Date = DateTime.Now,
+                HelpRequest = new HelpRequestModel
+                {
+                    Id = id
+                }
             };
             Tables.Application.Add(application);
             return application.Id;
