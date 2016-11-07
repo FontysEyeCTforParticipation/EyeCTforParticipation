@@ -72,14 +72,14 @@
             this.lbHelpRequestsManage = new System.Windows.Forms.Label();
             this.btHelpRequestsBackWrapper = new System.Windows.Forms.Panel();
             this.btHelpRequestsBack = new System.Windows.Forms.Button();
-            this.header = new EyeCTforParticipation.Controls.HeaderControl();
             this.applicationsView = new System.Windows.Forms.TabPage();
+            this.applicationsWrapper = new System.Windows.Forms.Panel();
+            this.applicationsControl = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
             this.applicationsTitleWrapper = new System.Windows.Forms.Panel();
             this.lbApplications = new System.Windows.Forms.Label();
             this.btApplicationsBackWrapper = new System.Windows.Forms.Panel();
             this.btApplicationsBack = new System.Windows.Forms.Button();
-            this.applicationsControl = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
-            this.applicationsWrapper = new System.Windows.Forms.Panel();
+            this.header = new EyeCTforParticipation.Controls.HeaderControl();
             this.views.SuspendLayout();
             this.startView.SuspendLayout();
             this.helpSeekerView.SuspendLayout();
@@ -738,32 +738,40 @@
             this.btHelpRequestsBack.UseVisualStyleBackColor = false;
             this.btHelpRequestsBack.Click += new System.EventHandler(this.btHelpRequestsBack_Click);
             // 
-            // header
-            // 
-            this.header.AutoSize = true;
-            this.header.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.header.BackColor = System.Drawing.Color.White;
-            this.header.Dock = System.Windows.Forms.DockStyle.Top;
-            this.header.Location = new System.Drawing.Point(0, 0);
-            this.header.LoggedIn = false;
-            this.header.Margin = new System.Windows.Forms.Padding(0);
-            this.header.MinimumSize = new System.Drawing.Size(920, 0);
-            this.header.Name = "header";
-            this.header.Size = new System.Drawing.Size(1574, 148);
-            this.header.TabIndex = 1;
-            // 
             // applicationsView
             // 
             this.applicationsView.Controls.Add(this.applicationsWrapper);
             this.applicationsView.Controls.Add(this.applicationsControl);
             this.applicationsView.Controls.Add(this.applicationsTitleWrapper);
             this.applicationsView.Location = new System.Drawing.Point(0, 0);
+            this.applicationsView.Margin = new System.Windows.Forms.Padding(0);
             this.applicationsView.Name = "applicationsView";
-            this.applicationsView.Padding = new System.Windows.Forms.Padding(3);
             this.applicationsView.Size = new System.Drawing.Size(1574, 981);
             this.applicationsView.TabIndex = 6;
             this.applicationsView.Text = "tabPage1";
             this.applicationsView.UseVisualStyleBackColor = true;
+            // 
+            // applicationsWrapper
+            // 
+            this.applicationsWrapper.AutoScroll = true;
+            this.applicationsWrapper.BackColor = System.Drawing.Color.White;
+            this.applicationsWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.applicationsWrapper.Location = new System.Drawing.Point(0, 203);
+            this.applicationsWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.applicationsWrapper.Name = "applicationsWrapper";
+            this.applicationsWrapper.Size = new System.Drawing.Size(1574, 778);
+            this.applicationsWrapper.TabIndex = 21;
+            // 
+            // applicationsControl
+            // 
+            this.applicationsControl.AutoSize = true;
+            this.applicationsControl.BackColor = System.Drawing.Color.Silver;
+            this.applicationsControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.applicationsControl.Location = new System.Drawing.Point(0, 202);
+            this.applicationsControl.Margin = new System.Windows.Forms.Padding(0);
+            this.applicationsControl.Name = "applicationsControl";
+            this.applicationsControl.Size = new System.Drawing.Size(1574, 1);
+            this.applicationsControl.TabIndex = 20;
             // 
             // applicationsTitleWrapper
             // 
@@ -772,10 +780,10 @@
             this.applicationsTitleWrapper.Controls.Add(this.lbApplications);
             this.applicationsTitleWrapper.Controls.Add(this.btApplicationsBackWrapper);
             this.applicationsTitleWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.applicationsTitleWrapper.Location = new System.Drawing.Point(3, 3);
+            this.applicationsTitleWrapper.Location = new System.Drawing.Point(0, 0);
             this.applicationsTitleWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.applicationsTitleWrapper.Name = "applicationsTitleWrapper";
-            this.applicationsTitleWrapper.Size = new System.Drawing.Size(1568, 202);
+            this.applicationsTitleWrapper.Size = new System.Drawing.Size(1574, 202);
             this.applicationsTitleWrapper.TabIndex = 19;
             // 
             // lbApplications
@@ -786,9 +794,9 @@
             this.lbApplications.Margin = new System.Windows.Forms.Padding(0);
             this.lbApplications.Name = "lbApplications";
             this.lbApplications.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.lbApplications.Size = new System.Drawing.Size(1448, 202);
+            this.lbApplications.Size = new System.Drawing.Size(1454, 202);
             this.lbApplications.TabIndex = 16;
-            this.lbApplications.Text = "Hulpvragen";
+            this.lbApplications.Text = "Aanmeldingen";
             this.lbApplications.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btApplicationsBackWrapper
@@ -822,28 +830,21 @@
             this.btApplicationsBack.TabIndex = 14;
             this.btApplicationsBack.Text = "❮";
             this.btApplicationsBack.UseVisualStyleBackColor = false;
+            this.btApplicationsBack.Click += new System.EventHandler(this.btApplicationsBack_Click);
             // 
-            // applicationsControl
+            // header
             // 
-            this.applicationsControl.AutoSize = true;
-            this.applicationsControl.BackColor = System.Drawing.Color.Silver;
-            this.applicationsControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.applicationsControl.Location = new System.Drawing.Point(3, 205);
-            this.applicationsControl.Margin = new System.Windows.Forms.Padding(0);
-            this.applicationsControl.Name = "applicationsControl";
-            this.applicationsControl.Size = new System.Drawing.Size(1568, 1);
-            this.applicationsControl.TabIndex = 20;
-            // 
-            // applicationsWrapper
-            // 
-            this.applicationsWrapper.AutoScroll = true;
-            this.applicationsWrapper.BackColor = System.Drawing.Color.White;
-            this.applicationsWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.applicationsWrapper.Location = new System.Drawing.Point(3, 206);
-            this.applicationsWrapper.Margin = new System.Windows.Forms.Padding(0);
-            this.applicationsWrapper.Name = "applicationsWrapper";
-            this.applicationsWrapper.Size = new System.Drawing.Size(1568, 772);
-            this.applicationsWrapper.TabIndex = 21;
+            this.header.AutoSize = true;
+            this.header.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.header.BackColor = System.Drawing.Color.White;
+            this.header.Dock = System.Windows.Forms.DockStyle.Top;
+            this.header.Location = new System.Drawing.Point(0, 0);
+            this.header.LoggedIn = false;
+            this.header.Margin = new System.Windows.Forms.Padding(0);
+            this.header.MinimumSize = new System.Drawing.Size(920, 0);
+            this.header.Name = "header";
+            this.header.Size = new System.Drawing.Size(1574, 148);
+            this.header.TabIndex = 1;
             // 
             // MainForm
             // 

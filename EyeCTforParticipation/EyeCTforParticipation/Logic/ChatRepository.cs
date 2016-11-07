@@ -35,7 +35,7 @@ namespace EyeCTforParticipation.Logic
             switch (user.Role)
             {
                 case UserRole.Admin:
-                    return context.List(user.Id);
+                    return context.List();
                 case UserRole.AidWorker:
                     return context.ListAsAidWorkerUser(user.Id);
                 case UserRole.HelpSeeker:
