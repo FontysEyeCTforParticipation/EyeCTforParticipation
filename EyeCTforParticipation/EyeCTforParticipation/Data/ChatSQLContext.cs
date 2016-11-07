@@ -15,7 +15,51 @@ namespace EyeCTforParticipation.Data
 
         public ChatModel Get(int chatid)
         {
-            throw new NotImplementedException();
+            ChatModel result = null;
+            string query = @"SELECT HelpRequest.Title as Title, Application.Status as Status, Messege.Id, Message.UserId, Message.Content, Message.Date  
+                             FROM Message 
+                             JOIN Application ON Application.Id = Message.ApplicationId 
+                             JOIN HelpRequest ON HelpRequest.Id = Application.HelpRequestId  
+                             Where Message.ApplicationId = @ApplicationId 
+                             ORDER BY Message.Date DESC;";
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@ApplicationId", chatid);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        if (result == null)
+                        {
+                            result = (new ChatModel
+                            {
+                                Id = chatid,
+                                Title = reader.GetString(0),
+                                Status = (ApplicationStatus)reader.GetInt32(1),
+                                Messages = new List<MessageModel>()
+                            });
+                        }
+                        result.Messages.Add(new MessageModel
+                        {
+                            Id = reader.GetInt32(2),
+                            User = new UserModel
+                            {
+                                Id = reader.GetInt32(3)
+                            },
+                            Chat = new ChatModel
+                            {
+                                Id = chatid
+                            },
+                            Content = reader.GetString(4),
+                            Date = reader.GetDateTime(5)
+                        });
+                    }
+                }
+            }
+            return result;
         }
 
         public List<ChatModel> List(int userId)
