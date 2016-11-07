@@ -16,7 +16,7 @@ namespace EyeCTforParticipation.Forms
 {
     public partial class MainForm : Form
     {
-        HelpRequestRepository helpRequestRepository = new HelpRequestRepository(new HelpRequestMemoryContext());
+        HelpRequestRepository helpRequestRepository = new HelpRequestRepository(new HelpRequestSQLContext());
 
         public MainForm()
         {
