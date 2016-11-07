@@ -10,8 +10,7 @@ namespace EyeCTforParticipation.Data
     {
         public void Clear(int chatId)
         {
-            string query = @"DELETE Id, UserId, ApplicationId, Content, Date 
-                             FROM [Message] 
+            string query = @"DELETE FROM [Message] 
                              Where ApplicationId = @ApplicationId;";
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
