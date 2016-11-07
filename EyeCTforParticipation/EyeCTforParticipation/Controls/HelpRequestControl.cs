@@ -22,7 +22,7 @@ namespace EyeCTforParticipation.Controls
 
         public int Id;
 
-        HelpRequestRepository helpRequestRepository = new HelpRequestRepository(new HelpRequestMemoryContext());
+        HelpRequestRepository helpRequestRepository = new HelpRequestRepository(new HelpRequestSQLContext());
 
         public HelpRequestControl()
         {

@@ -15,7 +15,7 @@ namespace EyeCTforParticipation.Controls
 {
     public partial class PasswordLoginControl : UserControl
     {
-        UserRepository userRepository = new UserRepository(new UserMemoryContext());
+        UserRepository userRepository = new UserRepository(new UserSQLContext());
 
         public PasswordLoginControl()
         {

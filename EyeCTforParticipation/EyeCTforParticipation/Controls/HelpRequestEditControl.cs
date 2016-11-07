@@ -15,7 +15,7 @@ namespace EyeCTforParticipation.Controls
 {
     public partial class HelpRequestEditControl : UserControl
     {
-        HelpRequestRepository helpRequestRepository = new HelpRequestRepository(new HelpRequestMemoryContext());
+        HelpRequestRepository helpRequestRepository = new HelpRequestRepository(new HelpRequestSQLContext());
 
         public HelpRequestEditControl()
         {

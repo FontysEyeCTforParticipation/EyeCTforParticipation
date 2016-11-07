@@ -15,7 +15,7 @@ namespace EyeCTforParticipation.Controls
 {
     public partial class RegisterControl : UserControl
     {
-        UserRepository userRepository = new UserRepository(new UserMemoryContext());
+        UserRepository userRepository = new UserRepository(new UserSQLContext());
 
         Bitmap image;
 

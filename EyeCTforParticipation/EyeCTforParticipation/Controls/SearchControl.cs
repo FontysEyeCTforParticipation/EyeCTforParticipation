@@ -16,7 +16,7 @@ namespace EyeCTforParticipation.Controls
 {
     public partial class SearchControl : UserControl
     {
-        HelpRequestRepository helpRequestRepository = new HelpRequestRepository(new HelpRequestMemoryContext());
+        HelpRequestRepository helpRequestRepository = new HelpRequestRepository(new HelpRequestSQLContext());
         List<HelpRequestModel> results;
         Dictionary<int, string> cbDistances;
         public event EventHandler Search;
