@@ -76,6 +76,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ApplicationControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ApplicationControl.Designer.cs">
+      <DependentUpon>ApplicationControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ChatButtonControl.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -206,6 +212,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Models\VolunteerModel.cs" />
+    <EmbeddedResource Include="Controls\ApplicationControl.resx">
+      <DependentUpon>ApplicationControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\HeaderControl.resx">
       <DependentUpon>HeaderControl.cs</DependentUpon>
     </EmbeddedResource>
