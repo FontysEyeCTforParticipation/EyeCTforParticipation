@@ -151,5 +151,88 @@ namespace EyeCTforParticipation.Data
                 cmd.ExecuteNonQuery();
             }
         }
+        public void ChangeApproveAidWorker(int helpSeekerId, int aidWorkerID, bool approved)
+        {
+            int approvedAsInt;
+            if (approved)
+            {
+                approvedAsInt = 1;
+            }
+            else
+            {
+                approvedAsInt = 0;
+            }
+            string query = @"UPDATE [HelpSeekerAidWorker] 
+                             SET Approved = @Approved 
+                             WHERE HelpSeekerUserId = @helpSeekerId AND AidWorkerUserId = @aidWorkerId;";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@helpSeekerId", Convert.ToString(helpSeekerId));
+                cmd.Parameters.AddWithValue("@AidWorkerId", Convert.ToString(aidWorkerID));
+                cmd.Parameters.AddWithValue("@Approved", Convert.ToString(approvedAsInt));
+                cmd.ExecuteNonQuery();
+            }
+        }
+        List<UserModel> GetHelpSeekers(int aidWorkerId)
+        {
+            List<UserModel> results = null;
+            string query = @"SELECT User.Id, User.Name
+                             FROM User 
+                             WHERE User.ID IN (
+                                SELECT HelpSeekerUserId
+                                FROM HelpSeekerAidWorker
+                                WHERE AidWorkerUserID = @aidWorkerId
+                             );";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@aidWorkerID", Convert.ToString(aidWorkerId));
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        results.Add(new UserModel
+                        {
+                            Id = reader.GetInt32(0),
+                            Name = reader.GetString(1),
+                        });
+                    }
+                }
+            }
+            return results;
+        }
+
+        List<UserModel> GetAidWorkers(int helpSeekerId)
+        {
+            List<UserModel> results = null;
+            string query = @"SELECT User.Id, User.Name
+                             FROM User 
+                             WHERE User.ID IN (
+                                SELECT AidWorkerUserId
+                                FROM HelpSeekerAidWorker
+                                WHERE HelpSeekerUser = @helpSeekerId
+                             );";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@helpSeekerId", Convert.ToString(helpSeekerId));
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        results.Add(new UserModel
+                        {
+                            Id = reader.GetInt32(0),
+                            Name = reader.GetString(1),
+                        });
+                    }
+                }
+            }
+            return results;
+        }
     }
 }

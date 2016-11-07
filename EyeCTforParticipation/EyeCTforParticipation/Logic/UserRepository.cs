@@ -214,7 +214,7 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         public void ApproveAidWorker(int helpSeekerId, int aidWorkerId)
         {
-            throw new NotImplementedException();
+            context.ChangeApproveAidWorker(helpSeekerId, aidWorkerId, true);
         }
 
         /// <summary>
@@ -231,7 +231,7 @@ namespace EyeCTforParticipation.Logic
         /// </remarks>
         public void DisapproveAidWorker(int helpSeekerId, int aidWorkerId)
         {
-            throw new NotImplementedException();
+            context.ChangeApproveAidWorker(helpSeekerId, aidWorkerId, false);
         }
 
         /// <summary>
@@ -248,7 +248,11 @@ namespace EyeCTforParticipation.Logic
         /// </remarks>
         List<UserModel> GetHelpSeekers(int aidWorkerId)
         {
-            throw new NotImplementedException();
+            return context.GetHelpSeekers(aidWorkerId);
+        }
+        List<UserModel> GetAidWorkers(int helpSeekerId)
+        {
+            return context.GetAidWorkers(helpSeekerId);
         }
     }
 }
