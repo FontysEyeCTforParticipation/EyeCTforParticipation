@@ -89,7 +89,7 @@ namespace EyeCTforParticipation.Data
             return id;
         }
 
-        public void approveRegistration(int userId)
+        public void ApproveRegistration(int userId)
         {
             string query = @"UPDATE [User]
                             SET Approved = 1
@@ -99,6 +99,25 @@ namespace EyeCTforParticipation.Data
             {
                 conn.Open();
                 cmd.Parameters.AddWithValue("@Id", userId);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public void Edit(UserModel user)
+        {
+            //(Role, Email, Name, Password, Birthdate, Approved)
+            string query = @"UPDATE [User] 
+                             SET Role = @Role, Email = @Email, Name = @Name, Password = @Password, Approved = @Approved 
+                             WHERE Id = @Id;";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@Id", user.Id);
+                cmd.Parameters.AddWithValue("@Role", user.Role);
+                cmd.Parameters.AddWithValue("@Email", user.Email);
+                cmd.Parameters.AddWithValue("@Name", user.Name);
+                cmd.Parameters.AddWithValue("@Password", user.Password);
+                cmd.Parameters.AddWithValue("@Approved", user.Approved);
                 cmd.ExecuteNonQuery();
             }
         }

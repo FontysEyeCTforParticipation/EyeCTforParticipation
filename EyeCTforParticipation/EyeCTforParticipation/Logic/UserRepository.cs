@@ -160,7 +160,7 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         public void Edit(UserModel user)
         {
-            throw new NotImplementedException();
+            context.Edit(user);
         }
 
         /// <summary>
