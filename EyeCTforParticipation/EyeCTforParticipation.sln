@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EyeCTforParticipation", "EyeCTforParticipation\EyeCTforParticipation.csproj", "{29857EF8-CD61-44DC-B670-CC0139DCFBCF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestEyeCTforParticipation", "UnitTestEyeCTforParticipation\UnitTestEyeCTforParticipation.csproj", "{67F9C2E3-AA0A-498D-9442-8178DCEA884A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{29857EF8-CD61-44DC-B670-CC0139DCFBCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29857EF8-CD61-44DC-B670-CC0139DCFBCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29857EF8-CD61-44DC-B670-CC0139DCFBCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67F9C2E3-AA0A-498D-9442-8178DCEA884A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67F9C2E3-AA0A-498D-9442-8178DCEA884A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67F9C2E3-AA0A-498D-9442-8178DCEA884A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67F9C2E3-AA0A-498D-9442-8178DCEA884A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
