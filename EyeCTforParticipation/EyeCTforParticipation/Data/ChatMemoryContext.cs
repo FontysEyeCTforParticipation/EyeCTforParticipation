@@ -21,7 +21,7 @@ namespace EyeCTforParticipation.Data
 
         public List<ChatModel> List(int userId)
         {
-            var results = from 
+            throw new NotImplementedException();
         }
 
         public List<ChatModel> ListAsAidWorkerUser(int userId)

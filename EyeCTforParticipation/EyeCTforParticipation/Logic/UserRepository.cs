@@ -90,11 +90,11 @@ namespace EyeCTforParticipation.Logic
         /// <param name="register">
         /// The data about the new user.
         /// </param>
-        public void Register(RegisterModel register)
+        public int Register(RegisterModel register)
         {
             string hash = Crypter.Blowfish.Crypt(register.Password);
             bool approved = register.Role == UserRole.HelpSeeker;
-            approved = true;// :(
+            //approved = true;// :(
             int userId = context.Register(new UserModel
             {
                 Role = register.Role,
@@ -116,6 +116,7 @@ namespace EyeCTforParticipation.Logic
                 }
             }
             //Throw failed to register exception
+            return userId;
         }
 
         /// <summary>
@@ -126,6 +127,7 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         public void ApproveRegistration(int userId)
         {
+
             context.ApproveRegistration(userId);
 
         }
