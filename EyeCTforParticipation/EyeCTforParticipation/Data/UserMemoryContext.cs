@@ -39,7 +39,7 @@ namespace EyeCTforParticipation.Data
             return result.Count() > 0 ? result.First() : null;
         }
 
-        public void Register(UserModel user, bool approved)
+        public int Register(UserModel user, bool approved)
         {
             int id = Tables.HelpRequest.Count() > 0 ? Tables.User.Max(x => x.Id) + 1 : 1;
             Tables.User.Add(new UserModel
@@ -52,6 +52,7 @@ namespace EyeCTforParticipation.Data
                 Birthdate = user.Birthdate,
                 Approved = approved
             });
+            return id;
         }
     }
 }

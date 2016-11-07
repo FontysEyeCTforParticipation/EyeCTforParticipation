@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using EyeCTforParticipation.Data;
 using EyeCTforParticipation.Models;
 using CryptSharp;
+using System.Windows.Forms;
+using System.IO;
 
 namespace EyeCTforParticipation.Logic
 {
@@ -34,6 +36,7 @@ namespace EyeCTforParticipation.Logic
             {
                 if (user.Approved)
                 {
+                    setAvatar(user);
                     return user;
                 }
                 //Throw unapproved exception
@@ -62,6 +65,7 @@ namespace EyeCTforParticipation.Logic
             {
                 if(user.Approved)
                 {
+                    setAvatar(user);
                     return user;
                 }
                 //Throw unapproved exception
@@ -69,6 +73,15 @@ namespace EyeCTforParticipation.Logic
             }
             //Throw invalid email and/or password exception
             return null;
+        }
+
+        private void setAvatar(UserModel user)
+        {
+            string avatar = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\EyeCTforParticipation\\Uploads\\Avatars\\" + user.Id + ".png";
+            if (File.Exists(avatar))
+            {
+                user.Avatar = new System.Drawing.Bitmap(avatar);
+            }
         }
 
         /// <summary>
@@ -79,29 +92,26 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         public void Register(RegisterModel register)
         {
-            if (register.Password == register.PasswordRepeat)
+            string hash = Crypter.Blowfish.Crypt(register.Password);
+            bool approved = register.Role == UserRole.HelpSeeker;
+            int userId = context.Register(new UserModel
             {
-                string hash = Crypter.Blowfish.Crypt(register.Password);
-                bool approved = false;
-                switch (register.Role)
+                Role = register.Role,
+                Email = register.Email,
+                Name = register.Name,
+                Password = hash,
+                Birthdate = register.Birthdate
+            }, approved);
+            if(userId >  0)
+            {
+                string directory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\EyeCTforParticipation\\Uploads\\Avatars";
+                if (Directory.Exists(directory) == false)
                 {
-                    case UserRole.HelpSeeker:
-                        approved = true;
-                        break;
-                    case UserRole.Volunteer:
-                        break;
-                    case UserRole.AidWorker:
-                        break;
+                    Directory.CreateDirectory(directory);
                 }
-                context.Register(new UserModel
-                {
-                    Role = register.Role,
-                    Email = register.Email,
-                    Name = register.Name,
-                    Password = hash,
-                    Birthdate = register.Birthdate
-                }, approved);
+                register.Avatar.Save(directory + "\\" + userId.ToString() + ".png", System.Drawing.Imaging.ImageFormat.Png);
             }
+            //Throw failed to register exception
         }
 
         /// <summary>

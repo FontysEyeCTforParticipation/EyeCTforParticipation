@@ -11,6 +11,7 @@ using EyeCTforParticipation.Controls;
 using EyeCTforParticipation.Models;
 using EyeCTforParticipation.Logic;
 using EyeCTforParticipation.Data;
+using System.IO;
 
 namespace EyeCTforParticipation.Forms
 {
@@ -23,6 +24,7 @@ namespace EyeCTforParticipation.Forms
             InitializeComponent();
             header.Login += header_Login;
             header.Logout += header_Logout;
+            header.Register += header_Login;
         }
 
         private void searchControl_Search(object sender, EventArgs e)
@@ -94,12 +96,25 @@ namespace EyeCTforParticipation.Forms
 
         private void header_Login(object sender, EventArgs e)
         {
-            switch (Session.User.Role)
+            if (Session.User != null)
             {
-                case UserRole.HelpSeeker:
-                    views.CurrentView = helpSeekerView;
-                    break;
+                header.LoggedIn = true;
+                switch (Session.User.Role)
+                {
+                    case UserRole.HelpSeeker:
+                        lbHelpSeekerName.Text = Session.User.Name;
+                        if(Session.User.Avatar != null)
+                        {
+                            pbHelpSeekerAvatar.Image = Session.User.Avatar;
+                            pbHelpSeekerAvatar.Show();
+                        } else
+                        {
+                            pbHelpSeekerAvatar.Hide();
+                        }
+                        views.CurrentView = helpSeekerView;
+                        break;
 
+                }
             }
         }
 

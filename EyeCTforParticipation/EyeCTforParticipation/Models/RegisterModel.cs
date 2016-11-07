@@ -13,7 +13,6 @@ namespace EyeCTforParticipation.Models
         string name;
         string email;
         string password;
-        string passwordRepeat;
         DateTime birthdate;
         Bitmap avatar;
         string vog;
@@ -67,19 +66,6 @@ namespace EyeCTforParticipation.Models
             set
             {
                 password = value;
-            }
-        }
-
-        public string PasswordRepeat
-        {
-            get
-            {
-                return passwordRepeat;
-            }
-
-            set
-            {
-                passwordRepeat = value;
             }
         }
 

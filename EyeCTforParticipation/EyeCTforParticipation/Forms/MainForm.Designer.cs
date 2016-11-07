@@ -54,6 +54,7 @@
             this.btSearchBackWrapper = new System.Windows.Forms.Panel();
             this.btSearchBack = new System.Windows.Forms.Button();
             this.helpRequestView = new System.Windows.Forms.TabPage();
+            this.helpRequest = new EyeCTforParticipation.Controls.HelpRequestControl();
             this.helpRequestsManageView = new System.Windows.Forms.TabPage();
             this.helpRequestsWrapper = new System.Windows.Forms.Panel();
             this.helpRequestsSeperator = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
@@ -64,7 +65,8 @@
             this.btHelpRequestsBackWrapper = new System.Windows.Forms.Panel();
             this.btHelpRequestsBack = new System.Windows.Forms.Button();
             this.header = new EyeCTforParticipation.Controls.HeaderControl();
-            this.helpRequest = new EyeCTforParticipation.Controls.HelpRequestControl();
+            this.pbHelpSeekerAvatar = new System.Windows.Forms.PictureBox();
+            this.helpSeekerTitle = new System.Windows.Forms.FlowLayoutPanel();
             this.views.SuspendLayout();
             this.startView.SuspendLayout();
             this.helpSeekerView.SuspendLayout();
@@ -81,6 +83,8 @@
             this.helpRequestsTitleWrapper.SuspendLayout();
             this.btHelpRequestCreateWrapper.SuspendLayout();
             this.btHelpRequestsBackWrapper.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbHelpSeekerAvatar)).BeginInit();
+            this.helpSeekerTitle.SuspendLayout();
             this.SuspendLayout();
             // 
             // views
@@ -92,7 +96,7 @@
             this.views.Controls.Add(this.searchView);
             this.views.Controls.Add(this.helpRequestView);
             this.views.Controls.Add(this.helpRequestsManageView);
-            this.views.CurrentView = this.helpRequestView;
+            this.views.CurrentView = this.helpSeekerView;
             this.views.Dock = System.Windows.Forms.DockStyle.Fill;
             this.views.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.views.ItemSize = new System.Drawing.Size(0, 1);
@@ -139,7 +143,7 @@
             this.helpSeekerView.Controls.Add(this.lbHelpRequests);
             this.helpSeekerView.Controls.Add(this.btHelpSeekerEditProfileWrapper);
             this.helpSeekerView.Controls.Add(this.lbProfile);
-            this.helpSeekerView.Controls.Add(this.lbHelpSeekerName);
+            this.helpSeekerView.Controls.Add(this.helpSeekerTitle);
             this.helpSeekerView.Location = new System.Drawing.Point(0, 0);
             this.helpSeekerView.Margin = new System.Windows.Forms.Padding(0);
             this.helpSeekerView.Name = "helpSeekerView";
@@ -152,7 +156,7 @@
             this.btAidWorkersManageWrapper.AutoSize = true;
             this.btAidWorkersManageWrapper.Controls.Add(this.btAidWorkersManage);
             this.btAidWorkersManageWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btAidWorkersManageWrapper.Location = new System.Drawing.Point(0, 766);
+            this.btAidWorkersManageWrapper.Location = new System.Drawing.Point(0, 826);
             this.btAidWorkersManageWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btAidWorkersManageWrapper.Name = "btAidWorkersManageWrapper";
             this.btAidWorkersManageWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 0, 20);
@@ -184,7 +188,7 @@
             this.lbAidWorkers.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbAidWorkers.Font = new System.Drawing.Font("Segoe UI", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbAidWorkers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbAidWorkers.Location = new System.Drawing.Point(0, 615);
+            this.lbAidWorkers.Location = new System.Drawing.Point(0, 675);
             this.lbAidWorkers.Margin = new System.Windows.Forms.Padding(0);
             this.lbAidWorkers.Name = "lbAidWorkers";
             this.lbAidWorkers.Padding = new System.Windows.Forms.Padding(40, 40, 0, 40);
@@ -198,7 +202,7 @@
             this.btHelpRequestsManageWrapper.AutoSize = true;
             this.btHelpRequestsManageWrapper.Controls.Add(this.btHelpRequestsManage);
             this.btHelpRequestsManageWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btHelpRequestsManageWrapper.Location = new System.Drawing.Point(0, 528);
+            this.btHelpRequestsManageWrapper.Location = new System.Drawing.Point(0, 588);
             this.btHelpRequestsManageWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btHelpRequestsManageWrapper.Name = "btHelpRequestsManageWrapper";
             this.btHelpRequestsManageWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 0, 20);
@@ -231,7 +235,7 @@
             this.lbHelpRequests.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbHelpRequests.Font = new System.Drawing.Font("Segoe UI", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbHelpRequests.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbHelpRequests.Location = new System.Drawing.Point(0, 377);
+            this.lbHelpRequests.Location = new System.Drawing.Point(0, 437);
             this.lbHelpRequests.Margin = new System.Windows.Forms.Padding(0);
             this.lbHelpRequests.Name = "lbHelpRequests";
             this.lbHelpRequests.Padding = new System.Windows.Forms.Padding(40, 40, 0, 40);
@@ -245,7 +249,7 @@
             this.btHelpSeekerEditProfileWrapper.AutoSize = true;
             this.btHelpSeekerEditProfileWrapper.Controls.Add(this.btHelpSeekerEditProfile);
             this.btHelpSeekerEditProfileWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btHelpSeekerEditProfileWrapper.Location = new System.Drawing.Point(0, 290);
+            this.btHelpSeekerEditProfileWrapper.Location = new System.Drawing.Point(0, 350);
             this.btHelpSeekerEditProfileWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btHelpSeekerEditProfileWrapper.Name = "btHelpSeekerEditProfileWrapper";
             this.btHelpSeekerEditProfileWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 0, 20);
@@ -277,7 +281,7 @@
             this.lbProfile.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbProfile.Font = new System.Drawing.Font("Segoe UI", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbProfile.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbProfile.Location = new System.Drawing.Point(0, 139);
+            this.lbProfile.Location = new System.Drawing.Point(0, 199);
             this.lbProfile.Margin = new System.Windows.Forms.Padding(0);
             this.lbProfile.Name = "lbProfile";
             this.lbProfile.Padding = new System.Windows.Forms.Padding(40, 40, 0, 40);
@@ -289,16 +293,15 @@
             // lbHelpSeekerName
             // 
             this.lbHelpSeekerName.AutoSize = true;
-            this.lbHelpSeekerName.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbHelpSeekerName.Font = new System.Drawing.Font("Segoe UI", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbHelpSeekerName.ForeColor = System.Drawing.Color.Gray;
-            this.lbHelpSeekerName.Location = new System.Drawing.Point(0, 0);
+            this.lbHelpSeekerName.Location = new System.Drawing.Point(208, 40);
             this.lbHelpSeekerName.Margin = new System.Windows.Forms.Padding(0);
             this.lbHelpSeekerName.Name = "lbHelpSeekerName";
-            this.lbHelpSeekerName.Padding = new System.Windows.Forms.Padding(40, 40, 0, 40);
-            this.lbHelpSeekerName.Size = new System.Drawing.Size(416, 139);
+            this.lbHelpSeekerName.Padding = new System.Windows.Forms.Padding(0, 40, 0, 40);
+            this.lbHelpSeekerName.Size = new System.Drawing.Size(202, 139);
             this.lbHelpSeekerName.TabIndex = 2;
-            this.lbHelpSeekerName.Text = "Welkom, John Doe";
+            this.lbHelpSeekerName.Text = "John Doe";
             this.lbHelpSeekerName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // volunteerView
@@ -465,6 +468,18 @@
             this.helpRequestView.Text = "tabPage2";
             this.helpRequestView.UseVisualStyleBackColor = true;
             // 
+            // helpRequest
+            // 
+            this.helpRequest.AutoSize = true;
+            this.helpRequest.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.helpRequest.BackColor = System.Drawing.Color.White;
+            this.helpRequest.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.helpRequest.Location = new System.Drawing.Point(0, 0);
+            this.helpRequest.Margin = new System.Windows.Forms.Padding(0);
+            this.helpRequest.Name = "helpRequest";
+            this.helpRequest.Size = new System.Drawing.Size(1574, 981);
+            this.helpRequest.TabIndex = 0;
+            // 
             // helpRequestsManageView
             // 
             this.helpRequestsManageView.BackColor = System.Drawing.Color.White;
@@ -605,17 +620,28 @@
             this.header.Size = new System.Drawing.Size(1574, 148);
             this.header.TabIndex = 1;
             // 
-            // helpRequest
+            // pbHelpSeekerAvatar
             // 
-            this.helpRequest.AutoSize = true;
-            this.helpRequest.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.helpRequest.BackColor = System.Drawing.Color.White;
-            this.helpRequest.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.helpRequest.Location = new System.Drawing.Point(0, 0);
-            this.helpRequest.Margin = new System.Windows.Forms.Padding(0);
-            this.helpRequest.Name = "helpRequest";
-            this.helpRequest.Size = new System.Drawing.Size(1574, 981);
-            this.helpRequest.TabIndex = 0;
+            this.pbHelpSeekerAvatar.Location = new System.Drawing.Point(40, 40);
+            this.pbHelpSeekerAvatar.Margin = new System.Windows.Forms.Padding(0, 0, 40, 0);
+            this.pbHelpSeekerAvatar.Name = "pbHelpSeekerAvatar";
+            this.pbHelpSeekerAvatar.Size = new System.Drawing.Size(128, 128);
+            this.pbHelpSeekerAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbHelpSeekerAvatar.TabIndex = 23;
+            this.pbHelpSeekerAvatar.TabStop = false;
+            this.pbHelpSeekerAvatar.Visible = false;
+            // 
+            // helpSeekerTitle
+            // 
+            this.helpSeekerTitle.AutoSize = true;
+            this.helpSeekerTitle.Controls.Add(this.pbHelpSeekerAvatar);
+            this.helpSeekerTitle.Controls.Add(this.lbHelpSeekerName);
+            this.helpSeekerTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.helpSeekerTitle.Location = new System.Drawing.Point(0, 0);
+            this.helpSeekerTitle.Name = "helpSeekerTitle";
+            this.helpSeekerTitle.Padding = new System.Windows.Forms.Padding(40, 40, 0, 20);
+            this.helpSeekerTitle.Size = new System.Drawing.Size(1574, 199);
+            this.helpSeekerTitle.TabIndex = 25;
             // 
             // MainForm
             // 
@@ -657,6 +683,9 @@
             this.btHelpRequestCreateWrapper.ResumeLayout(false);
             this.btHelpRequestCreateWrapper.PerformLayout();
             this.btHelpRequestsBackWrapper.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbHelpSeekerAvatar)).EndInit();
+            this.helpSeekerTitle.ResumeLayout(false);
+            this.helpSeekerTitle.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -700,5 +729,7 @@
         private System.Windows.Forms.FlowLayoutPanel btHelpRequestCreateWrapper;
         private System.Windows.Forms.Button btHelpRequestCreate;
         private Controls.HelpRequestControl helpRequest;
+        private System.Windows.Forms.FlowLayoutPanel helpSeekerTitle;
+        private System.Windows.Forms.PictureBox pbHelpSeekerAvatar;
     }
 }

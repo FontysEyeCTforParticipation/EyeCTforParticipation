@@ -15,7 +15,7 @@ namespace EyeCTforParticipation.Data
         {
             UserModel result = null;
             string query = @"SELECT Id, Role, Name, Approved 
-                             FROM User 
+                             FROM [User] 
                              WHERE RFID = @RFID;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -43,7 +43,7 @@ namespace EyeCTforParticipation.Data
         {
             UserModel result = null;
             string query = @"SELECT Id, Role, Name, Password, Approved 
-                             FROM User 
+                             FROM [User] 
                              WHERE Email = @Email;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -68,11 +68,13 @@ namespace EyeCTforParticipation.Data
             return result;
         }
 
-        public void Register(UserModel user, bool approved)
+        public int Register(UserModel user, bool approved)
         {
-            string query = @"INSERT INTO User 
+            int id;
+            string query = @"INSERT INTO [User] 
                              (Role, Email, Name, Password, Birthdate, Approved) 
-                             VALUES(@Role, @Email, @Password, @Birthdate, @Approved);";
+                             VALUES(@Role, @Email, @Password, @Birthdate, @Approved); 
+                             SELECT SCOPE_IDENTITY();";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
@@ -82,8 +84,9 @@ namespace EyeCTforParticipation.Data
                 cmd.Parameters.AddWithValue("@Password", user.Password);
                 cmd.Parameters.AddWithValue("@Birthdate", user.Birthdate);
                 cmd.Parameters.AddWithValue("@Approved", approved);
-                cmd.ExecuteNonQuery();
+                id = (int)cmd.ExecuteScalar();
             }
+            return id;
         }
     }
 }

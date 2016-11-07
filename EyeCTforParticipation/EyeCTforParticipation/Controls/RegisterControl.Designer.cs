@@ -53,6 +53,14 @@
             this.lbBirthdate = new System.Windows.Forms.Label();
             this.dtBirthdateWrapper = new System.Windows.Forms.Panel();
             this.dtBirthdate = new System.Windows.Forms.DateTimePicker();
+            this.lbAvatar = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btAvatar = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pbAvatar = new System.Windows.Forms.PictureBox();
+            this.btAvatarRemove = new System.Windows.Forms.Button();
+            this.horizontalSeperatorControl1 = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
             this.tbEmailWrapper.SuspendLayout();
             this.tbPasswordWrapper.SuspendLayout();
             this.btRegisterWrapper.SuspendLayout();
@@ -61,6 +69,10 @@
             this.tbNameWrapper.SuspendLayout();
             this.cbRoleWrapper.SuspendLayout();
             this.dtBirthdateWrapper.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).BeginInit();
             this.SuspendLayout();
             // 
             // lbEmail
@@ -143,7 +155,7 @@
             this.btRegisterWrapper.AutoSize = true;
             this.btRegisterWrapper.Controls.Add(this.btRegister);
             this.btRegisterWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btRegisterWrapper.Location = new System.Drawing.Point(0, 1183);
+            this.btRegisterWrapper.Location = new System.Drawing.Point(0, 1618);
             this.btRegisterWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btRegisterWrapper.Name = "btRegisterWrapper";
             this.btRegisterWrapper.Padding = new System.Windows.Forms.Padding(40, 31, 40, 40);
@@ -168,6 +180,7 @@
             this.btRegister.TabIndex = 3;
             this.btRegister.Text = "REGISTREREN";
             this.btRegister.UseVisualStyleBackColor = false;
+            this.btRegister.Click += new System.EventHandler(this.btRegister_Click);
             // 
             // lbEmailRepeat
             // 
@@ -387,6 +400,120 @@
             this.dtBirthdate.TabIndex = 3;
             this.dtBirthdate.ValueChanged += new System.EventHandler(this.dtBirthdate_ValueChanged);
             // 
+            // lbAvatar
+            // 
+            this.lbAvatar.AutoSize = true;
+            this.lbAvatar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbAvatar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAvatar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbAvatar.Location = new System.Drawing.Point(0, 1183);
+            this.lbAvatar.Margin = new System.Windows.Forms.Padding(0);
+            this.lbAvatar.Name = "lbAvatar";
+            this.lbAvatar.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
+            this.lbAvatar.Size = new System.Drawing.Size(165, 83);
+            this.lbAvatar.TabIndex = 22;
+            this.lbAvatar.Text = "Foto";
+            // 
+            // panel2
+            // 
+            this.panel2.AutoSize = true;
+            this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel2.Controls.Add(this.flowLayoutPanel1);
+            this.panel2.Controls.Add(this.panel1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 1266);
+            this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(40, 0, 40, 40);
+            this.panel2.Size = new System.Drawing.Size(720, 351);
+            this.panel2.TabIndex = 7;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.Controls.Add(this.btAvatarRemove);
+            this.flowLayoutPanel1.Controls.Add(this.btAvatar);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(40, 244);
+            this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(640, 67);
+            this.flowLayoutPanel1.TabIndex = 10;
+            // 
+            // btAvatar
+            // 
+            this.btAvatar.AutoSize = true;
+            this.btAvatar.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btAvatar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btAvatar.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btAvatar.FlatAppearance.BorderSize = 0;
+            this.btAvatar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btAvatar.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAvatar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btAvatar.Location = new System.Drawing.Point(245, 0);
+            this.btAvatar.Margin = new System.Windows.Forms.Padding(0);
+            this.btAvatar.Name = "btAvatar";
+            this.btAvatar.Padding = new System.Windows.Forms.Padding(10);
+            this.btAvatar.Size = new System.Drawing.Size(180, 67);
+            this.btAvatar.TabIndex = 3;
+            this.btAvatar.Text = "BLADEREN";
+            this.btAvatar.UseVisualStyleBackColor = false;
+            this.btAvatar.Click += new System.EventHandler(this.btAvatar_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.AutoSize = true;
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.pbAvatar);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(40, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 19);
+            this.panel1.Size = new System.Drawing.Size(640, 244);
+            this.panel1.TabIndex = 6;
+            // 
+            // pbAvatar
+            // 
+            this.pbAvatar.Location = new System.Drawing.Point(0, 0);
+            this.pbAvatar.Margin = new System.Windows.Forms.Padding(0);
+            this.pbAvatar.Name = "pbAvatar";
+            this.pbAvatar.Size = new System.Drawing.Size(225, 225);
+            this.pbAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAvatar.TabIndex = 5;
+            this.pbAvatar.TabStop = false;
+            this.pbAvatar.Visible = false;
+            // 
+            // btAvatarRemove
+            // 
+            this.btAvatarRemove.AutoSize = true;
+            this.btAvatarRemove.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btAvatarRemove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btAvatarRemove.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btAvatarRemove.FlatAppearance.BorderSize = 0;
+            this.btAvatarRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btAvatarRemove.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAvatarRemove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btAvatarRemove.Location = new System.Drawing.Point(0, 0);
+            this.btAvatarRemove.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.btAvatarRemove.Name = "btAvatarRemove";
+            this.btAvatarRemove.Padding = new System.Windows.Forms.Padding(10);
+            this.btAvatarRemove.Size = new System.Drawing.Size(225, 67);
+            this.btAvatarRemove.TabIndex = 4;
+            this.btAvatarRemove.Text = "VERWIJDEREN";
+            this.btAvatarRemove.UseVisualStyleBackColor = false;
+            this.btAvatarRemove.Visible = false;
+            this.btAvatarRemove.Click += new System.EventHandler(this.btAvatarRemove_Click);
+            // 
+            // horizontalSeperatorControl1
+            // 
+            this.horizontalSeperatorControl1.AutoSize = true;
+            this.horizontalSeperatorControl1.BackColor = System.Drawing.Color.Silver;
+            this.horizontalSeperatorControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.horizontalSeperatorControl1.Location = new System.Drawing.Point(0, 1617);
+            this.horizontalSeperatorControl1.Margin = new System.Windows.Forms.Padding(0);
+            this.horizontalSeperatorControl1.Name = "horizontalSeperatorControl1";
+            this.horizontalSeperatorControl1.Size = new System.Drawing.Size(720, 1);
+            this.horizontalSeperatorControl1.TabIndex = 23;
+            // 
             // RegisterControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -395,6 +522,9 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.btRegisterWrapper);
+            this.Controls.Add(this.horizontalSeperatorControl1);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.lbAvatar);
             this.Controls.Add(this.cbRoleWrapper);
             this.Controls.Add(this.lbRole);
             this.Controls.Add(this.dtBirthdateWrapper);
@@ -414,7 +544,7 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.MinimumSize = new System.Drawing.Size(720, 0);
             this.Name = "RegisterControl";
-            this.Size = new System.Drawing.Size(720, 1321);
+            this.Size = new System.Drawing.Size(720, 1756);
             this.tbEmailWrapper.ResumeLayout(false);
             this.tbEmailWrapper.PerformLayout();
             this.tbPasswordWrapper.ResumeLayout(false);
@@ -429,6 +559,12 @@
             this.tbNameWrapper.PerformLayout();
             this.cbRoleWrapper.ResumeLayout(false);
             this.dtBirthdateWrapper.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -461,5 +597,13 @@
         private System.Windows.Forms.Label lbBirthdate;
         private System.Windows.Forms.Panel dtBirthdateWrapper;
         private System.Windows.Forms.DateTimePicker dtBirthdate;
+        private System.Windows.Forms.Label lbAvatar;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button btAvatar;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pbAvatar;
+        private System.Windows.Forms.Button btAvatarRemove;
+        private HorizontalSeperatorControl horizontalSeperatorControl1;
     }
 }

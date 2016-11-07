@@ -44,6 +44,7 @@
             this.btSaveWrapper = new System.Windows.Forms.FlowLayoutPanel();
             this.btSave = new System.Windows.Forms.Button();
             this.lbContentRequired = new System.Windows.Forms.Label();
+            this.horizontalSeperatorControl = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
             this.cbUrgencyWrapper.SuspendLayout();
             this.tbTitleWrapper.SuspendLayout();
             this.tbAddressWrapper.SuspendLayout();
@@ -221,7 +222,7 @@
             this.btSaveWrapper.AutoSize = true;
             this.btSaveWrapper.Controls.Add(this.btSave);
             this.btSaveWrapper.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btSaveWrapper.Location = new System.Drawing.Point(0, 726);
+            this.btSaveWrapper.Location = new System.Drawing.Point(0, 727);
             this.btSaveWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btSaveWrapper.Name = "btSaveWrapper";
             this.btSaveWrapper.Padding = new System.Windows.Forms.Padding(40, 30, 40, 40);
@@ -263,6 +264,17 @@
             this.lbContentRequired.Text = "Inhoud is verplicht";
             this.lbContentRequired.Visible = false;
             // 
+            // horizontalSeperatorControl
+            // 
+            this.horizontalSeperatorControl.AutoSize = true;
+            this.horizontalSeperatorControl.BackColor = System.Drawing.Color.Silver;
+            this.horizontalSeperatorControl.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.horizontalSeperatorControl.Location = new System.Drawing.Point(0, 726);
+            this.horizontalSeperatorControl.Margin = new System.Windows.Forms.Padding(0);
+            this.horizontalSeperatorControl.Name = "horizontalSeperatorControl";
+            this.horizontalSeperatorControl.Size = new System.Drawing.Size(720, 1);
+            this.horizontalSeperatorControl.TabIndex = 39;
+            // 
             // HelpRequestEditControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -272,6 +284,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.tbContentWrapper);
             this.Controls.Add(this.lbContentRequired);
+            this.Controls.Add(this.horizontalSeperatorControl);
             this.Controls.Add(this.btSaveWrapper);
             this.Controls.Add(this.lbContent);
             this.Controls.Add(this.tbAddressWrapper);
@@ -284,7 +297,7 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.MinimumSize = new System.Drawing.Size(720, 0);
             this.Name = "HelpRequestEditControl";
-            this.Size = new System.Drawing.Size(720, 863);
+            this.Size = new System.Drawing.Size(720, 864);
             this.cbUrgencyWrapper.ResumeLayout(false);
             this.tbTitleWrapper.ResumeLayout(false);
             this.tbTitleWrapper.PerformLayout();
@@ -316,5 +329,6 @@
         private System.Windows.Forms.FlowLayoutPanel btSaveWrapper;
         private System.Windows.Forms.Button btSave;
         private System.Windows.Forms.Label lbContentRequired;
+        private HorizontalSeperatorControl horizontalSeperatorControl;
     }
 }

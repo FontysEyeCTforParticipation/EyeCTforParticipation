@@ -31,6 +31,7 @@
             this.titleWrapper = new System.Windows.Forms.FlowLayoutPanel();
             this.lbTitle = new System.Windows.Forms.Label();
             this.registerControl = new EyeCTforParticipation.Controls.RegisterControl();
+            this.horizontalSeperatorControl = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
             this.titleWrapper.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +44,7 @@
             this.titleWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.titleWrapper.Name = "titleWrapper";
             this.titleWrapper.Padding = new System.Windows.Forms.Padding(40, 40, 0, 40);
-            this.titleWrapper.Size = new System.Drawing.Size(714, 180);
+            this.titleWrapper.Size = new System.Drawing.Size(774, 180);
             this.titleWrapper.TabIndex = 12;
             // 
             // lbTitle
@@ -66,25 +67,36 @@
             this.registerControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.registerControl.BackColor = System.Drawing.Color.White;
             this.registerControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.registerControl.Location = new System.Drawing.Point(0, 180);
+            this.registerControl.Location = new System.Drawing.Point(0, 181);
             this.registerControl.Margin = new System.Windows.Forms.Padding(0);
             this.registerControl.MinimumSize = new System.Drawing.Size(720, 0);
             this.registerControl.Name = "registerControl";
-            this.registerControl.Size = new System.Drawing.Size(720, 749);
+            this.registerControl.Size = new System.Drawing.Size(774, 948);
             this.registerControl.TabIndex = 13;
+            // 
+            // horizontalSeperatorControl
+            // 
+            this.horizontalSeperatorControl.AutoSize = true;
+            this.horizontalSeperatorControl.BackColor = System.Drawing.Color.Silver;
+            this.horizontalSeperatorControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.horizontalSeperatorControl.Location = new System.Drawing.Point(0, 180);
+            this.horizontalSeperatorControl.Margin = new System.Windows.Forms.Padding(0);
+            this.horizontalSeperatorControl.Name = "horizontalSeperatorControl";
+            this.horizontalSeperatorControl.Size = new System.Drawing.Size(774, 1);
+            this.horizontalSeperatorControl.TabIndex = 14;
             // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(714, 929);
+            this.ClientSize = new System.Drawing.Size(774, 1129);
             this.Controls.Add(this.registerControl);
+            this.Controls.Add(this.horizontalSeperatorControl);
             this.Controls.Add(this.titleWrapper);
             this.HelpButton = true;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(740, 1000);
-            this.MinimumSize = new System.Drawing.Size(740, 1000);
+            this.MinimumSize = new System.Drawing.Size(800, 1200);
             this.Name = "RegisterForm";
             this.Text = "RegisterForm";
             this.titleWrapper.ResumeLayout(false);
@@ -98,5 +110,6 @@
         private System.Windows.Forms.FlowLayoutPanel titleWrapper;
         private System.Windows.Forms.Label lbTitle;
         private Controls.RegisterControl registerControl;
+        private Controls.HorizontalSeperatorControl horizontalSeperatorControl;
     }
 }

@@ -44,6 +44,7 @@
             this.passwordLoginControl = new EyeCTforParticipation.Controls.PasswordLoginControl();
             this.ForgotPasswordView = new System.Windows.Forms.TabPage();
             this.forgotPasswordControl = new EyeCTforParticipation.Controls.ForgotPasswordControl();
+            this.horizontalSeperatorControl = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
             this.titleWrapper.SuspendLayout();
             this.views.SuspendLayout();
             this.RFIDLoginView.SuspendLayout();
@@ -110,12 +111,12 @@
             this.views.Dock = System.Windows.Forms.DockStyle.Fill;
             this.views.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.views.ItemSize = new System.Drawing.Size(0, 1);
-            this.views.Location = new System.Drawing.Point(0, 180);
+            this.views.Location = new System.Drawing.Point(0, 181);
             this.views.Margin = new System.Windows.Forms.Padding(0);
             this.views.Name = "views";
             this.views.Padding = new System.Drawing.Point(0, 0);
             this.views.SelectedIndex = 0;
-            this.views.Size = new System.Drawing.Size(714, 669);
+            this.views.Size = new System.Drawing.Size(714, 668);
             this.views.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.views.TabIndex = 12;
             // 
@@ -185,7 +186,7 @@
             this.PasswordLoginView.Location = new System.Drawing.Point(0, 0);
             this.PasswordLoginView.Margin = new System.Windows.Forms.Padding(0);
             this.PasswordLoginView.Name = "PasswordLoginView";
-            this.PasswordLoginView.Size = new System.Drawing.Size(714, 669);
+            this.PasswordLoginView.Size = new System.Drawing.Size(714, 668);
             this.PasswordLoginView.TabIndex = 1;
             this.PasswordLoginView.Text = "tabPage2";
             // 
@@ -194,7 +195,7 @@
             this.btRFIDLoginWrapper.AutoSize = true;
             this.btRFIDLoginWrapper.Controls.Add(this.btRFIDLogin);
             this.btRFIDLoginWrapper.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btRFIDLoginWrapper.Location = new System.Drawing.Point(0, 425);
+            this.btRFIDLoginWrapper.Location = new System.Drawing.Point(0, 424);
             this.btRFIDLoginWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btRFIDLoginWrapper.Name = "btRFIDLoginWrapper";
             this.btRFIDLoginWrapper.Padding = new System.Windows.Forms.Padding(40, 40, 40, 20);
@@ -226,7 +227,7 @@
             this.btForgotPasswordWrapper.AutoSize = true;
             this.btForgotPasswordWrapper.Controls.Add(this.btForgotPassword);
             this.btForgotPasswordWrapper.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btForgotPasswordWrapper.Location = new System.Drawing.Point(0, 547);
+            this.btForgotPasswordWrapper.Location = new System.Drawing.Point(0, 546);
             this.btForgotPasswordWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btForgotPasswordWrapper.Name = "btForgotPasswordWrapper";
             this.btForgotPasswordWrapper.Padding = new System.Windows.Forms.Padding(40, 20, 40, 40);
@@ -263,7 +264,7 @@
             this.passwordLoginControl.Margin = new System.Windows.Forms.Padding(0);
             this.passwordLoginControl.MinimumSize = new System.Drawing.Size(720, 0);
             this.passwordLoginControl.Name = "passwordLoginControl";
-            this.passwordLoginControl.Size = new System.Drawing.Size(720, 669);
+            this.passwordLoginControl.Size = new System.Drawing.Size(720, 668);
             this.passwordLoginControl.TabIndex = 0;
             // 
             // ForgotPasswordView
@@ -290,6 +291,17 @@
             this.forgotPasswordControl.Size = new System.Drawing.Size(714, 669);
             this.forgotPasswordControl.TabIndex = 0;
             // 
+            // horizontalSeperatorControl
+            // 
+            this.horizontalSeperatorControl.AutoSize = true;
+            this.horizontalSeperatorControl.BackColor = System.Drawing.Color.Silver;
+            this.horizontalSeperatorControl.Dock = System.Windows.Forms.DockStyle.Top;
+            this.horizontalSeperatorControl.Location = new System.Drawing.Point(0, 180);
+            this.horizontalSeperatorControl.Margin = new System.Windows.Forms.Padding(0);
+            this.horizontalSeperatorControl.Name = "horizontalSeperatorControl";
+            this.horizontalSeperatorControl.Size = new System.Drawing.Size(714, 1);
+            this.horizontalSeperatorControl.TabIndex = 10;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -297,6 +309,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(714, 849);
             this.Controls.Add(this.views);
+            this.Controls.Add(this.horizontalSeperatorControl);
             this.Controls.Add(this.titleWrapper);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
@@ -341,6 +354,7 @@
         private System.Windows.Forms.Button btForgotPassword;
         private System.Windows.Forms.FlowLayoutPanel btRFIDLoginWrapper;
         private System.Windows.Forms.Button btRFIDLogin;
+        private Controls.HorizontalSeperatorControl horizontalSeperatorControl;
     }
 }
 

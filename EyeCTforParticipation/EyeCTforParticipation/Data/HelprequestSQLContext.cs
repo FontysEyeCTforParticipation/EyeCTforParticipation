@@ -243,7 +243,7 @@ namespace EyeCTforParticipation.Data
                 cmd.Parameters.AddWithValue("@Address", helpRequest.Address);
                 cmd.Parameters.AddWithValue("@Location", "POINT(" + helpRequest.Location.Latitude + " " + helpRequest.Location.Longitude + ")");
                 cmd.Parameters.AddWithValue("@Urgency", (int)helpRequest.Urgency);
-                id = Convert.ToInt32(cmd.ExecuteScalar());
+                id = (int)cmd.ExecuteScalar();
             }
             return id;
         }
@@ -338,7 +338,7 @@ namespace EyeCTforParticipation.Data
                 cmd.Parameters.AddWithValue("@Id", id);
                 cmd.Parameters.AddWithValue("@VolunteerId", volunteerId);
                 cmd.Parameters.AddWithValue("@Status", (int)ApplicationStatus.NONE);
-                applicationId = Convert.ToInt32(cmd.ExecuteScalar());
+                applicationId = (int)cmd.ExecuteScalar();
             }
             return applicationId;
         }

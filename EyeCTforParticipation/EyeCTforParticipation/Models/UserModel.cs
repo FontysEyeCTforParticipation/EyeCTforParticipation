@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace EyeCTforParticipation.Models
         string password;
         DateTime birthdate;
         bool approved;
+        Bitmap avatar;
 
         public int Id
         {
@@ -118,6 +120,19 @@ namespace EyeCTforParticipation.Models
             set
             {
                 approved = value;
+            }
+        }
+
+        public Bitmap Avatar
+        {
+            get
+            {
+                return avatar;
+            }
+
+            set
+            {
+                avatar = value;
             }
         }
     }

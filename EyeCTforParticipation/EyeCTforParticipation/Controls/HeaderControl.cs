@@ -23,6 +23,44 @@ namespace EyeCTforParticipation.Controls
         public EventHandler Register;
         public EventHandler Logout;
 
+        bool loggedIn;
+
+        public bool LoggedIn
+        {
+            get
+            {
+                return loggedIn;
+            }
+            set
+            {
+                loggedIn = value;
+                if(loggedIn == true)
+                {
+                    setLogin();
+                }
+                else
+                {
+                    setLogout();
+                }
+            }
+        }
+
+        private void setLogin()
+        {
+            btLoginWrapper.Hide();
+            btRegisterWrapper.Hide();
+            btLogoutWrapper.Show();
+            btChatWrapper.Show();
+        }
+
+        private void setLogout()
+        {
+            btLoginWrapper.Show();
+            btRegisterWrapper.Show();
+            btLogoutWrapper.Hide();
+            btChatWrapper.Hide();
+        }
+
         private void btLogin_Click(object sender, EventArgs e)
         {
             LoginForm loginForm = new LoginForm();
@@ -32,10 +70,7 @@ namespace EyeCTforParticipation.Controls
 
         private void LoginForm_Login(object sender, EventArgs e)
         {
-            btLoginWrapper.Hide();
-            btRegisterWrapper.Hide();
-            btLogoutWrapper.Show();
-            btChatWrapper.Show();
+            setLogin();
             if(Login != null)
             {
                 Login(this, EventArgs.Empty);
@@ -59,10 +94,7 @@ namespace EyeCTforParticipation.Controls
 
         private void btLogout_Click(object sender, EventArgs e)
         {
-            btLoginWrapper.Show();
-            btRegisterWrapper.Show();
-            btLogoutWrapper.Hide();
-            btChatWrapper.Hide();
+            setLogout();
             Session.User = null;
             if(Logout != null)
             {

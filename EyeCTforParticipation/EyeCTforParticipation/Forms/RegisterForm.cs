@@ -15,12 +15,11 @@ namespace EyeCTforParticipation.Forms
         public RegisterForm()
         {
             InitializeComponent();
-            registerControl.Register += new EventHandler(onRegister);
+            registerControl.Register += new EventHandler(RegisterControl_Register);
         }
 
-        private void onRegister(object sender, EventArgs e)
+        private void RegisterControl_Register(object sender, EventArgs e)
         {
-            MessageBox.Show("Registered");
             Close();
         }
     }

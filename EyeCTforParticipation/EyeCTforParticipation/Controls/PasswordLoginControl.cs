@@ -15,7 +15,7 @@ namespace EyeCTforParticipation.Controls
 {
     public partial class PasswordLoginControl : UserControl
     {
-        UserRepository userRepository = new UserRepository(new UserSQLContext());
+        UserRepository userRepository = new UserRepository(new UserMemoryContext());
 
         public PasswordLoginControl()
         {
@@ -26,21 +26,19 @@ namespace EyeCTforParticipation.Controls
 
         private void btLogin_Click(object sender, EventArgs e)
         {
-            //user = userRepository.Login("test@test.com", "secret");
-            Session.User = new UserModel {
-                Id = 5,
-                Name = "Thomas Gladdines",
-                Role = UserRole.HelpSeeker
-            };
-            Data.MemoryContext.Tables.User.Add(Session.User);
-            if (Session.User != null)
+            if (tbEmail.Text.Length > 0 && tbPassword.Text.Length > 0)
             {
-                //Succesvol ingelogd
-                //Trigger login event
-                if (Login != null)
+                Session.User = userRepository.Login(tbEmail.Text, tbPassword.Text);
+                if (Session.User != null)
                 {
-                    Login(this, EventArgs.Empty);
+                    if (Login != null)
+                    {
+                        Login(this, EventArgs.Empty);
+                    }
                 }
+            } else
+            {
+                MessageBox.Show("E-mail en wachtwoord zijn vereist.");
             }
         }
     }
