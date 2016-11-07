@@ -17,7 +17,7 @@ namespace EyeCTforParticipation.Controls
     {
         ApplicationModel application;
 
-        HelpRequestRepository helpRequestRepository = new HelpRequestRepository(new HelpRequestMemoryContext());
+        HelpRequestRepository helpRequestRepository = new HelpRequestRepository(new HelpRequestSQLContext());
 
         public ApplicationControl()
         {
