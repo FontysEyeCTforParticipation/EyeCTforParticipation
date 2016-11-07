@@ -9,5 +9,8 @@ namespace EyeCTforParticipation.Data
 {
     interface IChatContext
     {
+        List<ChatModel> List(int userid);
+        ChatModel Get(int chatid);
+        void Purge(int chatId);
     }
 }

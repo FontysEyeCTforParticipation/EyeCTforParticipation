@@ -30,9 +30,9 @@ namespace EyeCTforParticipation.Logic
         /// List consists of ChatModel objects with Application.Id as Id, HelpRequest.Title as Title and Application.Status as Status.
         /// Different user roles get different lists.
         /// </remarks>
-        public List<ChatModel> Get(int userId)
+        public List<ChatModel> List(int userId)
         {
-            throw new NotImplementedException();
+            return context.List(userId);
         }
 
         /// <summary>
@@ -50,9 +50,9 @@ namespace EyeCTforParticipation.Logic
         /// <remarks>
         /// The ChatModel object has Application.Id as Id, HelpRequest.Title as Title, Application.Status as Status.
         /// </remarks>
-        public ChatModel Get(int chatId, int userId)
+        public ChatModel Get(int chatId)
         {
-            throw new NotImplementedException();
+            return context.Get(chatId);
         }
 
         /// <summary>
@@ -61,9 +61,9 @@ namespace EyeCTforParticipation.Logic
         /// <param name="chatId">
         /// The id of the chat.
         /// </param>
-        public void Empty(int chatId)
+        public void Clear(int chatId)
         {
-            throw new NotImplementedException();
+            context.Purge(chatId);
         }
 
         /// <summary>
