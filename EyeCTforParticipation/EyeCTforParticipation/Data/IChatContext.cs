@@ -9,8 +9,11 @@ namespace EyeCTforParticipation.Data
 {
     interface IChatContext
     {
-        List<ChatModel> List(int userid);
-        ChatModel Get(int chatid);
+        List<ChatModel> List(int userId);
+        List<ChatModel> ListAsVolunteer(int userId);
+        List<ChatModel> ListAsHelpSeeker(int userId);
+        List<ChatModel> ListAsAidWorkerUser(int userId);
+        ChatModel Get(int chatId);
         void Clear(int chatId);
         void SendMessage(MessageModel message);
     }

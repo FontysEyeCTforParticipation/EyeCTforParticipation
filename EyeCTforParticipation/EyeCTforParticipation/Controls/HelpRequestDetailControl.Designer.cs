@@ -37,20 +37,20 @@
             this.lbUrgencyNormal = new System.Windows.Forms.Label();
             this.lbUrgencyLowWrapper = new System.Windows.Forms.Panel();
             this.lbUrgencyLow = new System.Windows.Forms.Label();
+            this.lbCloseWrapper = new System.Windows.Forms.Panel();
+            this.lbClose = new System.Windows.Forms.Label();
             this.lbName = new System.Windows.Forms.Label();
             this.lbLocation = new System.Windows.Forms.Label();
             this.lbDistance = new System.Windows.Forms.Label();
             this.lbDate = new System.Windows.Forms.Label();
             this.lbLocationWrapper = new System.Windows.Forms.Panel();
-            this.lbCloseWrapper = new System.Windows.Forms.Panel();
-            this.lbClose = new System.Windows.Forms.Label();
             this.lbTitleNameWrapper.SuspendLayout();
             this.titleWrapper.SuspendLayout();
             this.lbUrgencyCrititcalWrapper.SuspendLayout();
             this.lbUrgencyNormalWrapper.SuspendLayout();
             this.lbUrgencyLowWrapper.SuspendLayout();
-            this.lbLocationWrapper.SuspendLayout();
             this.lbCloseWrapper.SuspendLayout();
+            this.lbLocationWrapper.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbTitleNameWrapper
@@ -174,6 +174,31 @@
             this.lbUrgencyLow.TabIndex = 4;
             this.lbUrgencyLow.Text = "BELANGRIJK";
             // 
+            // lbCloseWrapper
+            // 
+            this.lbCloseWrapper.AutoSize = true;
+            this.lbCloseWrapper.Controls.Add(this.lbClose);
+            this.lbCloseWrapper.Dock = System.Windows.Forms.DockStyle.Left;
+            this.lbCloseWrapper.Location = new System.Drawing.Point(40, 0);
+            this.lbCloseWrapper.Name = "lbCloseWrapper";
+            this.lbCloseWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 10, 0);
+            this.lbCloseWrapper.Size = new System.Drawing.Size(136, 85);
+            this.lbCloseWrapper.TabIndex = 9;
+            this.lbCloseWrapper.Visible = false;
+            // 
+            // lbClose
+            // 
+            this.lbClose.AutoSize = true;
+            this.lbClose.BackColor = System.Drawing.Color.Gray;
+            this.lbClose.Font = new System.Drawing.Font("Segoe UI Semibold", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbClose.ForeColor = System.Drawing.Color.White;
+            this.lbClose.Location = new System.Drawing.Point(0, 34);
+            this.lbClose.Name = "lbClose";
+            this.lbClose.Padding = new System.Windows.Forms.Padding(5);
+            this.lbClose.Size = new System.Drawing.Size(123, 40);
+            this.lbClose.TabIndex = 4;
+            this.lbClose.Text = "GESLOTEN";
+            // 
             // lbName
             // 
             this.lbName.AutoSize = true;
@@ -246,31 +271,6 @@
             this.lbLocationWrapper.Size = new System.Drawing.Size(360, 170);
             this.lbLocationWrapper.TabIndex = 11;
             // 
-            // lbCloseWrapper
-            // 
-            this.lbCloseWrapper.AutoSize = true;
-            this.lbCloseWrapper.Controls.Add(this.lbClose);
-            this.lbCloseWrapper.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbCloseWrapper.Location = new System.Drawing.Point(40, 0);
-            this.lbCloseWrapper.Name = "lbCloseWrapper";
-            this.lbCloseWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 10, 0);
-            this.lbCloseWrapper.Size = new System.Drawing.Size(136, 85);
-            this.lbCloseWrapper.TabIndex = 9;
-            this.lbCloseWrapper.Visible = false;
-            // 
-            // lbClose
-            // 
-            this.lbClose.AutoSize = true;
-            this.lbClose.BackColor = System.Drawing.Color.Gray;
-            this.lbClose.Font = new System.Drawing.Font("Segoe UI Semibold", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbClose.ForeColor = System.Drawing.Color.White;
-            this.lbClose.Location = new System.Drawing.Point(0, 34);
-            this.lbClose.Name = "lbClose";
-            this.lbClose.Padding = new System.Windows.Forms.Padding(5);
-            this.lbClose.Size = new System.Drawing.Size(123, 40);
-            this.lbClose.TabIndex = 4;
-            this.lbClose.Text = "GESLOTEN";
-            // 
             // HelpRequestDetailControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -295,9 +295,9 @@
             this.lbUrgencyNormalWrapper.PerformLayout();
             this.lbUrgencyLowWrapper.ResumeLayout(false);
             this.lbUrgencyLowWrapper.PerformLayout();
-            this.lbLocationWrapper.ResumeLayout(false);
             this.lbCloseWrapper.ResumeLayout(false);
             this.lbCloseWrapper.PerformLayout();
+            this.lbLocationWrapper.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
