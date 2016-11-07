@@ -124,6 +124,7 @@ namespace EyeCTforParticipation.Logic
         public void ApproveRegistration(int userId)
         {
             context.approveRegistration(userId);
+
         }
 
         /// <summary>
