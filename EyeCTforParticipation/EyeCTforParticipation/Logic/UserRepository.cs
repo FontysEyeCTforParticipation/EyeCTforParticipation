@@ -123,7 +123,7 @@ namespace EyeCTforParticipation.Logic
         /// </param>
         public void ApproveRegistration(int userId)
         {
-            context.approveRegistration(userId);
+            context.ApproveRegistration(userId);
 
         }
 
