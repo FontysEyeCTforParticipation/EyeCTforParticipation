@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EyeCTforParticipation.Models;
+using EyeCTforParticipation.Data.MemoryContext;
 
 namespace EyeCTforParticipation.Data
 {
@@ -19,14 +20,30 @@ namespace EyeCTforParticipation.Data
             throw new NotImplementedException();
         }
 
-        public List<ChatModel> List(int userId)
+        public List<ChatModel> List()
         {
-            var results = from 
+            var results = from application in Tables.Application
+                         join helpRequest in Tables.HelpRequest on application.HelpRequest.Id equals helpRequest.Id
+                         select new ChatModel
+                         {
+                             Id = application.Id,
+                             Title = helpRequest.Title,
+                             Status = application.Status
+                         };
+            return results.ToList();
         }
 
         public List<ChatModel> ListAsAidWorkerUser(int userId)
         {
-            throw new NotImplementedException();
+            var results = from application in Tables.Application
+                          join helpRequest in Tables.HelpRequest on application.HelpRequest.Id equals helpRequest.Id
+                          select new ChatModel
+                          {
+                              Id = application.Id,
+                              Title = helpRequest.Title,
+                              Status = application.Status
+                          };
+            return results.ToList();
         }
 
         public List<ChatModel> ListAsHelpSeeker(int userId)
