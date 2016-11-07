@@ -10,7 +10,17 @@ namespace EyeCTforParticipation.Data
     {
         public void Clear(int chatId)
         {
-            throw new NotImplementedException();
+            string query = @"DELETE Id, UserId, ApplicationId, Message.Content, Message.Date 
+                             FROM Messege 
+                             Where ApplicationId = @ApplicationId;";
+
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@ApplicationId", chatId);
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public ChatModel Get(int chatid)
