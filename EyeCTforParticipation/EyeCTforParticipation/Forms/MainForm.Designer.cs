@@ -788,7 +788,7 @@
             this.lbApplications.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
             this.lbApplications.Size = new System.Drawing.Size(1448, 202);
             this.lbApplications.TabIndex = 16;
-            this.lbApplications.Text = "Hulpvragen";
+            this.lbApplications.Text = "Aanmeldingen";
             this.lbApplications.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btApplicationsBackWrapper
