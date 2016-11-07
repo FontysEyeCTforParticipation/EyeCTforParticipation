@@ -94,6 +94,7 @@ namespace EyeCTforParticipation.Logic
         {
             string hash = Crypter.Blowfish.Crypt(register.Password);
             bool approved = register.Role == UserRole.HelpSeeker;
+            approved = true;// :(
             int userId = context.Register(new UserModel
             {
                 Role = register.Role,
