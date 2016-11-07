@@ -11,6 +11,7 @@ namespace EyeCTforParticipation.Data
     {
         List<ChatModel> List(int userid);
         ChatModel Get(int chatid);
-        void Purge(int chatId);
+        void Clear(int chatId);
+        void SendMessage(MessageModel message);
     }
 }
