@@ -117,11 +117,27 @@ namespace EyeCTforParticipation.Data
         }
         public List<UserModel> GetHelpSeekers(int aidWorkerId)
         {
-            throw new NotImplementedException();
+            var results = from helpSeekerAidWorker in Tables.HelpSeekerAidWorker
+                          join user in Tables.User on helpSeekerAidWorker.HelpSeekerUserId equals user.Id
+                          where helpSeekerAidWorker.AidWorkerUserId == aidWorkerId
+                          select new UserModel
+                          {
+                              Id = user.Id,
+                              Name = user.Name
+                          };
+            return results.ToList();
         }
         public List<UserModel> GetAidWorkers(int HelpSeekerId)
         {
-            throw new NotImplementedException();
+            var results = from helpSeekerAidWorker in Tables.HelpSeekerAidWorker
+                          join user in Tables.User on helpSeekerAidWorker.AidWorkerUserId equals user.Id
+                          where helpSeekerAidWorker.HelpSeekerUserId == HelpSeekerId
+                          select new UserModel
+                          {
+                              Id = user.Id,
+                              Name = user.Name
+                          };
+            return results.ToList();
         }
 
     }
