@@ -30,9 +30,21 @@ namespace EyeCTforParticipation.Logic
         /// List consists of ChatModel objects with Application.Id as Id, HelpRequest.Title as Title and Application.Status as Status.
         /// Different user roles get different lists.
         /// </remarks>
-        public List<ChatModel> List(int userId)
+        public List<ChatModel> List(UserModel user)
         {
-            return context.List(userId);
+            switch (user.Role)
+            {
+                case UserRole.Admin:
+                    return context.List(user.Id);
+                case UserRole.AidWorker:
+                    return context.ListAsAidWorkerUser(user.Id);
+                case UserRole.HelpSeeker:
+                    return context.ListAsHelpSeeker(user.Id);
+                case UserRole.Volunteer:
+                    return context.ListAsVolunteer(user.Id);
+                default:
+                    return null;
+            }
         }
 
         /// <summary>
