@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbTitleNameWrapper = new System.Windows.Forms.FlowLayoutPanel();
+            this.wrapper = new System.Windows.Forms.FlowLayoutPanel();
             this.titleWrapper = new System.Windows.Forms.Panel();
             this.lbName = new System.Windows.Forms.Label();
             this.lbCancelledWrapper = new System.Windows.Forms.Panel();
@@ -41,7 +41,8 @@
             this.btApprove = new System.Windows.Forms.Button();
             this.btInterview = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
-            this.lbTitleNameWrapper.SuspendLayout();
+            this.lbDate = new System.Windows.Forms.Label();
+            this.wrapper.SuspendLayout();
             this.titleWrapper.SuspendLayout();
             this.lbCancelledWrapper.SuspendLayout();
             this.lbInterviewWrapper.SuspendLayout();
@@ -49,20 +50,21 @@
             this.btWrapper.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lbTitleNameWrapper
+            // wrapper
             // 
-            this.lbTitleNameWrapper.AutoSize = true;
-            this.lbTitleNameWrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.lbTitleNameWrapper.BackColor = System.Drawing.Color.Transparent;
-            this.lbTitleNameWrapper.Controls.Add(this.titleWrapper);
-            this.lbTitleNameWrapper.Controls.Add(this.btWrapper);
-            this.lbTitleNameWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lbTitleNameWrapper.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.lbTitleNameWrapper.Location = new System.Drawing.Point(0, 0);
-            this.lbTitleNameWrapper.Margin = new System.Windows.Forms.Padding(0);
-            this.lbTitleNameWrapper.Name = "lbTitleNameWrapper";
-            this.lbTitleNameWrapper.Size = new System.Drawing.Size(827, 212);
-            this.lbTitleNameWrapper.TabIndex = 6;
+            this.wrapper.AutoSize = true;
+            this.wrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.wrapper.BackColor = System.Drawing.Color.Transparent;
+            this.wrapper.Controls.Add(this.titleWrapper);
+            this.wrapper.Controls.Add(this.lbDate);
+            this.wrapper.Controls.Add(this.btWrapper);
+            this.wrapper.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.wrapper.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.wrapper.Location = new System.Drawing.Point(0, 0);
+            this.wrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.wrapper.Name = "wrapper";
+            this.wrapper.Size = new System.Drawing.Size(784, 297);
+            this.wrapper.TabIndex = 6;
             // 
             // titleWrapper
             // 
@@ -77,7 +79,7 @@
             this.titleWrapper.MinimumSize = new System.Drawing.Size(0, 85);
             this.titleWrapper.Name = "titleWrapper";
             this.titleWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.titleWrapper.Size = new System.Drawing.Size(813, 85);
+            this.titleWrapper.Size = new System.Drawing.Size(733, 85);
             this.titleWrapper.TabIndex = 5;
             // 
             // lbName
@@ -86,7 +88,7 @@
             this.lbName.Dock = System.Windows.Forms.DockStyle.Left;
             this.lbName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbName.Location = new System.Drawing.Point(600, 0);
+            this.lbName.Location = new System.Drawing.Point(520, 0);
             this.lbName.Margin = new System.Windows.Forms.Padding(0);
             this.lbName.Name = "lbName";
             this.lbName.Padding = new System.Windows.Forms.Padding(0, 30, 60, 10);
@@ -99,7 +101,7 @@
             this.lbCancelledWrapper.AutoSize = true;
             this.lbCancelledWrapper.Controls.Add(this.lbCancelled);
             this.lbCancelledWrapper.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbCancelledWrapper.Location = new System.Drawing.Point(468, 0);
+            this.lbCancelledWrapper.Location = new System.Drawing.Point(388, 0);
             this.lbCancelledWrapper.Name = "lbCancelledWrapper";
             this.lbCancelledWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 0, 0);
             this.lbCancelledWrapper.Size = new System.Drawing.Size(132, 85);
@@ -127,7 +129,7 @@
             this.lbInterviewWrapper.Location = new System.Drawing.Point(216, 0);
             this.lbInterviewWrapper.Name = "lbInterviewWrapper";
             this.lbInterviewWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 0, 0);
-            this.lbInterviewWrapper.Size = new System.Drawing.Size(252, 85);
+            this.lbInterviewWrapper.Size = new System.Drawing.Size(172, 85);
             this.lbInterviewWrapper.TabIndex = 6;
             this.lbInterviewWrapper.Visible = false;
             // 
@@ -140,9 +142,9 @@
             this.lbInterview.Location = new System.Drawing.Point(0, 34);
             this.lbInterview.Name = "lbInterview";
             this.lbInterview.Padding = new System.Windows.Forms.Padding(5);
-            this.lbInterview.Size = new System.Drawing.Size(249, 40);
+            this.lbInterview.Size = new System.Drawing.Size(169, 40);
             this.lbInterview.TabIndex = 4;
-            this.lbInterview.Text = "KENNISMAKINGS CHAT";
+            this.lbInterview.Text = "KENNISMAKEN";
             // 
             // lbApprovedWrapper
             // 
@@ -176,13 +178,12 @@
             this.btWrapper.Controls.Add(this.btInterview);
             this.btWrapper.Controls.Add(this.btCancel);
             this.btWrapper.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btWrapper.Location = new System.Drawing.Point(0, 85);
+            this.btWrapper.Location = new System.Drawing.Point(0, 170);
             this.btWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btWrapper.Name = "btWrapper";
             this.btWrapper.Padding = new System.Windows.Forms.Padding(40, 20, 40, 40);
-            this.btWrapper.Size = new System.Drawing.Size(827, 127);
+            this.btWrapper.Size = new System.Drawing.Size(784, 127);
             this.btWrapper.TabIndex = 18;
-            this.btWrapper.Visible = false;
             // 
             // btApprove
             // 
@@ -195,13 +196,15 @@
             this.btApprove.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btApprove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btApprove.Location = new System.Drawing.Point(40, 20);
-            this.btApprove.Margin = new System.Windows.Forms.Padding(0);
+            this.btApprove.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.btApprove.Name = "btApprove";
             this.btApprove.Padding = new System.Windows.Forms.Padding(10);
             this.btApprove.Size = new System.Drawing.Size(221, 67);
             this.btApprove.TabIndex = 4;
             this.btApprove.Text = "GOEDKEUREN";
             this.btApprove.UseVisualStyleBackColor = false;
+            this.btApprove.Visible = false;
+            this.btApprove.Click += new System.EventHandler(this.btApprove_Click);
             // 
             // btInterview
             // 
@@ -213,14 +216,16 @@
             this.btInterview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btInterview.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btInterview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btInterview.Location = new System.Drawing.Point(261, 20);
-            this.btInterview.Margin = new System.Windows.Forms.Padding(0);
+            this.btInterview.Location = new System.Drawing.Point(281, 20);
+            this.btInterview.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.btInterview.Name = "btInterview";
             this.btInterview.Padding = new System.Windows.Forms.Padding(10);
-            this.btInterview.Size = new System.Drawing.Size(341, 67);
+            this.btInterview.Size = new System.Drawing.Size(238, 67);
             this.btInterview.TabIndex = 5;
-            this.btInterview.Text = "KENNISMAKINGS CHAT";
+            this.btInterview.Text = "KENNISMAKEN";
             this.btInterview.UseVisualStyleBackColor = false;
+            this.btInterview.Visible = false;
+            this.btInterview.Click += new System.EventHandler(this.btInterview_Click);
             // 
             // btCancel
             // 
@@ -232,14 +237,29 @@
             this.btCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btCancel.Location = new System.Drawing.Point(602, 20);
-            this.btCancel.Margin = new System.Windows.Forms.Padding(0);
+            this.btCancel.Location = new System.Drawing.Point(539, 20);
+            this.btCancel.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
             this.btCancel.Name = "btCancel";
             this.btCancel.Padding = new System.Windows.Forms.Padding(10);
             this.btCancel.Size = new System.Drawing.Size(185, 67);
             this.btCancel.TabIndex = 6;
             this.btCancel.Text = "AFMELDEN";
             this.btCancel.UseVisualStyleBackColor = false;
+            this.btCancel.Visible = false;
+            this.btCancel.Click += new System.EventHandler(this.btCancel_Click);
+            // 
+            // lbDate
+            // 
+            this.lbDate.AutoSize = true;
+            this.lbDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDate.ForeColor = System.Drawing.Color.Gray;
+            this.lbDate.Location = new System.Drawing.Point(0, 85);
+            this.lbDate.Margin = new System.Windows.Forms.Padding(0);
+            this.lbDate.Name = "lbDate";
+            this.lbDate.Padding = new System.Windows.Forms.Padding(40, 10, 60, 30);
+            this.lbDate.Size = new System.Drawing.Size(282, 85);
+            this.lbDate.TabIndex = 19;
+            this.lbDate.Text = "10-10-2016";
             // 
             // ApplicationControl
             // 
@@ -248,12 +268,12 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.lbTitleNameWrapper);
+            this.Controls.Add(this.wrapper);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ApplicationControl";
-            this.Size = new System.Drawing.Size(827, 212);
-            this.lbTitleNameWrapper.ResumeLayout(false);
-            this.lbTitleNameWrapper.PerformLayout();
+            this.Size = new System.Drawing.Size(784, 297);
+            this.wrapper.ResumeLayout(false);
+            this.wrapper.PerformLayout();
             this.titleWrapper.ResumeLayout(false);
             this.titleWrapper.PerformLayout();
             this.lbCancelledWrapper.ResumeLayout(false);
@@ -271,7 +291,7 @@
 
         #endregion
 
-        private System.Windows.Forms.FlowLayoutPanel lbTitleNameWrapper;
+        private System.Windows.Forms.FlowLayoutPanel wrapper;
         private System.Windows.Forms.Panel titleWrapper;
         private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.Panel lbCancelledWrapper;
@@ -284,5 +304,6 @@
         private System.Windows.Forms.Button btApprove;
         private System.Windows.Forms.Button btInterview;
         private System.Windows.Forms.Button btCancel;
+        private System.Windows.Forms.Label lbDate;
     }
 }
