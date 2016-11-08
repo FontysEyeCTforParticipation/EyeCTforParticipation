@@ -21,6 +21,7 @@ namespace EyeCTforParticipation.Forms
         public MainForm()
         {
             InitializeComponent();
+            CustomFonts.ChangeFonts(Controls, CustomFonts.Families.Roboto);
             header.Login += header_Login;
             header.Logout += header_Logout;
             header.Register += header_Login;

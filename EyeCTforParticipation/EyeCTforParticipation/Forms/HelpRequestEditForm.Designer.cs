@@ -49,7 +49,7 @@
             // lbTitle
             // 
             this.lbTitle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbTitle.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitle.Location = new System.Drawing.Point(40, 40);
             this.lbTitle.Margin = new System.Windows.Forms.Padding(0);
             this.lbTitle.MinimumSize = new System.Drawing.Size(300, 100);

@@ -17,6 +17,7 @@ namespace EyeCTforParticipation.Controls
         public HeaderControl()
         {
             InitializeComponent();
+            CustomFonts.ChangeFonts(Controls, CustomFonts.Families.Roboto);
         }
 
         public EventHandler Login;

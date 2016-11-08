@@ -27,6 +27,7 @@ namespace EyeCTforParticipation.Controls
         public HelpRequestControl()
         {
             InitializeComponent();
+            CustomFonts.ChangeFonts(Controls, CustomFonts.Families.Roboto);
         }
 
         HelpRequestModel helpRequest;

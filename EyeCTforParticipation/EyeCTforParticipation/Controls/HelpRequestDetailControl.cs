@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EyeCTforParticipation.Models;
+using EyeCTforParticipation.Logic;
 
 namespace EyeCTforParticipation.Controls
 {
@@ -16,6 +17,7 @@ namespace EyeCTforParticipation.Controls
         public HelpRequestDetailControl()
         {
             InitializeComponent();
+            CustomFonts.ChangeFonts(Controls, CustomFonts.Families.Roboto);
             WireAllControls(this);
         }
 

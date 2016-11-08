@@ -19,7 +19,7 @@ namespace EyeCTforParticipation.Logic
             {
                 try
                 {
-                    response = JsonConvert.DeserializeObject<Response>(wc.DownloadString("https://maps.googleapis.com/maps/api/geocode/json?language=" + language + "&components=country:" + countryCode + "&address=" + address));
+                    response = JsonConvert.DeserializeObject<Response>(wc.DownloadString("https://maps.googleapis.com/maps/api/geocode/json?language=" + languageCode + "&components=country:" + countryCode + "&address=" + address));
                 }
                 catch (Exception)
                 {

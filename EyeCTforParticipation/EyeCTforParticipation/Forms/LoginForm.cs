@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EyeCTforParticipation.Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace EyeCTforParticipation.Forms
         public LoginForm()
         {
             InitializeComponent();
+            CustomFonts.ChangeFonts(Controls, CustomFonts.Families.Roboto);
             passwordLoginControl.Login += new EventHandler(onLogin);
             rfidLoginControl.Login += new EventHandler(onLogin);
         }

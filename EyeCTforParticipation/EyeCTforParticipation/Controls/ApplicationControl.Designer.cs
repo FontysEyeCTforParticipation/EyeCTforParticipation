@@ -86,7 +86,7 @@
             // 
             this.lbName.AutoSize = true;
             this.lbName.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbName.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lbName.Location = new System.Drawing.Point(520, 0);
             this.lbName.Margin = new System.Windows.Forms.Padding(0);
@@ -112,7 +112,7 @@
             // 
             this.lbCancelled.AutoSize = true;
             this.lbCancelled.BackColor = System.Drawing.Color.Gray;
-            this.lbCancelled.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCancelled.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCancelled.ForeColor = System.Drawing.Color.White;
             this.lbCancelled.Location = new System.Drawing.Point(0, 34);
             this.lbCancelled.Name = "lbCancelled";
@@ -137,7 +137,7 @@
             // 
             this.lbInterview.AutoSize = true;
             this.lbInterview.BackColor = System.Drawing.Color.RoyalBlue;
-            this.lbInterview.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbInterview.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbInterview.ForeColor = System.Drawing.Color.White;
             this.lbInterview.Location = new System.Drawing.Point(0, 34);
             this.lbInterview.Name = "lbInterview";
@@ -162,7 +162,7 @@
             // 
             this.lbApproved.AutoSize = true;
             this.lbApproved.BackColor = System.Drawing.Color.LightGreen;
-            this.lbApproved.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbApproved.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbApproved.ForeColor = System.Drawing.Color.Black;
             this.lbApproved.Location = new System.Drawing.Point(0, 34);
             this.lbApproved.Name = "lbApproved";
@@ -193,7 +193,7 @@
             this.btApprove.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btApprove.FlatAppearance.BorderSize = 0;
             this.btApprove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btApprove.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btApprove.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btApprove.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btApprove.Location = new System.Drawing.Point(40, 20);
             this.btApprove.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
@@ -214,7 +214,7 @@
             this.btInterview.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btInterview.FlatAppearance.BorderSize = 0;
             this.btInterview.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btInterview.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btInterview.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btInterview.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btInterview.Location = new System.Drawing.Point(281, 20);
             this.btInterview.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
@@ -235,7 +235,7 @@
             this.btCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btCancel.FlatAppearance.BorderSize = 0;
             this.btCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btCancel.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCancel.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btCancel.Location = new System.Drawing.Point(539, 20);
             this.btCancel.Margin = new System.Windows.Forms.Padding(0, 0, 20, 0);
@@ -251,7 +251,7 @@
             // lbDate
             // 
             this.lbDate.AutoSize = true;
-            this.lbDate.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDate.ForeColor = System.Drawing.Color.Gray;
             this.lbDate.Location = new System.Drawing.Point(0, 85);
             this.lbDate.Margin = new System.Windows.Forms.Padding(0);

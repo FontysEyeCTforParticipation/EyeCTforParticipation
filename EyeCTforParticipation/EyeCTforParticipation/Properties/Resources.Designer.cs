@@ -89,5 +89,25 @@ namespace EyeCTforParticipation.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Roboto_Bold {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_Bold", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Roboto_Italic {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_Italic", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

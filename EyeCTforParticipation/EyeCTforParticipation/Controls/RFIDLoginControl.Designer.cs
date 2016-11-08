@@ -48,7 +48,7 @@
             // lbInstructions
             // 
             this.lbInstructions.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbInstructions.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbInstructions.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbInstructions.ForeColor = System.Drawing.Color.Gray;
             this.lbInstructions.Location = new System.Drawing.Point(0, 378);
             this.lbInstructions.Margin = new System.Windows.Forms.Padding(0);

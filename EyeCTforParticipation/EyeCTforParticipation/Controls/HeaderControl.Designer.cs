@@ -81,7 +81,7 @@
             this.btLogout.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btLogout.FlatAppearance.BorderSize = 0;
             this.btLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btLogout.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLogout.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btLogout.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btLogout.Location = new System.Drawing.Point(40, 40);
             this.btLogout.Margin = new System.Windows.Forms.Padding(0);
@@ -113,7 +113,7 @@
             this.btLogin.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btLogin.FlatAppearance.BorderSize = 0;
             this.btLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btLogin.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLogin.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btLogin.Location = new System.Drawing.Point(40, 40);
             this.btLogin.Margin = new System.Windows.Forms.Padding(0);
@@ -130,7 +130,7 @@
             this.btRegisterWrapper.AutoSize = true;
             this.btRegisterWrapper.Controls.Add(this.btRegister);
             this.btRegisterWrapper.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btRegisterWrapper.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btRegisterWrapper.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btRegisterWrapper.Location = new System.Drawing.Point(500, 0);
             this.btRegisterWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btRegisterWrapper.Name = "btRegisterWrapper";
@@ -146,7 +146,7 @@
             this.btRegister.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btRegister.FlatAppearance.BorderSize = 0;
             this.btRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btRegister.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btRegister.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btRegister.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btRegister.Location = new System.Drawing.Point(0, 40);
             this.btRegister.Margin = new System.Windows.Forms.Padding(0);
@@ -181,7 +181,7 @@
             this.btChat.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btChat.FlatAppearance.BorderSize = 0;
             this.btChat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btChat.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btChat.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btChat.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btChat.Location = new System.Drawing.Point(40, 40);
             this.btChat.Margin = new System.Windows.Forms.Padding(0);

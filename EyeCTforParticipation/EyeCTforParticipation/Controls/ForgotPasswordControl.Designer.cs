@@ -42,7 +42,7 @@
             // 
             this.lbInstructions.AutoSize = true;
             this.lbInstructions.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbInstructions.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbInstructions.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbInstructions.ForeColor = System.Drawing.Color.Gray;
             this.lbInstructions.Location = new System.Drawing.Point(0, 0);
             this.lbInstructions.Margin = new System.Windows.Forms.Padding(0);
@@ -57,7 +57,7 @@
             // 
             this.lbEmail.AutoSize = true;
             this.lbEmail.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbEmail.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lbEmail.Location = new System.Drawing.Point(0, 130);
             this.lbEmail.Margin = new System.Windows.Forms.Padding(0);
@@ -82,7 +82,7 @@
             // tbEmail
             // 
             this.tbEmail.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tbEmail.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbEmail.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbEmail.Location = new System.Drawing.Point(40, 0);
             this.tbEmail.Margin = new System.Windows.Forms.Padding(0);
             this.tbEmail.Name = "tbEmail";
@@ -109,13 +109,13 @@
             this.btSend.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btSend.FlatAppearance.BorderSize = 0;
             this.btSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btSend.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSend.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSend.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btSend.Location = new System.Drawing.Point(40, 30);
             this.btSend.Margin = new System.Windows.Forms.Padding(0);
             this.btSend.Name = "btSend";
             this.btSend.Padding = new System.Windows.Forms.Padding(10);
-            this.btSend.Size = new System.Drawing.Size(196, 67);
+            this.btSend.Size = new System.Drawing.Size(201, 67);
             this.btSend.TabIndex = 6;
             this.btSend.Text = "VERSTUREN";
             this.btSend.UseVisualStyleBackColor = false;

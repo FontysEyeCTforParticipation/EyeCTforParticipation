@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EyeCTforParticipation.Logic;
 
 namespace EyeCTforParticipation.Controls
 {
@@ -15,6 +16,7 @@ namespace EyeCTforParticipation.Controls
         public RFIDLoginControl()
         {
             InitializeComponent();
+            CustomFonts.ChangeFonts(Controls, CustomFonts.Families.Roboto);
         }
 
         public event EventHandler Login;

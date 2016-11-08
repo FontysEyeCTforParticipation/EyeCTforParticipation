@@ -116,7 +116,7 @@
             this.views.Controls.Add(this.helpRequestView);
             this.views.Controls.Add(this.helpRequestsManageView);
             this.views.Controls.Add(this.applicationsView);
-            this.views.CurrentView = this.helpSeekerView;
+            this.views.CurrentView = this.searchView;
             this.views.Dock = System.Windows.Forms.DockStyle.Fill;
             this.views.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.views.ItemSize = new System.Drawing.Size(0, 1);
@@ -125,7 +125,7 @@
             this.views.Name = "views";
             this.views.Padding = new System.Drawing.Point(0, 0);
             this.views.SelectedIndex = 0;
-            this.views.Size = new System.Drawing.Size(1574, 981);
+            this.views.Size = new System.Drawing.Size(1574, 1081);
             this.views.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.views.TabIndex = 0;
             // 
@@ -136,7 +136,7 @@
             this.startView.Location = new System.Drawing.Point(0, 0);
             this.startView.Margin = new System.Windows.Forms.Padding(0);
             this.startView.Name = "startView";
-            this.startView.Size = new System.Drawing.Size(1574, 981);
+            this.startView.Size = new System.Drawing.Size(1574, 1081);
             this.startView.TabIndex = 2;
             this.startView.Text = "tabPage1";
             // 
@@ -167,7 +167,7 @@
             this.helpSeekerView.Location = new System.Drawing.Point(0, 0);
             this.helpSeekerView.Margin = new System.Windows.Forms.Padding(0);
             this.helpSeekerView.Name = "helpSeekerView";
-            this.helpSeekerView.Size = new System.Drawing.Size(1574, 981);
+            this.helpSeekerView.Size = new System.Drawing.Size(1574, 1081);
             this.helpSeekerView.TabIndex = 4;
             this.helpSeekerView.Text = "tabPage1";
             // 
@@ -358,7 +358,7 @@
             this.volunteerView.Location = new System.Drawing.Point(0, 0);
             this.volunteerView.Margin = new System.Windows.Forms.Padding(0);
             this.volunteerView.Name = "volunteerView";
-            this.volunteerView.Size = new System.Drawing.Size(1574, 981);
+            this.volunteerView.Size = new System.Drawing.Size(1574, 1081);
             this.volunteerView.TabIndex = 3;
             this.volunteerView.Text = "tabPage1";
             // 
@@ -500,7 +500,7 @@
             this.searchView.Location = new System.Drawing.Point(0, 0);
             this.searchView.Margin = new System.Windows.Forms.Padding(0);
             this.searchView.Name = "searchView";
-            this.searchView.Size = new System.Drawing.Size(1574, 981);
+            this.searchView.Size = new System.Drawing.Size(1574, 1081);
             this.searchView.TabIndex = 0;
             this.searchView.Text = "tabPage1";
             this.searchView.UseVisualStyleBackColor = true;
@@ -513,7 +513,7 @@
             this.resultsWrapper.Location = new System.Drawing.Point(0, 203);
             this.resultsWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.resultsWrapper.Name = "resultsWrapper";
-            this.resultsWrapper.Size = new System.Drawing.Size(1574, 778);
+            this.resultsWrapper.Size = new System.Drawing.Size(1574, 878);
             this.resultsWrapper.TabIndex = 15;
             // 
             // searchSeperator
@@ -594,7 +594,7 @@
             this.helpRequestView.Location = new System.Drawing.Point(0, 0);
             this.helpRequestView.Margin = new System.Windows.Forms.Padding(0);
             this.helpRequestView.Name = "helpRequestView";
-            this.helpRequestView.Size = new System.Drawing.Size(1574, 981);
+            this.helpRequestView.Size = new System.Drawing.Size(1574, 1081);
             this.helpRequestView.TabIndex = 1;
             this.helpRequestView.Text = "tabPage2";
             this.helpRequestView.UseVisualStyleBackColor = true;
@@ -608,7 +608,7 @@
             this.helpRequest.Location = new System.Drawing.Point(0, 0);
             this.helpRequest.Margin = new System.Windows.Forms.Padding(0);
             this.helpRequest.Name = "helpRequest";
-            this.helpRequest.Size = new System.Drawing.Size(1574, 981);
+            this.helpRequest.Size = new System.Drawing.Size(1574, 1081);
             this.helpRequest.TabIndex = 0;
             // 
             // helpRequestsManageView
@@ -620,7 +620,7 @@
             this.helpRequestsManageView.Location = new System.Drawing.Point(0, 0);
             this.helpRequestsManageView.Margin = new System.Windows.Forms.Padding(0);
             this.helpRequestsManageView.Name = "helpRequestsManageView";
-            this.helpRequestsManageView.Size = new System.Drawing.Size(1574, 981);
+            this.helpRequestsManageView.Size = new System.Drawing.Size(1574, 1081);
             this.helpRequestsManageView.TabIndex = 5;
             this.helpRequestsManageView.Text = "tabPage1";
             // 
@@ -632,7 +632,7 @@
             this.helpRequestsWrapper.Location = new System.Drawing.Point(0, 203);
             this.helpRequestsWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.helpRequestsWrapper.Name = "helpRequestsWrapper";
-            this.helpRequestsWrapper.Size = new System.Drawing.Size(1574, 778);
+            this.helpRequestsWrapper.Size = new System.Drawing.Size(1574, 878);
             this.helpRequestsWrapper.TabIndex = 16;
             // 
             // helpRequestsSeperator
@@ -746,7 +746,7 @@
             this.applicationsView.Location = new System.Drawing.Point(0, 0);
             this.applicationsView.Margin = new System.Windows.Forms.Padding(0);
             this.applicationsView.Name = "applicationsView";
-            this.applicationsView.Size = new System.Drawing.Size(1574, 981);
+            this.applicationsView.Size = new System.Drawing.Size(1574, 1081);
             this.applicationsView.TabIndex = 6;
             this.applicationsView.Text = "tabPage1";
             this.applicationsView.UseVisualStyleBackColor = true;
@@ -759,7 +759,7 @@
             this.applicationsWrapper.Location = new System.Drawing.Point(0, 203);
             this.applicationsWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.applicationsWrapper.Name = "applicationsWrapper";
-            this.applicationsWrapper.Size = new System.Drawing.Size(1574, 778);
+            this.applicationsWrapper.Size = new System.Drawing.Size(1574, 878);
             this.applicationsWrapper.TabIndex = 21;
             // 
             // applicationsControl
@@ -851,10 +851,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1574, 1129);
+            this.ClientSize = new System.Drawing.Size(1574, 1229);
             this.Controls.Add(this.views);
             this.Controls.Add(this.header);
-            this.MinimumSize = new System.Drawing.Size(1600, 1200);
+            this.MinimumSize = new System.Drawing.Size(1600, 1300);
             this.Name = "MainForm";
             this.Text = "EyeCT for Participation";
             this.views.ResumeLayout(false);

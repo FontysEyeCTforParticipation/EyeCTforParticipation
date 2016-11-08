@@ -20,6 +20,7 @@ namespace EyeCTforParticipation.Controls
         public HelpRequestEditControl()
         {
             InitializeComponent();
+            CustomFonts.ChangeFonts(Controls, CustomFonts.Families.Roboto);
 
             Dictionary<HelpRequestUrgency, string> cbUrgencyItems = new Dictionary<HelpRequestUrgency, string>();
             cbUrgencyItems.Add(HelpRequestUrgency.NONE, "Geen");

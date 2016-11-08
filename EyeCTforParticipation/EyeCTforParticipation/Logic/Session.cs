@@ -9,6 +9,6 @@ namespace EyeCTforParticipation.Logic
 {
     class Session
     {
-        static public UserModel User;
+        static public UserModel User = null;
     }
 }

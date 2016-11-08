@@ -20,6 +20,7 @@ namespace EyeCTforParticipation.Controls
         public PasswordLoginControl()
         {
             InitializeComponent();
+            CustomFonts.ChangeFonts(Controls, CustomFonts.Families.Roboto);
         }
 
         public event EventHandler Login;

@@ -22,6 +22,7 @@ namespace EyeCTforParticipation.Controls
         public RegisterControl()
         {
             InitializeComponent();
+            CustomFonts.ChangeFonts(Controls, CustomFonts.Families.Roboto);
 
             Dictionary<UserRole, string> cbRoleItems = new Dictionary<UserRole, string>();
             cbRoleItems.Add(UserRole.HelpSeeker, "Hulpbehoevende");

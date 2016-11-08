@@ -22,6 +22,7 @@ namespace EyeCTforParticipation.Controls
         public ApplicationControl()
         {
             InitializeComponent();
+            CustomFonts.ChangeFonts(Controls, CustomFonts.Families.Roboto);
         }
 
         public ApplicationControl(ApplicationModel application) : this()

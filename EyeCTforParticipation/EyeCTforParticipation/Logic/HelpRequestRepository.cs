@@ -44,7 +44,7 @@ namespace EyeCTforParticipation.Logic
         /// The postal code used as the center of the search area. Example postal code: "5654 NE".
         /// </param>
         /// <param name="distance">
-        /// The distance used as the radius of the search area, infinite distance is 0 or null.
+        /// The distance used as the radius of the search area, infinite distance is 0.
         /// </param>
         /// <param name="order">
         /// Order results by relevance, distance or date.
@@ -52,7 +52,7 @@ namespace EyeCTforParticipation.Logic
         /// <returns>
         /// A list of help requests.
         /// </returns>
-        public List<HelpRequestModel> Search(string keywords, string postalCode, int? distance, SearchOrder order)
+        public List<HelpRequestModel> Search(string keywords, string postalCode, int distance, SearchOrder order)
         {
             // Format postal code
             postalCode = FormatPostalCode(postalCode);
@@ -88,17 +88,17 @@ namespace EyeCTforParticipation.Logic
         /// <returns>
         /// A list of help requests.
         /// </returns>
-        public List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int? distance, SearchOrder order)
+        public List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int distance, SearchOrder order)
         {
             // Maximum keywords length is 200
             keywords = keywords != null ? keywords.Length > 200 ? keywords.Substring(0, 200) : keywords.Length > 0 ? keywords : null : null;
 
             // Make sure that distance is positive
-            distance = distance == null ? 0 : Math.Abs((int)distance);
+            distance = Math.Abs(distance);
 
             if (keywords != null && location != null)
             {
-                return context.Search(keywords, location, (int)distance, order);
+                return context.Search(keywords, location, distance, order);
             }
             else if (keywords != null)
             {
@@ -121,9 +121,9 @@ namespace EyeCTforParticipation.Logic
                     case SearchOrder.DATE_DESC:
                     case SearchOrder.DISTANCE_ASC:
                     case SearchOrder.DISTANCE_DESC:
-                        return context.Search(location, (int)distance, order);
+                        return context.Search(location, distance, order);
                     default:
-                        return context.Search(location, (int)distance, SearchOrder.DISTANCE_ASC);
+                        return context.Search(location, distance, SearchOrder.DISTANCE_ASC);
                 }
             }
             else

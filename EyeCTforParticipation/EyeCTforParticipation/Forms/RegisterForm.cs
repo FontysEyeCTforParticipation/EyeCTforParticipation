@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EyeCTforParticipation.Logic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,7 @@ namespace EyeCTforParticipation.Forms
         public RegisterForm()
         {
             InitializeComponent();
+            CustomFonts.ChangeFonts(Controls, CustomFonts.Families.Roboto);
             registerControl.Register += new EventHandler(RegisterControl_Register);
         }
 

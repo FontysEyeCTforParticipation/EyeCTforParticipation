@@ -23,6 +23,7 @@ namespace EyeCTforParticipation.Controls
 
         public SearchControl() { 
             InitializeComponent();
+            CustomFonts.ChangeFonts(Controls, CustomFonts.Families.Roboto);
 
             cbDistances = new Dictionary<int, string>();
             cbDistances.Add(0, "Alle afstanden");
@@ -41,8 +42,12 @@ namespace EyeCTforParticipation.Controls
         private void SearchControl_Load(object sender, EventArgs e)
         {
 
-            //Get initial search results
-            results = helpRequestRepository.Search(null, null, null, SearchOrder.DATE_DESC);
+            if(Session.User != null && Session.User.Role == UserRole.Volunteer)
+            {
+                VolunteerModel volunteer = (VolunteerModel)Session.User;
+                //Get initial search results
+                //results = helpRequestRepository.Search(null, volunteer.Location, 0, SearchOrder.DATE_DESC);
+            }
 
             //Trigger search event
             if (Search != null)
@@ -104,7 +109,7 @@ namespace EyeCTforParticipation.Controls
         private void cbDistance_DrawItem(object sender, DrawItemEventArgs e)
         {
             e.DrawBackground();
-            e.Graphics.DrawString(cbDistances.Select(d => d.Value).ToArray()[e.Index], new Font(Logic.CustomFonts.Roboto, 10), new SolidBrush(Color.FromArgb(64, 64, 64)), e.Bounds);
+            e.Graphics.DrawString(cbDistances.Select(d => d.Value).ToArray()[e.Index], new Font("Segoe UI", 10), new SolidBrush(Color.FromArgb(64, 64, 64)), e.Bounds);
         }
     }
 }
