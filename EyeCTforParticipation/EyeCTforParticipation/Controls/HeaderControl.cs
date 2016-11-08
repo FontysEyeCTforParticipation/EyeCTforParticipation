@@ -24,7 +24,7 @@ namespace EyeCTforParticipation.Controls
         public EventHandler Logout;
 
         bool loggedIn;
-
+        
         public bool LoggedIn
         {
             get

@@ -38,7 +38,7 @@ namespace EyeCTforParticipation.Data
             string query = @"SELECT [HelpRequest].Id, [HelpRequest].Title, [HelpRequest].Date, [HelpRequest].Address, [HelpRequest].Urgency, [User].Name 
                              FROM [HelpRequest] 
                              JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
-                             WHERE Closed = 0 
+                             WHERE [HelpRequest].Closed = 0 
                              ORDER BY " + orderString(order);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -69,10 +69,13 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> Search(string keywords, SearchOrder order)
         {
             List<HelpRequestModel> results = new List<HelpRequestModel>();
-            string query = @"SELECT [HelpRequest].Id, [HelpRequest].Title, [HelpRequest].Date, [HelpRequest].Address, [HelpRequest].Urgency, [dbo].KeywordMatches([HelpRequest].Title + [HelpRequest].Content, @Keywords, ' ') AS Matches, [User].Name 
-                             FROM [HelpRequest] 
-                             JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
-                             WHERE Closed = 0 AND Matches > 0 
+            string query = @"SELECT * FROM (
+                                 SELECT [HelpRequest].Id, [HelpRequest].Title, [HelpRequest].Date, [HelpRequest].Address, [HelpRequest].Urgency, [dbo].KeywordMatches(Title + Content, @Keywords, ' ') AS Matches, [User].Name 
+                                 FROM [HelpRequest] 
+                                 JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
+                                 WHERE [HelpRequest].Closed = 0
+                             ) h
+                             WHERE Matches > 0
                              ORDER BY " + orderString(order);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -92,7 +95,7 @@ namespace EyeCTforParticipation.Data
                             Urgency = (HelpRequestUrgency)reader.GetInt32(4),
                             HelpSeeker = new UserModel
                             {
-                                Name = reader.GetString(5)
+                                Name = reader.GetString(6)
                             }
                         });
                     }
@@ -104,11 +107,14 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> Search(GeoCoordinate location, int distance, SearchOrder order)
         {
             List<HelpRequestModel> results = new List<HelpRequestModel>();
-            string query = @"SELECT [HelpRequest].Id, Title, Date, Address, Urgency, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance, [User].Name 
-                            FROM [HelpRequest] 
-                            JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
-                            WHERE Closed = 0 AND (Distance <= @Distance OR @Distance = 0) 
-                            ORDER BY " + orderString(order);
+            string query = @"SELECT * FROM (
+                                SELECT [HelpRequest].Id, Title, Date, Address, Urgency, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance, [User].Name 
+                                FROM [HelpRequest] 
+                                JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
+                                WHERE [HelpRequest].Closed = 0
+                             ) h 
+                             WHERE (Distance <= @Distance OR @Distance = 0)
+                             ORDER BY " + orderString(order);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
@@ -141,10 +147,13 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int distance, SearchOrder order)
         {
             List<HelpRequestModel> results = new List<HelpRequestModel>();
-            string query = @"SELECT [HelpRequest].Id, Title, Date, Address, Urgency, [dbo].KeywordMatches(Title + Content, @Keywords, ' ') AS Matches, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance, [User].Name 
-                             FROM [HelpRequest] 
-                             JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
-                             WHERE Closed = 0 AND Matches > 0 AND (Distance <= @Distance OR @Distance = 0) 
+            string query = @"SELECT * FROM (
+                                 SELECT [HelpRequest].Id, Title, Date, Address, Urgency, [dbo].KeywordMatches(Title + Content, @Keywords, ' ') AS Matches, Location.STDistance(geography::STPointFromText(@Location, 4326)) AS Distance, [User].Name 
+                                 FROM [HelpRequest] 
+                                 JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
+                                 WHERE [HelpRequest].Closed = 0
+                             ) h
+                             WHERE Matches > 0 AND (Distance <= @Distance OR @Distance = 0)
                              ORDER BY " + orderString(order);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -182,7 +191,7 @@ namespace EyeCTforParticipation.Data
             string query = @"SELECT [HelpRequest].HelpSeekerUserId, [User].Name, [HelpRequest].Title, [HelpRequest].Content, [HelpRequest].Date, [HelpRequest].Address, [HelpRequest].Urgency, [HelpRequest].Closed 
                              FROM [HelpRequest] 
                              JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
-                             WHERE Id = @Id";
+                             WHERE [HelpRequest].Id = @Id";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
@@ -215,11 +224,11 @@ namespace EyeCTforParticipation.Data
         
         public List<HelpRequestModel> GetFromHelpSeeker(int userId)
         {
-            List<HelpRequestModel> results = null;
+            List<HelpRequestModel> results = new List<HelpRequestModel>();
             string query = @"SELECT [HelpRequest].Id, [HelpRequest].HelpSeekerUserId, [User].Name, [HelpRequest].Title, [HelpRequest].Content, [HelpRequest].Date, [HelpRequest].Address, [HelpRequest].Urgency, [HelpRequest].Closed 
                              FROM [HelpRequest] 
                              JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
-                             WHERE HelpSeekerUserId = @HelpSeekerUserId;";
+                             WHERE [HelpRequest].HelpSeekerUserId = @HelpSeekerUserId;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
@@ -254,8 +263,8 @@ namespace EyeCTforParticipation.Data
         {
             int id;
             string query = @"INSERT INTO [HelpRequest] 
-                             (HelpSeekerUserId, Title, Content, Date, Address, Location, Urgency) 
-                             VALUES (@HelpSeekerUserId, @Title, @Content, GETDATE(), @Address, geography::STPointFromText(@Location, 4326), @Urgency);
+                             (HelpSeekerUserId, Title, Content, Date, Address, Location, Urgency, Closed) 
+                             VALUES (@HelpSeekerUserId, @Title, @Content, GETDATE(), @Address, geography::STPointFromText(@Location, 4326), @Urgency, 0);
                              SELECT SCOPE_IDENTITY();";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -406,11 +415,11 @@ namespace EyeCTforParticipation.Data
 
         public List<ApplicationModel> GetApplications(int volunteerId)
         {
+            List<ApplicationModel> applications = new List<ApplicationModel>();
             string query = @"SELECT [Application].Id, [HelpRequest].Id, [HelpRequest].Title, [HelpRequest].Urgency, [HelpRequest].Closed, [Application].Status, [Application].Date 
                              FROM [Application] 
                              JOIN [HelpRequest] ON [Application].HelpRequestId = [HelpRequest].Id 
                              WHERE [Application].VolunteerId = @VolunteerId";
-            List<ApplicationModel> applications = new List<ApplicationModel>();
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
@@ -441,13 +450,13 @@ namespace EyeCTforParticipation.Data
 
         public List<ApplicationModel> GetApplications(int id, int helpSeekerId)
         {
+            List<ApplicationModel> applications = new List<ApplicationModel>();
             string query = @"SELECT [Application].Id, [User].Id, [User].Name, [User].Birthdate, [Volunteer].About, [Volunteer].DriversLicense, [Volunteer].Car, [Application].Status, [Application].Date 
                              FROM [Application] 
                              JOIN [Volunteer] ON [Application].VolunteerId = Volunteer.Id 
                              JOIN [User] ON [Application].VolunteerId = [User].Id 
                              JOIN [HelpRequest] ON [Application].HelpRequestId = [HelpRequest].Id 
                              WHERE [Application].HelpRequestId = @Id AND [HelpRequest].HelpSeekerUserId = @HelpSeekerUserId";
-            List<ApplicationModel> applications = new List<ApplicationModel>();
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {

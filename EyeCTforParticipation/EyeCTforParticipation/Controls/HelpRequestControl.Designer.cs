@@ -243,7 +243,7 @@
             this.lbTitleWrapper.MinimumSize = new System.Drawing.Size(0, 85);
             this.lbTitleWrapper.Name = "lbTitleWrapper";
             this.lbTitleWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.lbTitleWrapper.Size = new System.Drawing.Size(687, 85);
+            this.lbTitleWrapper.Size = new System.Drawing.Size(664, 85);
             this.lbTitleWrapper.TabIndex = 20;
             // 
             // lbTitle
@@ -252,7 +252,7 @@
             this.lbTitle.Dock = System.Windows.Forms.DockStyle.Left;
             this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbTitle.Location = new System.Drawing.Point(591, 0);
+            this.lbTitle.Location = new System.Drawing.Point(606, 0);
             this.lbTitle.Margin = new System.Windows.Forms.Padding(0);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Padding = new System.Windows.Forms.Padding(0, 30, 60, 10);
@@ -265,10 +265,10 @@
             this.lbUrgencyCrititcalWrapper.AutoSize = true;
             this.lbUrgencyCrititcalWrapper.Controls.Add(this.lbUrgencyCritical);
             this.lbUrgencyCrititcalWrapper.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbUrgencyCrititcalWrapper.Location = new System.Drawing.Point(430, 0);
+            this.lbUrgencyCrititcalWrapper.Location = new System.Drawing.Point(441, 0);
             this.lbUrgencyCrititcalWrapper.Name = "lbUrgencyCrititcalWrapper";
             this.lbUrgencyCrititcalWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 0, 0);
-            this.lbUrgencyCrititcalWrapper.Size = new System.Drawing.Size(161, 85);
+            this.lbUrgencyCrititcalWrapper.Size = new System.Drawing.Size(165, 85);
             this.lbUrgencyCrititcalWrapper.TabIndex = 7;
             this.lbUrgencyCrititcalWrapper.Visible = false;
             // 
@@ -276,12 +276,12 @@
             // 
             this.lbUrgencyCritical.AutoSize = true;
             this.lbUrgencyCritical.BackColor = System.Drawing.Color.Red;
-            this.lbUrgencyCritical.Font = new System.Drawing.Font("Segoe UI Semibold", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUrgencyCritical.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUrgencyCritical.ForeColor = System.Drawing.Color.White;
             this.lbUrgencyCritical.Location = new System.Drawing.Point(0, 34);
             this.lbUrgencyCritical.Name = "lbUrgencyCritical";
             this.lbUrgencyCritical.Padding = new System.Windows.Forms.Padding(5);
-            this.lbUrgencyCritical.Size = new System.Drawing.Size(158, 40);
+            this.lbUrgencyCritical.Size = new System.Drawing.Size(162, 40);
             this.lbUrgencyCritical.TabIndex = 4;
             this.lbUrgencyCritical.Text = "ZEER URGENT";
             // 
@@ -290,10 +290,10 @@
             this.lbUrgencyNormalWrapper.AutoSize = true;
             this.lbUrgencyNormalWrapper.Controls.Add(this.lbUrgencyNormal);
             this.lbUrgencyNormalWrapper.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbUrgencyNormalWrapper.Location = new System.Drawing.Point(322, 0);
+            this.lbUrgencyNormalWrapper.Location = new System.Drawing.Point(331, 0);
             this.lbUrgencyNormalWrapper.Name = "lbUrgencyNormalWrapper";
             this.lbUrgencyNormalWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 0, 0);
-            this.lbUrgencyNormalWrapper.Size = new System.Drawing.Size(108, 85);
+            this.lbUrgencyNormalWrapper.Size = new System.Drawing.Size(110, 85);
             this.lbUrgencyNormalWrapper.TabIndex = 6;
             this.lbUrgencyNormalWrapper.Visible = false;
             // 
@@ -301,12 +301,12 @@
             // 
             this.lbUrgencyNormal.AutoSize = true;
             this.lbUrgencyNormal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.lbUrgencyNormal.Font = new System.Drawing.Font("Segoe UI Semibold", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUrgencyNormal.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUrgencyNormal.ForeColor = System.Drawing.Color.White;
             this.lbUrgencyNormal.Location = new System.Drawing.Point(0, 34);
             this.lbUrgencyNormal.Name = "lbUrgencyNormal";
             this.lbUrgencyNormal.Padding = new System.Windows.Forms.Padding(5);
-            this.lbUrgencyNormal.Size = new System.Drawing.Size(105, 40);
+            this.lbUrgencyNormal.Size = new System.Drawing.Size(107, 40);
             this.lbUrgencyNormal.TabIndex = 4;
             this.lbUrgencyNormal.Text = "URGENT";
             // 
@@ -315,10 +315,10 @@
             this.lbUrgencyLowWrapper.AutoSize = true;
             this.lbUrgencyLowWrapper.Controls.Add(this.lbUrgencyLow);
             this.lbUrgencyLowWrapper.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbUrgencyLowWrapper.Location = new System.Drawing.Point(176, 0);
+            this.lbUrgencyLowWrapper.Location = new System.Drawing.Point(179, 0);
             this.lbUrgencyLowWrapper.Name = "lbUrgencyLowWrapper";
             this.lbUrgencyLowWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 0, 0);
-            this.lbUrgencyLowWrapper.Size = new System.Drawing.Size(146, 85);
+            this.lbUrgencyLowWrapper.Size = new System.Drawing.Size(152, 85);
             this.lbUrgencyLowWrapper.TabIndex = 5;
             this.lbUrgencyLowWrapper.Visible = false;
             // 
@@ -326,12 +326,12 @@
             // 
             this.lbUrgencyLow.AutoSize = true;
             this.lbUrgencyLow.BackColor = System.Drawing.Color.Yellow;
-            this.lbUrgencyLow.Font = new System.Drawing.Font("Segoe UI Semibold", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUrgencyLow.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUrgencyLow.ForeColor = System.Drawing.Color.Black;
             this.lbUrgencyLow.Location = new System.Drawing.Point(0, 34);
             this.lbUrgencyLow.Name = "lbUrgencyLow";
             this.lbUrgencyLow.Padding = new System.Windows.Forms.Padding(5);
-            this.lbUrgencyLow.Size = new System.Drawing.Size(143, 40);
+            this.lbUrgencyLow.Size = new System.Drawing.Size(149, 40);
             this.lbUrgencyLow.TabIndex = 4;
             this.lbUrgencyLow.Text = "BELANGRIJK";
             // 
@@ -343,7 +343,7 @@
             this.lbCloseWrapper.Location = new System.Drawing.Point(40, 0);
             this.lbCloseWrapper.Name = "lbCloseWrapper";
             this.lbCloseWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 10, 0);
-            this.lbCloseWrapper.Size = new System.Drawing.Size(136, 85);
+            this.lbCloseWrapper.Size = new System.Drawing.Size(139, 85);
             this.lbCloseWrapper.TabIndex = 8;
             this.lbCloseWrapper.Visible = false;
             // 
@@ -351,12 +351,12 @@
             // 
             this.lbClose.AutoSize = true;
             this.lbClose.BackColor = System.Drawing.Color.Gray;
-            this.lbClose.Font = new System.Drawing.Font("Segoe UI Semibold", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbClose.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbClose.ForeColor = System.Drawing.Color.White;
             this.lbClose.Location = new System.Drawing.Point(0, 34);
             this.lbClose.Name = "lbClose";
             this.lbClose.Padding = new System.Windows.Forms.Padding(5);
-            this.lbClose.Size = new System.Drawing.Size(123, 40);
+            this.lbClose.Size = new System.Drawing.Size(126, 40);
             this.lbClose.TabIndex = 4;
             this.lbClose.Text = "GESLOTEN";
             // 
@@ -365,11 +365,11 @@
             this.btApplicationsWrapper.AutoSize = true;
             this.btApplicationsWrapper.Controls.Add(this.btApplications);
             this.btApplicationsWrapper.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btApplicationsWrapper.Location = new System.Drawing.Point(807, 0);
+            this.btApplicationsWrapper.Location = new System.Drawing.Point(784, 0);
             this.btApplicationsWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btApplicationsWrapper.Name = "btApplicationsWrapper";
             this.btApplicationsWrapper.Padding = new System.Windows.Forms.Padding(0, 67, 40, 0);
-            this.btApplicationsWrapper.Size = new System.Drawing.Size(298, 202);
+            this.btApplicationsWrapper.Size = new System.Drawing.Size(304, 202);
             this.btApplicationsWrapper.TabIndex = 19;
             this.btApplicationsWrapper.Visible = false;
             // 
@@ -381,13 +381,13 @@
             this.btApplications.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btApplications.FlatAppearance.BorderSize = 0;
             this.btApplications.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btApplications.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btApplications.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btApplications.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btApplications.Location = new System.Drawing.Point(0, 67);
             this.btApplications.Margin = new System.Windows.Forms.Padding(0);
             this.btApplications.Name = "btApplications";
             this.btApplications.Padding = new System.Windows.Forms.Padding(10);
-            this.btApplications.Size = new System.Drawing.Size(258, 67);
+            this.btApplications.Size = new System.Drawing.Size(264, 67);
             this.btApplications.TabIndex = 4;
             this.btApplications.Text = "AANMELDINGEN";
             this.btApplications.UseVisualStyleBackColor = false;
@@ -398,11 +398,11 @@
             this.btEditWrapper.AutoSize = true;
             this.btEditWrapper.Controls.Add(this.btEdit);
             this.btEditWrapper.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btEditWrapper.Location = new System.Drawing.Point(1105, 0);
+            this.btEditWrapper.Location = new System.Drawing.Point(1088, 0);
             this.btEditWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btEditWrapper.Name = "btEditWrapper";
             this.btEditWrapper.Padding = new System.Windows.Forms.Padding(0, 67, 40, 0);
-            this.btEditWrapper.Size = new System.Drawing.Size(241, 202);
+            this.btEditWrapper.Size = new System.Drawing.Size(245, 202);
             this.btEditWrapper.TabIndex = 18;
             this.btEditWrapper.Visible = false;
             // 
@@ -414,13 +414,13 @@
             this.btEdit.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btEdit.FlatAppearance.BorderSize = 0;
             this.btEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btEdit.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btEdit.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btEdit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btEdit.Location = new System.Drawing.Point(0, 67);
             this.btEdit.Margin = new System.Windows.Forms.Padding(0);
             this.btEdit.Name = "btEdit";
             this.btEdit.Padding = new System.Windows.Forms.Padding(10);
-            this.btEdit.Size = new System.Drawing.Size(201, 67);
+            this.btEdit.Size = new System.Drawing.Size(205, 67);
             this.btEdit.TabIndex = 4;
             this.btEdit.Text = "AANPASSEN";
             this.btEdit.UseVisualStyleBackColor = false;
@@ -431,11 +431,11 @@
             this.btCancelWrapper.AutoSize = true;
             this.btCancelWrapper.Controls.Add(this.btCancel);
             this.btCancelWrapper.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btCancelWrapper.Location = new System.Drawing.Point(1346, 0);
+            this.btCancelWrapper.Location = new System.Drawing.Point(1333, 0);
             this.btCancelWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btCancelWrapper.Name = "btCancelWrapper";
             this.btCancelWrapper.Padding = new System.Windows.Forms.Padding(0, 67, 40, 0);
-            this.btCancelWrapper.Size = new System.Drawing.Size(225, 202);
+            this.btCancelWrapper.Size = new System.Drawing.Size(229, 202);
             this.btCancelWrapper.TabIndex = 18;
             this.btCancelWrapper.Visible = false;
             // 
@@ -447,13 +447,13 @@
             this.btCancel.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btCancel.FlatAppearance.BorderSize = 0;
             this.btCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btCancel.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCancel.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btCancel.Location = new System.Drawing.Point(0, 67);
             this.btCancel.Margin = new System.Windows.Forms.Padding(0);
             this.btCancel.Name = "btCancel";
             this.btCancel.Padding = new System.Windows.Forms.Padding(10);
-            this.btCancel.Size = new System.Drawing.Size(185, 67);
+            this.btCancel.Size = new System.Drawing.Size(189, 67);
             this.btCancel.TabIndex = 4;
             this.btCancel.Text = "AFMELDEN";
             this.btCancel.UseVisualStyleBackColor = false;
@@ -464,11 +464,11 @@
             this.btApplyWrapper.AutoSize = true;
             this.btApplyWrapper.Controls.Add(this.btApply);
             this.btApplyWrapper.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btApplyWrapper.Location = new System.Drawing.Point(1571, 0);
+            this.btApplyWrapper.Location = new System.Drawing.Point(1562, 0);
             this.btApplyWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btApplyWrapper.Name = "btApplyWrapper";
             this.btApplyWrapper.Padding = new System.Windows.Forms.Padding(0, 67, 40, 0);
-            this.btApplyWrapper.Size = new System.Drawing.Size(250, 202);
+            this.btApplyWrapper.Size = new System.Drawing.Size(255, 202);
             this.btApplyWrapper.TabIndex = 17;
             this.btApplyWrapper.Visible = false;
             // 
@@ -480,13 +480,13 @@
             this.btApply.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btApply.FlatAppearance.BorderSize = 0;
             this.btApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btApply.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btApply.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btApply.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btApply.Location = new System.Drawing.Point(0, 67);
             this.btApply.Margin = new System.Windows.Forms.Padding(0);
             this.btApply.Name = "btApply";
             this.btApply.Padding = new System.Windows.Forms.Padding(10);
-            this.btApply.Size = new System.Drawing.Size(210, 67);
+            this.btApply.Size = new System.Drawing.Size(215, 67);
             this.btApply.TabIndex = 4;
             this.btApply.Text = "AANMELDEN";
             this.btApply.UseVisualStyleBackColor = false;
@@ -497,11 +497,11 @@
             this.btCloseWrapper.AutoSize = true;
             this.btCloseWrapper.Controls.Add(this.btClose);
             this.btCloseWrapper.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btCloseWrapper.Location = new System.Drawing.Point(1821, 0);
+            this.btCloseWrapper.Location = new System.Drawing.Point(1817, 0);
             this.btCloseWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btCloseWrapper.Name = "btCloseWrapper";
             this.btCloseWrapper.Padding = new System.Windows.Forms.Padding(0, 67, 40, 0);
-            this.btCloseWrapper.Size = new System.Drawing.Size(192, 202);
+            this.btCloseWrapper.Size = new System.Drawing.Size(195, 202);
             this.btCloseWrapper.TabIndex = 20;
             this.btCloseWrapper.Visible = false;
             // 
@@ -513,13 +513,13 @@
             this.btClose.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btClose.FlatAppearance.BorderSize = 0;
             this.btClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btClose.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btClose.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btClose.Location = new System.Drawing.Point(0, 67);
             this.btClose.Margin = new System.Windows.Forms.Padding(0);
             this.btClose.Name = "btClose";
             this.btClose.Padding = new System.Windows.Forms.Padding(10);
-            this.btClose.Size = new System.Drawing.Size(152, 67);
+            this.btClose.Size = new System.Drawing.Size(155, 67);
             this.btClose.TabIndex = 4;
             this.btClose.Text = "SLUITEN";
             this.btClose.UseVisualStyleBackColor = false;
@@ -530,11 +530,11 @@
             this.btOpenWrapper.AutoSize = true;
             this.btOpenWrapper.Controls.Add(this.btOpen);
             this.btOpenWrapper.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btOpenWrapper.Location = new System.Drawing.Point(2013, 0);
+            this.btOpenWrapper.Location = new System.Drawing.Point(2012, 0);
             this.btOpenWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btOpenWrapper.Name = "btOpenWrapper";
             this.btOpenWrapper.Padding = new System.Windows.Forms.Padding(0, 67, 40, 0);
-            this.btOpenWrapper.Size = new System.Drawing.Size(193, 202);
+            this.btOpenWrapper.Size = new System.Drawing.Size(194, 202);
             this.btOpenWrapper.TabIndex = 21;
             this.btOpenWrapper.Visible = false;
             // 
@@ -546,13 +546,13 @@
             this.btOpen.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btOpen.FlatAppearance.BorderSize = 0;
             this.btOpen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btOpen.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btOpen.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btOpen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btOpen.Location = new System.Drawing.Point(0, 67);
             this.btOpen.Margin = new System.Windows.Forms.Padding(0);
             this.btOpen.Name = "btOpen";
             this.btOpen.Padding = new System.Windows.Forms.Padding(10);
-            this.btOpen.Size = new System.Drawing.Size(153, 67);
+            this.btOpen.Size = new System.Drawing.Size(154, 67);
             this.btOpen.TabIndex = 4;
             this.btOpen.Text = "OPENEN";
             this.btOpen.UseVisualStyleBackColor = false;

@@ -104,7 +104,7 @@ namespace EyeCTforParticipation.Controls
         private void cbDistance_DrawItem(object sender, DrawItemEventArgs e)
         {
             e.DrawBackground();
-            e.Graphics.DrawString(cbDistances.Select(d => d.Value).ToArray()[e.Index], new Font("Segoe UI", 10), new SolidBrush(Color.FromArgb(64, 64, 64)), e.Bounds);
+            e.Graphics.DrawString(cbDistances.Select(d => d.Value).ToArray()[e.Index], new Font(Logic.CustomFonts.Roboto, 10), new SolidBrush(Color.FromArgb(64, 64, 64)), e.Bounds);
         }
     }
 }

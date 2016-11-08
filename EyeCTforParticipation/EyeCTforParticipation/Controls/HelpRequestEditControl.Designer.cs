@@ -237,13 +237,13 @@
             this.btSave.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btSave.FlatAppearance.BorderSize = 0;
             this.btSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btSave.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSave.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btSave.Location = new System.Drawing.Point(40, 30);
             this.btSave.Margin = new System.Windows.Forms.Padding(0);
             this.btSave.Name = "btSave";
             this.btSave.Padding = new System.Windows.Forms.Padding(10);
-            this.btSave.Size = new System.Drawing.Size(169, 67);
+            this.btSave.Size = new System.Drawing.Size(173, 67);
             this.btSave.TabIndex = 3;
             this.btSave.Text = "OPSLAAN";
             this.btSave.UseVisualStyleBackColor = false;

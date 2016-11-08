@@ -56,7 +56,7 @@
             this.tbSearchWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.tbSearchWrapper.Name = "tbSearchWrapper";
             this.tbSearchWrapper.Padding = new System.Windows.Forms.Padding(14, 10, 20, 14);
-            this.tbSearchWrapper.Size = new System.Drawing.Size(571, 67);
+            this.tbSearchWrapper.Size = new System.Drawing.Size(570, 67);
             this.tbSearchWrapper.TabIndex = 7;
             // 
             // tbSearch
@@ -66,7 +66,7 @@
             this.tbSearch.Location = new System.Drawing.Point(14, 10);
             this.tbSearch.Margin = new System.Windows.Forms.Padding(0);
             this.tbSearch.Name = "tbSearch";
-            this.tbSearch.Size = new System.Drawing.Size(537, 43);
+            this.tbSearch.Size = new System.Drawing.Size(536, 43);
             this.tbSearch.TabIndex = 1;
             // 
             // lbSearch
@@ -92,7 +92,7 @@
             this.searchWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.searchWrapper.Name = "searchWrapper";
             this.searchWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.searchWrapper.Size = new System.Drawing.Size(611, 202);
+            this.searchWrapper.Size = new System.Drawing.Size(610, 202);
             this.searchWrapper.TabIndex = 2;
             // 
             // locationWrapper
@@ -100,7 +100,7 @@
             this.locationWrapper.Controls.Add(this.tbPostalCodeWrapper);
             this.locationWrapper.Controls.Add(this.lbPostalCode);
             this.locationWrapper.Dock = System.Windows.Forms.DockStyle.Right;
-            this.locationWrapper.Location = new System.Drawing.Point(611, 0);
+            this.locationWrapper.Location = new System.Drawing.Point(610, 0);
             this.locationWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.locationWrapper.MinimumSize = new System.Drawing.Size(400, 0);
             this.locationWrapper.Name = "locationWrapper";
@@ -170,11 +170,11 @@
             this.btSearchWrapper.AutoSize = true;
             this.btSearchWrapper.Controls.Add(this.btSearch);
             this.btSearchWrapper.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btSearchWrapper.Location = new System.Drawing.Point(1011, 0);
+            this.btSearchWrapper.Location = new System.Drawing.Point(1010, 0);
             this.btSearchWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btSearchWrapper.Name = "btSearchWrapper";
             this.btSearchWrapper.Padding = new System.Windows.Forms.Padding(0, 95, 40, 0);
-            this.btSearchWrapper.Size = new System.Drawing.Size(189, 202);
+            this.btSearchWrapper.Size = new System.Drawing.Size(190, 202);
             this.btSearchWrapper.TabIndex = 10;
             // 
             // btSearch
@@ -185,13 +185,13 @@
             this.btSearch.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btSearch.FlatAppearance.BorderSize = 0;
             this.btSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btSearch.Font = new System.Drawing.Font("Segoe UI Semibold", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSearch.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btSearch.Location = new System.Drawing.Point(0, 95);
             this.btSearch.Margin = new System.Windows.Forms.Padding(0);
             this.btSearch.Name = "btSearch";
             this.btSearch.Padding = new System.Windows.Forms.Padding(10);
-            this.btSearch.Size = new System.Drawing.Size(149, 67);
+            this.btSearch.Size = new System.Drawing.Size(150, 67);
             this.btSearch.TabIndex = 4;
             this.btSearch.Text = "ZOEKEN";
             this.btSearch.UseVisualStyleBackColor = false;

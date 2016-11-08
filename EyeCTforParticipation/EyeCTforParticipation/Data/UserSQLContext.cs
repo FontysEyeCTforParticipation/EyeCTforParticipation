@@ -84,7 +84,7 @@ namespace EyeCTforParticipation.Data
                 cmd.Parameters.AddWithValue("@Name", user.Name);
                 cmd.Parameters.AddWithValue("@Password", user.Password);
                 cmd.Parameters.AddWithValue("@Birthdate", user.Birthdate);
-                cmd.Parameters.AddWithValue("@Approved", approved);
+                cmd.Parameters.AddWithValue("@Approved", true);
                 id = Convert.ToInt32(cmd.ExecuteScalar());
             }
             return id;

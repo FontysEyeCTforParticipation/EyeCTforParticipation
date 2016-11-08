@@ -17,7 +17,7 @@ namespace EyeCTforParticipation.Controls
         {
             base.OnPaint(e);
             int dpi = (int)CreateGraphics().DpiX / 96;
-            Rectangle rc = new Rectangle(this.Padding.Right + 8 * dpi, this.Padding.Bottom + 8 * dpi, 19 * dpi, 19 * dpi);
+            Rectangle rc = new Rectangle(this.Padding.Right + 2 * dpi, this.Padding.Bottom + 2 * dpi, 19 * dpi, 19 * dpi);
             e.Graphics.DrawImage(backgroundImage, rc);
         }
     }

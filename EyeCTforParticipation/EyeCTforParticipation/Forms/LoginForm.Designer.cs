@@ -58,7 +58,7 @@
             // lbTitle
             // 
             this.lbTitle.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lbTitle.Font = new System.Drawing.Font("Segoe UI", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTitle.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTitle.Location = new System.Drawing.Point(120, 40);
             this.lbTitle.Margin = new System.Windows.Forms.Padding(0);
             this.lbTitle.MaximumSize = new System.Drawing.Size(200, 100);
@@ -152,7 +152,7 @@
             this.btPasswordLogin.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btPasswordLogin.FlatAppearance.BorderSize = 0;
             this.btPasswordLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btPasswordLogin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btPasswordLogin.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btPasswordLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btPasswordLogin.Location = new System.Drawing.Point(40, 40);
             this.btPasswordLogin.Margin = new System.Windows.Forms.Padding(0);
@@ -210,7 +210,7 @@
             this.btRFIDLogin.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btRFIDLogin.FlatAppearance.BorderSize = 0;
             this.btRFIDLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btRFIDLogin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btRFIDLogin.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btRFIDLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btRFIDLogin.Location = new System.Drawing.Point(40, 40);
             this.btRFIDLogin.Margin = new System.Windows.Forms.Padding(0);
@@ -242,7 +242,7 @@
             this.btForgotPassword.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btForgotPassword.FlatAppearance.BorderSize = 0;
             this.btForgotPassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btForgotPassword.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btForgotPassword.Font = new System.Drawing.Font(Logic.CustomFonts.Roboto, 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btForgotPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.btForgotPassword.Location = new System.Drawing.Point(40, 20);
             this.btForgotPassword.Margin = new System.Windows.Forms.Padding(0);
