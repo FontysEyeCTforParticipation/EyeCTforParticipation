@@ -12,24 +12,24 @@ namespace EyeCTforParticipation.Logic
 {
     class GoogleMapsApi
     {
-        static public Response Get(string address)
+        static public Response Get(string address, string countryCode, string languageCode)
         {
+            Response response;
             using (WebClient wc = new WebClient())
             {
                 try
                 {
-                    Response response = JsonConvert.DeserializeObject<Response>(wc.DownloadString("https://maps.googleapis.com/maps/api/geocode/json?language=nl&address=" + address));
-                    if (response.Succes)
-                    {
-                        return response;
-                    }
+                    response = JsonConvert.DeserializeObject<Response>(wc.DownloadString("https://maps.googleapis.com/maps/api/geocode/json?language=" + language + "&components=country:" + countryCode + "&address=" + address));
                 }
                 catch (Exception)
                 {
-                    return null;
+                    response = null;
                 }
             }
-
+            if (response != null && response.Succes)
+            {
+                return response;
+            }
             return null;
         }
         public class Response

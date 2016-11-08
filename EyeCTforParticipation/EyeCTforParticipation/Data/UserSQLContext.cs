@@ -90,6 +90,25 @@ namespace EyeCTforParticipation.Data
             return id;
         }
 
+        public void RegisterVolunteer(VolunteerModel volunteer)
+        {
+            string query = @"INSERT INTO [Volunteer] 
+                             (Id, Address, Location, DriversLicense, Car) 
+                             VALUES(@Id, @Address, geography::STPointFromText(@Location, 4326), @DriversLicense, @Car); 
+                             SELECT SCOPE_IDENTITY();";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@Id", volunteer.Id);
+                cmd.Parameters.AddWithValue("@Address", volunteer.Address);
+                cmd.Parameters.AddWithValue("@Location", "POINT(" + volunteer.Location.Latitude + " " + volunteer.Location.Longitude + ")");
+                cmd.Parameters.AddWithValue("@DriversLicense", volunteer.DriversLicense);
+                cmd.Parameters.AddWithValue("@Car", volunteer.Car);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         public void ApproveRegistration(int userId)
         {
             string query = @"UPDATE [User]

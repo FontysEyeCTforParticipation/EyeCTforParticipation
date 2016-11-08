@@ -12,6 +12,7 @@ namespace EyeCTforParticipation.Data
         UserModel Login(string rfid);
         UserModel LoginPassword(string email);
         int Register(UserModel user, bool approved);
+        void RegisterVolunteer(VolunteerModel volunteer);
         void ApproveRegistration(int userId);
         void Edit(UserModel user);
         void Delete(int userId);

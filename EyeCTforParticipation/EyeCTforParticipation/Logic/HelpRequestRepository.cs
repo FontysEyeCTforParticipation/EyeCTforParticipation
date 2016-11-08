@@ -44,37 +44,63 @@ namespace EyeCTforParticipation.Logic
         /// The postal code used as the center of the search area. Example postal code: "5654 NE".
         /// </param>
         /// <param name="distance">
-        /// The distance used as the radius of the search area.
+        /// The distance used as the radius of the search area, infinite distance is 0 or null.
         /// </param>
-        /// <param name="orderByRelevance">
-        /// Order results by relevance or date.
+        /// <param name="order">
+        /// Order results by relevance, distance or date.
         /// </param>
         /// <returns>
         /// A list of help requests.
         /// </returns>
         public List<HelpRequestModel> Search(string keywords, string postalCode, int? distance, SearchOrder order)
         {
-            // Maximum keywords length is 200
-            keywords = keywords != null ? keywords.Length > 200 ? keywords.Substring(0, 200) : keywords.Length > 0 ? keywords : null : null;
             // Format postal code
             postalCode = FormatPostalCode(postalCode);
-            // Make sure that distance is positive
-            distance = Math.Abs((int)distance);
-            //Check location
+
+            // Default location
             GeoCoordinate location = null;
-            if(postalCode != null)
+
+            // Try to get location from postal code
+            GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(postalCode, "nl", "nl");
+            if (googleMapsApi != null && postalCode != null)
             {
-                GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(postalCode + " Netherlands");
-                if(googleMapsApi != null)
-                {
-                    location = googleMapsApi.Location;
-                }
+                location = googleMapsApi.Location;
             }
 
-            if(keywords != null && location != null)
+            return Search(keywords, location, distance, order);
+        }
+
+        /// <summary>
+        /// Get a list of help requests.
+        /// </summary>
+        /// <param name="keywords">
+        /// Keywords included in search results, keywords are seperated by whitespace.
+        /// </param>
+        /// <param name="location">
+        /// The location used as the center of the search area.
+        /// </param>
+        /// <param name="distance">
+        /// The distance used as the radius of the search area, infinite distance is 0 or null.
+        /// </param>
+        /// <param name="order">
+        /// Order results by relevance, distance or date.
+        /// </param>
+        /// <returns>
+        /// A list of help requests.
+        /// </returns>
+        public List<HelpRequestModel> Search(string keywords, GeoCoordinate location, int? distance, SearchOrder order)
+        {
+            // Maximum keywords length is 200
+            keywords = keywords != null ? keywords.Length > 200 ? keywords.Substring(0, 200) : keywords.Length > 0 ? keywords : null : null;
+
+            // Make sure that distance is positive
+            distance = distance == null ? 0 : Math.Abs((int)distance);
+
+            if (keywords != null && location != null)
             {
                 return context.Search(keywords, location, (int)distance, order);
-            } else if(keywords != null)
+            }
+            else if (keywords != null)
             {
                 switch (order)
                 {
@@ -86,7 +112,8 @@ namespace EyeCTforParticipation.Logic
                     default:
                         return context.Search(keywords, SearchOrder.DATE_DESC);
                 }
-            } else if (location != null)
+            }
+            else if (location != null)
             {
                 switch (order)
                 {
@@ -98,7 +125,8 @@ namespace EyeCTforParticipation.Logic
                     default:
                         return context.Search(location, (int)distance, SearchOrder.DISTANCE_ASC);
                 }
-            } else
+            }
+            else
             {
                 switch (order)
                 {
@@ -151,19 +179,20 @@ namespace EyeCTforParticipation.Logic
         /// </returns>
         public HelpRequestModel Save(HelpRequestModel helpRequest)
         {
-            string address = "";
-            GeoCoordinate location = new GeoCoordinate(0, 0);
-            if(helpRequest.Address != null || helpRequest.Address != "")
+            //Default location
+            GeoCoordinate location = new GeoCoordinate(52.132633, 5.291265999999999);
+            string address = "Nederland";
+
+            //Try to get location
+            GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(helpRequest.Address, "nl", "nl");
+            if (googleMapsApi != null)
             {
-                GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(helpRequest.Address + " Nederland");
-                if (googleMapsApi != null)
-                {
-                    address = googleMapsApi.Address;
-                    location = googleMapsApi.Location;
-                }
+                location = googleMapsApi.Location;
+                address = googleMapsApi.Address;
             }
-            helpRequest.Address = address;
+
             helpRequest.Location = location;
+            helpRequest.Address = address;
 
             if (helpRequest.Id == 0)
             {

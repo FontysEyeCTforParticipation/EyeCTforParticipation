@@ -54,6 +54,12 @@ namespace EyeCTforParticipation.Data
             });
             return id;
         }
+
+        public void RegisterVolunteer(VolunteerModel volunteer)
+        {
+            throw new NotImplementedException();
+        }
+
         public void ApproveRegistration(int userId)
         {
             var results = from user in Tables.User

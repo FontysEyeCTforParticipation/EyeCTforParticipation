@@ -8,6 +8,7 @@ using EyeCTforParticipation.Models;
 using CryptSharp;
 using System.Windows.Forms;
 using System.IO;
+using System.Device.Location;
 
 namespace EyeCTforParticipation.Logic
 {
@@ -94,7 +95,6 @@ namespace EyeCTforParticipation.Logic
         {
             string hash = Crypter.Blowfish.Crypt(register.Password);
             bool approved = register.Role == UserRole.HelpSeeker;
-            //approved = true;// :(
             int userId = context.Register(new UserModel
             {
                 Role = register.Role,
@@ -105,18 +105,42 @@ namespace EyeCTforParticipation.Logic
             }, approved);
             if(userId >  0)
             {
+                if (register.Role == UserRole.Volunteer)
+                {
+                    //Default location
+                    GeoCoordinate location = new GeoCoordinate(52.132633, 5.291265999999999);
+                    string address = "Nederland";
+
+                    //Try to get location
+                    GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(register.Address, "nl", "nl");
+                    if(googleMapsApi != null)
+                    {
+                        location = googleMapsApi.Location;
+                        address = googleMapsApi.Address;
+                    }
+
+                    context.RegisterVolunteer(new VolunteerModel
+                    {
+                        Id = userId,
+                        Address = address,
+                        Location = location,
+                        DriversLicense = register.DriversLicense,
+                        Car = register.Car
+                    });
+                }
                 if (register.Avatar != null)
                 {
                     string directory = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\EyeCTforParticipation\\Uploads\\Avatars";
-                    if (Directory.Exists(directory) == false)
+                    if (!Directory.Exists(directory))
                     {
                         Directory.CreateDirectory(directory);
                     }
                     register.Avatar.Save(directory + "\\" + userId.ToString() + ".png", System.Drawing.Imaging.ImageFormat.Png);
                 }
+                return userId;
             }
             //Throw failed to register exception
-            return userId;
+            throw new Exception();
         }
 
         /// <summary>

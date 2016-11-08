@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Device.Location;
 
 namespace EyeCTforParticipation.Models
 {
@@ -16,6 +17,10 @@ namespace EyeCTforParticipation.Models
         DateTime birthdate;
         Bitmap avatar;
         string vog;
+        string address;
+        GeoCoordinate location;
+        bool driversLicense;
+        bool car;
 
         public UserRole Role
         {
@@ -105,6 +110,58 @@ namespace EyeCTforParticipation.Models
             set
             {
                 vog = value;
+            }
+        }
+
+        public string Address
+        {
+            get
+            {
+                return address;
+            }
+
+            set
+            {
+                address = value;
+            }
+        }
+
+        public GeoCoordinate Location
+        {
+            get
+            {
+                return location;
+            }
+
+            set
+            {
+                location = value;
+            }
+        }
+
+        public bool DriversLicense
+        {
+            get
+            {
+                return driversLicense;
+            }
+
+            set
+            {
+                driversLicense = value;
+            }
+        }
+
+        public bool Car
+        {
+            get
+            {
+                return car;
+            }
+
+            set
+            {
+                car = value;
             }
         }
     }
