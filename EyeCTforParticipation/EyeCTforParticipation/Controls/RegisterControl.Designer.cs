@@ -63,13 +63,13 @@
             this.volunteerWrapper = new System.Windows.Forms.Panel();
             this.cbCarWrapper = new System.Windows.Forms.Panel();
             this.cbCar = new System.Windows.Forms.CheckBox();
+            this.lbCar = new System.Windows.Forms.Label();
             this.cbDriversLicenseWrapper = new System.Windows.Forms.Panel();
             this.cbDriversLicense = new System.Windows.Forms.CheckBox();
+            this.lbDriversLicense = new System.Windows.Forms.Label();
             this.tbLocationWrapper = new System.Windows.Forms.Panel();
             this.tbLocation = new System.Windows.Forms.TextBox();
             this.lbLocation = new System.Windows.Forms.Label();
-            this.lbCar = new System.Windows.Forms.Label();
-            this.lbDriversLicense = new System.Windows.Forms.Label();
             this.horizontalSeperatorControl1 = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
             this.tbEmailWrapper.SuspendLayout();
             this.tbPasswordWrapper.SuspendLayout();
@@ -169,7 +169,7 @@
             this.btRegisterWrapper.AutoSize = true;
             this.btRegisterWrapper.Controls.Add(this.btRegister);
             this.btRegisterWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btRegisterWrapper.Location = new System.Drawing.Point(0, 2067);
+            this.btRegisterWrapper.Location = new System.Drawing.Point(0, 2088);
             this.btRegisterWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btRegisterWrapper.Name = "btRegisterWrapper";
             this.btRegisterWrapper.Padding = new System.Windows.Forms.Padding(40, 31, 40, 40);
@@ -315,8 +315,8 @@
             this.cbRoleWrapper.Location = new System.Drawing.Point(0, 1532);
             this.cbRoleWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.cbRoleWrapper.Name = "cbRoleWrapper";
-            this.cbRoleWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 19);
-            this.cbRoleWrapper.Size = new System.Drawing.Size(720, 64);
+            this.cbRoleWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 40);
+            this.cbRoleWrapper.Size = new System.Drawing.Size(720, 85);
             this.cbRoleWrapper.TabIndex = 9;
             // 
             // cbRole
@@ -520,8 +520,7 @@
             // 
             // volunteerWrapper
             // 
-            this.volunteerWrapper.AutoSize = true;
-            this.volunteerWrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.volunteerWrapper.BackColor = System.Drawing.Color.White;
             this.volunteerWrapper.Controls.Add(this.cbCarWrapper);
             this.volunteerWrapper.Controls.Add(this.lbCar);
             this.volunteerWrapper.Controls.Add(this.cbDriversLicenseWrapper);
@@ -529,7 +528,9 @@
             this.volunteerWrapper.Controls.Add(this.tbLocationWrapper);
             this.volunteerWrapper.Controls.Add(this.lbLocation);
             this.volunteerWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.volunteerWrapper.Location = new System.Drawing.Point(0, 1596);
+            this.volunteerWrapper.Location = new System.Drawing.Point(0, 1617);
+            this.volunteerWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.volunteerWrapper.MinimumSize = new System.Drawing.Size(300, 300);
             this.volunteerWrapper.Name = "volunteerWrapper";
             this.volunteerWrapper.Size = new System.Drawing.Size(720, 470);
             this.volunteerWrapper.TabIndex = 3;
@@ -558,6 +559,20 @@
             this.cbCar.Text = "Ik heb beschikking tot een auto";
             this.cbCar.UseVisualStyleBackColor = true;
             // 
+            // lbCar
+            // 
+            this.lbCar.AutoSize = true;
+            this.lbCar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbCar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbCar.Location = new System.Drawing.Point(0, 318);
+            this.lbCar.Margin = new System.Windows.Forms.Padding(0);
+            this.lbCar.Name = "lbCar";
+            this.lbCar.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
+            this.lbCar.Size = new System.Drawing.Size(169, 83);
+            this.lbCar.TabIndex = 24;
+            this.lbCar.Text = "Auto";
+            // 
             // cbDriversLicenseWrapper
             // 
             this.cbDriversLicenseWrapper.AutoSize = true;
@@ -581,6 +596,20 @@
             this.cbDriversLicense.TabIndex = 3;
             this.cbDriversLicense.Text = "Ik heb een rijbewijs";
             this.cbDriversLicense.UseVisualStyleBackColor = true;
+            // 
+            // lbDriversLicense
+            // 
+            this.lbDriversLicense.AutoSize = true;
+            this.lbDriversLicense.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbDriversLicense.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDriversLicense.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbDriversLicense.Location = new System.Drawing.Point(0, 166);
+            this.lbDriversLicense.Margin = new System.Windows.Forms.Padding(0);
+            this.lbDriversLicense.Name = "lbDriversLicense";
+            this.lbDriversLicense.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
+            this.lbDriversLicense.Size = new System.Drawing.Size(224, 83);
+            this.lbDriversLicense.TabIndex = 25;
+            this.lbDriversLicense.Text = "Rijbewijs";
             // 
             // tbLocationWrapper
             // 
@@ -619,40 +648,12 @@
             this.lbLocation.TabIndex = 23;
             this.lbLocation.Text = "Adres";
             // 
-            // lbCar
-            // 
-            this.lbCar.AutoSize = true;
-            this.lbCar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbCar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbCar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbCar.Location = new System.Drawing.Point(0, 318);
-            this.lbCar.Margin = new System.Windows.Forms.Padding(0);
-            this.lbCar.Name = "lbCar";
-            this.lbCar.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
-            this.lbCar.Size = new System.Drawing.Size(169, 83);
-            this.lbCar.TabIndex = 24;
-            this.lbCar.Text = "Auto";
-            // 
-            // lbDriversLicense
-            // 
-            this.lbDriversLicense.AutoSize = true;
-            this.lbDriversLicense.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbDriversLicense.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDriversLicense.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbDriversLicense.Location = new System.Drawing.Point(0, 166);
-            this.lbDriversLicense.Margin = new System.Windows.Forms.Padding(0);
-            this.lbDriversLicense.Name = "lbDriversLicense";
-            this.lbDriversLicense.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
-            this.lbDriversLicense.Size = new System.Drawing.Size(224, 83);
-            this.lbDriversLicense.TabIndex = 25;
-            this.lbDriversLicense.Text = "Rijbewijs";
-            // 
             // horizontalSeperatorControl1
             // 
             this.horizontalSeperatorControl1.AutoSize = true;
             this.horizontalSeperatorControl1.BackColor = System.Drawing.Color.Silver;
             this.horizontalSeperatorControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.horizontalSeperatorControl1.Location = new System.Drawing.Point(0, 2066);
+            this.horizontalSeperatorControl1.Location = new System.Drawing.Point(0, 2087);
             this.horizontalSeperatorControl1.Margin = new System.Windows.Forms.Padding(0);
             this.horizontalSeperatorControl1.Name = "horizontalSeperatorControl1";
             this.horizontalSeperatorControl1.Size = new System.Drawing.Size(720, 1);
@@ -689,7 +690,7 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.MinimumSize = new System.Drawing.Size(720, 0);
             this.Name = "RegisterControl";
-            this.Size = new System.Drawing.Size(720, 2205);
+            this.Size = new System.Drawing.Size(720, 2226);
             this.tbEmailWrapper.ResumeLayout(false);
             this.tbEmailWrapper.PerformLayout();
             this.tbPasswordWrapper.ResumeLayout(false);

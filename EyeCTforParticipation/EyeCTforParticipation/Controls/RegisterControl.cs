@@ -86,7 +86,10 @@ namespace EyeCTforParticipation.Controls
                 Email = tbEmail.Text,
                 Password = tbPassword.Text,
                 Birthdate = dtBirthdate.Value,
-                Avatar = image
+                Avatar = image,
+                Address = tbLocation.Text,
+                DriversLicense = cbDriversLicense.Checked,
+                Car = cbCar.Checked
             });
             Session.User = userRepository.Login(tbEmail.Text, tbPassword.Text);
             if (Register != null && Session.User != null)
@@ -137,7 +140,7 @@ namespace EyeCTforParticipation.Controls
 
         private void cbRole_SelectedIndexChanged(object sender, EventArgs e)
         {
-            volunteerWrapper.Visible = (UserRole)cbRole.SelectedIndex == UserRole.Volunteer;
+            volunteerWrapper.Visible = (UserRole)cbRole.SelectedValue == UserRole.Volunteer;
         }
     }
 }
