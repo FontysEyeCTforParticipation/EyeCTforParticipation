@@ -134,5 +134,10 @@ namespace EyeCTforParticipation.Controls
             pbAvatar.Hide();
             image = null;
         }
+
+        private void cbRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            volunteerWrapper.Visible = (UserRole)cbRole.SelectedIndex == UserRole.Volunteer;
+        }
     }
 }

@@ -54,12 +54,22 @@
             this.dtBirthdateWrapper = new System.Windows.Forms.Panel();
             this.dtBirthdate = new System.Windows.Forms.DateTimePicker();
             this.lbAvatar = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.avatarWrapper = new System.Windows.Forms.Panel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btAvatarRemove = new System.Windows.Forms.Button();
             this.btAvatar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pbAvatar = new System.Windows.Forms.PictureBox();
+            this.volunteerWrapper = new System.Windows.Forms.Panel();
+            this.cbCarWrapper = new System.Windows.Forms.Panel();
+            this.cbCar = new System.Windows.Forms.CheckBox();
+            this.cbDriversLicenseWrapper = new System.Windows.Forms.Panel();
+            this.cbDriversLicense = new System.Windows.Forms.CheckBox();
+            this.tbLocationWrapper = new System.Windows.Forms.Panel();
+            this.tbLocation = new System.Windows.Forms.TextBox();
+            this.lbLocation = new System.Windows.Forms.Label();
+            this.lbCar = new System.Windows.Forms.Label();
+            this.lbDriversLicense = new System.Windows.Forms.Label();
             this.horizontalSeperatorControl1 = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
             this.tbEmailWrapper.SuspendLayout();
             this.tbPasswordWrapper.SuspendLayout();
@@ -69,10 +79,14 @@
             this.tbNameWrapper.SuspendLayout();
             this.cbRoleWrapper.SuspendLayout();
             this.dtBirthdateWrapper.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.avatarWrapper.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).BeginInit();
+            this.volunteerWrapper.SuspendLayout();
+            this.cbCarWrapper.SuspendLayout();
+            this.cbDriversLicenseWrapper.SuspendLayout();
+            this.tbLocationWrapper.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbEmail
@@ -155,7 +169,7 @@
             this.btRegisterWrapper.AutoSize = true;
             this.btRegisterWrapper.Controls.Add(this.btRegister);
             this.btRegisterWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btRegisterWrapper.Location = new System.Drawing.Point(0, 1618);
+            this.btRegisterWrapper.Location = new System.Drawing.Point(0, 2067);
             this.btRegisterWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btRegisterWrapper.Name = "btRegisterWrapper";
             this.btRegisterWrapper.Padding = new System.Windows.Forms.Padding(40, 31, 40, 40);
@@ -298,7 +312,7 @@
             this.cbRoleWrapper.AutoSize = true;
             this.cbRoleWrapper.Controls.Add(this.cbRole);
             this.cbRoleWrapper.Dock = System.Windows.Forms.DockStyle.Top;
-            this.cbRoleWrapper.Location = new System.Drawing.Point(0, 1119);
+            this.cbRoleWrapper.Location = new System.Drawing.Point(0, 1532);
             this.cbRoleWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.cbRoleWrapper.Name = "cbRoleWrapper";
             this.cbRoleWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 19);
@@ -316,6 +330,7 @@
             this.cbRole.Name = "cbRole";
             this.cbRole.Size = new System.Drawing.Size(640, 45);
             this.cbRole.TabIndex = 16;
+            this.cbRole.SelectedIndexChanged += new System.EventHandler(this.cbRole_SelectedIndexChanged);
             // 
             // lbRole
             // 
@@ -323,7 +338,7 @@
             this.lbRole.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbRole.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbRole.Location = new System.Drawing.Point(0, 1036);
+            this.lbRole.Location = new System.Drawing.Point(0, 1449);
             this.lbRole.Margin = new System.Windows.Forms.Padding(0);
             this.lbRole.Name = "lbRole";
             this.lbRole.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
@@ -406,7 +421,7 @@
             this.lbAvatar.Dock = System.Windows.Forms.DockStyle.Top;
             this.lbAvatar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbAvatar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lbAvatar.Location = new System.Drawing.Point(0, 1183);
+            this.lbAvatar.Location = new System.Drawing.Point(0, 1036);
             this.lbAvatar.Margin = new System.Windows.Forms.Padding(0);
             this.lbAvatar.Name = "lbAvatar";
             this.lbAvatar.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
@@ -414,18 +429,18 @@
             this.lbAvatar.TabIndex = 22;
             this.lbAvatar.Text = "Foto";
             // 
-            // panel2
+            // avatarWrapper
             // 
-            this.panel2.AutoSize = true;
-            this.panel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel2.Controls.Add(this.flowLayoutPanel1);
-            this.panel2.Controls.Add(this.panel1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 1266);
-            this.panel2.Name = "panel2";
-            this.panel2.Padding = new System.Windows.Forms.Padding(40, 0, 40, 40);
-            this.panel2.Size = new System.Drawing.Size(720, 351);
-            this.panel2.TabIndex = 7;
+            this.avatarWrapper.AutoSize = true;
+            this.avatarWrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.avatarWrapper.Controls.Add(this.flowLayoutPanel1);
+            this.avatarWrapper.Controls.Add(this.panel1);
+            this.avatarWrapper.Dock = System.Windows.Forms.DockStyle.Top;
+            this.avatarWrapper.Location = new System.Drawing.Point(0, 1119);
+            this.avatarWrapper.Name = "avatarWrapper";
+            this.avatarWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 19);
+            this.avatarWrapper.Size = new System.Drawing.Size(720, 330);
+            this.avatarWrapper.TabIndex = 7;
             // 
             // flowLayoutPanel1
             // 
@@ -503,12 +518,141 @@
             this.pbAvatar.TabStop = false;
             this.pbAvatar.Visible = false;
             // 
+            // volunteerWrapper
+            // 
+            this.volunteerWrapper.AutoSize = true;
+            this.volunteerWrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.volunteerWrapper.Controls.Add(this.cbCarWrapper);
+            this.volunteerWrapper.Controls.Add(this.lbCar);
+            this.volunteerWrapper.Controls.Add(this.cbDriversLicenseWrapper);
+            this.volunteerWrapper.Controls.Add(this.lbDriversLicense);
+            this.volunteerWrapper.Controls.Add(this.tbLocationWrapper);
+            this.volunteerWrapper.Controls.Add(this.lbLocation);
+            this.volunteerWrapper.Dock = System.Windows.Forms.DockStyle.Top;
+            this.volunteerWrapper.Location = new System.Drawing.Point(0, 1596);
+            this.volunteerWrapper.Name = "volunteerWrapper";
+            this.volunteerWrapper.Size = new System.Drawing.Size(720, 470);
+            this.volunteerWrapper.TabIndex = 3;
+            // 
+            // cbCarWrapper
+            // 
+            this.cbCarWrapper.AutoSize = true;
+            this.cbCarWrapper.Controls.Add(this.cbCar);
+            this.cbCarWrapper.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cbCarWrapper.Location = new System.Drawing.Point(0, 401);
+            this.cbCarWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.cbCarWrapper.Name = "cbCarWrapper";
+            this.cbCarWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 40);
+            this.cbCarWrapper.Size = new System.Drawing.Size(720, 69);
+            this.cbCarWrapper.TabIndex = 13;
+            // 
+            // cbCar
+            // 
+            this.cbCar.AutoSize = true;
+            this.cbCar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cbCar.Location = new System.Drawing.Point(40, 0);
+            this.cbCar.Margin = new System.Windows.Forms.Padding(0);
+            this.cbCar.Name = "cbCar";
+            this.cbCar.Size = new System.Drawing.Size(640, 29);
+            this.cbCar.TabIndex = 3;
+            this.cbCar.Text = "Ik heb beschikking tot een auto";
+            this.cbCar.UseVisualStyleBackColor = true;
+            // 
+            // cbDriversLicenseWrapper
+            // 
+            this.cbDriversLicenseWrapper.AutoSize = true;
+            this.cbDriversLicenseWrapper.Controls.Add(this.cbDriversLicense);
+            this.cbDriversLicenseWrapper.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cbDriversLicenseWrapper.Location = new System.Drawing.Point(0, 249);
+            this.cbDriversLicenseWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.cbDriversLicenseWrapper.Name = "cbDriversLicenseWrapper";
+            this.cbDriversLicenseWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 40);
+            this.cbDriversLicenseWrapper.Size = new System.Drawing.Size(720, 69);
+            this.cbDriversLicenseWrapper.TabIndex = 14;
+            // 
+            // cbDriversLicense
+            // 
+            this.cbDriversLicense.AutoSize = true;
+            this.cbDriversLicense.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cbDriversLicense.Location = new System.Drawing.Point(40, 0);
+            this.cbDriversLicense.Margin = new System.Windows.Forms.Padding(0);
+            this.cbDriversLicense.Name = "cbDriversLicense";
+            this.cbDriversLicense.Size = new System.Drawing.Size(640, 29);
+            this.cbDriversLicense.TabIndex = 3;
+            this.cbDriversLicense.Text = "Ik heb een rijbewijs";
+            this.cbDriversLicense.UseVisualStyleBackColor = true;
+            // 
+            // tbLocationWrapper
+            // 
+            this.tbLocationWrapper.AutoSize = true;
+            this.tbLocationWrapper.Controls.Add(this.tbLocation);
+            this.tbLocationWrapper.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tbLocationWrapper.Location = new System.Drawing.Point(0, 83);
+            this.tbLocationWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.tbLocationWrapper.Name = "tbLocationWrapper";
+            this.tbLocationWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 40, 40);
+            this.tbLocationWrapper.Size = new System.Drawing.Size(720, 83);
+            this.tbLocationWrapper.TabIndex = 15;
+            // 
+            // tbLocation
+            // 
+            this.tbLocation.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tbLocation.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbLocation.Location = new System.Drawing.Point(40, 0);
+            this.tbLocation.Margin = new System.Windows.Forms.Padding(0);
+            this.tbLocation.Name = "tbLocation";
+            this.tbLocation.PasswordChar = '*';
+            this.tbLocation.Size = new System.Drawing.Size(640, 43);
+            this.tbLocation.TabIndex = 3;
+            // 
+            // lbLocation
+            // 
+            this.lbLocation.AutoSize = true;
+            this.lbLocation.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbLocation.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbLocation.Location = new System.Drawing.Point(0, 0);
+            this.lbLocation.Margin = new System.Windows.Forms.Padding(0);
+            this.lbLocation.Name = "lbLocation";
+            this.lbLocation.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
+            this.lbLocation.Size = new System.Drawing.Size(182, 83);
+            this.lbLocation.TabIndex = 23;
+            this.lbLocation.Text = "Adres";
+            // 
+            // lbCar
+            // 
+            this.lbCar.AutoSize = true;
+            this.lbCar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbCar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbCar.Location = new System.Drawing.Point(0, 318);
+            this.lbCar.Margin = new System.Windows.Forms.Padding(0);
+            this.lbCar.Name = "lbCar";
+            this.lbCar.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
+            this.lbCar.Size = new System.Drawing.Size(169, 83);
+            this.lbCar.TabIndex = 24;
+            this.lbCar.Text = "Auto";
+            // 
+            // lbDriversLicense
+            // 
+            this.lbDriversLicense.AutoSize = true;
+            this.lbDriversLicense.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbDriversLicense.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDriversLicense.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbDriversLicense.Location = new System.Drawing.Point(0, 166);
+            this.lbDriversLicense.Margin = new System.Windows.Forms.Padding(0);
+            this.lbDriversLicense.Name = "lbDriversLicense";
+            this.lbDriversLicense.Padding = new System.Windows.Forms.Padding(40, 19, 40, 19);
+            this.lbDriversLicense.Size = new System.Drawing.Size(224, 83);
+            this.lbDriversLicense.TabIndex = 25;
+            this.lbDriversLicense.Text = "Rijbewijs";
+            // 
             // horizontalSeperatorControl1
             // 
             this.horizontalSeperatorControl1.AutoSize = true;
             this.horizontalSeperatorControl1.BackColor = System.Drawing.Color.Silver;
             this.horizontalSeperatorControl1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.horizontalSeperatorControl1.Location = new System.Drawing.Point(0, 1617);
+            this.horizontalSeperatorControl1.Location = new System.Drawing.Point(0, 2066);
             this.horizontalSeperatorControl1.Margin = new System.Windows.Forms.Padding(0);
             this.horizontalSeperatorControl1.Name = "horizontalSeperatorControl1";
             this.horizontalSeperatorControl1.Size = new System.Drawing.Size(720, 1);
@@ -523,10 +667,11 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.btRegisterWrapper);
             this.Controls.Add(this.horizontalSeperatorControl1);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.lbAvatar);
+            this.Controls.Add(this.volunteerWrapper);
             this.Controls.Add(this.cbRoleWrapper);
             this.Controls.Add(this.lbRole);
+            this.Controls.Add(this.avatarWrapper);
+            this.Controls.Add(this.lbAvatar);
             this.Controls.Add(this.dtBirthdateWrapper);
             this.Controls.Add(this.lbBirthdate);
             this.Controls.Add(this.lbPasswordMismatch);
@@ -544,7 +689,7 @@
             this.Margin = new System.Windows.Forms.Padding(0);
             this.MinimumSize = new System.Drawing.Size(720, 0);
             this.Name = "RegisterControl";
-            this.Size = new System.Drawing.Size(720, 1756);
+            this.Size = new System.Drawing.Size(720, 2205);
             this.tbEmailWrapper.ResumeLayout(false);
             this.tbEmailWrapper.PerformLayout();
             this.tbPasswordWrapper.ResumeLayout(false);
@@ -559,12 +704,20 @@
             this.tbNameWrapper.PerformLayout();
             this.cbRoleWrapper.ResumeLayout(false);
             this.dtBirthdateWrapper.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.avatarWrapper.ResumeLayout(false);
+            this.avatarWrapper.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbAvatar)).EndInit();
+            this.volunteerWrapper.ResumeLayout(false);
+            this.volunteerWrapper.PerformLayout();
+            this.cbCarWrapper.ResumeLayout(false);
+            this.cbCarWrapper.PerformLayout();
+            this.cbDriversLicenseWrapper.ResumeLayout(false);
+            this.cbDriversLicenseWrapper.PerformLayout();
+            this.tbLocationWrapper.ResumeLayout(false);
+            this.tbLocationWrapper.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -598,12 +751,22 @@
         private System.Windows.Forms.Panel dtBirthdateWrapper;
         private System.Windows.Forms.DateTimePicker dtBirthdate;
         private System.Windows.Forms.Label lbAvatar;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel avatarWrapper;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btAvatar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pbAvatar;
         private System.Windows.Forms.Button btAvatarRemove;
         private HorizontalSeperatorControl horizontalSeperatorControl1;
+        private System.Windows.Forms.Panel volunteerWrapper;
+        private System.Windows.Forms.Panel cbCarWrapper;
+        private System.Windows.Forms.CheckBox cbCar;
+        private System.Windows.Forms.Label lbCar;
+        private System.Windows.Forms.Panel cbDriversLicenseWrapper;
+        private System.Windows.Forms.CheckBox cbDriversLicense;
+        private System.Windows.Forms.Label lbDriversLicense;
+        private System.Windows.Forms.Panel tbLocationWrapper;
+        private System.Windows.Forms.TextBox tbLocation;
+        private System.Windows.Forms.Label lbLocation;
     }
 }
