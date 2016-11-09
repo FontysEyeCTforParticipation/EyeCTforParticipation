@@ -25,15 +25,36 @@ namespace EyeCTforParticipation.Forms
             header.Login += header_Login;
             header.Logout += header_Logout;
             header.Register += header_Login;
+
+            Dictionary<SearchOrder, string>  cbSearchOrders = new Dictionary<SearchOrder, string>();
+            cbSearchOrders.Add(SearchOrder.DATE_ASC, "Datum (oplopend)");
+            cbSearchOrders.Add(SearchOrder.DATE_DESC, "Datum (aflopend)");
+            cbSearchOrders.Add(SearchOrder.DISTANCE_ASC, "Afstand (oplopend)");
+            cbSearchOrders.Add(SearchOrder.DISTANCE_DESC, "Afstand (aflopend)");
+            cbSearchOrders.Add(SearchOrder.RELEVANCE_ASC, "Relevantie (oplopend)");
+            cbSearchOrders.Add(SearchOrder.RELEVANCE_DESC, "Relevantie (aflopend)");
+            cbSearchOrder.DataSource = new BindingSource(cbSearchOrders, null);
+            cbSearchOrder.DisplayMember = "Value";
+            cbSearchOrder.ValueMember = "Key";
+            cbSearchOrder.SelectedValue = SearchOrder.DATE_DESC;
+            cbSearchOrder.SelectedIndexChanged += cbSearchOrder_SelectedIndexChanged;
         }
 
         private void searchControl_Search(object sender, EventArgs e)
         {
-            getSearchResults(search.Results);
+            getSearchResults();
         }
 
-        private void getSearchResults(List<HelpRequestModel> results)
+        private void getSearchResults()
         {
+            List<HelpRequestModel> results;
+            if (search.PostalCode.Length < 6)
+            {
+                results = helpRequestRepository.Search(search.Keywords, Session.volunteer.Location, search.Distance, (SearchOrder)cbSearchOrder.SelectedValue);
+            }
+            else {
+                results = helpRequestRepository.Search(search.Keywords, search.PostalCode, search.Distance, (SearchOrder)cbSearchOrder.SelectedValue);
+            }
             resultsWrapper.Controls.Clear();
             foreach (HelpRequestModel result in results)
             {
@@ -171,12 +192,20 @@ namespace EyeCTforParticipation.Forms
 
         private void btSearch_Click(object sender, EventArgs e)
         {
+            cbSearchOrder.SelectedValue = SearchOrder.DATE_DESC;
+            search.Clear();
+            getSearchResults();
             views.CurrentView = searchView;
         }
 
         private void btApplicationsBack_Click(object sender, EventArgs e)
         {
             views.CurrentView = helpRequestView;
+        }
+
+        private void cbSearchOrder_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            getSearchResults();
         }
     }
 }

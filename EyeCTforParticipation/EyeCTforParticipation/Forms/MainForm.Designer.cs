@@ -56,6 +56,10 @@
             this.lbVolunteerName = new System.Windows.Forms.Label();
             this.searchView = new System.Windows.Forms.TabPage();
             this.resultsWrapper = new System.Windows.Forms.Panel();
+            this.searchOrderSeperator = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
+            this.searchOrderWrapper = new System.Windows.Forms.FlowLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbSearchOrder = new System.Windows.Forms.ComboBox();
             this.searchSeperator = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
             this.searchTitleWrapper = new System.Windows.Forms.Panel();
             this.search = new EyeCTforParticipation.Controls.SearchControl();
@@ -94,6 +98,7 @@
             this.volunteerTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbVolunteerAvatar)).BeginInit();
             this.searchView.SuspendLayout();
+            this.searchOrderWrapper.SuspendLayout();
             this.searchTitleWrapper.SuspendLayout();
             this.btSearchBackWrapper.SuspendLayout();
             this.helpRequestView.SuspendLayout();
@@ -495,6 +500,8 @@
             // searchView
             // 
             this.searchView.Controls.Add(this.resultsWrapper);
+            this.searchView.Controls.Add(this.searchOrderSeperator);
+            this.searchView.Controls.Add(this.searchOrderWrapper);
             this.searchView.Controls.Add(this.searchSeperator);
             this.searchView.Controls.Add(this.searchTitleWrapper);
             this.searchView.Location = new System.Drawing.Point(0, 0);
@@ -510,11 +517,63 @@
             this.resultsWrapper.AutoScroll = true;
             this.resultsWrapper.BackColor = System.Drawing.Color.White;
             this.resultsWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.resultsWrapper.Location = new System.Drawing.Point(0, 203);
+            this.resultsWrapper.Location = new System.Drawing.Point(0, 329);
             this.resultsWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.resultsWrapper.Name = "resultsWrapper";
-            this.resultsWrapper.Size = new System.Drawing.Size(1574, 878);
+            this.resultsWrapper.Size = new System.Drawing.Size(1574, 752);
             this.resultsWrapper.TabIndex = 15;
+            // 
+            // searchOrderSeperator
+            // 
+            this.searchOrderSeperator.AutoSize = true;
+            this.searchOrderSeperator.BackColor = System.Drawing.Color.Silver;
+            this.searchOrderSeperator.Dock = System.Windows.Forms.DockStyle.Top;
+            this.searchOrderSeperator.Location = new System.Drawing.Point(0, 328);
+            this.searchOrderSeperator.Margin = new System.Windows.Forms.Padding(0);
+            this.searchOrderSeperator.Name = "searchOrderSeperator";
+            this.searchOrderSeperator.Size = new System.Drawing.Size(1574, 1);
+            this.searchOrderSeperator.TabIndex = 16;
+            // 
+            // searchOrderWrapper
+            // 
+            this.searchOrderWrapper.AutoSize = true;
+            this.searchOrderWrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.searchOrderWrapper.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.searchOrderWrapper.Controls.Add(this.label1);
+            this.searchOrderWrapper.Controls.Add(this.cbSearchOrder);
+            this.searchOrderWrapper.Dock = System.Windows.Forms.DockStyle.Top;
+            this.searchOrderWrapper.Location = new System.Drawing.Point(0, 203);
+            this.searchOrderWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.searchOrderWrapper.Name = "searchOrderWrapper";
+            this.searchOrderWrapper.Padding = new System.Windows.Forms.Padding(40);
+            this.searchOrderWrapper.Size = new System.Drawing.Size(1574, 125);
+            this.searchOrderWrapper.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(40, 40);
+            this.label1.Margin = new System.Windows.Forms.Padding(0);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.label1.Size = new System.Drawing.Size(161, 45);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Sorteer op";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cbSearchOrder
+            // 
+            this.cbSearchOrder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSearchOrder.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSearchOrder.FormattingEnabled = true;
+            this.cbSearchOrder.Location = new System.Drawing.Point(201, 40);
+            this.cbSearchOrder.Margin = new System.Windows.Forms.Padding(0);
+            this.cbSearchOrder.Name = "cbSearchOrder";
+            this.cbSearchOrder.Size = new System.Drawing.Size(321, 45);
+            this.cbSearchOrder.TabIndex = 0;
             // 
             // searchSeperator
             // 
@@ -882,6 +941,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbVolunteerAvatar)).EndInit();
             this.searchView.ResumeLayout(false);
             this.searchView.PerformLayout();
+            this.searchOrderWrapper.ResumeLayout(false);
+            this.searchOrderWrapper.PerformLayout();
             this.searchTitleWrapper.ResumeLayout(false);
             this.searchTitleWrapper.PerformLayout();
             this.btSearchBackWrapper.ResumeLayout(false);
@@ -957,5 +1018,9 @@
         private System.Windows.Forms.Label lbApplications;
         private System.Windows.Forms.Panel btApplicationsBackWrapper;
         private System.Windows.Forms.Button btApplicationsBack;
+        private Controls.HorizontalSeperatorControl searchOrderSeperator;
+        private System.Windows.Forms.FlowLayoutPanel searchOrderWrapper;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cbSearchOrder;
     }
 }

@@ -106,7 +106,6 @@ namespace EyeCTforParticipation.Controls
         private void btChat_Click(object sender, EventArgs e)
         {
             //Open chat form
-            Console.Write(Session.volunteer);
         }
     }
 }

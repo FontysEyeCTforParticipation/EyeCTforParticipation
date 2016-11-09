@@ -17,9 +17,37 @@ namespace EyeCTforParticipation.Controls
     public partial class SearchControl : UserControl
     {
         HelpRequestRepository helpRequestRepository = new HelpRequestRepository(new HelpRequestSQLContext());
-        List<HelpRequestModel> results;
         Dictionary<int, string> cbDistances;
         public event EventHandler Search;
+
+        public string PostalCode
+        {
+            get
+            {
+                return tbPostalCode.Text;
+            }
+        }
+        public int Distance
+        {
+            get
+            {
+                return (int)cbDistance.SelectedValue;
+            }
+        }
+        public string Keywords
+        {
+            get
+            {
+                return tbSearch.Text;
+            }
+        }
+
+        public void Clear()
+        {
+            tbSearch.Text = "";
+            tbPostalCode.Text = "";
+            cbDistance.SelectedValue = 0;
+        }
 
         public SearchControl() { 
             InitializeComponent();
@@ -39,50 +67,12 @@ namespace EyeCTforParticipation.Controls
             cbDistance.ValueMember = "Key";
         }
 
-        private void SearchControl_Load(object sender, EventArgs e)
-        {
-
-            if(Session.User != null)
-            {
-                //Get initial search results
-                results = helpRequestRepository.Search(null, Session.volunteer.Location, 0, SearchOrder.DATE_DESC);
-            }
-
-            //Trigger search event
-            if (Search != null)
-            {
-                Search(this, EventArgs.Empty);
-            }
-        }
-
         private void btSearch_Click(object sender, EventArgs e)
-        {
-            //Get values
-            string keywords = tbSearch.Text;
-            string postalCode = tbPostalCode.Text;
-            int distance = (int)cbDistance.SelectedValue;
-            if(postalCode.Length < 6)
-            {
-                results = helpRequestRepository.Search(keywords, Session.volunteer.Location, distance, SearchOrder.DATE_DESC);
-            }
-            else
-            {
-                results = helpRequestRepository.Search(keywords, postalCode, distance, SearchOrder.DATE_DESC);
-            }
-            
+        {            
             //Trigger search event
             if (Search != null)
             {
                 Search(this, EventArgs.Empty);
-            }
-        }
-
-        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public List<HelpRequestModel> Results
-        {
-            get
-            {
-                return results;
             }
         }
 

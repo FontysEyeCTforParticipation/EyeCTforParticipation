@@ -17,18 +17,18 @@ namespace EyeCTforParticipation.Data
             switch (order)
             {
                 case SearchOrder.DATE_ASC:
-                    return "Date ASC";
-                case SearchOrder.DATE_DESC:
                     return "Date DESC";
+                case SearchOrder.DATE_DESC:
+                    return "Date ASC";
                 case SearchOrder.DISTANCE_ASC:
-                    return "Distance ASC";
-                case SearchOrder.DISTANCE_DESC:
                     return "Distance DESC";
+                case SearchOrder.DISTANCE_DESC:
+                    return "Distance ASC";
                 case SearchOrder.RELEVANCE_ASC:
-                    return "Matches ASC";
+                    return "Matches DESC";
                 case SearchOrder.RELEVANCE_DESC:
                 default:
-                    return "Matches DESC";
+                    return "Matches ASC";
             }
         }
 

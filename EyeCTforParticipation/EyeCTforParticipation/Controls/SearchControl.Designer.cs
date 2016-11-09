@@ -214,7 +214,6 @@
             this.MinimumSize = new System.Drawing.Size(1200, 202);
             this.Name = "SearchControl";
             this.Size = new System.Drawing.Size(1200, 202);
-            this.Load += new System.EventHandler(this.SearchControl_Load);
             this.tbSearchWrapper.ResumeLayout(false);
             this.tbSearchWrapper.PerformLayout();
             this.searchWrapper.ResumeLayout(false);
