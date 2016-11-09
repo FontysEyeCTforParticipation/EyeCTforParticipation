@@ -184,11 +184,14 @@ namespace EyeCTforParticipation.Logic
             string address = "Nederland";
 
             //Try to get location
-            GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(helpRequest.Address, "nl", "nl");
-            if (googleMapsApi != null)
+            if (helpRequest.Address != address)
             {
-                location = googleMapsApi.Location;
-                address = googleMapsApi.Address;
+                GoogleMapsApi.Response googleMapsApi = GoogleMapsApi.Get(helpRequest.Address, "nl", "nl");
+                if (googleMapsApi != null)
+                {
+                    location = googleMapsApi.Location;
+                    address = googleMapsApi.Address;
+                }
             }
 
             helpRequest.Location = location;
@@ -260,22 +263,9 @@ namespace EyeCTforParticipation.Logic
         /// <returns>
         /// The application.
         /// </returns>
-        public ApplicationModel Apply(int id, int volunteerId)
+        public void Apply(int id, int volunteerId)
         {
-            return new ApplicationModel
-            {
-                Id = context.Apply(id, volunteerId),
-                HelpRequest = new HelpRequestModel
-                {
-                    Id = id
-                },
-                Volunteer = new VolunteerModel
-                {
-                    Id = volunteerId
-                },
-                Status = ApplicationStatus.NONE,
-                Date = DateTime.Now
-            };
+            context.Apply(id, volunteerId);
         }
 
         /// <summary>
@@ -334,6 +324,16 @@ namespace EyeCTforParticipation.Logic
         public List<ApplicationModel> GetApplications(int id, int helpSeekerId)
         {
             return context.GetApplications(id, helpSeekerId);
+        }
+
+        public int ApplicationsCount(int id, int helpSeekerId)
+        {
+            return context.ApplicationsCount(id, helpSeekerId);
+        }
+
+        public bool HasApplied(int id, int volunteerId)
+        {
+            return context.HasApplied(id, volunteerId);
         }
 
         /// <summary>

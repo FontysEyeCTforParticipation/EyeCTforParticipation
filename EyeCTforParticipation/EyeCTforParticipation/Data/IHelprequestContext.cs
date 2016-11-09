@@ -21,11 +21,13 @@ namespace EyeCTforParticipation.Data
         void Delete(int id);
         void Close(int id, int helpSeekerId);
         void Open(int id, int helpSeekerId);
-        int Apply(int id, int volunteerId);
+        void Apply(int id, int volunteerId);
         void CancelApplication(int id, int volunteerId);
         void CancelApplicationAsHelpSeeker(int id, int userId);
         List<ApplicationModel> GetApplications(int volunteerId);
         List<ApplicationModel> GetApplications(int id, int helpSeekerId);
+        int ApplicationsCount(int id, int helpSeekerId);
+        bool HasApplied(int id, int volunteerId);
         void InterviewApplication(int id, int helpSeekerId);
         void ApproveApplication(int id, int helpSeekerId);
     }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using EyeCTforParticipation.Models;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Device.Location;
 
 namespace EyeCTforParticipation.Data
 {
@@ -102,7 +103,7 @@ namespace EyeCTforParticipation.Data
                 conn.Open();
                 cmd.Parameters.AddWithValue("@Id", volunteer.Id);
                 cmd.Parameters.AddWithValue("@Address", volunteer.Address);
-                cmd.Parameters.AddWithValue("@Location", "POINT(" + volunteer.Location.Latitude + " " + volunteer.Location.Longitude + ")");
+                cmd.Parameters.AddWithValue("@Location", "POINT(" + volunteer.Location.Longitude + " " + volunteer.Location.Latitude + ")");
                 cmd.Parameters.AddWithValue("@DriversLicense", volunteer.DriversLicense);
                 cmd.Parameters.AddWithValue("@Car", volunteer.Car);
                 cmd.ExecuteNonQuery();
@@ -124,9 +125,8 @@ namespace EyeCTforParticipation.Data
         }
         public void Edit(UserModel user)
         {
-            //(Email, Name, Password, Birthdate, Approved)
             string query = @"UPDATE [User] 
-                             SET Email = @Email, Name = @Name, Password = @Password, Approved = @Approved 
+                             SET Email = @Email, Name = @Name, Password = @Password
                              WHERE Id = @Id;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
@@ -136,7 +136,6 @@ namespace EyeCTforParticipation.Data
                 cmd.Parameters.AddWithValue("@Email", user.Email);
                 cmd.Parameters.AddWithValue("@Name", user.Name);
                 cmd.Parameters.AddWithValue("@Password", user.Password);
-                cmd.Parameters.AddWithValue("@Approved", user.Approved);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -148,39 +147,30 @@ namespace EyeCTforParticipation.Data
         {
             string query = @"INSERT INTO [HelpSeekerAidWorker] 
                              (HelpSeekerUserId, AidWorkerUserId, Approved) 
-                             VALUES(@helpSeekerId, @aidWorkerId, 0);";
+                             VALUES(@HelpSeekerUserId, @AidWorkerUserId, 0);";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
-                cmd.Parameters.AddWithValue("@helpSeekerId", helpSeekerId);
+                cmd.Parameters.AddWithValue("@HelpSeekerUserId", helpSeekerId);
                 cmd.Parameters.AddWithValue("@AidWorkerUserId", aidWorkerId);
             }
         }
         public void RemoveHelpSeeker(int helpSeekerId, int aidWorkerId)
         {
             string query = @"DELETE FROM [HelpSeekerAidWorker] 
-                             WHERE HelpSeekerUserId = @helpSeekerId AND AidWorkerUserId = @aidWorkerId;";
+                             WHERE HelpSeekerUserId = @helpSeekerUserId AND AidWorkerUserId = @AidWorkerUserId;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
-                cmd.Parameters.AddWithValue("@helpSeekerId", Convert.ToString(helpSeekerId));
-                cmd.Parameters.AddWithValue("@AidWorkerId", Convert.ToString(aidWorkerId));
+                cmd.Parameters.AddWithValue("@helpSeekerUserId", helpSeekerId);
+                cmd.Parameters.AddWithValue("@AidWorkerUserId", aidWorkerId);
                 cmd.ExecuteNonQuery();
             }
         }
         public void ChangeApproveAidWorker(int helpSeekerId, int aidWorkerID, bool approved)
         {
-            int approvedAsInt;
-            if (approved)
-            {
-                approvedAsInt = 1;
-            }
-            else
-            {
-                approvedAsInt = 0;
-            }
             string query = @"UPDATE [HelpSeekerAidWorker] 
                              SET Approved = @Approved 
                              WHERE HelpSeekerUserId = @helpSeekerId AND AidWorkerUserId = @aidWorkerId;";
@@ -188,9 +178,9 @@ namespace EyeCTforParticipation.Data
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
-                cmd.Parameters.AddWithValue("@helpSeekerId", Convert.ToString(helpSeekerId));
-                cmd.Parameters.AddWithValue("@AidWorkerId", Convert.ToString(aidWorkerID));
-                cmd.Parameters.AddWithValue("@Approved", Convert.ToString(approvedAsInt));
+                cmd.Parameters.AddWithValue("@helpSeekerId", helpSeekerId);
+                cmd.Parameters.AddWithValue("@AidWorkerId", aidWorkerID);
+                cmd.Parameters.AddWithValue("@Approved", approved);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -208,7 +198,7 @@ namespace EyeCTforParticipation.Data
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
-                cmd.Parameters.AddWithValue("@aidWorkerID", Convert.ToString(aidWorkerId));
+                cmd.Parameters.AddWithValue("@aidWorkerID", aidWorkerId);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -238,7 +228,7 @@ namespace EyeCTforParticipation.Data
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
-                cmd.Parameters.AddWithValue("@helpSeekerId", Convert.ToString(helpSeekerId));
+                cmd.Parameters.AddWithValue("@helpSeekerId", helpSeekerId);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -252,6 +242,29 @@ namespace EyeCTforParticipation.Data
                 }
             }
             return results;
+        }
+
+        public GeoCoordinate GetVolunteerLocation(int userId)
+        {
+            GeoCoordinate location = new GeoCoordinate();
+            string query = @"SELECT Location.Long, Location.Lat
+                             FROM Volunteer
+                             WHERE Id = @Id;";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@Id", userId);
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        location.Longitude = reader.GetDouble(0);
+                        location.Latitude = reader.GetDouble(1);
+                    }
+                }
+            }
+            return location;
         }
     }
 }

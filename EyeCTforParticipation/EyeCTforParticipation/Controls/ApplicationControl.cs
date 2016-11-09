@@ -34,10 +34,6 @@ namespace EyeCTforParticipation.Controls
                     lbApprovedWrapper.Show();
                     btCancel.Show();
                     break;
-                case ApplicationStatus.CANCELLED:
-                    lbCancelledWrapper.Show();
-                    btInterview.Show();
-                    break;
                 case ApplicationStatus.INTERVIEW:
                     lbInterviewWrapper.Show();
                     btApprove.Show();
@@ -54,7 +50,6 @@ namespace EyeCTforParticipation.Controls
         private void btInterview_Click(object sender, EventArgs e)
         {
             helpRequestRepository.InterviewApplication(application.Id, Session.User.Id);
-            lbCancelledWrapper.Hide();
             lbInterviewWrapper.Show();
             btInterview.Hide();
             btApprove.Show();
@@ -72,7 +67,6 @@ namespace EyeCTforParticipation.Controls
         private void btCancel_Click(object sender, EventArgs e)
         {
             helpRequestRepository.CancelApplication(application.Id, Session.User);
-            lbCancelledWrapper.Show();
             lbApprovedWrapper.Hide();
             lbInterviewWrapper.Hide();
             btApprove.Hide();

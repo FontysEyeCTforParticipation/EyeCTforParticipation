@@ -29,7 +29,7 @@ namespace EyeCTforParticipation.Controls
         {
             if (tbEmail.Text.Length > 0 && tbPassword.Text.Length > 0)
             {
-                Session.User = userRepository.Login(tbEmail.Text, tbPassword.Text);
+                userRepository.Login(tbEmail.Text, tbPassword.Text);
                 if (Session.User != null)
                 {
                     if (Login != null)

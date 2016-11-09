@@ -31,7 +31,7 @@ namespace EyeCTforParticipation.Controls
         }
 
         HelpRequestModel helpRequest;
-        
+
         public HelpRequestControl(HelpRequestModel helpRequest) : this()
         {
             Id = helpRequest.Id;
@@ -42,20 +42,14 @@ namespace EyeCTforParticipation.Controls
             {
                 case UserRole.HelpSeeker:
                     btApplicationsWrapper.Show();
+                    btEditWrapper.Show();
                     btCloseWrapper.Visible = !helpRequest.Closed;
                     btOpenWrapper.Visible = helpRequest.Closed;
-                    btEditWrapper.Show();
+                    int applicationCount = helpRequestRepository.ApplicationsCount(helpRequest.Id, Session.User.Id);
+                    lbSubtitle.Text = applicationCount.ToString() + (applicationCount > 1 || applicationCount == 0 ? " Aanmeldingen" : " Aanmelding");
                     break;
                 case UserRole.Volunteer:
-                    List<ApplicationModel> applications = helpRequestRepository.GetApplications(Session.User.Id);
-                    bool applied = false;
-                    foreach(ApplicationModel application in applications)
-                    {
-                        if(application.Id == helpRequest.Id && application.Status != ApplicationStatus.NONE || application.Status != ApplicationStatus.CANCELLED)
-                        {
-                            applied = true;
-                        }
-                    }
+                    bool applied = helpRequestRepository.HasApplied(helpRequest.Id, Session.User.Id);
                     btApplyWrapper.Visible = !applied;
                     btCancelWrapper.Visible = applied;
                     break;
@@ -69,7 +63,7 @@ namespace EyeCTforParticipation.Controls
         private void setContent()
         {
             lbTitle.Text = helpRequest.Title;
-            lbName.Text = helpRequest.HelpSeeker.Name;
+            lbSubtitle.Text = helpRequest.HelpSeeker.Name;
             lbDate.Text = helpRequest.Date.ToString("dd-MM-yyyy");
             lbLocation.Text = helpRequest.Address;
             lbDistance.Text = Math.Round(helpRequest.Distance / 1000).ToString() + " km";
@@ -113,6 +107,8 @@ namespace EyeCTforParticipation.Controls
         private void btApply_Click(object sender, EventArgs e)
         {
             helpRequestRepository.Apply(helpRequest.Id, Session.User.Id);
+            bool applied = helpRequestRepository.HasApplied(helpRequest.Id, Session.User.Id);
+            Console.Write(applied);
             btCancelWrapper.Show();
             btApplyWrapper.Hide();
         }
@@ -137,6 +133,7 @@ namespace EyeCTforParticipation.Controls
             btOpenWrapper.Show();
             lbCloseWrapper.Show();
             lbTitleWrapper.Controls.SetChildIndex(lbCloseWrapper, 3);
+            titleWrapper.Controls.SetChildIndex(btOpenWrapper, 7);
         }
 
         private void btOpen_Click(object sender, EventArgs e)
@@ -145,6 +142,7 @@ namespace EyeCTforParticipation.Controls
             btOpenWrapper.Hide();
             btCloseWrapper.Show();
             lbCloseWrapper.Hide();
+            titleWrapper.Controls.SetChildIndex(btCloseWrapper, 7);
         }
 
         private void btCancel_Click(object sender, EventArgs e)

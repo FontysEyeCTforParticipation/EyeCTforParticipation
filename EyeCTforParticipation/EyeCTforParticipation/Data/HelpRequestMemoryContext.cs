@@ -245,8 +245,9 @@ namespace EyeCTforParticipation.Data
             }
         }
 
-        public int Apply(int id, int volunteerId)
+        public void Apply(int id, int volunteerId)
         {
+            //Needs update check
             ApplicationModel application = new ApplicationModel
             {
                 Id = Tables.Application.Count() > 0 ? Tables.Application.Max(x => x.Id) + 1 : 1,
@@ -262,7 +263,6 @@ namespace EyeCTforParticipation.Data
                 }
             };
             Tables.Application.Add(application);
-            return application.Id;
         }
 
         public void CancelApplication(int id, int volunteerId)
@@ -351,6 +351,16 @@ namespace EyeCTforParticipation.Data
             {
                 results.ElementAt(0).Status = ApplicationStatus.APPROVED;
             }
+        }
+
+        public int ApplicationsCount(int id, int helpSeekerId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool HasApplied(int id, int volunteerId)
+        {
+            throw new NotImplementedException();
         }
     }
 }

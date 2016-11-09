@@ -114,13 +114,14 @@
             this.tbPostalCodeWrapper.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tbPostalCodeWrapper.Controls.Add(this.tbPostalCode);
             this.tbPostalCodeWrapper.Controls.Add(this.cbDistance);
-            this.tbPostalCodeWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbPostalCodeWrapper.Dock = System.Windows.Forms.DockStyle.Top;
             this.tbPostalCodeWrapper.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbPostalCodeWrapper.Location = new System.Drawing.Point(0, 95);
             this.tbPostalCodeWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.tbPostalCodeWrapper.MinimumSize = new System.Drawing.Size(0, 64);
             this.tbPostalCodeWrapper.Name = "tbPostalCodeWrapper";
-            this.tbPostalCodeWrapper.Padding = new System.Windows.Forms.Padding(0, 10, 20, 8);
-            this.tbPostalCodeWrapper.Size = new System.Drawing.Size(400, 67);
+            this.tbPostalCodeWrapper.Padding = new System.Windows.Forms.Padding(0, 10, 20, 14);
+            this.tbPostalCodeWrapper.Size = new System.Drawing.Size(400, 64);
             this.tbPostalCodeWrapper.TabIndex = 8;
             // 
             // tbPostalCode
@@ -138,16 +139,17 @@
             // cbDistance
             // 
             this.cbDistance.Dock = System.Windows.Forms.DockStyle.Right;
-            this.cbDistance.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.cbDistance.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbDistance.DropDownHeight = 300;
             this.cbDistance.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbDistance.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbDistance.FormattingEnabled = true;
             this.cbDistance.IntegralHeight = false;
-            this.cbDistance.ItemHeight = 37;
+            this.cbDistance.ItemHeight = 34;
             this.cbDistance.Location = new System.Drawing.Point(140, 10);
             this.cbDistance.Margin = new System.Windows.Forms.Padding(0);
             this.cbDistance.Name = "cbDistance";
-            this.cbDistance.Size = new System.Drawing.Size(240, 43);
+            this.cbDistance.Size = new System.Drawing.Size(240, 40);
             this.cbDistance.TabIndex = 2;
             this.cbDistance.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.cbDistance_DrawItem);
             // 
@@ -173,7 +175,7 @@
             this.btSearchWrapper.Location = new System.Drawing.Point(1010, 0);
             this.btSearchWrapper.Margin = new System.Windows.Forms.Padding(0);
             this.btSearchWrapper.Name = "btSearchWrapper";
-            this.btSearchWrapper.Padding = new System.Windows.Forms.Padding(0, 95, 40, 0);
+            this.btSearchWrapper.Padding = new System.Windows.Forms.Padding(0, 88, 40, 0);
             this.btSearchWrapper.Size = new System.Drawing.Size(190, 202);
             this.btSearchWrapper.TabIndex = 10;
             // 
@@ -182,12 +184,13 @@
             this.btSearch.AutoSize = true;
             this.btSearch.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.btSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btSearch.Dock = System.Windows.Forms.DockStyle.Top;
             this.btSearch.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btSearch.FlatAppearance.BorderSize = 0;
             this.btSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btSearch.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btSearch.Location = new System.Drawing.Point(0, 95);
+            this.btSearch.Location = new System.Drawing.Point(0, 88);
             this.btSearch.Margin = new System.Windows.Forms.Padding(0);
             this.btSearch.Name = "btSearch";
             this.btSearch.Padding = new System.Windows.Forms.Padding(10);

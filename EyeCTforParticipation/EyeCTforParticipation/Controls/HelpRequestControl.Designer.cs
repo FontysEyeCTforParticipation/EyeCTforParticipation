@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HelpRequestControl));
             this.lbContent = new System.Windows.Forms.Label();
-            this.lbName = new System.Windows.Forms.Label();
+            this.lbSubtitle = new System.Windows.Forms.Label();
             this.contentWrapper = new System.Windows.Forms.Panel();
             this.locationWrapper = new System.Windows.Forms.FlowLayoutPanel();
             this.lbLocation = new System.Windows.Forms.Label();
@@ -94,19 +94,19 @@
             this.lbContent.TabIndex = 0;
             this.lbContent.Text = resources.GetString("lbContent.Text");
             // 
-            // lbName
+            // lbSubtitle
             // 
-            this.lbName.AutoSize = true;
-            this.lbName.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbName.ForeColor = System.Drawing.Color.Gray;
-            this.lbName.Location = new System.Drawing.Point(120, 85);
-            this.lbName.Margin = new System.Windows.Forms.Padding(0);
-            this.lbName.Name = "lbName";
-            this.lbName.Padding = new System.Windows.Forms.Padding(40, 20, 0, 40);
-            this.lbName.Size = new System.Drawing.Size(144, 105);
-            this.lbName.TabIndex = 4;
-            this.lbName.Text = "Naam";
+            this.lbSubtitle.AutoSize = true;
+            this.lbSubtitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbSubtitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSubtitle.ForeColor = System.Drawing.Color.Gray;
+            this.lbSubtitle.Location = new System.Drawing.Point(120, 85);
+            this.lbSubtitle.Margin = new System.Windows.Forms.Padding(0);
+            this.lbSubtitle.Name = "lbSubtitle";
+            this.lbSubtitle.Padding = new System.Windows.Forms.Padding(40, 20, 0, 40);
+            this.lbSubtitle.Size = new System.Drawing.Size(144, 105);
+            this.lbSubtitle.TabIndex = 4;
+            this.lbSubtitle.Text = "Naam";
             // 
             // contentWrapper
             // 
@@ -213,7 +213,7 @@
             // titleWrapper
             // 
             this.titleWrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.titleWrapper.Controls.Add(this.lbName);
+            this.titleWrapper.Controls.Add(this.lbSubtitle);
             this.titleWrapper.Controls.Add(this.lbTitleWrapper);
             this.titleWrapper.Controls.Add(this.btApplicationsWrapper);
             this.titleWrapper.Controls.Add(this.btEditWrapper);
@@ -255,8 +255,8 @@
             this.lbTitle.Location = new System.Drawing.Point(606, 0);
             this.lbTitle.Margin = new System.Windows.Forms.Padding(0);
             this.lbTitle.Name = "lbTitle";
-            this.lbTitle.Padding = new System.Windows.Forms.Padding(0, 30, 60, 10);
-            this.lbTitle.Size = new System.Drawing.Size(141, 85);
+            this.lbTitle.Padding = new System.Windows.Forms.Padding(0, 40, 60, 10);
+            this.lbTitle.Size = new System.Drawing.Size(141, 95);
             this.lbTitle.TabIndex = 3;
             this.lbTitle.Text = "Titel";
             // 
@@ -267,7 +267,7 @@
             this.lbUrgencyCrititcalWrapper.Dock = System.Windows.Forms.DockStyle.Left;
             this.lbUrgencyCrititcalWrapper.Location = new System.Drawing.Point(441, 0);
             this.lbUrgencyCrititcalWrapper.Name = "lbUrgencyCrititcalWrapper";
-            this.lbUrgencyCrititcalWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 0, 0);
+            this.lbUrgencyCrititcalWrapper.Padding = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.lbUrgencyCrititcalWrapper.Size = new System.Drawing.Size(165, 85);
             this.lbUrgencyCrititcalWrapper.TabIndex = 7;
             this.lbUrgencyCrititcalWrapper.Visible = false;
@@ -278,7 +278,7 @@
             this.lbUrgencyCritical.BackColor = System.Drawing.Color.Red;
             this.lbUrgencyCritical.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUrgencyCritical.ForeColor = System.Drawing.Color.White;
-            this.lbUrgencyCritical.Location = new System.Drawing.Point(0, 34);
+            this.lbUrgencyCritical.Location = new System.Drawing.Point(0, 40);
             this.lbUrgencyCritical.Name = "lbUrgencyCritical";
             this.lbUrgencyCritical.Padding = new System.Windows.Forms.Padding(5);
             this.lbUrgencyCritical.Size = new System.Drawing.Size(162, 40);
@@ -292,7 +292,7 @@
             this.lbUrgencyNormalWrapper.Dock = System.Windows.Forms.DockStyle.Left;
             this.lbUrgencyNormalWrapper.Location = new System.Drawing.Point(331, 0);
             this.lbUrgencyNormalWrapper.Name = "lbUrgencyNormalWrapper";
-            this.lbUrgencyNormalWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 0, 0);
+            this.lbUrgencyNormalWrapper.Padding = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.lbUrgencyNormalWrapper.Size = new System.Drawing.Size(110, 85);
             this.lbUrgencyNormalWrapper.TabIndex = 6;
             this.lbUrgencyNormalWrapper.Visible = false;
@@ -303,7 +303,7 @@
             this.lbUrgencyNormal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.lbUrgencyNormal.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUrgencyNormal.ForeColor = System.Drawing.Color.White;
-            this.lbUrgencyNormal.Location = new System.Drawing.Point(0, 34);
+            this.lbUrgencyNormal.Location = new System.Drawing.Point(0, 40);
             this.lbUrgencyNormal.Name = "lbUrgencyNormal";
             this.lbUrgencyNormal.Padding = new System.Windows.Forms.Padding(5);
             this.lbUrgencyNormal.Size = new System.Drawing.Size(107, 40);
@@ -317,7 +317,7 @@
             this.lbUrgencyLowWrapper.Dock = System.Windows.Forms.DockStyle.Left;
             this.lbUrgencyLowWrapper.Location = new System.Drawing.Point(179, 0);
             this.lbUrgencyLowWrapper.Name = "lbUrgencyLowWrapper";
-            this.lbUrgencyLowWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 0, 0);
+            this.lbUrgencyLowWrapper.Padding = new System.Windows.Forms.Padding(0, 40, 0, 0);
             this.lbUrgencyLowWrapper.Size = new System.Drawing.Size(152, 85);
             this.lbUrgencyLowWrapper.TabIndex = 5;
             this.lbUrgencyLowWrapper.Visible = false;
@@ -328,7 +328,7 @@
             this.lbUrgencyLow.BackColor = System.Drawing.Color.Yellow;
             this.lbUrgencyLow.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUrgencyLow.ForeColor = System.Drawing.Color.Black;
-            this.lbUrgencyLow.Location = new System.Drawing.Point(0, 34);
+            this.lbUrgencyLow.Location = new System.Drawing.Point(0, 40);
             this.lbUrgencyLow.Name = "lbUrgencyLow";
             this.lbUrgencyLow.Padding = new System.Windows.Forms.Padding(5);
             this.lbUrgencyLow.Size = new System.Drawing.Size(149, 40);
@@ -342,7 +342,7 @@
             this.lbCloseWrapper.Dock = System.Windows.Forms.DockStyle.Left;
             this.lbCloseWrapper.Location = new System.Drawing.Point(40, 0);
             this.lbCloseWrapper.Name = "lbCloseWrapper";
-            this.lbCloseWrapper.Padding = new System.Windows.Forms.Padding(0, 34, 10, 0);
+            this.lbCloseWrapper.Padding = new System.Windows.Forms.Padding(0, 40, 10, 0);
             this.lbCloseWrapper.Size = new System.Drawing.Size(139, 85);
             this.lbCloseWrapper.TabIndex = 8;
             this.lbCloseWrapper.Visible = false;
@@ -353,7 +353,7 @@
             this.lbClose.BackColor = System.Drawing.Color.Gray;
             this.lbClose.Font = new System.Drawing.Font("Segoe UI", 7.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbClose.ForeColor = System.Drawing.Color.White;
-            this.lbClose.Location = new System.Drawing.Point(0, 34);
+            this.lbClose.Location = new System.Drawing.Point(0, 40);
             this.lbClose.Name = "lbClose";
             this.lbClose.Padding = new System.Windows.Forms.Padding(5);
             this.lbClose.Size = new System.Drawing.Size(126, 40);
@@ -620,7 +620,7 @@
         #endregion
 
         private System.Windows.Forms.Label lbContent;
-        private System.Windows.Forms.Label lbName;
+        private System.Windows.Forms.Label lbSubtitle;
         private System.Windows.Forms.Panel contentWrapper;
         private HorizontalSeperatorControl horizontalSeperator;
         private System.Windows.Forms.Label lbDate;

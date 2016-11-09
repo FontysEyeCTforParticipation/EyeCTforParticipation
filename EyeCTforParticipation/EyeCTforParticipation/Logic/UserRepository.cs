@@ -30,21 +30,25 @@ namespace EyeCTforParticipation.Logic
         /// <returns>
         /// An user.
         /// </returns>
-        public UserModel Login(string rfid)
+        public void Login(string rfid)
         {
             UserModel user = context.Login(rfid);
             if (user != null)
             {
                 if (user.Approved)
                 {
-                    setAvatar(user);
-                    return user;
+                    Session.User = user;
+                    switch (user.Role)
+                    {
+                        case UserRole.Volunteer:
+                            setVolunteer();
+                            break;
+                    }
+                    setAvatar();
                 }
                 //Throw unapproved exception
-                return null;
             }
             //Throw invalid email and/or password exception
-            return null;
         }
 
         /// <summary>
@@ -59,29 +63,41 @@ namespace EyeCTforParticipation.Logic
         /// <returns>
         /// An user.
         /// </returns>
-        public UserModel Login(string email, string password)
+        public void Login(string email, string password)
         {
             UserModel user = context.LoginPassword(email);
             if(user != null && Crypter.CheckPassword(password, user.Password))
             {
                 if(user.Approved)
                 {
-                    setAvatar(user);
-                    return user;
+                    Session.User = user;
+                    switch (user.Role)
+                    {
+                        case UserRole.Volunteer:
+                            setVolunteer();
+                            break;
+                    }
+                    setAvatar();
                 }
                 //Throw unapproved exception
-                return null;
             }
             //Throw invalid email and/or password exception
-            return null;
         }
 
-        private void setAvatar(UserModel user)
+        private void setVolunteer()
         {
-            string avatar = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\EyeCTforParticipation\\Uploads\\Avatars\\" + user.Id + ".png";
+            Session.volunteer = new VolunteerModel
+            {
+                Location = context.GetVolunteerLocation(Session.User.Id)
+            };
+        }
+
+        private void setAvatar()
+        {
+            string avatar = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\EyeCTforParticipation\\Uploads\\Avatars\\" + Session.User.Id + ".png";
             if (File.Exists(avatar))
             {
-                user.Avatar = new System.Drawing.Bitmap(avatar);
+                Session.User.Avatar = new System.Drawing.Bitmap(avatar);
             }
         }
 
@@ -95,6 +111,7 @@ namespace EyeCTforParticipation.Logic
         {
             string hash = Crypter.Blowfish.Crypt(register.Password);
             bool approved = register.Role == UserRole.HelpSeeker;
+            approved = true;
             int userId = context.Register(new UserModel
             {
                 Role = register.Role,

@@ -42,11 +42,10 @@ namespace EyeCTforParticipation.Controls
         private void SearchControl_Load(object sender, EventArgs e)
         {
 
-            if(Session.User != null && Session.User.Role == UserRole.Volunteer)
+            if(Session.User != null)
             {
-                VolunteerModel volunteer = (VolunteerModel)Session.User;
                 //Get initial search results
-                //results = helpRequestRepository.Search(null, volunteer.Location, 0, SearchOrder.DATE_DESC);
+                results = helpRequestRepository.Search(null, Session.volunteer.Location, 0, SearchOrder.DATE_DESC);
             }
 
             //Trigger search event
@@ -62,8 +61,14 @@ namespace EyeCTforParticipation.Controls
             string keywords = tbSearch.Text;
             string postalCode = tbPostalCode.Text;
             int distance = (int)cbDistance.SelectedValue;
-
-            results = helpRequestRepository.Search(keywords, postalCode, distance, SearchOrder.DATE_DESC);
+            if(postalCode.Length < 6)
+            {
+                results = helpRequestRepository.Search(keywords, Session.volunteer.Location, distance, SearchOrder.DATE_DESC);
+            }
+            else
+            {
+                results = helpRequestRepository.Search(keywords, postalCode, distance, SearchOrder.DATE_DESC);
+            }
             
             //Trigger search event
             if (Search != null)
@@ -109,7 +114,7 @@ namespace EyeCTforParticipation.Controls
         private void cbDistance_DrawItem(object sender, DrawItemEventArgs e)
         {
             e.DrawBackground();
-            e.Graphics.DrawString(cbDistances.Select(d => d.Value).ToArray()[e.Index], new Font("Segoe UI", 10), new SolidBrush(Color.FromArgb(64, 64, 64)), e.Bounds);
+            e.Graphics.DrawString(cbDistances.Select(d => d.Value).ToArray()[e.Index], new Font(CustomFonts.Families.Roboto, 10, FontStyle.Regular), new SolidBrush(Color.FromArgb(64, 64, 64)), e.Bounds);
         }
     }
 }

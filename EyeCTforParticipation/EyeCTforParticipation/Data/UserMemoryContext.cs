@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EyeCTforParticipation.Models;
 using EyeCTforParticipation.Data.MemoryContext;
+using System.Device.Location;
 
 namespace EyeCTforParticipation.Data
 {
@@ -146,5 +147,9 @@ namespace EyeCTforParticipation.Data
             return results.ToList();
         }
 
+        public GeoCoordinate GetVolunteerLocation(int userId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

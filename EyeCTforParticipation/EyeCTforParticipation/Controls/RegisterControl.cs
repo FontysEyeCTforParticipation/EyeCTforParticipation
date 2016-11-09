@@ -91,7 +91,7 @@ namespace EyeCTforParticipation.Controls
                 DriversLicense = cbDriversLicense.Checked,
                 Car = cbCar.Checked
             });
-            Session.User = userRepository.Login(tbEmail.Text, tbPassword.Text);
+            userRepository.Login(tbEmail.Text, tbPassword.Text);
             if (Register != null && Session.User != null)
             {
                 Register(null, EventArgs.Empty);

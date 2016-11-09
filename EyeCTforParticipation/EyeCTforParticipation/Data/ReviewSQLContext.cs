@@ -175,6 +175,7 @@ namespace EyeCTforParticipation.Data
                                     INSERT INTO [ReviewReply] (ReviewId, Content, Date)
                                     VALUES (@Id, @Content, GETDATE())
                                 END
+                             END
                              ELSE
                              BEGIN
                                 UPDATE [ReviewReply]

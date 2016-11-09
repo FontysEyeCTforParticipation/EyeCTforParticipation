@@ -113,13 +113,13 @@ namespace EyeCTforParticipation.Data
                                 JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
                                 WHERE [HelpRequest].Closed = 0
                              ) h 
-                             WHERE (Distance <= @Distance OR @Distance = 0)
+                             WHERE (Distance <= @Distance * 1000 OR @Distance = 0)
                              ORDER BY " + orderString(order);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
-                cmd.Parameters.AddWithValue("@Location", "POINT(" + location.Latitude + " " + location.Longitude + ")");
+                cmd.Parameters.AddWithValue("@Location", "POINT(" + location.Longitude + " " + location.Latitude + ")");
                 cmd.Parameters.AddWithValue("@Distance", distance);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -153,14 +153,14 @@ namespace EyeCTforParticipation.Data
                                  JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
                                  WHERE [HelpRequest].Closed = 0
                              ) h
-                             WHERE Matches > 0 AND (Distance <= @Distance OR @Distance = 0)
+                             WHERE Matches > 0 AND (Distance <= @Distance * 1000 OR @Distance = 0)
                              ORDER BY " + orderString(order);
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
                 cmd.Parameters.AddWithValue("@Keywords", keywords);
-                cmd.Parameters.AddWithValue("@Location", "POINT(" + location.Latitude + " " + location.Longitude + ")");
+                cmd.Parameters.AddWithValue("@Location", "POINT(" + location.Longitude + " " + location.Latitude + ")");
                 cmd.Parameters.AddWithValue("@Distance", distance);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -274,7 +274,7 @@ namespace EyeCTforParticipation.Data
                 cmd.Parameters.AddWithValue("@Title", helpRequest.Title);
                 cmd.Parameters.AddWithValue("@Content", helpRequest.Content);
                 cmd.Parameters.AddWithValue("@Address", helpRequest.Address);
-                cmd.Parameters.AddWithValue("@Location", "POINT(" + helpRequest.Location.Latitude + " " + helpRequest.Location.Longitude + ")");
+                cmd.Parameters.AddWithValue("@Location", "POINT(" + helpRequest.Location.Longitude + " " + helpRequest.Location.Latitude + ")");
                 cmd.Parameters.AddWithValue("@Urgency", (int)helpRequest.Urgency);
                 id = Convert.ToInt32(cmd.ExecuteScalar());
             }
@@ -295,7 +295,7 @@ namespace EyeCTforParticipation.Data
                 cmd.Parameters.AddWithValue("@Title", helpRequest.Title);
                 cmd.Parameters.AddWithValue("@Content", helpRequest.Content);
                 cmd.Parameters.AddWithValue("@Address", helpRequest.Address);
-                cmd.Parameters.AddWithValue("@Location", "POINT(" + helpRequest.Location.Latitude + " " + helpRequest.Location.Longitude + ")");
+                cmd.Parameters.AddWithValue("@Location", "POINT(" + helpRequest.Location.Longitude + " " + helpRequest.Location.Latitude + ")");
                 cmd.Parameters.AddWithValue("@Urgency", (int)helpRequest.Urgency);
                 cmd.ExecuteNonQuery();
             }
@@ -357,42 +357,52 @@ namespace EyeCTforParticipation.Data
             }
         }
 
-        public int Apply(int id, int volunteerId)
+        public void Apply(int id, int volunteerId)
         {
-            int applicationId;
-            string query = @"INSERT INTO [Application] 
-                             (HelpRequestId, VolunteerId, Status, Date) 
-                             VALUES (@Id, @VolunteerId, @Status, GETDATE());
-                             SELECT SCOPE_IDENTITY();";
+            string query = @"IF NOT EXISTS(
+                                SELECT * 
+                                FROM [Application] 
+                                WHERE HelpRequestId = @HelpRequestId AND VolunteerId = @VolunteerId
+                             )
+                             BEGIN
+                                INSERT INTO [Application] 
+                                (HelpRequestId, VolunteerId, Status, Date) 
+                                VALUES (@HelpRequestId, @VolunteerId, @Status, GETDATE())
+                             END
+                             ELSE
+                             BEGIN 
+                                UPDATE [Application] 
+                                SET Status = @Status 
+                                WHERE HelpRequestId = @HelpRequestId AND VolunteerId = @VolunteerId 
+                             END;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
-                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@HelpRequestId", id);
                 cmd.Parameters.AddWithValue("@VolunteerId", volunteerId);
                 cmd.Parameters.AddWithValue("@Status", (int)ApplicationStatus.NONE);
-                applicationId = Convert.ToInt32(cmd.ExecuteScalar());
+                cmd.ExecuteNonQuery();
             }
-            return applicationId;
         }
 
         public void CancelApplication(int id, int volunteerId)
         {
             string query = @"UPDATE [Application] 
                              SET Status = @Status 
-                             WHERE Id = @Id AND VolunteerId = @VolunteerId;";
+                             WHERE HelpRequestId = @HelpRequestId AND VolunteerId = @VolunteerId;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
-                cmd.Parameters.AddWithValue("@Id", id);
-                cmd.Parameters.AddWithValue("@Status", ApplicationStatus.CANCELLED);
+                cmd.Parameters.AddWithValue("@HelpRequestId", id);
+                cmd.Parameters.AddWithValue("@Status", (int)ApplicationStatus.CANCELLED);
                 cmd.Parameters.AddWithValue("@VolunteerId", volunteerId);
                 cmd.ExecuteNonQuery();
             }
         }
 
-        public void CancelApplicationAsHelpSeeker(int id, int userId)
+        public void CancelApplicationAsHelpSeeker(int applicationId, int userId)
         {
             string query = @"UPDATE [Application] 
                              SET Status = @Status 
@@ -401,13 +411,14 @@ namespace EyeCTforParticipation.Data
                                 FROM [Application] 
                                 JOIN [HelpRequest] ON [Application].HelpRequestId = HelpRequest.Id 
                                 WHERE [HelpRequest].HelpSeekerUserId = @HelpSeekerUserId
-                             );";
+                             ) AND Status != @Cancelled;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
-                cmd.Parameters.AddWithValue("@Id", id);
-                cmd.Parameters.AddWithValue("@Status", ApplicationStatus.CANCELLED);
+                cmd.Parameters.AddWithValue("@Id", applicationId);
+                cmd.Parameters.AddWithValue("@Status", (int)ApplicationStatus.NONE);
+                cmd.Parameters.AddWithValue("@Cancelled", (int)ApplicationStatus.CANCELLED);
                 cmd.Parameters.AddWithValue("@HelpSeekerUserId", userId);
                 cmd.ExecuteNonQuery();
             }
@@ -419,12 +430,13 @@ namespace EyeCTforParticipation.Data
             string query = @"SELECT [Application].Id, [HelpRequest].Id, [HelpRequest].Title, [HelpRequest].Urgency, [HelpRequest].Closed, [Application].Status, [Application].Date 
                              FROM [Application] 
                              JOIN [HelpRequest] ON [Application].HelpRequestId = [HelpRequest].Id 
-                             WHERE [Application].VolunteerId = @VolunteerId";
+                             WHERE [Application].VolunteerId = @VolunteerId AND [Application].Status != @Cancelled;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
                 cmd.Parameters.AddWithValue("@VolunteerId", volunteerId);
+                cmd.Parameters.AddWithValue("@Cancelled", (int)ApplicationStatus.CANCELLED);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -456,13 +468,14 @@ namespace EyeCTforParticipation.Data
                              JOIN [Volunteer] ON [Application].VolunteerId = Volunteer.Id 
                              JOIN [User] ON [Application].VolunteerId = [User].Id 
                              JOIN [HelpRequest] ON [Application].HelpRequestId = [HelpRequest].Id 
-                             WHERE [Application].HelpRequestId = @Id AND [HelpRequest].HelpSeekerUserId = @HelpSeekerUserId";
+                             WHERE [Application].HelpRequestId = @Id AND [HelpRequest].HelpSeekerUserId = @HelpSeekerUserId AND [Application].Status != @Cancelled;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
                 cmd.Parameters.AddWithValue("@Id", id);
                 cmd.Parameters.AddWithValue("@HelpSeekerUserId", helpSeekerId);
+                cmd.Parameters.AddWithValue("@Cancelled", (int)ApplicationStatus.CANCELLED);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -475,7 +488,7 @@ namespace EyeCTforParticipation.Data
                                 Id = reader.GetInt32(1),
                                 Name = reader.GetString(2),
                                 Birthdate = reader.GetDateTime(3),
-                                About = reader.GetString(4),
+                                About = reader.IsDBNull(4) ? null : reader.GetString(4),
                                 DriversLicense = reader.GetBoolean(5),
                                 Car = reader.GetBoolean(6)
                             },
@@ -488,7 +501,7 @@ namespace EyeCTforParticipation.Data
             return applications;
         }
 
-        public void InterviewApplication(int id, int helpSeekerId)
+        public void InterviewApplication(int applicationId, int helpSeekerId)
         {
             string query = @"UPDATE [Application] 
                              SET Status = @Status 
@@ -497,19 +510,20 @@ namespace EyeCTforParticipation.Data
                                 FROM [Application] 
                                 JOIN [HelpRequest] ON [Application].HelpRequestId = [HelpRequest].Id 
                                 WHERE [HelpRequest].HelpSeekerUserId = @HelpSeekerUserId
-                             );";
+                             ) AND [Application].Status != @Cancelled;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
-                cmd.Parameters.AddWithValue("@Id", id);
-                cmd.Parameters.AddWithValue("@Status", ApplicationStatus.INTERVIEW);
+                cmd.Parameters.AddWithValue("@Id", applicationId);
+                cmd.Parameters.AddWithValue("@Status", (int)ApplicationStatus.INTERVIEW);
                 cmd.Parameters.AddWithValue("@HelpSeekerUserId", helpSeekerId);
+                cmd.Parameters.AddWithValue("@Cancelled", (int)ApplicationStatus.CANCELLED);
                 cmd.ExecuteNonQuery();
             }
         }
 
-        public void ApproveApplication(int id, int helpSeekerId)
+        public void ApproveApplication(int applicationId, int helpSeekerId)
         {
             string query = @"UPDATE [Application] 
                              SET Status = @Status 
@@ -518,16 +532,54 @@ namespace EyeCTforParticipation.Data
                                 FROM [Application] 
                                 JOIN [HelpRequest] ON [Application].HelpRequestId = [HelpRequest].Id 
                                 WHERE [HelpRequest].HelpSeekerUserId = @HelpSeekerUserId
-                             );";
+                             ) AND [Application].Status != @Cancelled;";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@Id", applicationId);
+                cmd.Parameters.AddWithValue("@Status", (int)ApplicationStatus.APPROVED);
+                cmd.Parameters.AddWithValue("@HelpSeekerUserId", helpSeekerId);
+                cmd.Parameters.AddWithValue("@Cancelled", (int)ApplicationStatus.CANCELLED);
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        public int ApplicationsCount(int id, int helpSeekerId)
+        {
+            int count = 0;
+            string query = @"SELECT COUNT(*)
+                             FROM [Application] 
+                             JOIN [HelpRequest] ON [Application].HelpRequestId = [HelpRequest].Id 
+                             WHERE [Application].HelpRequestId = @Id AND [HelpRequest].HelpSeekerUserId = @HelpSeekerUserId AND [Application].Status != @Cancelled;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             using (SqlCommand cmd = new SqlCommand(query, conn))
             {
                 conn.Open();
                 cmd.Parameters.AddWithValue("@Id", id);
-                cmd.Parameters.AddWithValue("@Status", ApplicationStatus.APPROVED);
                 cmd.Parameters.AddWithValue("@HelpSeekerUserId", helpSeekerId);
-                cmd.ExecuteNonQuery();
+                cmd.Parameters.AddWithValue("@Cancelled", (int)ApplicationStatus.CANCELLED);
+                count = Convert.ToInt32(cmd.ExecuteScalar());
             }
+            return count;
+        }
+
+        public bool HasApplied(int id, int volunteerId)
+        {
+            bool applied = false;
+            string query = @"SELECT CAST(COUNT(*) AS BIT)
+                             FROM [Application] 
+                             WHERE HelpRequestId = @Id AND VolunteerId = @VolunteerId AND Status != @Cancelled;";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@VolunteerId", volunteerId);
+                cmd.Parameters.AddWithValue("@Cancelled", (int)ApplicationStatus.CANCELLED);
+                applied = Convert.ToBoolean(cmd.ExecuteScalar());
+            }
+            return applied;
         }
     }
 }

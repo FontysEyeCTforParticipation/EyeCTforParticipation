@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EyeCTforParticipation.Models;
+using System.Device.Location;
 
 namespace EyeCTforParticipation.Data
 {
@@ -21,5 +22,6 @@ namespace EyeCTforParticipation.Data
         void ChangeApproveAidWorker(int helpSeekerId, int aidWorkerId, bool approved);
         List<UserModel> GetHelpSeekers(int aidWorkerId);
         List<UserModel> GetAidWorkers(int HelpSeekerId);
+        GeoCoordinate GetVolunteerLocation(int userId);
     }
 }

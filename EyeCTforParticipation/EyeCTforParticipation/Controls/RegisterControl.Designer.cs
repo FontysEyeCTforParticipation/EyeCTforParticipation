@@ -630,7 +630,6 @@
             this.tbLocation.Location = new System.Drawing.Point(40, 0);
             this.tbLocation.Margin = new System.Windows.Forms.Padding(0);
             this.tbLocation.Name = "tbLocation";
-            this.tbLocation.PasswordChar = '*';
             this.tbLocation.Size = new System.Drawing.Size(640, 43);
             this.tbLocation.TabIndex = 3;
             // 
