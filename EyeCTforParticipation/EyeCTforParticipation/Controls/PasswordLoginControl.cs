@@ -37,6 +37,10 @@ namespace EyeCTforParticipation.Controls
                         Login(this, EventArgs.Empty);
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Verkeerd e-mail en/of wachtwoord.");
+                }
             } else
             {
                 MessageBox.Show("E-mail en wachtwoord zijn vereist.");
