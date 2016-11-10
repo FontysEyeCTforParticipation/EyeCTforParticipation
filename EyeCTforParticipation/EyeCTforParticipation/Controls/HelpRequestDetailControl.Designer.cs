@@ -39,7 +39,7 @@
             this.lbUrgencyLow = new System.Windows.Forms.Label();
             this.lbCloseWrapper = new System.Windows.Forms.Panel();
             this.lbClose = new System.Windows.Forms.Label();
-            this.lbName = new System.Windows.Forms.Label();
+            this.lbSubtitle = new System.Windows.Forms.Label();
             this.lbLocation = new System.Windows.Forms.Label();
             this.lbDistance = new System.Windows.Forms.Label();
             this.lbDate = new System.Windows.Forms.Label();
@@ -59,7 +59,7 @@
             this.lbTitleNameWrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.lbTitleNameWrapper.BackColor = System.Drawing.Color.Transparent;
             this.lbTitleNameWrapper.Controls.Add(this.titleWrapper);
-            this.lbTitleNameWrapper.Controls.Add(this.lbName);
+            this.lbTitleNameWrapper.Controls.Add(this.lbSubtitle);
             this.lbTitleNameWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lbTitleNameWrapper.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.lbTitleNameWrapper.Location = new System.Drawing.Point(0, 0);
@@ -199,18 +199,18 @@
             this.lbClose.TabIndex = 4;
             this.lbClose.Text = "GESLOTEN";
             // 
-            // lbName
+            // lbSubtitle
             // 
-            this.lbName.AutoSize = true;
-            this.lbName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbName.ForeColor = System.Drawing.Color.Gray;
-            this.lbName.Location = new System.Drawing.Point(0, 85);
-            this.lbName.Margin = new System.Windows.Forms.Padding(0);
-            this.lbName.Name = "lbName";
-            this.lbName.Padding = new System.Windows.Forms.Padding(40, 10, 60, 30);
-            this.lbName.Size = new System.Drawing.Size(204, 85);
-            this.lbName.TabIndex = 4;
-            this.lbName.Text = "Naam";
+            this.lbSubtitle.AutoSize = true;
+            this.lbSubtitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSubtitle.ForeColor = System.Drawing.Color.Gray;
+            this.lbSubtitle.Location = new System.Drawing.Point(0, 85);
+            this.lbSubtitle.Margin = new System.Windows.Forms.Padding(0);
+            this.lbSubtitle.Name = "lbSubtitle";
+            this.lbSubtitle.Padding = new System.Windows.Forms.Padding(40, 10, 60, 30);
+            this.lbSubtitle.Size = new System.Drawing.Size(204, 85);
+            this.lbSubtitle.TabIndex = 4;
+            this.lbSubtitle.Text = "Naam";
             // 
             // lbLocation
             // 
@@ -221,10 +221,10 @@
             this.lbLocation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lbLocation.Location = new System.Drawing.Point(0, 60);
             this.lbLocation.Margin = new System.Windows.Forms.Padding(0);
-            this.lbLocation.MaximumSize = new System.Drawing.Size(360, 80);
+            this.lbLocation.MaximumSize = new System.Drawing.Size(360, 50);
             this.lbLocation.Name = "lbLocation";
             this.lbLocation.Padding = new System.Windows.Forms.Padding(0, 0, 40, 0);
-            this.lbLocation.Size = new System.Drawing.Size(360, 80);
+            this.lbLocation.Size = new System.Drawing.Size(360, 50);
             this.lbLocation.TabIndex = 5;
             this.lbLocation.Text = "Eindhoven";
             this.lbLocation.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -307,7 +307,7 @@
 
         private System.Windows.Forms.FlowLayoutPanel lbTitleNameWrapper;
         private System.Windows.Forms.Label lbTitle;
-        private System.Windows.Forms.Label lbName;
+        private System.Windows.Forms.Label lbSubtitle;
         private System.Windows.Forms.Label lbLocation;
         private System.Windows.Forms.Label lbDistance;
         private System.Windows.Forms.Label lbDate;

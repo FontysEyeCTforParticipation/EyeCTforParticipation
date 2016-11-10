@@ -151,5 +151,10 @@ namespace EyeCTforParticipation.Data
         {
             throw new NotImplementedException();
         }
+
+        public List<UserModel> Get()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

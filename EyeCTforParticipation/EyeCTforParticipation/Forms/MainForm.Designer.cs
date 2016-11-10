@@ -30,7 +30,13 @@
         {
             this.views = new EyeCTforParticipation.Controls.ViewControl();
             this.startView = new System.Windows.Forms.TabPage();
-            this.lbStartTitle = new System.Windows.Forms.Label();
+            this.adminView = new System.Windows.Forms.TabPage();
+            this.btUsersManageWrapper = new System.Windows.Forms.FlowLayoutPanel();
+            this.btUsersManage = new System.Windows.Forms.Button();
+            this.lbUsersManage = new System.Windows.Forms.Label();
+            this.adminTitle = new System.Windows.Forms.FlowLayoutPanel();
+            this.pbAdminAvatar = new System.Windows.Forms.PictureBox();
+            this.lbAdminName = new System.Windows.Forms.Label();
             this.helpSeekerView = new System.Windows.Forms.TabPage();
             this.btAidWorkersManageWrapper = new System.Windows.Forms.FlowLayoutPanel();
             this.btAidWorkersManage = new System.Windows.Forms.Button();
@@ -78,14 +84,25 @@
             this.btHelpRequestsBack = new System.Windows.Forms.Button();
             this.applicationsView = new System.Windows.Forms.TabPage();
             this.applicationsWrapper = new System.Windows.Forms.Panel();
-            this.applicationsControl = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
+            this.applicationsSeperator = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
             this.applicationsTitleWrapper = new System.Windows.Forms.Panel();
             this.lbApplications = new System.Windows.Forms.Label();
             this.btApplicationsBackWrapper = new System.Windows.Forms.Panel();
             this.btApplicationsBack = new System.Windows.Forms.Button();
+            this.usersManageView = new System.Windows.Forms.TabPage();
+            this.usersManageWrapper = new System.Windows.Forms.Panel();
+            this.usersManageSeperator = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
+            this.usersManageTitleWrapper = new System.Windows.Forms.Panel();
+            this.lbUsersManageTitle = new System.Windows.Forms.Label();
+            this.btUsersManageBackWrapper = new System.Windows.Forms.Panel();
+            this.btUsersManageBack = new System.Windows.Forms.Button();
+            this.headerSeperator = new EyeCTforParticipation.Controls.HorizontalSeperatorControl();
             this.header = new EyeCTforParticipation.Controls.HeaderControl();
             this.views.SuspendLayout();
-            this.startView.SuspendLayout();
+            this.adminView.SuspendLayout();
+            this.btUsersManageWrapper.SuspendLayout();
+            this.adminTitle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAdminAvatar)).BeginInit();
             this.helpSeekerView.SuspendLayout();
             this.btAidWorkersManageWrapper.SuspendLayout();
             this.btHelpRequestsManageWrapper.SuspendLayout();
@@ -109,19 +126,24 @@
             this.applicationsView.SuspendLayout();
             this.applicationsTitleWrapper.SuspendLayout();
             this.btApplicationsBackWrapper.SuspendLayout();
+            this.usersManageView.SuspendLayout();
+            this.usersManageTitleWrapper.SuspendLayout();
+            this.btUsersManageBackWrapper.SuspendLayout();
             this.SuspendLayout();
             // 
             // views
             // 
             this.views.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.views.Controls.Add(this.startView);
+            this.views.Controls.Add(this.adminView);
             this.views.Controls.Add(this.helpSeekerView);
             this.views.Controls.Add(this.volunteerView);
             this.views.Controls.Add(this.searchView);
             this.views.Controls.Add(this.helpRequestView);
             this.views.Controls.Add(this.helpRequestsManageView);
             this.views.Controls.Add(this.applicationsView);
-            this.views.CurrentView = this.searchView;
+            this.views.Controls.Add(this.usersManageView);
+            this.views.CurrentView = this.startView;
             this.views.Dock = System.Windows.Forms.DockStyle.Fill;
             this.views.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
             this.views.ItemSize = new System.Drawing.Size(0, 1);
@@ -137,7 +159,8 @@
             // startView
             // 
             this.startView.BackColor = System.Drawing.Color.White;
-            this.startView.Controls.Add(this.lbStartTitle);
+            this.startView.BackgroundImage = global::EyeCTforParticipation.Properties.Resources.Untitled;
+            this.startView.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.startView.Location = new System.Drawing.Point(0, 0);
             this.startView.Margin = new System.Windows.Forms.Padding(0);
             this.startView.Name = "startView";
@@ -145,19 +168,102 @@
             this.startView.TabIndex = 2;
             this.startView.Text = "tabPage1";
             // 
-            // lbStartTitle
+            // adminView
             // 
-            this.lbStartTitle.AutoSize = true;
-            this.lbStartTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lbStartTitle.Font = new System.Drawing.Font("Segoe UI", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStartTitle.Location = new System.Drawing.Point(0, 0);
-            this.lbStartTitle.Margin = new System.Windows.Forms.Padding(0);
-            this.lbStartTitle.Name = "lbStartTitle";
-            this.lbStartTitle.Padding = new System.Windows.Forms.Padding(40, 40, 0, 40);
-            this.lbStartTitle.Size = new System.Drawing.Size(599, 151);
-            this.lbStartTitle.TabIndex = 0;
-            this.lbStartTitle.Text = "EyeCT for Participation";
-            this.lbStartTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.adminView.BackColor = System.Drawing.Color.White;
+            this.adminView.Controls.Add(this.btUsersManageWrapper);
+            this.adminView.Controls.Add(this.lbUsersManage);
+            this.adminView.Controls.Add(this.adminTitle);
+            this.adminView.Location = new System.Drawing.Point(0, 0);
+            this.adminView.Margin = new System.Windows.Forms.Padding(0);
+            this.adminView.Name = "adminView";
+            this.adminView.Size = new System.Drawing.Size(1574, 1081);
+            this.adminView.TabIndex = 7;
+            this.adminView.Text = "tabPage1";
+            // 
+            // btUsersManageWrapper
+            // 
+            this.btUsersManageWrapper.AutoSize = true;
+            this.btUsersManageWrapper.Controls.Add(this.btUsersManage);
+            this.btUsersManageWrapper.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btUsersManageWrapper.Location = new System.Drawing.Point(0, 350);
+            this.btUsersManageWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.btUsersManageWrapper.Name = "btUsersManageWrapper";
+            this.btUsersManageWrapper.Padding = new System.Windows.Forms.Padding(40, 0, 0, 20);
+            this.btUsersManageWrapper.Size = new System.Drawing.Size(1574, 87);
+            this.btUsersManageWrapper.TabIndex = 27;
+            // 
+            // btUsersManage
+            // 
+            this.btUsersManage.AutoSize = true;
+            this.btUsersManage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btUsersManage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btUsersManage.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btUsersManage.FlatAppearance.BorderSize = 0;
+            this.btUsersManage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btUsersManage.Font = new System.Drawing.Font("Segoe UI", 10.125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btUsersManage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btUsersManage.Location = new System.Drawing.Point(40, 0);
+            this.btUsersManage.Margin = new System.Windows.Forms.Padding(0);
+            this.btUsersManage.Name = "btUsersManage";
+            this.btUsersManage.Padding = new System.Windows.Forms.Padding(10);
+            this.btUsersManage.Size = new System.Drawing.Size(166, 67);
+            this.btUsersManage.TabIndex = 4;
+            this.btUsersManage.Text = "BEHEREN";
+            this.btUsersManage.UseVisualStyleBackColor = false;
+            this.btUsersManage.Click += new System.EventHandler(this.btUsersManage_Click);
+            // 
+            // lbUsersManage
+            // 
+            this.lbUsersManage.AutoSize = true;
+            this.lbUsersManage.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lbUsersManage.Font = new System.Drawing.Font("Segoe UI", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUsersManage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lbUsersManage.Location = new System.Drawing.Point(0, 199);
+            this.lbUsersManage.Margin = new System.Windows.Forms.Padding(0);
+            this.lbUsersManage.Name = "lbUsersManage";
+            this.lbUsersManage.Padding = new System.Windows.Forms.Padding(40, 40, 0, 40);
+            this.lbUsersManage.Size = new System.Drawing.Size(320, 151);
+            this.lbUsersManage.TabIndex = 28;
+            this.lbUsersManage.Text = "Gebruikers";
+            this.lbUsersManage.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // adminTitle
+            // 
+            this.adminTitle.AutoSize = true;
+            this.adminTitle.Controls.Add(this.pbAdminAvatar);
+            this.adminTitle.Controls.Add(this.lbAdminName);
+            this.adminTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.adminTitle.Location = new System.Drawing.Point(0, 0);
+            this.adminTitle.Name = "adminTitle";
+            this.adminTitle.Padding = new System.Windows.Forms.Padding(40, 40, 0, 20);
+            this.adminTitle.Size = new System.Drawing.Size(1574, 199);
+            this.adminTitle.TabIndex = 26;
+            // 
+            // pbAdminAvatar
+            // 
+            this.pbAdminAvatar.Location = new System.Drawing.Point(40, 40);
+            this.pbAdminAvatar.Margin = new System.Windows.Forms.Padding(0, 0, 40, 0);
+            this.pbAdminAvatar.Name = "pbAdminAvatar";
+            this.pbAdminAvatar.Size = new System.Drawing.Size(128, 128);
+            this.pbAdminAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbAdminAvatar.TabIndex = 23;
+            this.pbAdminAvatar.TabStop = false;
+            this.pbAdminAvatar.Visible = false;
+            // 
+            // lbAdminName
+            // 
+            this.lbAdminName.AutoSize = true;
+            this.lbAdminName.Font = new System.Drawing.Font("Segoe UI", 16.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAdminName.ForeColor = System.Drawing.Color.Gray;
+            this.lbAdminName.Location = new System.Drawing.Point(208, 40);
+            this.lbAdminName.Margin = new System.Windows.Forms.Padding(0);
+            this.lbAdminName.Name = "lbAdminName";
+            this.lbAdminName.Padding = new System.Windows.Forms.Padding(0, 40, 0, 40);
+            this.lbAdminName.Size = new System.Drawing.Size(202, 139);
+            this.lbAdminName.TabIndex = 2;
+            this.lbAdminName.Text = "John Doe";
+            this.lbAdminName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // helpSeekerView
             // 
@@ -800,7 +906,7 @@
             // applicationsView
             // 
             this.applicationsView.Controls.Add(this.applicationsWrapper);
-            this.applicationsView.Controls.Add(this.applicationsControl);
+            this.applicationsView.Controls.Add(this.applicationsSeperator);
             this.applicationsView.Controls.Add(this.applicationsTitleWrapper);
             this.applicationsView.Location = new System.Drawing.Point(0, 0);
             this.applicationsView.Margin = new System.Windows.Forms.Padding(0);
@@ -821,16 +927,16 @@
             this.applicationsWrapper.Size = new System.Drawing.Size(1574, 878);
             this.applicationsWrapper.TabIndex = 21;
             // 
-            // applicationsControl
+            // applicationsSeperator
             // 
-            this.applicationsControl.AutoSize = true;
-            this.applicationsControl.BackColor = System.Drawing.Color.Silver;
-            this.applicationsControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.applicationsControl.Location = new System.Drawing.Point(0, 202);
-            this.applicationsControl.Margin = new System.Windows.Forms.Padding(0);
-            this.applicationsControl.Name = "applicationsControl";
-            this.applicationsControl.Size = new System.Drawing.Size(1574, 1);
-            this.applicationsControl.TabIndex = 20;
+            this.applicationsSeperator.AutoSize = true;
+            this.applicationsSeperator.BackColor = System.Drawing.Color.Silver;
+            this.applicationsSeperator.Dock = System.Windows.Forms.DockStyle.Top;
+            this.applicationsSeperator.Location = new System.Drawing.Point(0, 202);
+            this.applicationsSeperator.Margin = new System.Windows.Forms.Padding(0);
+            this.applicationsSeperator.Name = "applicationsSeperator";
+            this.applicationsSeperator.Size = new System.Drawing.Size(1574, 1);
+            this.applicationsSeperator.TabIndex = 20;
             // 
             // applicationsTitleWrapper
             // 
@@ -891,6 +997,111 @@
             this.btApplicationsBack.UseVisualStyleBackColor = false;
             this.btApplicationsBack.Click += new System.EventHandler(this.btApplicationsBack_Click);
             // 
+            // usersManageView
+            // 
+            this.usersManageView.BackColor = System.Drawing.Color.White;
+            this.usersManageView.Controls.Add(this.usersManageWrapper);
+            this.usersManageView.Controls.Add(this.usersManageSeperator);
+            this.usersManageView.Controls.Add(this.usersManageTitleWrapper);
+            this.usersManageView.Location = new System.Drawing.Point(0, 0);
+            this.usersManageView.Margin = new System.Windows.Forms.Padding(0);
+            this.usersManageView.Name = "usersManageView";
+            this.usersManageView.Size = new System.Drawing.Size(1574, 1081);
+            this.usersManageView.TabIndex = 8;
+            this.usersManageView.Text = "tabPage1";
+            // 
+            // usersManageWrapper
+            // 
+            this.usersManageWrapper.AutoScroll = true;
+            this.usersManageWrapper.BackColor = System.Drawing.Color.White;
+            this.usersManageWrapper.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.usersManageWrapper.Location = new System.Drawing.Point(0, 203);
+            this.usersManageWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.usersManageWrapper.Name = "usersManageWrapper";
+            this.usersManageWrapper.Size = new System.Drawing.Size(1574, 878);
+            this.usersManageWrapper.TabIndex = 22;
+            // 
+            // usersManageSeperator
+            // 
+            this.usersManageSeperator.AutoSize = true;
+            this.usersManageSeperator.BackColor = System.Drawing.Color.Silver;
+            this.usersManageSeperator.Dock = System.Windows.Forms.DockStyle.Top;
+            this.usersManageSeperator.Location = new System.Drawing.Point(0, 202);
+            this.usersManageSeperator.Margin = new System.Windows.Forms.Padding(0);
+            this.usersManageSeperator.Name = "usersManageSeperator";
+            this.usersManageSeperator.Size = new System.Drawing.Size(1574, 1);
+            this.usersManageSeperator.TabIndex = 21;
+            // 
+            // usersManageTitleWrapper
+            // 
+            this.usersManageTitleWrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.usersManageTitleWrapper.BackColor = System.Drawing.Color.White;
+            this.usersManageTitleWrapper.Controls.Add(this.lbUsersManageTitle);
+            this.usersManageTitleWrapper.Controls.Add(this.btUsersManageBackWrapper);
+            this.usersManageTitleWrapper.Dock = System.Windows.Forms.DockStyle.Top;
+            this.usersManageTitleWrapper.Location = new System.Drawing.Point(0, 0);
+            this.usersManageTitleWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.usersManageTitleWrapper.Name = "usersManageTitleWrapper";
+            this.usersManageTitleWrapper.Size = new System.Drawing.Size(1574, 202);
+            this.usersManageTitleWrapper.TabIndex = 19;
+            // 
+            // lbUsersManageTitle
+            // 
+            this.lbUsersManageTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbUsersManageTitle.Font = new System.Drawing.Font("Segoe UI", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUsersManageTitle.Location = new System.Drawing.Point(120, 0);
+            this.lbUsersManageTitle.Margin = new System.Windows.Forms.Padding(0);
+            this.lbUsersManageTitle.Name = "lbUsersManageTitle";
+            this.lbUsersManageTitle.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
+            this.lbUsersManageTitle.Size = new System.Drawing.Size(1454, 202);
+            this.lbUsersManageTitle.TabIndex = 16;
+            this.lbUsersManageTitle.Text = "Gebruikers";
+            this.lbUsersManageTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btUsersManageBackWrapper
+            // 
+            this.btUsersManageBackWrapper.AutoSize = true;
+            this.btUsersManageBackWrapper.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btUsersManageBackWrapper.BackColor = System.Drawing.Color.White;
+            this.btUsersManageBackWrapper.Controls.Add(this.btUsersManageBack);
+            this.btUsersManageBackWrapper.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btUsersManageBackWrapper.Location = new System.Drawing.Point(0, 0);
+            this.btUsersManageBackWrapper.Margin = new System.Windows.Forms.Padding(0);
+            this.btUsersManageBackWrapper.Name = "btUsersManageBackWrapper";
+            this.btUsersManageBackWrapper.Padding = new System.Windows.Forms.Padding(40, 40, 0, 40);
+            this.btUsersManageBackWrapper.Size = new System.Drawing.Size(120, 202);
+            this.btUsersManageBackWrapper.TabIndex = 15;
+            // 
+            // btUsersManageBack
+            // 
+            this.btUsersManageBack.BackColor = System.Drawing.Color.White;
+            this.btUsersManageBack.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btUsersManageBack.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btUsersManageBack.FlatAppearance.BorderSize = 0;
+            this.btUsersManageBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btUsersManageBack.Font = new System.Drawing.Font("Arial Narrow", 19.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btUsersManageBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btUsersManageBack.Location = new System.Drawing.Point(40, 40);
+            this.btUsersManageBack.Margin = new System.Windows.Forms.Padding(0);
+            this.btUsersManageBack.MinimumSize = new System.Drawing.Size(80, 100);
+            this.btUsersManageBack.Name = "btUsersManageBack";
+            this.btUsersManageBack.Size = new System.Drawing.Size(80, 122);
+            this.btUsersManageBack.TabIndex = 14;
+            this.btUsersManageBack.Text = "❮";
+            this.btUsersManageBack.UseVisualStyleBackColor = false;
+            this.btUsersManageBack.Click += new System.EventHandler(this.btUsersManageBack_Click);
+            // 
+            // headerSeperator
+            // 
+            this.headerSeperator.AutoSize = true;
+            this.headerSeperator.BackColor = System.Drawing.Color.Silver;
+            this.headerSeperator.Dock = System.Windows.Forms.DockStyle.Top;
+            this.headerSeperator.Location = new System.Drawing.Point(0, 147);
+            this.headerSeperator.Margin = new System.Windows.Forms.Padding(0);
+            this.headerSeperator.Name = "headerSeperator";
+            this.headerSeperator.Size = new System.Drawing.Size(1574, 1);
+            this.headerSeperator.TabIndex = 22;
+            // 
             // header
             // 
             this.header.AutoSize = true;
@@ -902,7 +1113,7 @@
             this.header.Margin = new System.Windows.Forms.Padding(0);
             this.header.MinimumSize = new System.Drawing.Size(920, 0);
             this.header.Name = "header";
-            this.header.Size = new System.Drawing.Size(1574, 148);
+            this.header.Size = new System.Drawing.Size(1574, 147);
             this.header.TabIndex = 1;
             // 
             // MainForm
@@ -912,13 +1123,22 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1574, 1229);
             this.Controls.Add(this.views);
+            this.Controls.Add(this.headerSeperator);
             this.Controls.Add(this.header);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1600, 1300);
             this.MinimumSize = new System.Drawing.Size(1600, 1300);
             this.Name = "MainForm";
+            this.ShowIcon = false;
             this.Text = "EyeCT for Participation";
             this.views.ResumeLayout(false);
-            this.startView.ResumeLayout(false);
-            this.startView.PerformLayout();
+            this.adminView.ResumeLayout(false);
+            this.adminView.PerformLayout();
+            this.btUsersManageWrapper.ResumeLayout(false);
+            this.btUsersManageWrapper.PerformLayout();
+            this.adminTitle.ResumeLayout(false);
+            this.adminTitle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbAdminAvatar)).EndInit();
             this.helpSeekerView.ResumeLayout(false);
             this.helpSeekerView.PerformLayout();
             this.btAidWorkersManageWrapper.ResumeLayout(false);
@@ -960,6 +1180,11 @@
             this.applicationsTitleWrapper.ResumeLayout(false);
             this.applicationsTitleWrapper.PerformLayout();
             this.btApplicationsBackWrapper.ResumeLayout(false);
+            this.usersManageView.ResumeLayout(false);
+            this.usersManageView.PerformLayout();
+            this.usersManageTitleWrapper.ResumeLayout(false);
+            this.usersManageTitleWrapper.PerformLayout();
+            this.btUsersManageBackWrapper.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -976,7 +1201,6 @@
         private System.Windows.Forms.TabPage searchView;
         private System.Windows.Forms.TabPage helpRequestView;
         private System.Windows.Forms.TabPage startView;
-        private System.Windows.Forms.Label lbStartTitle;
         private System.Windows.Forms.TabPage volunteerView;
         private Controls.HeaderControl header;
         private System.Windows.Forms.TabPage helpSeekerView;
@@ -1013,7 +1237,7 @@
         private System.Windows.Forms.Label lbSearch;
         private System.Windows.Forms.TabPage applicationsView;
         private System.Windows.Forms.Panel applicationsWrapper;
-        private Controls.HorizontalSeperatorControl applicationsControl;
+        private Controls.HorizontalSeperatorControl applicationsSeperator;
         private System.Windows.Forms.Panel applicationsTitleWrapper;
         private System.Windows.Forms.Label lbApplications;
         private System.Windows.Forms.Panel btApplicationsBackWrapper;
@@ -1022,5 +1246,20 @@
         private System.Windows.Forms.FlowLayoutPanel searchOrderWrapper;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbSearchOrder;
+        private System.Windows.Forms.TabPage adminView;
+        private System.Windows.Forms.FlowLayoutPanel btUsersManageWrapper;
+        private System.Windows.Forms.Button btUsersManage;
+        private System.Windows.Forms.Label lbUsersManage;
+        private System.Windows.Forms.FlowLayoutPanel adminTitle;
+        private System.Windows.Forms.PictureBox pbAdminAvatar;
+        private System.Windows.Forms.Label lbAdminName;
+        private System.Windows.Forms.TabPage usersManageView;
+        private System.Windows.Forms.Panel usersManageTitleWrapper;
+        private System.Windows.Forms.Label lbUsersManageTitle;
+        private System.Windows.Forms.Panel btUsersManageBackWrapper;
+        private System.Windows.Forms.Button btUsersManageBack;
+        private System.Windows.Forms.Panel usersManageWrapper;
+        private Controls.HorizontalSeperatorControl usersManageSeperator;
+        private Controls.HorizontalSeperatorControl headerSeperator;
     }
 }

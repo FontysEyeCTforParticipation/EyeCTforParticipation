@@ -20,6 +20,7 @@ namespace EyeCTforParticipation.Models
         double distance;
         HelpRequestUrgency urgency;
         bool closed;
+        int applicationsCount;
 
         public int Id
         {
@@ -148,6 +149,19 @@ namespace EyeCTforParticipation.Models
             set
             {
                 closed = value;
+            }
+        }
+
+        public int ApplicationsCount
+        {
+            get
+            {
+                return applicationsCount;
+            }
+
+            set
+            {
+                applicationsCount = value;
             }
         }
     }

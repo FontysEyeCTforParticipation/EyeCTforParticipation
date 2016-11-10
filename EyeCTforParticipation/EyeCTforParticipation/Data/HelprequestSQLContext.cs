@@ -225,8 +225,15 @@ namespace EyeCTforParticipation.Data
         public List<HelpRequestModel> GetFromHelpSeeker(int userId)
         {
             List<HelpRequestModel> results = new List<HelpRequestModel>();
-            string query = @"SELECT [HelpRequest].Id, [HelpRequest].HelpSeekerUserId, [User].Name, [HelpRequest].Title, [HelpRequest].Content, [HelpRequest].Date, [HelpRequest].Address, [HelpRequest].Urgency, [HelpRequest].Closed 
+            string query = @"SELECT [HelpRequest].Id, [HelpRequest].HelpSeekerUserId, [User].Name, [HelpRequest].Title, [HelpRequest].Content, [HelpRequest].Date, [HelpRequest].Address, [HelpRequest].Urgency, [HelpRequest].Closed, ApplicationCount
                              FROM [HelpRequest] 
+                             LEFT JOIN (
+                                SELECT COUNT(*) AS ApplicationCount, [Application].HelpRequestId AS HelpRequestId
+                                FROM [Application] 
+                                JOIN [HelpRequest] ON [Application].HelpRequestId = [HelpRequest].Id 
+                                WHERE [HelpRequest].HelpSeekerUserId = @HelpSeekerUserId AND [Application].Status != @Cancelled
+                                GROUP BY [Application].HelpRequestId
+                             ) AS ApplicationsCount ON [HelpRequest].Id = ApplicationsCount.HelpRequestId
                              JOIN [User] ON [HelpRequest].HelpSeekerUserId = [User].Id 
                              WHERE [HelpRequest].HelpSeekerUserId = @HelpSeekerUserId;";
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
@@ -234,6 +241,7 @@ namespace EyeCTforParticipation.Data
             {
                 conn.Open();
                 cmd.Parameters.AddWithValue("@HelpSeekerUserId", userId);
+                cmd.Parameters.AddWithValue("@Cancelled", (int)ApplicationStatus.CANCELLED);
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
                     while (reader.Read())
@@ -251,7 +259,8 @@ namespace EyeCTforParticipation.Data
                             Date = reader.GetDateTime(5),
                             Address = reader.GetString(6),
                             Urgency = (HelpRequestUrgency)reader.GetInt32(7),
-                            Closed = reader.GetBoolean(8)
+                            Closed = reader.GetBoolean(8),
+                            ApplicationsCount = reader.IsDBNull(9) ? 0 : reader.GetInt32(9),
                         });
                     }
                 }

@@ -92,6 +92,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\AccountControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\AccountControl.Designer.cs">
+      <DependentUpon>AccountControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\ApplicationControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -229,6 +235,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Models\VolunteerModel.cs" />
+    <EmbeddedResource Include="Controls\AccountControl.resx">
+      <DependentUpon>AccountControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\ApplicationControl.resx">
       <DependentUpon>ApplicationControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -284,7 +293,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="EyeCTforParticipation_TemporaryKey.pfx" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
@@ -335,6 +343,7 @@
     <Content Include="Logic\RFID\Phidget21.NET.dll" />
     <Content Include="Resources\chip_card.png" />
     <Content Include="Resources\message.png" />
+    <None Include="Resources\Untitled.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -85,7 +85,7 @@ namespace EyeCTforParticipation.Data
                 cmd.Parameters.AddWithValue("@Name", user.Name);
                 cmd.Parameters.AddWithValue("@Password", user.Password);
                 cmd.Parameters.AddWithValue("@Birthdate", user.Birthdate);
-                cmd.Parameters.AddWithValue("@Approved", true);
+                cmd.Parameters.AddWithValue("@Approved", approved);
                 id = Convert.ToInt32(cmd.ExecuteScalar());
             }
             return id;
@@ -186,7 +186,7 @@ namespace EyeCTforParticipation.Data
         }
         public List<UserModel> GetHelpSeekers(int aidWorkerId)
         {
-            List<UserModel> results = null;
+            List<UserModel> results = new List<UserModel>();
             string query = @"SELECT [User].Id, [User].Name
                              FROM [User]
                              WHERE User.ID IN (
@@ -216,7 +216,7 @@ namespace EyeCTforParticipation.Data
 
         public List<UserModel> GetAidWorkers(int helpSeekerId)
         {
-            List<UserModel> results = null;
+            List<UserModel> results = new List<UserModel>();
             string query = @"SELECT [User].Id, [User].Name
                              FROM [User] 
                              WHERE User.ID IN (
@@ -265,6 +265,33 @@ namespace EyeCTforParticipation.Data
                 }
             }
             return location;
+        }
+
+        public List<UserModel> Get()
+        {
+            List<UserModel> results = new List<UserModel>();
+            string query = @"SELECT Id, Role, Email, Name, Approved 
+                             FROM [User];";
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            {
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        results.Add(new UserModel
+                        {
+                            Id = reader.GetInt32(0),
+                            Role = (UserRole)reader.GetInt32(1),
+                            Email = reader.GetString(2),
+                            Name = reader.GetString(3),
+                            Approved = reader.GetBoolean(4)
+                        });
+                    }
+                }
+            }
+            return results;
         }
     }
 }

@@ -79,10 +79,53 @@ namespace EyeCTforParticipation.Controls
 
         private void btRegister_Click(object sender, EventArgs e)
         {
+            if(tbName.Text.Length == 0)
+            {
+                MessageBox.Show("Naam is vereist.");
+                return;
+            }
+            if (tbEmail.Text.Length == 0)
+            {
+                MessageBox.Show("E-mail is vereist.");
+                return;
+            }
+            if (tbEmail.Text != tbEmailRepeat.Text)
+            {
+                MessageBox.Show("E-mail adressen komen niet overeen.");
+                lbEmailMismatch.Show();
+                return;
+            }
+            if (!userRepository.emailValid(tbEmail.Text))
+            {
+                MessageBox.Show("Email is ongeldig.");
+                return;
+            }
+            if (tbPassword.Text.Length == 0)
+            {
+                MessageBox.Show("Wachtwoord is vereist.");
+                return;
+            }
+            if (tbPassword.Text != tbPasswordRepeat.Text)
+            {
+                MessageBox.Show("Wachtwoorden komen niet overeen.");
+                lbPasswordMismatch.Show();
+                return;
+            }
+            if(dtBirthdate.CustomFormat != "d MMM yyyy")
+            {
+                MessageBox.Show("Geboortedatum is vereist.");
+                return;
+            }
+            UserRole role = (UserRole)cbRole.SelectedValue;
+            if(role != UserRole.HelpSeeker && image == null)
+            {
+                MessageBox.Show("Foto is vereist.");
+                return;
+            }
             userRepository.Register(new RegisterModel
             {
                 Name = tbName.Text,
-                Role = (UserRole)cbRole.SelectedValue,
+                Role = role,
                 Email = tbEmail.Text,
                 Password = tbPassword.Text,
                 Birthdate = dtBirthdate.Value,
@@ -91,7 +134,10 @@ namespace EyeCTforParticipation.Controls
                 DriversLicense = cbDriversLicense.Checked,
                 Car = cbCar.Checked
             });
-            userRepository.Login(tbEmail.Text, tbPassword.Text);
+            if(role == UserRole.HelpSeeker)
+            {
+                userRepository.Login(tbEmail.Text, tbPassword.Text);
+            }
             if (Register != null && Session.User != null)
             {
                 Register(null, EventArgs.Empty);

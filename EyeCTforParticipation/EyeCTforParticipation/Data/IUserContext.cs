@@ -23,5 +23,6 @@ namespace EyeCTforParticipation.Data
         List<UserModel> GetHelpSeekers(int aidWorkerId);
         List<UserModel> GetAidWorkers(int HelpSeekerId);
         GeoCoordinate GetVolunteerLocation(int userId);
+        List<UserModel> Get();
     }
 }

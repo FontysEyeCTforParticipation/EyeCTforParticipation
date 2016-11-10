@@ -52,6 +52,7 @@ namespace EyeCTforParticipation.Controls
             btRegisterWrapper.Hide();
             btLogoutWrapper.Show();
             btChatWrapper.Show();
+            wrapper.BackColor = Color.WhiteSmoke;
         }
 
         private void setLogout()
@@ -60,6 +61,7 @@ namespace EyeCTforParticipation.Controls
             btRegisterWrapper.Show();
             btLogoutWrapper.Hide();
             btChatWrapper.Hide();
+            wrapper.BackColor = Color.White;
         }
 
         private void btLogin_Click(object sender, EventArgs e)

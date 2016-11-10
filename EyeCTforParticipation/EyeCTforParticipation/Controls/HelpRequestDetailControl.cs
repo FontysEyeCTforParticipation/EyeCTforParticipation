@@ -33,7 +33,15 @@ namespace EyeCTforParticipation.Controls
         {
             id = helpRequest.Id;
             lbTitle.Text = helpRequest.Title;
-            lbName.Text = helpRequest.HelpSeeker.Name;
+            if(Session.User.Role == UserRole.Volunteer)
+            {
+                lbSubtitle.Text = helpRequest.HelpSeeker.Name;
+            }
+            else
+            {
+                int applicationsCount = helpRequest.ApplicationsCount;
+                lbSubtitle.Text = applicationsCount.ToString() + (applicationsCount > 1 || applicationsCount == 0 ? " Aanmeldingen" : " Aanmelding");
+            }
             lbDate.Text = helpRequest.Date.ToString("dd-MM-yyyy");
             lbLocation.Text = helpRequest.Address;
             lbDistance.Text = Math.Round(helpRequest.Distance / 1000).ToString() + " km";

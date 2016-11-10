@@ -45,8 +45,8 @@ namespace EyeCTforParticipation.Controls
                     btEditWrapper.Show();
                     btCloseWrapper.Visible = !helpRequest.Closed;
                     btOpenWrapper.Visible = helpRequest.Closed;
-                    int applicationCount = helpRequestRepository.ApplicationsCount(helpRequest.Id, Session.User.Id);
-                    lbSubtitle.Text = applicationCount.ToString() + (applicationCount > 1 || applicationCount == 0 ? " Aanmeldingen" : " Aanmelding");
+                    int applicationsCount = helpRequestRepository.ApplicationsCount(helpRequest.Id, Session.User.Id);
+                    lbSubtitle.Text = applicationsCount.ToString() + (applicationsCount > 1 || applicationsCount == 0 ? " Aanmeldingen" : " Aanmelding");
                     break;
                 case UserRole.Volunteer:
                     bool applied = helpRequestRepository.HasApplied(helpRequest.Id, Session.User.Id);

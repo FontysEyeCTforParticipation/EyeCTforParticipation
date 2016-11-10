@@ -17,6 +17,7 @@ namespace EyeCTforParticipation.Forms
     public partial class MainForm : Form
     {
         HelpRequestRepository helpRequestRepository = new HelpRequestRepository(new HelpRequestSQLContext());
+        UserRepository userRepository = new UserRepository(new UserSQLContext());
 
         public MainForm()
         {
@@ -130,34 +131,47 @@ namespace EyeCTforParticipation.Forms
         {
             if (Session.User != null)
             {
-                header.LoggedIn = true;
-                switch (Session.User.Role)
+                if (Session.User.Approved)
                 {
-                    case UserRole.HelpSeeker:
-                        lbHelpSeekerName.Text = Session.User.Name;
-                        if(Session.User.Avatar != null)
-                        {
-                            pbHelpSeekerAvatar.Image = Session.User.Avatar;
-                            pbHelpSeekerAvatar.Show();
-                        } else
-                        {
-                            pbHelpSeekerAvatar.Hide();
-                        }
-                        views.CurrentView = helpSeekerView;
-                        break;
-                    case UserRole.Volunteer:
-                        lbVolunteerName.Text = Session.User.Name;
-                        if (Session.User.Avatar != null)
-                        {
-                            pbVolunteerAvatar.Image = Session.User.Avatar;
-                            pbVolunteerAvatar.Show();
-                        }
-                        else
-                        {
-                            pbVolunteerAvatar.Hide();
-                        }
-                        views.CurrentView = volunteerView;
-                        break;
+                    header.LoggedIn = true;
+                    switch (Session.User.Role)
+                    {
+                        case UserRole.Admin:
+                            views.CurrentView = adminView;
+                            break;
+                        case UserRole.HelpSeeker:
+                            lbHelpSeekerName.Text = Session.User.Name;
+                            if (Session.User.Avatar != null)
+                            {
+                                pbHelpSeekerAvatar.Image = Session.User.Avatar;
+                                pbHelpSeekerAvatar.Show();
+                            }
+                            else
+                            {
+                                pbHelpSeekerAvatar.Hide();
+                            }
+                            views.CurrentView = helpSeekerView;
+                            break;
+                        case UserRole.Volunteer:
+                            lbVolunteerName.Text = Session.User.Name;
+                            if (Session.User.Avatar != null)
+                            {
+                                pbVolunteerAvatar.Image = Session.User.Avatar;
+                                pbVolunteerAvatar.Show();
+                            }
+                            else
+                            {
+                                pbVolunteerAvatar.Hide();
+                            }
+                            views.CurrentView = volunteerView;
+                            break;
+                    }
+                }
+                else
+                {
+                    header.LoggedIn = false;
+                    Session.User = null;
+                    MessageBox.Show("Account moet eerst worden goedgekeurd.");
                 }
             }
         }
@@ -206,6 +220,25 @@ namespace EyeCTforParticipation.Forms
         private void cbSearchOrder_SelectedIndexChanged(object sender, EventArgs e)
         {
             getSearchResults();
+        }
+
+        private void btUsersManage_Click(object sender, EventArgs e)
+        {
+            List<UserModel> users = userRepository.Get();
+            usersManageWrapper.Controls.Clear();
+            foreach(UserModel user in users)
+            {
+                AccountControl accountControl = new AccountControl(user);
+                accountControl.Dock = DockStyle.Top;
+                usersManageWrapper.Controls.Add(accountControl);
+                usersManageWrapper.Controls.Add(new HorizontalSeperatorControl());
+            }
+            views.CurrentView = usersManageView;
+        }
+
+        private void btUsersManageBack_Click(object sender, EventArgs e)
+        {
+            views.CurrentView = adminView;
         }
     }
 }

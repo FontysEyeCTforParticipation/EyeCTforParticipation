@@ -9,6 +9,7 @@ using CryptSharp;
 using System.Windows.Forms;
 using System.IO;
 using System.Device.Location;
+using System.Text.RegularExpressions;
 
 namespace EyeCTforParticipation.Logic
 {
@@ -35,18 +36,13 @@ namespace EyeCTforParticipation.Logic
             UserModel user = context.Login(rfid);
             if (user != null)
             {
-                if (user.Approved)
+                Session.User = user;
+                switch (user.Role)
                 {
-                    Session.User = user;
-                    switch (user.Role)
-                    {
-                        case UserRole.Volunteer:
-                            setVolunteer();
-                            break;
-                    }
-                    setAvatar();
+                    case UserRole.Volunteer:
+                        setVolunteer();
+                        break;
                 }
-                //Throw unapproved exception
             }
             //Throw invalid email and/or password exception
         }
@@ -68,22 +64,21 @@ namespace EyeCTforParticipation.Logic
             UserModel user = context.LoginPassword(email);
             if(user != null && Crypter.CheckPassword(password, user.Password))
             {
-                if(user.Approved)
+                Session.User = user;
+                switch (user.Role)
                 {
-                    Session.User = user;
-                    switch (user.Role)
-                    {
-                        case UserRole.Volunteer:
-                            setVolunteer();
-                            break;
-                    }
-                    setAvatar();
+                    case UserRole.Volunteer:
+                        setVolunteer();
+                        break;
                 }
-                //Throw unapproved exception
+                setAvatar();
             }
             //Throw invalid email and/or password exception
         }
 
+        /// <summary>
+        /// Get volunteer data.
+        /// </summary>
         private void setVolunteer()
         {
             Session.volunteer = new VolunteerModel
@@ -92,6 +87,9 @@ namespace EyeCTforParticipation.Logic
             };
         }
 
+        /// <summary>
+        /// Get user avatar.
+        /// </summary>
         private void setAvatar()
         {
             string avatar = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\EyeCTforParticipation\\Uploads\\Avatars\\" + Session.User.Id + ".png";
@@ -111,7 +109,6 @@ namespace EyeCTforParticipation.Logic
         {
             string hash = Crypter.Blowfish.Crypt(register.Password);
             bool approved = register.Role == UserRole.HelpSeeker;
-            approved = true;
             int userId = context.Register(new UserModel
             {
                 Role = register.Role,
@@ -290,16 +287,47 @@ namespace EyeCTforParticipation.Logic
         /// <returns>
         /// A list of help seekers.
         /// </returns>
-        /// <remarks>
-        /// The help seekers need to have approved the aid worker.
-        /// </remarks>
-        List<UserModel> GetHelpSeekers(int aidWorkerId)
+        public List<UserModel> GetHelpSeekers(int aidWorkerId)
         {
             return context.GetHelpSeekers(aidWorkerId);
         }
-        List<UserModel> GetAidWorkers(int helpSeekerId)
+
+        /// <summary>
+        /// Get a list of aid workers for an help seeker.
+        /// </summary>
+        /// <param name="helpSeekerId">
+        /// The id of the help seeker.
+        /// </param>
+        /// <returns>
+        /// A list of aid workers.
+        /// </returns>
+        public List<UserModel> GetAidWorkers(int helpSeekerId)
         {
             return context.GetAidWorkers(helpSeekerId);
+        }
+
+        /// <summary>
+        /// Get a list of all users
+        /// </summary>
+        /// <returns>
+        /// A list of all users.
+        /// </returns>
+        public List<UserModel> Get()
+        {
+            return context.Get();
+        }
+
+        public bool emailValid(string email)
+        {
+            if (email != null)
+            {
+                Match match = Regex.Match(email, "^(?:(?:[\\w`~!#$%^&*\\-=+;:{}'|,?\\/]+(?:(?:\\.(?:\"(?:\\\\?[\\w`~!#$%^&*\\-=+;:{}'|,?\\/\\.()<>\\[\\] @]|\\\\\"|\\\\\\\\)*\"|[\\w`~!#$%^&*\\-=+;:{}'|,?\\/]+))*\\.[\\w`~!#$%^&*\\-=+;:{}'|,?\\/]+)?)|(?:\"(?:\\\\?[\\w`~!#$%^&*\\-=+;:{}'|,?\\/\\.()<>\\[\\] @]|\\\\\"|\\\\\\\\)+\"))@(?:[a-zA-Z\\d\\-]+(?:\\.[a-zA-Z\\d\\-]+)*|\\[\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\])$");
+                if (match.Success)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

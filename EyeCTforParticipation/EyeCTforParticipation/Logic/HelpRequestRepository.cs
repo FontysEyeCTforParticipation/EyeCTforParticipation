@@ -19,6 +19,15 @@ namespace EyeCTforParticipation.Logic
             this.context = context;
         }
 
+        /// <summary>
+        /// Get a formatted postal code.
+        /// </summary>
+        /// <param name="postalCode">
+        /// The original postal code.
+        /// </param>
+        /// <returns>
+        /// The formatted postal code or null if the postal code could not be formatted.
+        /// </returns>
         string FormatPostalCode(string postalCode)
         {
             if (postalCode != null)
